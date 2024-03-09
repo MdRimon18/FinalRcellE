@@ -1,0 +1,59 @@
+﻿@page "/add_user"
+
+ 
+
+<div class="card mb-3">
+    <div class="card-header">
+        <h5 class="mb-0" data-anchor="data-anchor">
+            <i class="fas fa-arrow-left"></i>
+            Create User Application
+        </h5>
+    </div>
+    <div class="card-body bg-body-tertiary">
+         
+
+        <div class="col-sm-5 animated-div">
+            <div class="form-group">
+                <label for="addSupplier" class="label text-dark"> User Name<span class="error-star">*</span></label>
+                <input name="name" type="text" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="name" required>
+                <div class="text-left invalid-message-color">
+                    User Name Is Required!
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-5 animated-div">
+            <div class="form-group">
+                <label for="addSupplier" class="label text-dark"> User Phone No <span class="error-star">*</span></label>
+                <input name="name" type="text" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="phone no" required>
+                <div class="text-left invalid-message-color">
+                    Number Is Required!
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-5 animated-div">
+            <div class="form-group">
+                <label for="addSupplier" class="label text-dark"> User Password <span class="error-star">*</span></label>
+                <input name="name" type="text" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="password" required>
+                <div class="text-left invalid-message-color">
+                    Password Is Required!
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-5 animated-div">
+            <div class="form-group">
+                <label for="addSupplier" class="label text-dark"> Designation</label>
+                <input name="name" type="text" class="form-control form-control-sm form-rounded" placeholder="write designation" required>
+            </div>
+        </div>
+        <div>
+            
+            <button class="btn btn-primary btn-sm mt-2">Register</button>
+        </div>
+</div>    
+</div>
+@code {
+
+}

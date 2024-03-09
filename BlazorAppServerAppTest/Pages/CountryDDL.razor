@@ -1,0 +1,34 @@
+﻿ <!-- CountryDDL.razor -->
+
+<select @bind="selectedCountryId">
+    <option value="">-- Select a country --</option>
+    @foreach (var country in countries)
+    {
+        <option value="@country.Id">@country.Name</option>
+    }
+</select>
+
+@code {
+    private int selectedCountryId;
+
+
+    CountryService countryService = new CountryService();
+
+    private List<Country> countries=new List<Country>();
+
+    protected override void OnInitialized()
+    {
+        countries = countryService.GetCountries();
+    }
+
+    [Parameter]
+    public EventCallback<int> OnCountrySelected { get; set; }
+
+    private async Task SelectedCountryChanged()
+    {
+        if (OnCountrySelected.HasDelegate)
+        {
+            await OnCountrySelected.InvokeAsync(selectedCountryId);
+        }
+    }
+}

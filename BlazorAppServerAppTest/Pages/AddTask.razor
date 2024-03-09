@@ -1,0 +1,28 @@
+﻿@page "/addtask"
+@using Pms.Data;
+
+<h3>Add New Task</h3>
+
+<div class="form-group">
+    <label for="title">Title</label>
+    <input id="title" class="form-control" @bind="newTask.Title" />
+</div>
+<div class="form-check">
+    <input id="isCompleted" class="form-check-input" type="checkbox" @bind="newTask.IsCompleted" />
+    <label for="isCompleted" class="form-check-label">Completed</label>
+</div>
+
+<button class="btn btn-primary" @onclick="addTask">Save</button>
+
+@code {
+    TaskModel newTask = new TaskModel();
+
+    [Inject]
+    TaskService taskService { get; set; }
+
+    private void addTask()
+    {
+        taskService.AddTask(newTask);
+        newTask = new TaskModel(); // Clear the input fields
+    }
+}

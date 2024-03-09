@@ -1,0 +1,24 @@
+﻿@page "/ddlPrint"
+
+
+<DropdownExmple  selectedValue="@selectedFruit"
+                selectedValueChanged="OnSelectionChange" />
+
+<p>Selected Value: @selectedFruit</p>
+
+@code {
+  
+    protected override void OnInitialized()
+    {
+        if (string.IsNullOrEmpty(selectedFruit))
+        {
+            selectedFruit = "Apple"; // Set the default value if selectedValue is null or empty
+        }
+    }
+    private string selectedFruit = "Apple";
+
+    private void OnSelectionChange(string newValue)
+    {
+        selectedFruit = newValue; // Save the selected value in a variable
+    }
+}

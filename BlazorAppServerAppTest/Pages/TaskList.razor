@@ -1,0 +1,100 @@
+﻿@page "/tasklist"
+@using Pms.Data;
+ 
+<h3>Add New Task</h3>
+
+<div class="form-group">
+    <label for="title">Title</label>
+    <input id="title" class="form-control" @bind="newTask.Title" />
+</div>
+<div class="form-check">
+    <input id="isCompleted" class="form-check-input" type="checkbox" @bind="newTask.IsCompleted" />
+    <label for="isCompleted" class="form-check-label">Completed</label>
+</div>
+<input @bind="newTask.Id" type="hidden"/>
+<button class="btn btn-success" @onclick="AddNewTask">Save</button>
+<button class="btn btn-success" @onchange="Search">Search</button>
+<button class="btn btn-primary" @onclick="Refresh">Refresh</button>
+
+
+
+<h3>Task List</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Completed</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var task in tasks)
+        {
+            <tr>
+                <td>@task.Title</td>
+                <td>@task.IsCompleted</td>
+                <td>
+                    <button class="btn btn-primary" @onclick="() => EditTask(task.Id)">Edit</button>
+                    <button class="btn btn-danger" @onclick="() => DeleteTask(task.Id)">Delete</button>
+                </td>   
+            </tr>
+        }
+
+        
+    </tbody>
+</table>
+
+
+@code {
+
+
+    [Inject]
+    TaskService taskService { get; set; }
+    public string ddlValue { get; set; } = "Option 2";
+
+    List<TaskModel> tasks = new List<TaskModel>();
+
+    TaskModel newTask = new TaskModel();
+
+
+
+    private void EditTask(int taskId)
+    {
+        newTask = taskService.GetTasks().FirstOrDefault(t => t.Id == taskId);
+        // taskService.UpdateTask(newTask);
+    }
+
+    private void DeleteTask(int taskId)
+    {
+        taskService.DeleteTask(taskId);
+        tasks = taskService.GetTasks(); // Refresh the task list
+    }
+
+    private void AddNewTask()
+    {
+        var ddl = ddlValue;
+        if (newTask.Id > 0)
+        {
+            taskService.UpdateTask(newTask);
+        }
+        else
+        {
+          
+            taskService.AddTask(newTask);
+            newTask = new TaskModel(); // Clear the input fields
+        }
+
+    }
+
+    private void Refresh()
+    {
+        newTask = new TaskModel();
+    }
+
+    private void Search()
+    {
+        tasks = taskService.GetTasks().Where(w => w.Title == newTask.Title).ToList();
+        
+    }
+}

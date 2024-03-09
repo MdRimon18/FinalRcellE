@@ -1,0 +1,145 @@
+﻿@page "/order_with_sp"
+@using BlazorAppServerAppTest.Models;
+@using Pms.Data.Repository;
+
+<h3 class="text-md-center mt-4">Order Form</h3>
+
+
+<div class="container-fluid pt-4 px-4">
+    <div class="row">
+        <div class="col-sm-12 col-xl-6">
+            <div class="bg-light rounded h-100 p-4">
+                <form>
+                    <div class="form-group mb-3">
+                        <label>Product Name:</label>
+                        <input type="text" class="form-control form-control-sm" name="orderNo" placeholder="OrderNo" @bind=OrderObject.ProductName />
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label>Category:</label>
+                        <select class="form-control form-control-sm" style="width: 100%;" @bind=OrderObject.CategoryId>
+                            <option selected="selected">Select Category</option>
+                            <option value=1>Electrical </option>
+                            <option value="sdfs">Fashion</option>
+                            <option value=3>Shoe</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label>Order Date:</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-date"></span>
+                            </div>
+                            <input type="date" class="form-control form-control-sm" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" @bind=OrderObject.OrderDate>
+                        </div>
+                    </div>
+                    <div class="mb-3 form-check mb-3">
+                        <input type="checkbox" class="form-check-input" id="checkBox" @bind=OrderObject.IsProductRecieve>
+                        <label class="form-check-label" for="exampleCheck1">Is Product Received?</label>
+                    </div>
+                </form>
+                <lebel>@SaveMessage</lebel>
+                <div class="d-grid gap-4 d-md-block">
+                    <button class="btn btn-primary btn-sm" @onclick="AddOrder">Save</button>
+                    <button class="btn btn-warning btn-sm" @onclick="()=>UpdateOrder(OrderObject)">Update</button>
+                    <button class="btn btn-warning btn-sm" @onclick="()=>GetAll()">Get All</button>
+                    <button class="btn btn-info btn-sm"  >Search</button>
+                    <button class="btn btn-success btn-sm">Refresh</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h3 class="text-md-center mt-4">Order Details</h3>
+
+<div class="container-fluid pt-4 px-4">
+    <div class="col-sm-12 col-xl-12">
+        <div class="bg-light rounded h-100 p-4">
+            <div class="table-responsive">
+                <table class="table table-secondary table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="row">Button</th>
+                            <th scope="col">ID</th>
+                            <th scope="col">Order No</th>
+                            <th scope="col">Company</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Check Box</th>
+                        </tr>
+                    </thead>
+                    <tbody> 
+                     @if (OrderList != null)
+                        {
+                            @foreach (var t in OrderList)
+                            {
+                                <tr>
+                                    <td>
+                                        <button class="btn btn-success btn-sm" @onclick="()=>UpdateOrder(t)">Edit</button>
+                                        <button class="btn btn-warning btn-sm" @onclick="()=>GetById(t.OrderId)">Load Data</button>
+                                        <button type="button" class="btn btn-danger btn-sm" @onclick="()=>DeleteOrder(t.OrderId)">Delete</button>
+                                    </td>
+                                    <td>@t.OrderId</td>
+                                    <td>@t.ProductName</td>
+                                    <td>@t.CategoryId</td>
+                                    <td>@t.OrderDate</td>
+                                    <td>@t.IsProductRecieve</td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    @inject OrderServiceWithSp orderService
+    private IEnumerable<BlazorAppServerAppTest.Models.Order> OrderList;
+    BlazorAppServerAppTest.Models.Order OrderObject = new BlazorAppServerAppTest.Models.Order();
+ 
+    public string SaveMessage { get; set; }
+
+    // This method will be called when the component is initialized
+    protected override async Task OnInitializedAsync()
+    {
+        OrderList = await orderService.GetOrders();
+    }
+    private async void AddOrder()
+    {
+        orderService.AddOrder(OrderObject);
+        OrderList = await orderService.GetOrders();
+
+    }
+    private async void GetAll()
+    {
+        OrderList = await orderService.GetOrders();
+
+    }
+    private async Task GetById(long OrderId)
+    {
+        var findObject = await orderService.GetOrderById(OrderId);
+        if (findObject != null)
+        {
+            OrderObject = findObject;
+        }
+    }
+    private async void UpdateOrder(BlazorAppServerAppTest.Models.Order order)
+    {
+
+        orderService.UpdateOrder(order);
+        OnInitializedAsync();
+
+    }
+
+    private async Task DeleteOrder(long orderId)
+    {
+        bool deleted = await orderService.DeleteOrder(orderId);
+
+         
+    }
+
+        
+}

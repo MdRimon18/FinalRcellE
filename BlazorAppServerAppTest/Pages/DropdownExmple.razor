@@ -1,0 +1,35 @@
+﻿
+<select @bind="selectedValue" @oninput="OnSelectionChange">
+    <option value="@selectedValue" selected>@selectedValue</option> <!-- Add this line -->
+    @foreach (var item in fruits)
+    {
+        <option value="@item">@item</option>
+    }
+</select>
+
+@code {
+
+    private List<string> fruits = new List<string>
+    {
+        "Apple",
+        "Banana",
+        "Cherry",
+        "Grapes",
+        "Orange",
+        "Strawberry"
+    };
+    //[Parameter] public List<string> items { get; set; }
+    [Parameter] public string selectedValue { get; set; }
+    [Parameter] public EventCallback<string> selectedValueChanged { get; set; }
+
+    private async Task OnSelectionChange(ChangeEventArgs e)
+    {
+        selectedValue = e.Value?.ToString();
+        //?? "Strawberry";
+                                            
+        // selectedValue = e.Value.ToString(); // Update the selectedValue
+        await selectedValueChanged.InvokeAsync(selectedValue); // Raise an event to notify the parent component
+    }
+}
+
+
