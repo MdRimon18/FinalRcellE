@@ -1,0 +1,27 @@
+﻿.invalid-border-input {
+    border: 1px solid #e63757;
+}
+
+.bold-text {
+    font-weight: bold;
+}
+
+.invalid-message-color {
+    color: red
+}
+
+.error-star {
+    color: red;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.label {
+    font-weight: 600;
+    border-radius: 4px;
+    font-size: 85%;
+}
+
+.form-rounded {
+    border-radius: .7rem;
+}
