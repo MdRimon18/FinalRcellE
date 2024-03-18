@@ -44,6 +44,10 @@
     <link href="assets/css/user-rtl.css" rel="stylesheet" id="user-style-rtl">
     <link href="assets/css/user.css" rel="stylesheet" id="user-style-default">
     <link href="assets/css/custom.css" rel="stylesheet">
+    <link href="vendors/choices/choices.min.css" rel="stylesheet">
+    <link href="vendors/flatpickr/flatpickr.min.css" rel="stylesheet">
+    <link href="vendors/dropzone/dropzone.min.css" rel="stylesheet">
+    <link href="vendors/swiper/swiper-bundle.min.css" rel="stylesheet">
     <script>
         var isRTL = JSON.parse(localStorage.getItem('isRTL'));
         if (isRTL) {
@@ -141,99 +145,7 @@
                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">E commerce</span>
                         </div>
                       </a>
-                                    <li class="nav-item">
-                                        <a class="nav-link active" href="/order_details">
-                                            <div class="d-flex align-items-center">
-                                                <span class="nav-link-text ps-1">order_details</span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                         <li class="nav-item">
-                                        <a class="nav-link active" href="/order_list">
-                                            <div class="d-flex align-items-center">
-                                                <span class="nav-link-text ps-1">order_list</span>
-                                            </div>
-                                        </a>
-                                        </li>
-                                                                                                                                        
-                                         <li class="nav-item">
-                                        <a class="nav-link active" href="/add_product">
-                                            <div class="d-flex align-items-center">
-                                                <span class="nav-link-text ps-1">add_product</span>
-                                            </div>
-                                        </a>
-                                        </li>
-                                    
-                                         <li class="nav-item">
-                                        <a class="nav-link active" href="/billing">
-                                            <div class="d-flex align-items-center">
-                                                <span class="nav-link-text ps-1">billing</span>
-                                            </div>
-                                        </a>
-                                        </li>
-                                    
-                                         <li class="nav-item">
-                                        <a class="nav-link active" href="/product_details">
-                                            <div class="d-flex align-items-center">
-                                                <span class="nav-link-text ps-1">product_details</span>
-                                            </div>
-                                        </a>
-                                        </li>
-                                    
-                                         <li class="nav-item">
-                                        <a class="nav-link active" href="/product_grid">
-                                            <div class="d-flex align-items-center">
-                                                <span class="nav-link-text ps-1">product_grid</span>
-                                            </div>
-                                        </a>
-                                        </li>
-                                    
-                                         <li class="nav-item">
-                                        <a class="nav-link active" href="/product_list">
-                                            <div class="d-flex align-items-center">
-                                                <span class="nav-link-text ps-1">product_list</span>
-                                            </div>
-                                        </a>
-                                        </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link active" href="/checkout">
-                                            <div class="d-flex align-items-center">
-                                                <span class="nav-link-text ps-1">checkout</span>
-                                            </div>
-                                        </a>
-                                         <li class="nav-item">
-                                        <a class="nav-link active" href="/customer">
-                                            <div class="d-flex align-items-center">
-                                                <span class="nav-link-text ps-1">customer</span>
-                                            </div>
-                                        </a>
-                                        </li>
-                                    
-                                         <li class="nav-item">
-                                        <a class="nav-link active" href="/customer_details">
-                                            <div class="d-flex align-items-center">
-                                                <span class="nav-link-text ps-1">customer_details</span>
-                                            </div>
-                                        </a>
-                                        </li>
-                                    
-                                         <li class="nav-item">
-                                        <a class="nav-link active" href="/invoice">
-                                            <div class="d-flex align-items-center">
-                                                <span class="nav-link-text ps-1">invoice</span>
-                                            </div>
-                                        </a>
-                                        </li>
-
-                                    <li class="nav-item">
-                                        <a class="nav-link active" href="/shopping_cart">
-                                            <div class="d-flex align-items-center">
-                                                <span class="nav-link-text ps-1">shopping_cart</span>
-                                            </div>
-                                        </a>
-
-
-                                        <!-- more inner pages-->
+                                                                                                                                                                                                                                                                          <!-- more inner pages-->
                     </li>
                     <li class="nav-item"><a class="nav-link" href="dashboard/lms.html">
                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">LMS</span><span class="badge rounded-pill ms-2 badge-subtle-success">New</span>
@@ -272,7 +184,7 @@
                        <li class="nav-item">
                           <a class="nav-link" href="/product_entry">
                              <div class="d-flex align-items-center">
-                                 <span class="nav-link-text ps-1">product_entry</span>
+                                 <span class="nav-link-text ps-1">Product entry</span>
                              </div>
                           </a>
                            <!-- more inner pages-->
@@ -281,7 +193,7 @@
                        <li class="nav-item">
                           <a class="nav-link" href="/product_category_display">
                              <div class="d-flex align-items-center">
-                                 <span class="nav-link-text ps-1">product_category_display</span>
+                                 <span class="nav-link-text ps-1">Product category display</span>
                              </div>
                           </a>
                           <!-- more inner pages-->
@@ -289,7 +201,7 @@
                        <li class="nav-item">
                           <a class="nav-link" href="/product_category_info">
                              <div class="d-flex align-items-center">
-                                <span class="nav-link-text ps-1">product_category_info</span>
+                                <span class="nav-link-text ps-1">Product category info</span>
                              </div>
                           </a>
                           <!-- more inner pages-->
@@ -297,7 +209,7 @@
                        <li class="nav-item">
                           <a class="nav-link" href="/add_employee">
                              <div class="d-flex align-items-center">
-                                <span class="nav-link-text ps-1">add_employee</span>
+                                <span class="nav-link-text ps-1">Add employee</span>
                              </div>
                           </a>
                           <!-- more inner pages-->
@@ -305,7 +217,7 @@
                        <li class="nav-item">
                           <a class="nav-link" href="/add_suppiler">
                             <div class="d-flex align-items-center">
-                               <span class="nav-link-text ps-1">add_suppiler</span>
+                               <span class="nav-link-text ps-1">Add suppiler</span>
                             </div>
                           </a>
                           <!-- more inner pages-->
@@ -313,7 +225,7 @@
                        <li class="nav-item">
                           <a class="nav-link" href="/add_user">
                              <div class="d-flex align-items-center">
-                                <span class="nav-link-text ps-1">add_user</span>
+                                <span class="nav-link-text ps-1">Add user</span>
                              </div>
                           </a>
                           <!-- more inner pages-->
@@ -321,7 +233,7 @@
                        <li class="nav-item">
                           <a class="nav-link" href="/supplier_info">
                              <div class="d-flex align-items-center">
-                                 <span class="nav-link-text ps-1">supplier_info</span>
+                                 <span class="nav-link-text ps-1">Supplier info</span>
                              </div>
                           </a>
                          <!-- more inner pages-->
@@ -329,7 +241,7 @@
                        <li class="nav-item">
                           <a class="nav-link" href="/unsoleved_ticket">
                              <div class="d-flex align-items-center">
-                                <span class="nav-link-text ps-1">unsoleved_ticket</span>
+                                <span class="nav-link-text ps-1">Unsoleved ticket</span>
                              </div>
                           </a>
                           <!-- more inner pages-->
@@ -337,7 +249,7 @@
                        <li class="nav-item">
                           <a class="nav-link" href="/new_message">
                              <div class="d-flex align-items-center">
-                                <span class="nav-link-text ps-1">new_message</span>
+                                <span class="nav-link-text ps-1">New message</span>
                              </div>
                           </a>
                           <!-- more inner pages-->
@@ -345,7 +257,7 @@
                        <li class="nav-item">
                           <a class="nav-link" href="/new_experience">
                              <div class="d-flex align-items-center">
-                                 <span class="nav-link-text ps-1">new_experience</span>
+                                 <span class="nav-link-text ps-1">New experience</span>
                              </div>
                           </a>
                           <!-- more inner pages-->
@@ -353,7 +265,7 @@
                        <li class="nav-item">
                           <a class="nav-link" href="/customer_info">
                              <div class="d-flex align-items-center">
-                                <span class="nav-link-text ps-1">customer_info</span>
+                                <span class="nav-link-text ps-1">Customer info</span>
                              </div>
                           </a>
                           <!-- more inner pages-->
@@ -361,7 +273,7 @@
                        <li class="nav-item">
                           <a class="nav-link" href="/create_invoice">
                              <div class="d-flex align-items-center">
-                                <span class="nav-link-text ps-1">create_invoice</span>
+                                <span class="nav-link-text ps-1">Create invoice</span>
                              </div>
                           </a>
                           <!-- more inner pages-->
@@ -369,7 +281,7 @@
                        <li class="nav-item">
                           <a class="nav-link" href="/company_information">
                              <div class="d-flex align-items-center">
-                                <span class="nav-link-text ps-1">company_information</span>
+                                <span class="nav-link-text ps-1">Company information</span>
                              </div>
                           </a>
                           <!-- more inner pages-->
@@ -430,19 +342,21 @@
                     </div>
                   </a>
                   <ul class="nav collapse" id="events">
-                    <li class="nav-item"><a class="nav-link" href="app/events/create-an-event.html">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/creat_an_event">
                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Create an event</span>
                         </div>
                       </a>
                       <!-- more inner pages-->
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="app/events/event-detail.html">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/event_detail">
                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Event detail</span>
                         </div>
                       </a>
                       <!-- more inner pages-->
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="app/events/event-list.html">
+                    <li class="nav-item"><a class="nav-link" href="/event_list">
                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Event list</span>
                         </div>
                       </a>
@@ -459,26 +373,31 @@
                         </div>
                       </a>
                       <!-- more inner pages-->
-                      <ul class="nav collapse" id="product">
-                        <li class="nav-item"><a class="nav-link" href="app/e-commerce/product/product-list.html">
-                            <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Product list</span>
+                      
+                                            <li class="nav-item">
+                                        <a class="nav-link" href="/product_list">
+                                       <div class="d-flex align-items-center">
+                                        <span class="nav-link-text ps-1">Product list</span>
+                                         </div>
+                                        </a>
+                                        </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/product_grid">
+                            <div class="d-flex align-items-center">
+                                <span class="nav-link-text ps-1">Product grid</span>
                             </div>
                           </a>
                           <!-- more inner pages-->
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="app/e-commerce/product/product-grid.html">
-                            <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Product grid</span>
-                            </div>
-                          </a>
-                          <!-- more inner pages-->
-                        </li>
-                        <li class="nav-item"><a class="nav-link" href="app/e-commerce/product/product-details.html">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/product_details">
                             <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Product details</span>
                             </div>
                           </a>
                           <!-- more inner pages-->
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="app/e-commerce/product/add-product.html">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/add_product">
                             <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Add product</span>
                             </div>
                           </a>
@@ -492,13 +411,15 @@
                       </a>
                       <!-- more inner pages-->
                       <ul class="nav collapse" id="orders">
-                        <li class="nav-item"><a class="nav-link" href="app/e-commerce/orders/order-list.html">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/order_list">
                             <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Order list</span>
                             </div>
                           </a>
                           <!-- more inner pages-->
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="app/e-commerce/orders/order-details.html">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/order_details">
                             <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Order details</span>
                             </div>
                           </a>
@@ -506,37 +427,42 @@
                         </li>
                       </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="app/e-commerce/customers.html">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/customer">
                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Customers</span>
                         </div>
                       </a>
                       <!-- more inner pages-->
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="app/e-commerce/customer-details.html">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/customer_details">
                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Customer details</span>
                         </div>
                       </a>
                       <!-- more inner pages-->
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="app/e-commerce/shopping-cart.html">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/shopping_cart">
                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Shopping cart</span>
                         </div>
                       </a>
                       <!-- more inner pages-->
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="app/e-commerce/checkout.html">
+                    <li class="nav-item"><a class="nav-link" href="/checkout">
                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Checkout</span>
                         </div>
                       </a>
                       <!-- more inner pages-->
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="app/e-commerce/billing.html">
+                            <li class="nav-item">
+                                <a class="nav-link" href="billing">
                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Billing</span>
                         </div>
                       </a>
                       <!-- more inner pages-->
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="app/e-commerce/invoice.html">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/invoice">
                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Invoice</span>
                         </div>
                       </a>
@@ -2431,5 +2357,11 @@
     <script src="vendors/list.js/list.min.js"></script>
     <script src="assets/js/theme.js"></script>
     <script src="_framework/blazor.server.js"></script>
+    <script src="vendors/tinymce/tinymce.min.js"></script>
+    <script src="vendors/choices/choices.min.js"></script>
+    <script src="assets/js/flatpickr.js"></script>
+    <script src="vendors/dropzone/dropzone.min.js"></script>
+    <script src="vendors/swiper/swiper-bundle.min.js"></script>
+    <script src="vendors/rater-js/index.js"></script>
 </body>
 </html>
