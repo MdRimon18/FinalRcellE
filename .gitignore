@@ -1,0 +1,10 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/Pms/FileContentIndex/2cacd81b-aab7-432d-bdc7-c2706d9de694.vsidx
+/.vs/Pms/FileContentIndex
+/BlazorAppServerAppTest/bin/Debug/net7.0/Pms.dll
+/BlazorAppServerAppTest/bin/Debug/net7.0/Pms.exe
+/BlazorAppServerAppTest/obj/Debug/net7.0/Pms.csproj.CopyComplete
+/BlazorAppServerAppTest/obj/Debug/net7.0/Pms.sourcelink.json
