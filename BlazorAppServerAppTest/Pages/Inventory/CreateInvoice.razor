@@ -107,83 +107,7 @@
         </div>
     </div>
 </div>
-<div class="offcanvas offcanvas-bottom" id="offcanvasBottom" tabindex="-1" aria-labelledby="offcanvasBottomLabel">
-    <div class="offcanvas-header">
-        <div class="card-header">
-            <h5 class="mb-0" data-anchor="data-anchor">
-                <i class="fas fa-arrow-left"></i>
-                <a class="btn btn-falcon-default btn-sm mx-2" href="#!"><span class="fas fa-plus" data-fa-transform="shrink-"></span><span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1">New</span></a>
-                Product Serial Numbers
-            </h5>
-        </div>
-        <button class="btn-close text-reset" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-        <div class="col-lg-12 ps-lg-2 mb-2">
-            <div class="row g-0 h-100 align-items-stretch">
-                <div class="col-lg-12 mb-2">
-                    <div class="row">
-                        <div class="table-responsive scrollbar">
-                            <table class="class=" table table-sm mb-0 fs-10 table-view-tickets">
-                                <thead class="thdchild">
-                                    <tr>
-                                        <th scope="col">Select/Unselect</th>
-                                        <th scope="col">Action</th>
-                                        <th scope="col">Sales Status</th>
-                                        <th scope="col">Serial Number</th>
-                                        <th scope="col">Sales Status</th>
-                                        <th scope="col">Tag Supplier</th>
-                                        <th scope="col">Supplier Name</th>
-                                        <th scope="col">Supplier Org. Name</th>
-                                        <th scope="col">Remarks</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <input type="checkbox">
-                                        </td>
-                                        <td>
-                                            <button title="Delete" class="btn btn-light ml-1 addMore">
-                                                <i class="far fa-trash-alt fa-lg text-danger"></i>
-                                            </button>
-                                        </td>
-                                        <td>
-                                            @* <select class="form-control form-rounded bold-input">
-                                            <option value="value">Yes</option>
-                                            <option value="value">No</option>
-                                            </select>
-                                            *@                                             <input type="text" class="form-control form-rounded bold-input" placeholder="Select">
-                                        </td>
-                                        <td>
-                                            <input type="text" class="form-control form-rounded bold-input" placeholder="Serial Number">
-                                        </td>
-                                        <td>
-                                            <input type="text" class="form-control form-rounded bold-input" readonly>
-                                        </td>
-                                        <td>
-                                            <input type="tel" class="form-control form-rounded bold-input" placeholder="Supplier Number" readonly />
-                                        </td>
-                                        <td>
-                                            <input type="text" class="form-control form-rounded" placeholder="Supplier Name" readonly>
-                                        </td>
-                                        <td>
-                                            <input type="text" class="form-control form-rounded" placeholder="Supplier Org.Name" readonly>
-                                        </td>
-                                        <td>
-                                            <input type="text" class="form-control form-rounded" placeholder="Remarks">
-                                        </td>
 
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="card mb-3">
     <div class="card-header">
@@ -210,10 +134,25 @@
                         </div>
 
                         <div class="col-lg-3 col-md-3 col-sm-9 col-9 animated-div">
-                            <div class="form-group">
+                            <div class="input-group">
                                 <label for="customerMobileNo" class="label text-dark">Customer Mobile No</label><span class="text-danger">*</span>
-                                <input readonly name="customerMobileNo" type="text" class="form-control form-control-sm form-rounded " placeholder="customer mobile no" required>
-                               @*  <button data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"></button> *@
+
+                                
+                                   @*  <input readonly name="customerMobileNo" type="text" class="form-control form-control-sm form-rounded "
+                                       placeholder="customer mobile no" required aria-label="Input group example" id="inputField" aria-describedby="plusButton"> *@
+                                <div class="input-group">
+                                    <input type="text" id="inputField" class="form-control form-control-sm form-rounded " placeholder="Enter Cus. Phone" aria-label="Enter value" aria-describedby="plusButton">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary" type="button" id="plusButton" data-bs-toggle="offcanvas"
+                                        data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">+</button>
+                                    </div>
+                                </div>
+                                       
+                                    @* <input type="text" id="inputField" class="form-control" placeholder="Enter value" aria-label="Enter value" > *@
+                                   
+                                
+                                
+                                @*  <button data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"></button> *@
                             </div>
                         </div>
 
@@ -282,6 +221,9 @@
 
                             </div>
                         </div>
+                         
+
+                        
                     </div>
                     
                     

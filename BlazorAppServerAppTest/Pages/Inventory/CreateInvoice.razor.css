@@ -1,0 +1,8 @@
+﻿.input-group-append {
+    position: relative;
+    top: -2px; /* Adjust this value as needed */
+}
+
+.btn {
+    cursor: pointer;
+}
