@@ -194,9 +194,12 @@
                         <div class="col-lg-3 col-md-3 col-sm-9 col-9 animated-div">
                             <div class="form-group">
                                 <label for="categorySelect" class="label text-dark">Category</label><span class="text-danger">*</span>
-                                <select required name="catagorySelect" class="form-control form-control-sm form-rounded">
-                                    <option value="">category select</option>
-                                    <!-- Options for productCategories -->
+                                <select class="form-control form-control-sm form-rounded js-choice" id="organizerSingle2" size="1" required="required" name="organizerSingle" data-options='{"removeItemButton":true,"placeholder":true}'>
+                                    <option value="">Select organizer...</option>
+                                    <option>Massachusetts Institute of Technology</option>
+                                    <option>University of Chicago</option>
+                                    <option>GSAS Open Labs At Harvard</option>
+                                    <option>California Institute of Technology </option>
                                 </select>
                             </div>
                         </div>
@@ -210,16 +213,103 @@
                         <div class="col-lg-3 col-md-3 col-sm-6 col-9 animated-div">
                             <div class="form-group">
                                 <label for="chooseProduct" class="label text-dark">Choose Product</label><span class="text-danger">*</span>
-                                <input name="chooseProduct" type="text" class="form-control form-control-sm form-rounded" placeholder="Choose Product" required>
+                                <div class="search-box" data-list='{"valueNames":["title"]}'>
+                                    <div class="position-relative" data-bs-toggle="search" data-bs-display="static">
+                                        <input class="form-control form-control-sm form-rounded search-input" type="search" placeholder="Search..." aria-label="Search" />
+                                        <span class="fas fa-search search-box-icon"></span>
+
+                                    </div>
+                                    <div class="btn-close-falcon-container position-absolute end-0 top-50 translate-middle shadow-none" data-bs-dismiss="search">
+                                        <button class="btn btn-link btn-close-falcon p-0" aria-label="Close"></button>
+                                    </div>
+                                    <div class="dropdown-menu border font-base start-0 mt-2 py-0 overflow-hidden w-100">
+                                        <div class="scrollbar list py-3" style="max-height: 15rem;">
+
+                                            <h6 class="dropdown-header fw-medium text-uppercase px-x1 fs-11 pt-0 pb-2">Members</h6><a class="dropdown-item px-x1 py-2" href="pages/user/profile.html">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="avatar avatar-l status-online me-2">
+                                                        <img class="rounded-circle" src="assets/img/team/1.jpg" alt="" />
+
+                                                    </div>
+                                                    <div class="flex-1">
+                                                        <h6 class="mb-0 title">Anna Karinina</h6>
+                                                        <p class="fs-11 mb-0 d-flex">Technext Limited</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a class="dropdown-item px-x1 py-2" href="pages/user/profile.html">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="avatar avatar-l me-2">
+                                                        <img class="rounded-circle" src="assets/img/team/2.jpg" alt="" />
+
+                                                    </div>
+                                                    <div class="flex-1">
+                                                        <h6 class="mb-0 title">Antony Hopkins</h6>
+                                                        <p class="fs-11 mb-0 d-flex">Brain Trust</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+
+                                        </div>
+                                        <div class="text-center mt-n3">
+                                            <p class="fallback fw-bold fs-8 d-none">No Result Found.</p>
+                                        </div>
+                                    </div>
+                                </div>
 
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-9 col-9 animated-div">
                             <div class="form-group">
                                 <label for="chooseSerialNumber" class="label text-dark">Choose Serial No</label><span class="text-danger">*</span>
-                                <input name="chooseSerialNumber" type="text" class="form-control form-control-sm form-rounded" placeholder="Choose Serial No" required>
+                                
+                                <div class="search-box" data-list='{"valueNames":["title"]}'>
+                                    <div class="position-relative" data-bs-toggle="search" data-bs-display="static">
+                                        <input class="form-control form-control-sm form-rounded search-input" type="search" placeholder="Search..." aria-label="Search" />
+                                        <span class="fas fa-search search-box-icon"></span>
+
+                                    </div>
+                                    <div class="btn-close-falcon-container position-absolute end-0 top-50 translate-middle shadow-none" data-bs-dismiss="search">
+                                        <button class="btn btn-link btn-close-falcon p-0" aria-label="Close"></button>
+                                    </div>
+                                    <div class="dropdown-menu border font-base start-0 mt-2 py-0 overflow-hidden w-100">
+                                        <div class="scrollbar list py-3" style="max-height: 15rem;">
+
+                                            <h6 class="dropdown-header fw-medium text-uppercase px-x1 fs-11 pt-0 pb-2">Members</h6><a class="dropdown-item px-x1 py-2" href="pages/user/profile.html">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="avatar avatar-l status-online me-2">
+                                                        <img class="rounded-circle" src="assets/img/team/1.jpg" alt="" />
+
+                                                    </div>
+                                                    <div class="flex-1">
+                                                        <h6 class="mb-0 title">Anna Karinina</h6>
+                                                        <p class="fs-11 mb-0 d-flex">Technext Limited</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a class="dropdown-item px-x1 py-2" href="pages/user/profile.html">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="avatar avatar-l me-2">
+                                                        <img class="rounded-circle" src="assets/img/team/2.jpg" alt="" />
+
+                                                    </div>
+                                                    <div class="flex-1">
+                                                        <h6 class="mb-0 title">Antony Hopkins</h6>
+                                                        <p class="fs-11 mb-0 d-flex">Brain Trust</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+
+                                        </div>
+                                        <div class="text-center mt-n3">
+                                            <p class="fallback fw-bold fs-8 d-none">No Result Found.</p>
+                                        </div>
+                                    </div>
+                                </div>
 
                             </div>
+
+                            
                         </div>
                          
 
@@ -234,8 +324,11 @@
                             <table class="class=" table table-sm mb-0 fs-10 table-view-tickets">
                                 <thead class="thdchild">
                                     <tr>
-                                        <th scope="col">Product Category</th>
-                                        <th scope="col">Product Name</th>
+                                        <th>
+                                           Image
+                                        </th>
+                                        <th scope="col">Category</th>
+                                        <th scope="col">Name</th>
                                         <th scope="col">Quantity<span class="text-danger"><strong class="bigger-asterisk">*</strong></span></th>
                                         <th scope="col">Unit</th>
                                         <th scope="col">Rate</th>
@@ -247,6 +340,13 @@
                                 </thead>
                                 <tbody>
                                     <tr>
+                                        <td>
+                                            <div class="col-auto">
+                                                <div class="avatar avatar-2xl">
+                                                    <img class="rounded-circle" src="assets/img/products/1.jpg" alt="" />
+                                                </div>
+                                            </div>
+                                        </td>
                                         <td>
                                             <input type="text" class="form-control form-rounded bold-input" readonly>
                                         </td>
@@ -272,7 +372,7 @@
                                             <input readonly type="number" class="form-control form-rounded bold-input" placeholder="Amount">
                                         </td>
                                         <td>
-                                            <button class="btn btn-outline-primary me-1 mb-1" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">serial</button>
+                                            <button type="button" class="btn btn-outline-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop">serial</button>
                                         </td>
                                         <td>
                                             <button title="Delete" class="btn btn-light ml-1 addMore">
@@ -355,6 +455,70 @@
     </div >
 </div  >
 
+<div class="modal fade" id="staticBackdrop" data-bs-keyboard="false" data-bs-backdrop="static" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg mt-6" role="document">
+        <div class="modal-content border-0">
+            <div class="position-absolute top-0 end-0 mt-3 me-3 z-1">
+                <button class="btn-close btn btn-sm btn-circle d-flex flex-center transition-base" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-0">
+                <div class="rounded-top-3 bg-body-tertiary py-3 ps-4 pe-6">
+                    <h4 class="mb-1" id="staticBackdropLabel">Add a new illustration to the landing page</h4>
+                    <p class="fs-11 mb-0">Added by <a class="link-600 fw-semi-bold" href="#!">Antony</a></p>
+                </div>
+                <div class="p-4">
+                    <div class="row">
+                        <div class="col-lg-9">
+                            <div class="d-flex">
+                                <span class="fa-stack ms-n1 me-3"><i class="fas fa-circle fa-stack-2x text-200"></i><i class="fa-inverse fa-stack-1x text-primary fas fa-tag" data-fa-transform="shrink-2"></i></span>
+                                <div class="flex-1">
+                                    <h5 class="mb-2 fs-9">Labels</h5>
+                                    <div class="d-flex">
+                                        <span class="badge me-1 py-2 badge-subtle-success">New</span><span class="badge me-1 py-2 badge-subtle-primary">Goal</span><span class="badge me-1 py-2 badge-subtle-info">Enhancement</span>
+                                        <div class="dropdown dropend">
+                                            <button class="btn btn-sm btn-secondary px-2 fsp-75 bg-400 border-400 dropdown-toggle dropdown-caret-none" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fas fa-plus"></span></button>
+                                            <div class="dropdown-menu">
+                                                <h6 class="dropdown-header py-0 px-3 mb-0">Select Label</h6>
+                                                <div class="dropdown-divider"></div>
+                                                <div class="px-3">
+                                                    <button class="badge-subtle-danger dropdown-item rounded-1 mb-2" type="button">New</button>
+                                                    <button class="badge-subtle-primary dropdown-item rounded-1 mb-2" type="button">Goal</button>
+                                                    <button class="badge-subtle-info dropdown-item rounded-1 mb-2" type="button">Enhancement</button>
+                                                </div>
+                                                <div class="dropdown-divider"></div>
+                                                <div class="px-3">
+                                                    <button class="btn btn-sm d-block w-100 btn-outline-secondary border-400">Create Label</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr class="my-4" />
+                                </div>
+                            </div>
+                            <div class="d-flex">
+                                <span class="fa-stack ms-n1 me-3"><i class="fas fa-circle fa-stack-2x text-200"></i><i class="fa-inverse fa-stack-1x text-primary fas fa-align-left" data-fa-transform="shrink-2"></i></span>
+                                <div class="flex-1">
+                                    <h5 class="mb-2 fs-9">Description</h5>
+                                    <p class="text-break fs-10">The illustration must match to the contrast of the theme. The illustraion must described the concept of the design. To know more about the theme visit the page. </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <h6 class="mt-5 mt-lg-0">Add To Card</h6>
+                            <ul class="nav flex-lg-column fs-10">
+                                <li class="nav-item me-2 me-lg-0"><a class="nav-link nav-link-card-details" href="#!"><span class="fas fa-user me-2"></span>Members</a></li>
+                                <li class="nav-item me-2 me-lg-0"><a class="nav-link nav-link-card-details" href="#!"><span class="fas fa-tag me-2"></span>Label</a></li>
+                                <li class="nav-item me-2 me-lg-0"><a class="nav-link nav-link-card-details" href="#!"><span class="fas fa-paperclip me-2"></span>Attachments</a></li>
+                                <li class="nav-item me-2 me-lg-0"><a class="nav-link nav-link-card-details" href="#!"><span class="fa fa-align-left me-2"></span>Description </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="assets/js/theme.js"></script>
 @code 
 {
 
