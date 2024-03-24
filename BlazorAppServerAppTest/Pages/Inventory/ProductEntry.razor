@@ -25,10 +25,10 @@
                         
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
-                                <label for="name" class="label text-dark">Name/Model</label> <span class="error-star">*</span>
-                                <input name="name" type="text" class=" form-control form-control-sm form-rounded invalid-border-input" placeholder="Name/Model" required>
+                                <label for="name" class="label text-dark">Product Name/Model</label> <span class="error-star">*</span>
+                                <input name="name" type="text" class=" form-control form-control-sm form-rounded invalid-border-input" placeholder="Product Name/Model" required>
                                 <div class="text-left invalid-message-color">
-                                    Name/Model Required!
+                                   Product Name/Model Required!
                                 </div>
                             </div>
                         </div>
@@ -93,42 +93,6 @@
                             </div>
                         </div>
                         
-
-                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
-                            <div class="form-group">
-                                <label for="barcode" class="label text-dark">Bar Code</label>
-                                <input name="barcode" type="text" class="form-control form-control-sm form-rounded" id="barcode" placeholder="Bar Code">
-                                <!-- <div class="text-left text-danger">
-                                    Barcode is Required!
-                                </div> -->
-                            </div>
-                        </div>
-
-                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
-                            <div class="form-group">
-                                <label class="label text-dark">Link to Supplier</label>
-                                <select name="supplier" required class="form-control form-control-sm form-rounded">
-                                    <option value=''>Select Link to Supplier</option>
-                                    <!-- Options for suppliers -->
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
-                            <div class="form-group">
-                                <label for="importedForm" class="label text-dark">Imported From</label>
-                                <input name="importedForm" type="text" class="form-control form-control-sm form-rounded" id="importedForm" placeholder="Imported From">
-                            </div>
-                        </div>
-                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
-                            <label for="importedForm" class="label text-dark">Import Status</label>
-                            <select class="form-control form-control-sm form-rounded">
-                                <option value="imported">Imported</option>
-                                <option value="processing">Processing </option>
-                                <option value="validating">Validating </option>
-                                <option value="draft">Draft</option>
-                            </select>
-                        </div>
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
                                 <label for="vatPercent" class="label text-dark">VAT in %</label>
@@ -168,6 +132,42 @@
                                 </div> -->
                             </div>
                         </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                            <div class="form-group">
+                                <label for="barcode" class="label text-dark">Bar Code</label>
+                                <input name="barcode" type="text" class="form-control form-control-sm form-rounded" id="barcode" placeholder="Bar Code">
+                                <!-- <div class="text-left text-danger">
+                                    Barcode is Required!
+                                </div> -->
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                            <div class="form-group">
+                                <label class="label text-dark">Link to Supplier</label>
+                                <select name="supplier" required class="form-control form-control-sm form-rounded">
+                                    <option value=''>Select Link to Supplier</option>
+                                    <!-- Options for suppliers -->
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                            <div class="form-group">
+                                <label for="importedForm" class="label text-dark">Imported From</label>
+                                <input name="importedForm" type="text" class="form-control form-control-sm form-rounded" id="importedForm" placeholder="Imported From">
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                            <label for="importedForm" class="label text-dark">Import Status</label>
+                            <select class="form-control form-control-sm form-rounded">
+                                <option value="imported">Imported</option>
+                                <option value="processing">Processing </option>
+                                <option value="validating">Validating </option>
+                                <option value="draft">Draft</option>
+                            </select>
+                        </div>
+                        
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
                                 <label class="label text-dark">Date</label>
@@ -219,10 +219,23 @@
                                 <input name="size" type="text" class="form-control form-control-sm form-rounded" id="size" placeholder="Size">
                             </div>
                         </div>
-
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
-                                <label for="previousCost" class="label text-dark">Previous Cost</label>
+                                <label class="label text-dark">Shipping</label><span class="error-star">*</span>
+                                <select name="unit" required class="form-control form-control-sm form-rounded invalid-border-input">
+                                    <option value=''>Delivered by vendor (you)</option>
+                                    <option value=''>Delivered by S. A Poribahan</option>
+                                    <option value=''>Delivered by Other Company</option>
+                                    <!-- Options for UnitList -->
+                                </select>
+                                <div class="text-left invalid-message-color">
+                                    Shipping Required!
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                            <div class="form-group">
+                                <label for="previousCost" class="label text-dark">Shipping Day</label>
                                 <input name="previousCost" type="number" class="form-control form-control-sm form-rounded" id="previousCost" placeholder="Previous Cost">
                             </div>
                         </div>
@@ -230,18 +243,36 @@
 
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
-                                <label for="shippingDay" class="label text-dark">Shipping Day</label>
+                                <label for="shippingDay" class="label text-dark">Shipping Details</label>
                                 <textarea name="shippingDetails" type="text" class="form-control form-control-sm form-rounded" id="shippingDetails" placeholder="Shipping Day" cols="50" rows="2"></textarea>
                             </div>
                         </div>
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
                                 <label for="shippingDay" class="label text-dark">Origin Country</label>
-                                <select class="form-select" id="origin-country" name="origin-country">
+                                <select class="form-control form-control-sm form-rounded" id="origin-country" name="origin-country">
                                     <option value="">Select </option>
                                     <option value="China">China</option>
                                     <option value="India">India</option>
                                     <option value="United States">United States</option>
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                            <div class="form-group">
+                                <label for="previousCost" class="label text-dark">Rating</label>
+                                <input name="previousCost" type="number" class="form-control form-control-sm form-rounded" id="previousCost" placeholder="Previous Cost">
+                            </div>
+                        </div>
+                        
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                            <div class="form-group">
+                                <label for="shippingDay" class="label text-dark">Product Status</label>
+                                <select class="form-control form-control-sm form-rounded" id="origin-country" name="origin-country">
+                                    <option value="">Select </option>
+                                    <option value="China">Active</option>
+                                    <option value="India">In Active</option>
 
                                 </select>
                             </div>
@@ -261,13 +292,6 @@
                                 </div> -->
                             </div>
                         </div>
-                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
-                            <div class="form-group">
-                                <label for="previousCost" class="label text-dark">Rating</label>
-                                <input name="previousCost" type="number" class="form-control form-control-sm form-rounded" id="previousCost" placeholder="Previous Cost">
-                            </div>
-                        </div>
-                        
                     </div>
                     
                 </form>
@@ -393,16 +417,13 @@
         <div class="sticky-sidebar">
 
              
-            <div class="card mb-3">
-                <div class="card-header bg-body-tertiary">
-                    <h6 class="mb-0">Type</h6>
-                </div>
+            <div class="card">
                 <div class="card-body">
                     <div class="row gx-2">
                         
 
 
-                        <div class="col-12 mb-3">
+                        <div class="col-12">
                             <label class="form-label" for="product-category">Select category:</label>
                             
                             <select class="form-select js-choice" id="organizerSingle2" size="1" required="required" name="organizerSingle" data-options='{"removeItemButton":true,"placeholder":true}'>
@@ -438,9 +459,32 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-12">
+
+                            <label class="form-label" for="final-price">Final price:<span data-bs-toggle="tooltip" data-bs-placement="top" title="Product final price"><span class="fas fa-question-circle text-primary fs-10 ms-1"></span></span></label>
+                            <input class="form-control" id="final-price" disabled="disabled" type="text" />
+
+                        </div>
+                        <div class="col-12">
+
+                            <label class="form-label" for="final-price">Previous price:<span data-bs-toggle="tooltip" data-bs-placement="top" title="Product final price"><span class="fas fa-question-circle text-primary fs-10 ms-1"></span></span></label>
+                            <input class="form-control" id="final-price" type="text" />
+
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label" for="price-currency">Currency:</label>
+                            <select class="form-select" id="price-currency" name="price-currency">
+                                <option value="usd">USD</option>
+                                <option value="eur">EUR</option>
+                                <option value="gbp">GBP</option>
+                                <option value="cad">CAD</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>
+            
+             
             <div class="card mb-3">
                 <div class="card-header bg-body-tertiary">
                     <h6 class="mb-0">Tags</h6>
@@ -450,51 +494,7 @@
                     <input class="form-control js-choice" id="product-tags" type="text" name="tags" required="required" size="1" data-options='{"removeItemButton":true,"placeholder":false}' />
                 </div>
             </div>
-            <div class="card mb-3">
-                <div class="card-header bg-body-tertiary">
-                    <h6 class="mb-0">Pricing</h6>
-                </div>
-                <div class="card-body">
-                    <div class="row gx-2">
-                        <div class="col-8 mb-3">
-                            <label class="form-label" for="base-price">Base Price: <span data-bs-toggle="tooltip" data-bs-placement="top" title="Product regular price"><span class="fas fa-question-circle text-primary fs-10 ms-1"></span></span></label>
-                            <input class="form-control" id="base-price" type="text" />
-                        </div>
-                        <div class="col-4">
-                            <label class="form-label" for="price-currency">Currency:</label>
-                            <select class="form-select" id="price-currency" name="price-currency">
-                                <option value="usd">USD</option>
-                                <option value="eur">EUR</option>
-                                <option value="gbp">GBP</option>
-                                <option value="cad">CAD</option>
-                            </select>
-                        </div>
-                        <div class="col-12 mb-4">
-                            <label class="form-label" for="discount-percentage">Discount in percentage:</label>
-                            <input class="form-control" id="discount-percentage" type="text" />
-                        </div>
-                        <div class="col-12">
-                            <label class="form-label" for="final-price">Final price:<span data-bs-toggle="tooltip" data-bs-placement="top" title="Product final price"><span class="fas fa-question-circle text-primary fs-10 ms-1"></span></span></label>
-                            <input class="form-control" id="final-price" disabled="disabled" type="text" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card mb-3">
-                <div class="card-header bg-body-tertiary">
-                    <h6 class="mb-0">Shipping</h6>
-                </div>
-                <div class="card-body">
-                    <div class="form-check">
-                        <input class="form-check-input p-2" id="vendor-delivery" type="radio" name="product-shipping" />
-                        <label class="form-check-label fs-9 fw-normal text-700" for="vendor-delivery">Delivered by vendor (you)</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input p-2" id="falcon-delivery" type="radio" name="product-shipping" />
-                        <label class="form-check-label fs-9 fw-normal text-700" for="falcon-delivery">Delivered by FALCON <span class="badge badge-subtle-warning rounded-pill ms-2">Recommended</span></label>
-                    </div>
-                </div>
-            </div>
+             
             <div class="card mb-3">
                 <div class="card-header bg-body-tertiary">
                     <h6 class="mb-0">Stock status</h6>
@@ -502,7 +502,7 @@
                 <div class="card-body">
                     <div class="form-check">
                         <input class="form-check-input p-2" id="in-stock" type="radio" name="stock-status" />
-                        <label class="form-check-label fs-9 fw-normal text-700" for="in-stock">In stock</label>
+                        <label class="form-check-label fs-9 fw-normal text-700" for="in-stock">In stock (10 Pcs)</label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input p-2" id="unavailable" type="radio" name="stock-status" />
@@ -519,18 +519,10 @@
 </div>
 
 
- <script src="vendors/popper/popper.min.js"></script> 
-<script src="vendors/bootstrap/bootstrap.min.js"></script>
-<script src="vendors/anchorjs/anchor.min.js"></script>
-<script src="vendors/is/is.min.js"></script>
+ 
 <script src="vendors/tinymce/tinymce.min.js"></script>
-<script src="vendors/choices/choices.min.js"></script>
 <script src="assets/js/flatpickr.js"></script>
-<script src="vendors/dropzone/dropzone.min.js"></script>
-<script src="vendors/fontawesome/all.min.js"></script>
-<script src="vendors/lodash/lodash.min.js"></script>
-<script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
-<script src="vendors/list.js/list.min.js"></script>
+
 <script src="assets/js/theme.js"></script>
 @code {
     
