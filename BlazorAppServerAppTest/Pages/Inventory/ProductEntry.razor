@@ -261,6 +261,13 @@
                                 </div> -->
                             </div>
                         </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                            <div class="form-group">
+                                <label for="previousCost" class="label text-dark">Rating</label>
+                                <input name="previousCost" type="number" class="form-control form-control-sm form-rounded" id="previousCost" placeholder="Previous Cost">
+                            </div>
+                        </div>
+                        
                     </div>
                     
                 </form>
@@ -384,23 +391,28 @@
     
     <div class="col-lg-3 ps-lg-2">
         <div class="sticky-sidebar">
+
+             
             <div class="card mb-3">
                 <div class="card-header bg-body-tertiary">
                     <h6 class="mb-0">Type</h6>
                 </div>
                 <div class="card-body">
                     <div class="row gx-2">
+                        
+
+
                         <div class="col-12 mb-3">
                             <label class="form-label" for="product-category">Select category:</label>
-                            <select class="form-select" id="product-category" name="product-category">
-                                <option value="computerAccessories">Computer & Accessories</option>
-                                <option>Class, Training, or Workshop</option>
-                                <option>Concert or Performance</option>
-                                <option>Conference</option>
-                                <option>Convention</option>
-                                <option>Dinner or Gala</option>
-                                <option>Festival or Fair</option>
+                            
+                            <select class="form-select js-choice" id="organizerSingle2" size="1" required="required" name="organizerSingle" data-options='{"removeItemButton":true,"placeholder":true}'>
+                                <option value="">Select organizer...</option>
+                                <option>Massachusetts Institute of Technology</option>
+                                <option>University of Chicago</option>
+                                <option>GSAS Open Labs At Harvard</option>
+                                <option>California Institute of Technology </option>
                             </select>
+                            <div class="invalid-feedback">Please select one</div>
                         </div>
                         <div class="col-12">
                             <label class="form-label" for="product-subcategory">Select sub-category:</label>

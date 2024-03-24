@@ -1,6 +1,13 @@
+/* _content/Pms/Pages/Inventory/CreateInvoice.razor.rz.scp.css */
+.input-group-append[b-0unknaabvc] {
+    position: relative;
+    top: -2px; /* Adjust this value as needed */
+}
+
+.btn[b-0unknaabvc] {
+    cursor: pointer;
+}
 /* _content/Pms/Pages/Inventory/UnsolvedTicket.razor.rz.scp.css */
  
 /* _content/Pms/Shared/MainLayout.razor.rz.scp.css */
- 
-/* _content/Pms/Shared/NavMenu.razor.rz.scp.css */
  

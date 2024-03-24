@@ -11193,11 +11193,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\BlazorAppServerAppTest\\BlazorAppServerAppTest\\BlazorAppServerAppTest\\Pms.csproj",
+      "projectUniqueName": "G:\\MyBlazor\\BlazorAppServerAppTest\\BlazorAppServerAppTest\\Pms.csproj",
       "projectName": "Pms",
-      "projectPath": "G:\\BlazorAppServerAppTest\\BlazorAppServerAppTest\\BlazorAppServerAppTest\\Pms.csproj",
+      "projectPath": "G:\\MyBlazor\\BlazorAppServerAppTest\\BlazorAppServerAppTest\\Pms.csproj",
       "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-      "outputPath": "G:\\BlazorAppServerAppTest\\BlazorAppServerAppTest\\BlazorAppServerAppTest\\obj\\",
+      "outputPath": "G:\\MyBlazor\\BlazorAppServerAppTest\\BlazorAppServerAppTest\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

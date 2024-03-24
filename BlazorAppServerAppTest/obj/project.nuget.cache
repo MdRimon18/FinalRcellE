@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "meS7hQf3KhHU/yadllil6lvPemf9KesVHUnUfPEIsEpAeFmYd8XOWoj0ohxLJLY4+Z+W6liKnaiHca/NvaJZOw==",
+  "dgSpecHash": "oP9gM5pHfV4OAQG9oNkAUK0HVvRo3OzHebc1/K4g2aaK/7KrgF69vTIzXde4Qcq5VyiSbbYqR25ECgLYSf1qzw==",
   "success": true,
-  "projectFilePath": "G:\\BlazorAppServerAppTest\\BlazorAppServerAppTest\\BlazorAppServerAppTest\\Pms.csproj",
+  "projectFilePath": "G:\\MyBlazor\\BlazorAppServerAppTest\\BlazorAppServerAppTest\\Pms.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Dell\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\Dell\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

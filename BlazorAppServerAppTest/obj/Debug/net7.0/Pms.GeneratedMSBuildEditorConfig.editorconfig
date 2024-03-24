@@ -9,223 +9,235 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Pms
 build_property.RootNamespace = Pms
-build_property.ProjectDir = G:\BlazorAppServerAppTest\BlazorAppServerAppTest\BlazorAppServerAppTest\
+build_property.ProjectDir = G:\MyBlazor\BlazorAppServerAppTest\BlazorAppServerAppTest\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = G:\BlazorAppServerAppTest\BlazorAppServerAppTest\BlazorAppServerAppTest
+build_property.MSBuildProjectDirectory = G:\MyBlazor\BlazorAppServerAppTest\BlazorAppServerAppTest
 build_property._RazorSourceGeneratorDebug = 
 
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/App.razor]
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/AddTask.razor]
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/AddTask.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkVGFzay5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/BonousList.razor]
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/BonousList.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQm9ub3VzTGlzdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/CallDDLExmpl.razor]
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/CallDDLExmpl.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FsbERETEV4bXBsLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Counter.razor]
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Counter.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/CountryDDL.razor]
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/CountryDDL.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRyeURETC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Dashboard.razor]
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Dashboard.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGFzaGJvYXJkLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/DropdownExmple.razor]
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/DropdownExmple.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRHJvcGRvd25FeG1wbGUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/EditTask.razor]
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/E Commerce/Billing.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRSBDb21tZXJjZVxCaWxsaW5nLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/E Commerce/Checkout.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRSBDb21tZXJjZVxDaGVja291dC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/E Commerce/Customer.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRSBDb21tZXJjZVxDdXN0b21lci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/E Commerce/CustomerDetails.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRSBDb21tZXJjZVxDdXN0b21lckRldGFpbHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/E Commerce/Invoice.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRSBDb21tZXJjZVxJbnZvaWNlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/E Commerce/Order/OrderDetails.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRSBDb21tZXJjZVxPcmRlclxPcmRlckRldGFpbHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/E Commerce/Order/OrderList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRSBDb21tZXJjZVxPcmRlclxPcmRlckxpc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/E Commerce/Product/AddProduct.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRSBDb21tZXJjZVxQcm9kdWN0XEFkZFByb2R1Y3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/E Commerce/Product/ProductDetails.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRSBDb21tZXJjZVxQcm9kdWN0XFByb2R1Y3REZXRhaWxzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/E Commerce/Product/ProductGrid.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRSBDb21tZXJjZVxQcm9kdWN0XFByb2R1Y3RHcmlkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/E Commerce/Product/ProductList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRSBDb21tZXJjZVxQcm9kdWN0XFByb2R1Y3RMaXN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/E Commerce/ShoppingCart.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRSBDb21tZXJjZVxTaG9wcGluZ0NhcnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/EditTask.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdFRhc2sucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/E_Commerce/Billing.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRV9Db21tZXJjZVxCaWxsaW5nLnJhem9y
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Event/CreateAnEvent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRcQ3JlYXRlQW5FdmVudC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/E_Commerce/Checkout.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRV9Db21tZXJjZVxDaGVja291dC5yYXpvcg==
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Event/EventDetail.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRcRXZlbnREZXRhaWwucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/E_Commerce/Customer.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRV9Db21tZXJjZVxDdXN0b21lci5yYXpvcg==
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Event/EventList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRcRXZlbnRMaXN0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/E_Commerce/CustomerDetails.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRV9Db21tZXJjZVxDdXN0b21lckRldGFpbHMucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/E_Commerce/Invoice.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRV9Db21tZXJjZVxJbnZvaWNlLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/E_Commerce/Order/OrderDetails.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRV9Db21tZXJjZVxPcmRlclxPcmRlckRldGFpbHMucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/E_Commerce/Order/OrderList.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRV9Db21tZXJjZVxPcmRlclxPcmRlckxpc3QucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/E_Commerce/Product/AddProduct.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRV9Db21tZXJjZVxQcm9kdWN0XEFkZFByb2R1Y3QucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/E_Commerce/Product/ProductDetails.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRV9Db21tZXJjZVxQcm9kdWN0XFByb2R1Y3REZXRhaWxzLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/E_Commerce/Product/ProductGrid.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRV9Db21tZXJjZVxQcm9kdWN0XFByb2R1Y3RHcmlkLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/E_Commerce/Product/ProductList.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRV9Db21tZXJjZVxQcm9kdWN0XFByb2R1Y3RMaXN0LnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/E_Commerce/ShoppingCart.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRV9Db21tZXJjZVxTaG9wcGluZ0NhcnQucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Faq/FaQ.razor]
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Faq/FaQ.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmFxXEZhUS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/FetchData.razor]
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/FetchData.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmV0Y2hEYXRhLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Form.razor]
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Form.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRm9ybS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Index.razor]
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Inventory/AddEmployee.razor]
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Inventory/AddEmployee.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW52ZW50b3J5XEFkZEVtcGxveWVlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Inventory/AddSupplier.razor]
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Inventory/AddSupplier.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW52ZW50b3J5XEFkZFN1cHBsaWVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Inventory/AddUser.razor]
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Inventory/AddUser.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW52ZW50b3J5XEFkZFVzZXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Inventory/CompanyInformation.razor]
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Inventory/CompanyInformation.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW52ZW50b3J5XENvbXBhbnlJbmZvcm1hdGlvbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Inventory/CreateInvoice.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW52ZW50b3J5XENyZWF0ZUludm9pY2UucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Inventory/CustomerInfo.razor]
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Inventory/CustomerInfo.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW52ZW50b3J5XEN1c3RvbWVySW5mby5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Inventory/NewExperience.razor]
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Inventory/NewExperience.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW52ZW50b3J5XE5ld0V4cGVyaWVuY2UucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Inventory/NewMessage.razor]
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Inventory/NewMessage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW52ZW50b3J5XE5ld01lc3NhZ2UucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Inventory/ProductCategory.razor]
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Inventory/ProductCategory.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW52ZW50b3J5XFByb2R1Y3RDYXRlZ29yeS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Inventory/ProductCategoryDisplay.razor]
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Inventory/ProductCategoryDisplay.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW52ZW50b3J5XFByb2R1Y3RDYXRlZ29yeURpc3BsYXkucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Inventory/ProductCategoryInfo.razor]
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Inventory/ProductCategoryInfo.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW52ZW50b3J5XFByb2R1Y3RDYXRlZ29yeUluZm8ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Inventory/ProductEntry.razor]
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Inventory/ProductEntry.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW52ZW50b3J5XFByb2R1Y3RFbnRyeS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Inventory/SupplierInfo.razor]
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Inventory/SupplierInfo.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW52ZW50b3J5XFN1cHBsaWVySW5mby5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Login.razor]
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Login.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW4ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Order.razor]
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Order.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3JkZXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/OrderWithSp.razor]
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/OrderWithSp.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3JkZXJXaXRoU3AucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Persion.razor]
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Persion.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGVyc2lvbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Tables.razor]
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/SearchExample.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2VhcmNoRXhhbXBsZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Tables.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGFibGVzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/TaskList.razor]
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/TaskList.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGFza0xpc3QucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/TodoList.razor]
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/TodoList.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVG9kb0xpc3QucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Shared/NavHeader.razor]
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Shared/NavHeader.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdkhlYWRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Shared/SurveyPrompt.razor]
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Shared/SurveyPrompt.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/_Imports.razor]
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Inventory/UnsolvedTicket.razor]
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Inventory/CreateInvoice.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW52ZW50b3J5XENyZWF0ZUludm9pY2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-0unknaabvc
+
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Inventory/UnsolvedTicket.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW52ZW50b3J5XFVuc29sdmVkVGlja2V0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-rxbnm267ma
 
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Shared/MainLayout.razor]
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-tpz4cn2rox
 
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Shared/NavMenu.razor]
-build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = b-tyx5qgr6ej
-
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Error.cshtml]
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/BlazorAppServerAppTest/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/_Host.cshtml]
+[G:/MyBlazor/BlazorAppServerAppTest/BlazorAppServerAppTest/Pages/_Host.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
