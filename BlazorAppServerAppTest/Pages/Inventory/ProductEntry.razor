@@ -22,29 +22,7 @@
             <div class="card-body">
                 <form>
                     <div class="row gx-2">
-                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
-                            <div class="form-group">
-                                <label for="catagory" class="label text-dark">Product Category</label><span class="error-star">*</span>
-                                <select required name="catagory" class="form-control form-control-sm form-rounded invalid-border-input">
-                                    <option value="">Select Product Category</option>
-                                    <!-- Options for productCategories -->
-                                </select>
-                                <div class="text-left invalid-message-color">
-                                    Product Category Required!
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
-                            <div class="form-group">
-                                <label for="subCategory" class="label text-dark">Sub Category</label>
-                                <select name="subCategory" class="form-control form-control-sm form-rounded">
-                                    <option value=''>Select Sub Category</option>
-                                    <!-- Options for productSubCategories -->
-                                </select>
-                            </div>
-                        </div>
-
+                        
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
                                 <label for="name" class="label text-dark">Name/Model</label> <span class="error-star">*</span>
@@ -114,18 +92,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
-                            <div class="form-group">
-                                <label class="label text-dark">Unit Type</label><span class="error-star">*</span>
-                                <select name="unit" required class="form-control form-control-sm form-rounded invalid-border-input">
-                                    <option value=''>Unit Type Select</option>
-                                    <!-- Options for UnitList -->
-                                </select>
-                                <div class="text-left invalid-message-color">
-                                    Unit Type Required!
-                                </div>
-                            </div>
-                        </div>
+                        
 
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
@@ -238,21 +205,7 @@
                             </div>
                         </div>
 
-                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
-                            <div class="form-group">
-                                <label for="remarks" class="label text-dark">Remarks</label>
-                                <textarea name="remarks"
-                                          type="text"
-                                          class="form-control form-control-sm form-rounded"
-                                          id="remarks"
-                                          placeholder="Remarks"
-                                          cols="50"
-                                          rows="2"></textarea>
-                                <!-- <div class="text-left text-danger">
-                                    Remarks is Required!
-                                </div> -->
-                            </div>
-                        </div>
+                        
 
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
@@ -293,7 +246,21 @@
                                 </select>
                             </div>
                         </div>
-                        
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                            <div class="form-group">
+                                <label for="remarks" class="label text-dark">Remarks</label>
+                                <textarea name="remarks"
+                                          type="text"
+                                          class="form-control form-control-sm form-rounded"
+                                          id="remarks"
+                                          placeholder="Remarks"
+                                          cols="50"
+                                          rows="2"></textarea>
+                                <!-- <div class="text-left text-danger">
+                                    Remarks is Required!
+                                </div> -->
+                            </div>
+                        </div>
                     </div>
                     
                 </form>
@@ -446,6 +413,18 @@
                                 <option>Dinner or Gala</option>
                                 <option>Festival or Fair</option>
                             </select>
+                        </div>
+                        <div class="col-12 animated-div">
+                            <div class="form-group">
+                                <label class="label text-dark">Unit Type</label><span class="error-star">*</span>
+                                <select name="unit" required class="form-control form-control-sm form-rounded invalid-border-input">
+                                    <option value=''>Unit Type Select</option>
+                                    <!-- Options for UnitList -->
+                                </select>
+                                <div class="text-left invalid-message-color">
+                                    Unit Type Required!
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
