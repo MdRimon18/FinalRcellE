@@ -1,24 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "G:\\BlazorAppServerAppTest\\BlazorAppServerAppTest\\BlazorAppServerAppTest\\Pms.csproj": {}
+    "E:\\GitHubrCellEProject\\BlazorAppServerAppTest\\Pms.csproj": {}
   },
   "projects": {
-    "G:\\BlazorAppServerAppTest\\BlazorAppServerAppTest\\BlazorAppServerAppTest\\Pms.csproj": {
+    "E:\\GitHubrCellEProject\\BlazorAppServerAppTest\\Pms.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\BlazorAppServerAppTest\\BlazorAppServerAppTest\\BlazorAppServerAppTest\\Pms.csproj",
+        "projectUniqueName": "E:\\GitHubrCellEProject\\BlazorAppServerAppTest\\Pms.csproj",
         "projectName": "Pms",
-        "projectPath": "G:\\BlazorAppServerAppTest\\BlazorAppServerAppTest\\BlazorAppServerAppTest\\Pms.csproj",
-        "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-        "outputPath": "G:\\BlazorAppServerAppTest\\BlazorAppServerAppTest\\BlazorAppServerAppTest\\obj\\",
+        "projectPath": "E:\\GitHubrCellEProject\\BlazorAppServerAppTest\\Pms.csproj",
+        "packagesPath": "C:\\Users\\atier\\.nuget\\packages\\",
+        "outputPath": "E:\\GitHubrCellEProject\\BlazorAppServerAppTest\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\atier\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -27,7 +26,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -89,7 +87,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
