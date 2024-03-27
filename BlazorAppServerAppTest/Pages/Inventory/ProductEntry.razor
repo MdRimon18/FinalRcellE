@@ -10,296 +10,520 @@
             Product Entry
         </h5>
     </div>
+</div>
 
-    <div class="card-body bg-body-tertiary">
-        <div class="row">
-               
+
+<div class="row g-0">
+    <div class="col-lg-9 pe-lg-2">
+        <div class="card mb-3">
+            <div class="card-header bg-body-tertiary">
+                <h6 class="mb-0">Basic information</h6>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="row gx-2">
+                        
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                            <div class="form-group">
+                                <label for="name" class="label text-dark">Product Name/Model</label> <span class="error-star">*</span>
+                                <input name="name" type="text" class=" form-control form-control-sm form-rounded invalid-border-input" placeholder="Product Name/Model" required>
+                                <div class="text-left invalid-message-color">
+                                   Product Name/Model Required!
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                            <div class="form-group">
+                                <label for="name" class="label text-dark">Manufacturar Name</label> <span class="error-star">*</span>
+                                <input name="name" type="text" class=" form-control form-control-sm form-rounded invalid-border-input" placeholder="Name/Model" required>
+                                <div class="text-left invalid-message-color">
+                                    Name/Model Required!
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                            <div class="form-group">
+                                <label for="serialNumber" class="label text-dark">Serial Number/UPC</label>
+                                <input readonly name="serialNumber" type="text" class="form-control form-control-sm form-rounded" placeholder="Serial Number" required>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                            <div class="form-group">
+                                <label for="serialNumber" class="label text-dark">SKU</label>
+                                <input readonly name="serialNumber" type="text" class="form-control form-control-sm form-rounded" placeholder="Serial Number" required>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                            <div class="form-group">
+                                <label for="quantity" class="label text-dark">Opening Quantity</label><span class="error-star">*</span>
+                                <input name="quantity" type="number" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Opening Quantity" required>
+                                <div class="text-left invalid-message-color">
+                                    Opening Quantity Required!
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                            <div class="form-group">
+                                <label for="alertQuantity" class="label text-dark">Alert Quantity</label>
+                                <input name="alertQuantity" type="number" class="form-control form-control-sm form-rounded" placeholder="Alert Quantity">
+                                <!-- <div class="text-left text-danger">
+                                    Alert Quantity is Required!
+                                </div> -->
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                            <div class="form-group">
+                                <label for="productBuyingPrice" class="label text-dark">Buying Price</label><span class="error-star">*</span>
+                                <input name="productBuyingPrice" type="number" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Buying Price" required>
+                                <div class="text-left invalid-message-color">
+                                    Buying Price Required!
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                            <div class="form-group">
+                                <label for="cost" class="label text-dark">Selling Price</label><span class="error-star">*</span>
+                                <input name="cost" type="number" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Selling Price" required>
+                                <div class="text-left invalid-message-color">
+                                    Selling Price Required!
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                            <div class="form-group">
+                                <label for="vatPercent" class="label text-dark">VAT in %</label>
+                                <input (change)="vatAmountNDiscountCalculation()" name="vatPercent" type="number" class="form-control form-control-sm form-rounded" id="vatPercent" placeholder="VAT in %">
+                                <!-- <div class="text-left text-danger">
+                                    Barcode is Required!
+                                </div> -->
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                            <div class="form-group">
+                                <label for="vatAmount" class="label text-dark">VAT Amount</label>
+                                <input name="vatAmount" type="number" class="form-control form-control-sm form-rounded" id="vatAmount" placeholder="VAT Amount">
+                                <!-- <div class="text-left text-danger">
+                                    Barcode is Required!
+                                </div> -->
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                            <div class="form-group">
+                                <label for="discountPercent" class="label text-dark">Discount</label>
+                                <input (change)="vatAmountNDiscountCalculation()" name="discountPercent" type="number" class="form-control form-control-sm form-rounded" id="discountPercent" placeholder="Discount">
+                                <!-- <div class="text-left text-danger">
+                                    Barcode is Required!
+                                </div> -->
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                            <div class="form-group">
+                                <label for="discountAmount" class="label text-dark">Discount Amount</label>
+                                <input name="discountAmount" type="number" class="form-control form-control-sm form-rounded" id="discountAmount" placeholder="Discount Amount">
+                                <!-- <div class="text-left text-danger">
+                                    Barcode is Required!
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                            <div class="form-group">
+                                <label for="barcode" class="label text-dark">Bar Code</label>
+                                <input name="barcode" type="text" class="form-control form-control-sm form-rounded" id="barcode" placeholder="Bar Code">
+                                <!-- <div class="text-left text-danger">
+                                    Barcode is Required!
+                                </div> -->
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                            <div class="form-group">
+                                <label class="label text-dark">Link to Supplier</label>
+                                <select name="supplier" required class="form-control form-control-sm form-rounded">
+                                    <option value=''>Select Link to Supplier</option>
+                                    <!-- Options for suppliers -->
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                            <div class="form-group">
+                                <label for="importedForm" class="label text-dark">Imported From</label>
+                                <input name="importedForm" type="text" class="form-control form-control-sm form-rounded" id="importedForm" placeholder="Imported From">
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                            <label for="importedForm" class="label text-dark">Import Status</label>
+                            <select class="form-control form-control-sm form-rounded">
+                                <option value="imported">Imported</option>
+                                <option value="processing">Processing </option>
+                                <option value="validating">Validating </option>
+                                <option value="draft">Draft</option>
+                            </select>
+                        </div>
+                        
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                            <div class="form-group">
+                                <label class="label text-dark">Date</label>
+                                <input class="form-control form-control-sm form-rounded"
+                                       type="date"
+                                       name="entryDate"
+                                       placeholder="Date">
+                                <!-- <div class="text-left text-danger">
+                                    Date is required
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                            <div class="form-group">
+                                <label for="discountPercent" class="label text-dark">Warrenty Lenth/Year</label>
+                                <input (change)="vatAmountNDiscountCalculation()" name="discountPercent" type="number" class="form-control form-control-sm form-rounded" id="discountPercent" placeholder="Discount">
+                                <!-- <div class="text-left text-danger">
+                                    Barcode is Required!
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                            <div class="form-group">
+                                <label for="warantyNgurenty" class="label text-dark">Warrenty Policy</label>
+                                <textarea name="warantyNgurenty"
+                                          type="text"
+                                          class="form-control form-control-sm form-rounded"
+                                          id="warantyNgurenty"
+                                          placeholder="Warrenty or Guarantee"
+                                          cols="50"
+                                          rows="2"></textarea>
+                                <!-- <div class="text-left text-danger">
+                                    Warrenty or Guarantee is Required!
+                                </div> -->
+                            </div>
+                        </div>
+
+                        
+
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                            <div class="form-group">
+                                <label for="color" class="label text-dark">Color</label>
+                                <input name="color" type="text" class="form-control form-control-sm form-rounded" id="color" placeholder="Color">
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                            <div class="form-group">
+                                <label for="size" class="label text-dark">Size</label>
+                                <input name="size" type="text" class="form-control form-control-sm form-rounded" id="size" placeholder="Size">
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                            <div class="form-group">
+                                <label class="label text-dark">Shipping</label><span class="error-star">*</span>
+                                <select name="unit" required class="form-control form-control-sm form-rounded invalid-border-input">
+                                    <option value=''>Delivered by vendor (you)</option>
+                                    <option value=''>Delivered by S. A Poribahan</option>
+                                    <option value=''>Delivered by Other Company</option>
+                                    <!-- Options for UnitList -->
+                                </select>
+                                <div class="text-left invalid-message-color">
+                                    Shipping Required!
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                            <div class="form-group">
+                                <label for="previousCost" class="label text-dark">Shipping Day</label>
+                                <input name="previousCost" type="number" class="form-control form-control-sm form-rounded" id="previousCost" placeholder="Previous Cost">
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                            <div class="form-group">
+                                <label for="shippingDay" class="label text-dark">Shipping Details</label>
+                                <textarea name="shippingDetails" type="text" class="form-control form-control-sm form-rounded" id="shippingDetails" placeholder="Shipping Day" cols="50" rows="2"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                            <div class="form-group">
+                                <label for="shippingDay" class="label text-dark">Origin Country</label>
+                                <select class="form-control form-control-sm form-rounded" id="origin-country" name="origin-country">
+                                    <option value="">Select </option>
+                                    <option value="China">China</option>
+                                    <option value="India">India</option>
+                                    <option value="United States">United States</option>
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                            <div class="form-group">
+                                <label for="previousCost" class="label text-dark">Rating</label>
+                                <input name="previousCost" type="number" class="form-control form-control-sm form-rounded" id="previousCost" placeholder="Previous Cost">
+                            </div>
+                        </div>
+                        
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                            <div class="form-group">
+                                <label for="shippingDay" class="label text-dark">Product Status</label>
+                                <select class="form-control form-control-sm form-rounded" id="origin-country" name="origin-country">
+                                    <option value="">Select </option>
+                                    <option value="China">Active</option>
+                                    <option value="India">In Active</option>
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                            <div class="form-group">
+                                <label for="remarks" class="label text-dark">Remarks</label>
+                                <textarea name="remarks"
+                                          type="text"
+                                          class="form-control form-control-sm form-rounded"
+                                          id="remarks"
+                                          placeholder="Remarks"
+                                          cols="50"
+                                          rows="2"></textarea>
+                                <!-- <div class="text-left text-danger">
+                                    Remarks is Required!
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <div class="card-header bg-body-tertiary">
+                <h6 class="mb-0">Details</h6>
+            </div>
+            <div class="card-body">
+                <div class="row gx-2">
+                    <div class="col-12 mb-3">
+                        <label class="form-label" for="product-description">Product description:</label>
+                        <div class="create-product-description-textarea">
+                            <textarea class="tinymce d-none" data-tinymce="data-tinymce" name="product-description" id="product-description" required="required"></textarea>
+                        </div>
+                    </div>
+
+                   
+                    <div class="col-12 mb-3">
+                        <label class="form-label" for="release-date">Release Date: </label>
+                        <input class="form-control datetimepicker" id="release-date" type="text" data-options='{"dateFormat":"d/m/y","disableMobile":true}' />
+                    </div>
+
+
+                </div>
+                <div class="row">
+
+
+                    <div class="d-grid gap-2 d-md-block">
+                        <button class="btn btn-primary btn-sm">Save</button>
+                        <button class="btn btn-success btn-sm">Update</button>
+                        <button class="btn btn-info btn-sm">Refresh</button>
+                        <button class="btn btn-danger btn-sm">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <div class="card-header bg-body-tertiary">
+                <h6 class="mb-0">Add images</h6>
+            </div>
+            <div class="card-body">
+                <form class="dropzone dropzone-multiple p-0" id="dropzoneMultipleFileUpload" data-dropzone="data-dropzone" action="#!" data-options='{"acceptedFiles":"image/*"}'>
+                    <div class="fallback">
+                        <input name="file" type="file" multiple="multiple" />
+                    </div>
+                    <div class="dz-message" data-dz-message="data-dz-message"> <img class="me-2" src="../../../assets/img/icons/cloud-upload.svg" width="25" alt="" /><span class="d-none d-lg-inline">Drag your image here<br />or, </span><span class="btn btn-link p-0 fs-10">Browse</span></div>
+                    <div class="dz-preview dz-preview-multiple m-0 d-flex flex-column">
+                        <div class="d-flex media align-items-center mb-3 pb-3 border-bottom btn-reveal-trigger">
+                            <img class="dz-image" src="../../../assets/img/icons/cloud-upload.svg" alt="..." data-dz-thumbnail="data-dz-thumbnail" />
+                            <div class="flex-1 d-flex flex-between-center">
+                                <div>
+                                    <h6 data-dz-name="data-dz-name"></h6>
+                                    <div class="d-flex align-items-center">
+                                        <p class="mb-0 fs-10 text-400 lh-1" data-dz-size="data-dz-size"></p>
+                                        <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress=""></span></div>
+                                    </div>
+                                </div>
+                                <div class="dropdown font-sans-serif">
+                                    <button class="btn btn-link text-600 btn-sm dropdown-toggle btn-reveal dropdown-caret-none" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fas fa-ellipsis-h"></span></button>
+                                    <div class="dropdown-menu dropdown-menu-end border py-2"><a class="dropdown-item" href="#!" data-dz-remove="data-dz-remove">Remove File</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <div class="card mb-3 mb-lg-0">
+            <div class="card-header bg-body-tertiary">
+                <h6 class="mb-0">Specifications</h6>
+            </div>
+            <div class="card-body">
+                <div class="row gx-2 flex-between-center mb-3">
+                    <div class="col-sm-3">
+                        <h6 class="mb-0 text-600">Processor</h6>
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="d-flex flex-between-center">
+                            <h6 class="mb-0 text-700">2.3GHz quad-core Intel Core i5</h6><a class="btn btn-sm btn-link text-danger" href="#!" data-bs-toggle="tooltip" data-bs-placement="top" title="Remove"><span class="fs-10 fas fa-trash-alt"></span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row gx-2 flex-between-center mb-3">
+                    <div class="col-sm-3">
+                        <h6 class="mb-0 text-600">Memory</h6>
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="d-flex flex-between-center">
+                            <h6 class="mb-0 text-700">8GB of 2133MHz LPDDR3 onboard memory</h6><a class="btn btn-sm btn-link text-danger" href="#!" data-bs-toggle="tooltip" data-bs-placement="top" title="Remove"><span class="fs-10 fas fa-trash-alt"></span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row gx-2 flex-between-center mb-3">
+                    <div class="col-sm-3">
+                        <h6 class="mb-0 text-600">Brand name</h6>
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="d-flex flex-between-center">
+                            <h6 class="mb-0 text-700">Apple</h6><a class="btn btn-sm btn-link text-danger" href="#!" data-bs-toggle="tooltip" data-bs-placement="top" title="Remove"><span class="fs-10 fas fa-trash-alt"></span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row gy-3 gx-2">
+                    <div class="col-sm-3">
+                        <input class="form-control form-control-sm" id="specification-label" type="text" placeholder="Label" />
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="d-flex gap-2 flex-between-center">
+                            <input class="form-control form-control-sm" id="specification-property" type="text" placeholder="Property" />
+                            <button class="btn btn-sm btn-falcon-default">Add</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div> 
+    
+    <div class="col-lg-3 ps-lg-2">
+        <div class="sticky-sidebar">
+
              
+            <div class="card">
+                <div class="card-body">
+                    <div class="row gx-2">
+                        
 
-            <div class="col-sm-3 animated-div">
-                <div class="form-group">
-                    <label for="catagory" class="label text-dark">Product Category</label><span class="error-star">*</span>
-                    <select required name="catagory" class="form-control form-control-sm form-rounded invalid-border-input">
-                        <option value="">Select Product Category</option>
-                        <!-- Options for productCategories -->
-                    </select>
-                    <div class="text-left invalid-message-color">
-                        Product Category Required!      
+
+                        <div class="col-12">
+                            <label class="form-label" for="product-category">Select category:</label>
+                            
+                            <select class="form-select js-choice" id="organizerSingle2" size="1" required="required" name="organizerSingle" data-options='{"removeItemButton":true,"placeholder":true}'>
+                                <option value="">Select organizer...</option>
+                                <option>Massachusetts Institute of Technology</option>
+                                <option>University of Chicago</option>
+                                <option>GSAS Open Labs At Harvard</option>
+                                <option>California Institute of Technology </option>
+                            </select>
+                            <div class="invalid-feedback">Please select one</div>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label" for="product-subcategory">Select sub-category:</label>
+                            <select class="form-select" id="product-subcategory" name="product-subcategory">
+                                <option value="laptop">Laptop</option>
+                                <option>Class, Training, or Workshop</option>
+                                <option>Concert or Performance</option>
+                                <option>Conference</option>
+                                <option>Convention</option>
+                                <option>Dinner or Gala</option>
+                                <option>Festival or Fair</option>
+                            </select>
+                        </div>
+                        <div class="col-12 animated-div">
+                            <div class="form-group">
+                                <label class="label text-dark">Unit Type</label><span class="error-star">*</span>
+                                <select name="unit" required class="form-control form-control-sm form-rounded invalid-border-input">
+                                    <option value=''>Unit Type Select</option>
+                                    <!-- Options for UnitList -->
+                                </select>
+                                <div class="text-left invalid-message-color">
+                                    Unit Type Required!
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+
+                            <label class="form-label" for="final-price">Final price:<span data-bs-toggle="tooltip" data-bs-placement="top" title="Product final price"><span class="fas fa-question-circle text-primary fs-10 ms-1"></span></span></label>
+                            <input class="form-control" id="final-price" disabled="disabled" type="text" />
+
+                        </div>
+                        <div class="col-12">
+
+                            <label class="form-label" for="final-price">Previous price:<span data-bs-toggle="tooltip" data-bs-placement="top" title="Product final price"><span class="fas fa-question-circle text-primary fs-10 ms-1"></span></span></label>
+                            <input class="form-control" id="final-price" type="text" />
+
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label" for="price-currency">Currency:</label>
+                            <select class="form-select" id="price-currency" name="price-currency">
+                                <option value="usd">USD</option>
+                                <option value="eur">EUR</option>
+                                <option value="gbp">GBP</option>
+                                <option value="cad">CAD</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <div class="col-sm-3 animated-div">
-                <div class="form-group">
-                    <label for="subCategory" class="label text-dark">Sub Category</label>
-                    <select name="subCategory" class="form-control form-control-sm form-rounded">
-                        <option value=''>Select Sub Category</option>
-                        <!-- Options for productSubCategories -->
-                    </select>
+            
+             
+            <div class="card mb-3">
+                <div class="card-header bg-body-tertiary">
+                    <h6 class="mb-0">Tags</h6>
+                </div>
+                <div class="card-body">
+                    <label class="form-label" for="product-tags">Add a keyword:</label>
+                    <input class="form-control js-choice" id="product-tags" type="text" name="tags" required="required" size="1" data-options='{"removeItemButton":true,"placeholder":false}' />
                 </div>
             </div>
-
-            <div class="col-sm-3 animated-div">
-                <div class="form-group">
-                    <label for="name" class="label text-dark">Name/Model</label> <span class="error-star">*</span>
-                    <input name="name" type="text" class=" form-control form-control-sm form-rounded invalid-border-input" placeholder="Name/Model" required>
-                    <div class="text-left invalid-message-color">
-                        Name/Model Required!
+             
+            <div class="card mb-3">
+                <div class="card-header bg-body-tertiary">
+                    <h6 class="mb-0">Stock status</h6>
+                </div>
+                <div class="card-body">
+                    <div class="form-check">
+                        <input class="form-check-input p-2" id="in-stock" type="radio" name="stock-status" />
+                        <label class="form-check-label fs-9 fw-normal text-700" for="in-stock">In stock (10 Pcs)</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input p-2" id="unavailable" type="radio" name="stock-status" />
+                        <label class="form-check-label fs-9 fw-normal text-700" for="unavailable">Unavailable</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input p-2" id="to-be-announced" type="radio" name="stock-status" />
+                        <label class="form-check-label fs-9 fw-normal text-700" for="to-be-announced">To be announced</label>
                     </div>
                 </div>
-            </div>
-
-            <div class="col-sm-3 animated-div">
-                <div class="form-group">
-                    <label for="serialNumber" class="label text-dark">Serial Number</label>
-                    <input   readonly name="serialNumber" type="text" class="form-control form-control-sm form-rounded" placeholder="Serial Number" required>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-3 animated-div">
-                <div class="form-group">
-                    <label for="quantity" class="label text-dark">Opening Quantity</label><span class="error-star">*</span>
-                    <input name="quantity" type="number" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Opening Quantity" required>
-                    <div class="text-left invalid-message-color">
-                        Opening Quantity Required!
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-3 animated-div">
-                <div class="form-group">
-                    <label for="alertQuantity" class="label text-dark">Alert Quantity</label>
-                    <input name="alertQuantity" type="number" class="form-control form-control-sm form-rounded" placeholder="Alert Quantity">
-                    <!-- <div class="text-left text-danger">
-                        Alert Quantity is Required!
-                    </div> -->
-                </div>
-            </div>
-
-            <div class="col-sm-3 animated-div">
-                <div class="form-group">
-                    <label for="productBuyingPrice" class="label text-dark">Buying Price</label><span class="error-star">*</span>
-                    <input name="productBuyingPrice" type="number" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Buying Price" required>
-                    <div class="text-left invalid-message-color">
-                        Buying Price Required!
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-3 animated-div">
-                <div class="form-group">
-                    <label for="cost" class="label text-dark">Selling Price</label><span class="error-star">*</span>
-                    <input name="cost" type="number" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Selling Price" required>
-                    <div class="text-left invalid-message-color">
-                        Selling Price Required!
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-3 animated-div">
-                <div class="form-group">
-                    <label class="label text-dark">Unit Type</label><span class="error-star">*</span>
-                    <select name="unit" required class="form-control form-control-sm form-rounded invalid-border-input">
-                        <option value=''>Unit Type Select</option>
-                        <!-- Options for UnitList -->
-                    </select>
-                    <div class="text-left invalid-message-color">
-                        Unit Type Required!
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-3 animated-div">
-                <div class="form-group">
-                    <label for="barcode" class="label text-dark">Bar Code</label>
-                    <input name="barcode" type="text" class="form-control form-control-sm form-rounded" id="barcode" placeholder="Bar Code">
-                    <!-- <div class="text-left text-danger">
-                        Barcode is Required!
-                    </div> -->
-                </div>
-            </div>
-
-            <div class="col-sm-3 animated-div">
-                <div class="form-group">
-                    <label class="label text-dark">Link to Supplier</label>
-                    <select name="supplier" required class="form-control form-control-sm form-rounded">
-                        <option value=''>Select Link to Supplier</option>
-                        <!-- Options for suppliers -->
-                    </select>
-                </div>
-            </div>
-
-            <div class="col-sm-3 animated-div">
-                <div class="form-group">
-                    <label for="importedForm" class="label text-dark">Imported From</label>
-                    <input name="importedForm" type="text" class="form-control form-control-sm form-rounded" id="importedForm" placeholder="Imported From">
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-3 animated-div">
-                <div class="form-group">
-                    <label for="vatPercent" class="label text-dark">VAT in %</label>
-                    <input (change)="vatAmountNDiscountCalculation()" name="vatPercent" type="number" class="form-control form-control-sm form-rounded" id="vatPercent" placeholder="VAT in %">
-                    <!-- <div class="text-left text-danger">
-                        Barcode is Required!
-                    </div> -->
-                </div>
-            </div>
-
-            <div class="col-sm-3 animated-div">
-                <div class="form-group">
-                    <label for="vatAmount" class="label text-dark">VAT Amount</label>
-                    <input name="vatAmount" type="number" class="form-control form-control-sm form-rounded" id="vatAmount" placeholder="VAT Amount">
-                    <!-- <div class="text-left text-danger">
-                        Barcode is Required!
-                    </div> -->
-                </div>
-            </div>
-
-            <div class="col-sm-3 animated-div">
-                <div class="form-group">
-                    <label for="discountPercent" class="label text-dark">Discount</label>
-                    <input (change)="vatAmountNDiscountCalculation()" name="discountPercent" type="number" class="form-control form-control-sm form-rounded" id="discountPercent" placeholder="Discount">
-                    <!-- <div class="text-left text-danger">
-                        Barcode is Required!
-                    </div> -->
-                </div>
-            </div>
-
-            <div class="col-sm-3 animated-div">
-                <div class="form-group">
-                    <label for="discountAmount" class="label text-dark">Discount Amount</label>
-                    <input name="discountAmount" type="number" class="form-control form-control-sm form-rounded" id="discountAmount" placeholder="Discount Amount">
-                    <!-- <div class="text-left text-danger">
-                        Barcode is Required!
-                    </div> -->
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-3 animated-div">
-                <div class="form-group">
-                    <label class="label text-dark">Date</label>
-                    <input class="form-control form-control-sm form-rounded"
-                           type="date"
-                           name="entryDate"
-                           placeholder="Date">
-                    <!-- <div class="text-left text-danger">
-                        Date is required
-                    </div> -->
-                </div>
-            </div>
-
-            <div class="col-sm-3 animated-div">
-                <div class="form-group">
-                    <label for="warantyNgurenty" class="label text-dark">Warrenty or Guarantee</label>
-                    <textarea name="warantyNgurenty"
-                              type="text"
-                              class="form-control form-control-sm form-rounded"
-                              id="warantyNgurenty"
-                              placeholder="Warrenty or Guarantee"
-                              cols="50"
-                              rows="2"></textarea>
-                    <!-- <div class="text-left text-danger">
-                        Warrenty or Guarantee is Required!
-                    </div> -->
-                </div>
-            </div>
-
-            <div class="col-sm-3 animated-div">
-                <div class="form-group">
-                    <label for="remarks" class="label text-dark">Remarks</label>
-                    <textarea name="remarks"
-                              type="text"
-                              class="form-control form-control-sm form-rounded"
-                              id="remarks"
-                              placeholder="Remarks"
-                              cols="50"
-                              rows="2"></textarea>
-                    <!-- <div class="text-left text-danger">
-                        Remarks is Required!
-                    </div> -->
-                </div>
-            </div>
-        </div>
-        <div class="section mt-2">
-            <h6>E-Commerce Essential</h6>
-            @*  <div class="row">
-            <div class="col-md-6"></div>
-            <div *ngIf="uploadImagesService.selectedImage" class="image-container col-md-6">
-            <img [src]="uploadImagesService.selectedImage" alt="Selected Image">
-            </div>
-            </div> *@
-
-            <div class="row">
-                <div class="col-sm-3 animated-div">
-                    <div class="form-group">
-                        <label for="brand" class="label text-dark">Brand</label>
-                        <input name="brand" type="text" class="form-control form-control-sm form-rounded" id="brand" placeholder="Brand">
-                    </div>
-                </div>
-                <div class="col-sm-3 animated-div">
-                    <div class="form-group">
-                        <label for="color" class="label text-dark">Color</label>
-                        <input name="color" type="text" class="form-control form-control-sm form-rounded" id="color" placeholder="Color">
-                    </div>
-                </div>
-                <div class="col-sm-3 animated-div">
-                    <div class="form-group">
-                        <label for="size" class="label text-dark">Size</label>
-                        <input name="size" type="text" class="form-control form-control-sm form-rounded" id="size" placeholder="Size">
-                    </div>
-                </div>
-                <div class="col-sm-3 animated-div">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Image</label>
-                        <input type="file" name="image" class="form-control form-control-sm form-rounded" accept="image/*" multiple="multiple" placeholder="Image">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-3 animated-div">
-                <div class="form-group">
-                    <label for="previousCost" class="label text-dark">Previous Cost</label>
-                    <input name="previousCost" type="number" class="form-control form-control-sm form-rounded" id="previousCost" placeholder="Previous Cost">
-                </div>
-            </div>
-            <div class="col-sm-3 animated-div">
-                <div class="form-group">
-                    <label for="Desc" class="label text-dark">Description</label>
-                    <textarea name="Desc" type="text" class="form-control form-control-sm form-rounded" id="Desc" placeholder="Description" cols="50" rows="2"></textarea>
-                </div>
-            </div>
-            <div class="col-sm-3 animated-div">
-                <div class="form-group">
-                    <label for="additionDesc" class="label text-dark">Additional Description</label>
-                    <textarea name="additionDesc" type="text" class="form-control form-control-sm form-rounded" id="Desc" placeholder="Additional Description" cols="50" rows="2"></textarea>
-                </div>
-            </div>
-            <div class="col-sm-3 animated-div">
-                <div class="form-group">
-                    <label for="shippingDay" class="label text-dark">Shipping Day</label>
-                    <textarea name="shippingDetails" type="text" class="form-control form-control-sm form-rounded" id="shippingDetails" placeholder="Shipping Day" cols="50" rows="2"></textarea>
-                </div>
-            </div> 
-            <div class="d-grid gap-2 d-md-block">
-                <button class="btn btn-primary btn-sm">Save</button>
-                <button class="btn btn-success btn-sm">Update</button>
-                <button class="btn btn-info btn-sm">Refresh</button>
-                <button class="btn btn-danger btn-sm">Delete</button>
             </div>
         </div>
     </div>
 </div>
 
+
  
+<script src="vendors/tinymce/tinymce.min.js"></script>
+<script src="assets/js/flatpickr.js"></script>
+
+<script src="assets/js/theme.js"></script>
 @code {
     
 }
