@@ -34,13 +34,10 @@
                         </div>
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
-                                <label for="name" class="label text-dark">Manufacturar Name</label> <span class="error-star">*</span>
-                                <input name="name" type="text" class=" form-control form-control-sm form-rounded invalid-border-input" placeholder="Name/Model" required>
-                                <div class="text-left invalid-message-color">
-                                    Name/Model Required!
-                                </div>
+                                <label for="name" class="label text-dark">Manufacturar Name</label>
+                                <input name="name" type="text" class=" form-control form-control-sm form-rounded" placeholder="Name/Model">
                             </div>
-                        </div>
+                        </div >
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
                                 <label for="serialNumber" class="label text-dark">Serial Number/UPC</label>
@@ -309,19 +306,33 @@
                             <textarea class="tinymce d-none" data-tinymce="data-tinymce" name="product-description" id="product-description" required="required"></textarea>
                         </div>
                     </div>
-
-                   
-                    <div class="col-12 mb-3">
-                        <label class="form-label" for="release-date">Release Date: </label>
-                        <input class="form-control datetimepicker" id="release-date" type="text" data-options='{"dateFormat":"d/m/y","disableMobile":true}' />
-                    </div>
-
-
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                        <div class="form-group">
+                            <label class="label text-dark">Date</label>
+                            <input class="form-control form-control-sm form-rounded"
+                                   type="date"
+                                   name="entryDate"
+                                   placeholder="Date">
+                            <!-- <div class="text-left text-danger">
+                                Date is required
+                            </div> -->
+                        </div>
+                    </div >
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                        <div class="form-group">
+                            <label class="label text-dark">Release Date:</label>
+                            <input class="form-control form-control-sm form-rounded"
+                                   type="date"
+                                   name="entryDate"
+                                   placeholder="Date">
+                            <!-- <div class="text-left text-danger">
+                                Date is required
+                            </div> -->
+                        </div>
+                    </div >
                 </div>
-                <div class="row">
-
-
-                    <div class="d-grid gap-2 d-md-block">
+                <div class="row" >
+                    <div class="d-grid gap-2 d-md-block mt-4">
                         <button class="btn btn-primary btn-sm">Save</button>
                         <button class="btn btn-success btn-sm">Update</button>
                         <button class="btn btn-info btn-sm">Refresh</button>
