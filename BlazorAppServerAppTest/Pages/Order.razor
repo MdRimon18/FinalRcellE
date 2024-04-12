@@ -41,9 +41,9 @@
                 </form>
                 <lebel>@SaveMessage</lebel>
                 <div class="d-grid gap-4 d-md-block">
-                    <button class="btn btn-primary btn-sm" @onclick="Add">Save</button>
-                    <button class="btn btn-warning btn-sm" @onclick="()=>UpdateData(OrderObject)">Update</button>
-                    <button class="btn btn-warning btn-sm" @onclick="()=>GetAll()">Get All</button>
+                    <button class="btn btn-primary btn-sm" @onclick="SaveOrUpdate">Save</button>
+                    <button class="btn btn-warning btn-sm" @onclick="()=>SaveOrUpdate()">Update</button>
+                    <button class="btn btn-warning btn-sm" @onclick="()=>LoadOrders()">Get All</button>
                     <button class="btn btn-info btn-sm" @onclick="()=>onSearch(OrderObject.ProductName)">Search</button>
                     <button class="btn btn-success btn-sm" @onclick="onRefersh">Reference</button>
                 </div>
@@ -74,9 +74,9 @@
                             {
                                 <tr>
                                     <td>
-                                    <button class="btn btn-success btn-sm" @onclick="()=>UpdateData(t)">Edit</button>
-                                    <button class="btn btn-warning btn-sm" @onclick="()=>EditLoadData(t.OrderId)">Load Data</button>
-                                        <button class="btn btn-danger btn-sm" @onclick="()=>Delete(t.OrderId)">Delete</button>
+                                    
+                                    <button class="btn btn-warning btn-sm" @onclick="()=>EditLoadData(t)">Load Data</button>
+                                        <button class="btn btn-danger btn-sm" @onclick="()=>DeleteOrder(t.OrderId)">Delete</button>
                                     </td>
                                     <td>@t.OrderId</td>
                                     <td>@t.ProductName</td>
@@ -94,38 +94,88 @@
 
 @code {
     [Inject]
-    OrderService orderService { get; set; }
+    OrderServiceWithSp orderService { get; set; }
     List<BlazorAppServerAppTest.Models.Order> OrderList = new List<BlazorAppServerAppTest.Models.Order>();
     BlazorAppServerAppTest.Models.Order OrderObject = new BlazorAppServerAppTest.Models.Order();
+
     public string SaveMessage { get; set; }
-    private void GetAll()
+    private bool isLoading = true;
+    private string errorMessage;
+
+    protected override async Task OnInitializedAsync()
     {
-        OrderList = orderService.GetOrders();
+        await LoadOrders();
     }
 
-    private async void Add()
-    {   
-        SaveMessage= orderService.SaveOrder(OrderObject);
- 
-    }
-    private void EditLoadData(long OrderId)
+    private async Task LoadOrders()
     {
-        var findObject = orderService.GetOrderById(OrderId);
-        OrderObject = findObject;
+        try
+        {
+            OrderList = (await orderService.GetOrders()).ToList();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = ex.Message;
+        }
+        finally
+        {
+            isLoading = false;
+        }
     }
 
-    private void UpdateData(BlazorAppServerAppTest.Models.Order order)
+    private async Task SaveOrUpdate()
+    {
+        try
+        {
+            if (OrderObject.OrderId == 0)
+            {
+                await orderService.AddOrder(OrderObject);
+            }
+            else
+            {
+                await orderService.UpdateOrder(OrderObject);
+            }
+            OrderObject = new BlazorAppServerAppTest.Models.Order(); // Clear the form after save/update
+            await LoadOrders(); // Reload orders after save/update
+        }
+        catch (Exception ex)
+        {
+            errorMessage = ex.Message;
+        }
+    }
+
+
+
+    private async Task DeleteOrder(long orderId)
+    {
+        try
+        {
+            bool result = await orderService.DeleteOrder(orderId);
+            if (result)
+            {
+                await LoadOrders(); // Reload orders after delete
+            }
+            else
+            {
+                errorMessage = $"Failed to delete order with ID {orderId}.";
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = ex.Message;
+        }
+    }
+
+
+    private async void EditLoadData(BlazorAppServerAppTest.Models.Order order)
     {
 
-        orderService.UpdateOrder(order);
-
+       // var editObj =await orderService.GetOrderById(OrderId);
+        OrderObject = order;
     }
 
-    private void Delete(long orderId)
-    {
-        orderService.DeleteOrderAsync(orderId);
-    }
-
+   
+    
     private void onSearch(string OrderId)
     {
        /// OrderList = OrderList.Where(w => w.orderNo == OrderId).ToList();
@@ -133,7 +183,6 @@
 
     private void onRefersh()
     {
-        // OrderObject = new OrderModel();
-        // OrderList = new List<Order>();
+        OrderObject = new BlazorAppServerAppTest.Models.Order();
     }
 }

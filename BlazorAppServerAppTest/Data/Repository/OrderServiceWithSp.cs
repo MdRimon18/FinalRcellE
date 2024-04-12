@@ -89,7 +89,7 @@ namespace Pms.Data.Repository
                 return affectedRows > 0;
             }
 
-        public async Task<int> DeleteOrder(long id)
+        public async Task<bool> DeleteOrder(long id)
         {
             var parameters = new DynamicParameters();
             parameters.Add("@order_id", id, DbType.Int32, ParameterDirection.Input);
@@ -100,8 +100,8 @@ namespace Pms.Data.Repository
                 parameters,
                 commandType: CommandType.StoredProcedure
             );
-
-            return parameters.Get<int>("@Success");
+          long sccss=  parameters.Get<long>("@Success");
+            return   sccss > 0;
         }
 
     }
