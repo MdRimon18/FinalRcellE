@@ -57,6 +57,16 @@
 <div class="container-fluid pt-4 px-4">
         <div class="col-sm-12 col-xl-12">
             <div class="bg-light rounded h-100 p-4">
+                @if (isLoading)
+                {
+                    <p>Loading...</p>
+                }
+                else if (errorMessage != null)
+                {
+                    <p>An error occurred: @errorMessage</p>
+                }
+                else
+                {
                 <div class="table-responsive">
                     <table class="table table-secondary table-striped table-bordered">
                         <thead>
@@ -88,6 +98,7 @@
                         </tbody>
                     </table>
                 </div>
+                }
             </div>
         </div>
 </div>
