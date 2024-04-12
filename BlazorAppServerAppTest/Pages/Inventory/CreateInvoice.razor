@@ -145,7 +145,7 @@
                                 <div class="input-group">
                                     <input type="text" id="inputField" class="form-control form-control-sm form-rounded " placeholder="Enter Cus. Phone" aria-label="Enter value" aria-describedby="plusButton">
                                     <div class="input-group-append">
-                                        <button class="btn btn-outline-secondary" type="button" id="plusButton" data-bs-toggle="offcanvas"
+                                        <button class="btn btn-sm btn-outline-secondary" type="button" id="plusButton" data-bs-toggle="offcanvas"
                                         data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">+</button>
                                     </div>
                                 </div>
@@ -252,17 +252,15 @@
                                                         <p class="fs-11 mb-0 d-flex">Brain Trust</p>
                                                     </div>
                                                 </div>
-                                            </a>
-
+                                            </a >
                                         </div>
                                         <div class="text-center mt-n3">
                                             <p class="fallback fw-bold fs-8 d-none">No Result Found.</p>
                                         </div>
                                     </div>
-                                </div>
-
+                                </div >
                             </div>
-                        </div>
+                        </div >
                         <div class="col-lg-3 col-md-3 col-sm-6 col-9 animated-div ml-10" >
                             <div class="form-group">
                                 <label for="chooseSerialNumber" class="label text-dark">Choose Serial No</label><span class="text-danger">*</span>
@@ -302,25 +300,16 @@
                                                         <p class="fs-11 mb-0 d-flex">Brain Trust</p>
                                                     </div>
                                                 </div>
-                                            </a>
-
+                                            </a >
                                         </div>
                                         <div class="text-center mt-n3">
                                             <p class="fallback fw-bold fs-8 d-none">No Result Found.</p>
                                         </div>
                                     </div>
-                                </div>
-
+                                </div >
                             </div>
-
-                            
-                        </div>
-                         
-
-                        
-                    </div>
-                    
-                    
+                        </div >
+                    </div >
                     <div class="row">
 
 
@@ -376,10 +365,15 @@
                                             <input readonly type="number" class="form-control form-rounded bold-input" placeholder="Amount">
                                         </td>
                                         <td>
-                                            <button type="button" class="btn btn-outline-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop">serial</button>
+                                            <button type="button" class="btn btn-sm btn-outline-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop">serial</button>
                                         </td>
                                         <td>
-                                            <button title="Delete" class="btn btn-light ml-1 addMore">
+                                            <button title="Info" class="btn btn-sm btn-light ml-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop-1">
+                                                <i class="fa fa-info-circle" style="font-size:24px"></i>
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button title="Delete" class="btn btn-sm btn-light ml-1">
                                                 <i class="far fa-trash-alt fa-lg text-danger"></i>
                                             </button>
                                         </td>
@@ -390,11 +384,11 @@
                     </div>
                     <div class="row align-items-center">
                         <div class="col-auto d-flex">
-                            <a href="invoice_preview" class="btn btn-outline-primary" type="button">Create Invoice</a>
+                            <a href="invoice_preview" class="btn btn-sm btn-outline-primary" type="button">Create Invoice</a>
                           
-                            <a href="shipping_nd_payment" class="btn btn-outline-primary px-4 ms-2" type="button">Shipping</a>
+                            <a href="shipping_nd_payment" class="btn btn-sm btn-outline-primary px-4 ms-2" type="button">Shipping</a>
                              
-                            <button class="btn btn-outline-primary px-4 ms-2" type="button">Refresh</button>
+                            <button class="btn btn-sm btn-outline-primary px-4 ms-2" type="button">Refresh</button>
                         </div >
                     </div >
                     <div class="row">
@@ -414,7 +408,7 @@
                                         <td class="less-bold-input">011</td>
                                         <td class="less-bold-input">Sopno</td>
                                         <td>
-                                            <button title="Delete" class="btn btn-light ml-1">
+                                            <button title="Delete" class="btn btn-sm btn-light ml-1">
                                                 <i class="far fa-trash-alt fa-lg text-danger"></i>
                                             </button>
                                         </td>
@@ -497,67 +491,155 @@
             </div>
             <div class="modal-body p-0">
                 <div class="rounded-top-3 bg-body-tertiary py-3 ps-4 pe-6">
-                    <h4 class="mb-1" id="staticBackdropLabel">Add a new illustration to the landing page</h4>
+                    <h4 class="mb-1" id="staticBackdropLabel">Add a new Serial Number</h4>
                     <p class="fs-11 mb-0">Added by <a class="link-600 fw-semi-bold" href="#!">Antony</a></p>
                 </div>
-                <div class="p-4">
-                    <div class="row">
-                        <div class="col-lg-9">
-                            <div class="d-flex">
-                                <span class="fa-stack ms-n1 me-3"><i class="fas fa-circle fa-stack-2x text-200"></i><i class="fa-inverse fa-stack-1x text-primary fas fa-tag" data-fa-transform="shrink-2"></i></span>
-                                <div class="flex-1">
-                                    <h5 class="mb-2 fs-9">Labels</h5>
+                <div class="p-4 m-2">
+                    
+                    <div class="card shadow-none">
+                        <div class="card-body p-0 pb-3">
+                            <div class="d-flex align-items-center justify-content-end my-3">
+                                <div id="bulk-select-replace-element">
+                                    <button class="btn btn-falcon-success btn-sm" type="button"><span class="fas fa-plus" data-fa-transform="shrink-3 down-2"></span><span class="ms-1">New</span></button>
+                                </div>
+                                <div class="d-none ms-3" id="bulk-select-actions">
                                     <div class="d-flex">
-                                        <span class="badge me-1 py-2 badge-subtle-success">New</span><span class="badge me-1 py-2 badge-subtle-primary">Goal</span><span class="badge me-1 py-2 badge-subtle-info">Enhancement</span>
-                                        <div class="dropdown dropend">
-                                            <button class="btn btn-sm btn-secondary px-2 fsp-75 bg-400 border-400 dropdown-toggle dropdown-caret-none" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fas fa-plus"></span></button>
-                                            <div class="dropdown-menu">
-                                                <h6 class="dropdown-header py-0 px-3 mb-0">Select Label</h6>
-                                                <div class="dropdown-divider"></div>
-                                                <div class="px-3">
-                                                    <button class="badge-subtle-danger dropdown-item rounded-1 mb-2" type="button">New</button>
-                                                    <button class="badge-subtle-primary dropdown-item rounded-1 mb-2" type="button">Goal</button>
-                                                    <button class="badge-subtle-info dropdown-item rounded-1 mb-2" type="button">Enhancement</button>
+                                        <select class="form-select form-select-sm" aria-label="Bulk actions">
+                                            <option selected="selected">Bulk actions</option>
+                                            <option value="Delete">Delete</option>
+                                            <option value="Archive">Archive</option>
+                                        </select>
+                                        <button class="btn btn-falcon-danger btn-sm ms-2" type="button">Apply</button>
+                                    </div>
+                                </div >
+                            </div>
+                            <div class="table-responsive scrollbar">
+                                <table class="table mb-0">
+                                    <thead class="bg-200">
+                                        <tr>
+                                            <th class="align-middle white-space-nowrap">
+                                                <div class="form-check mb-0">
+                                                    <input class="form-check-input" type="checkbox" data-bulk-select='{"body":"bulk-select-body","actions":"bulk-select-actions","replacedElement":"bulk-select-replace-element"}' />
                                                 </div>
-                                                <div class="dropdown-divider"></div>
-                                                <div class="px-3">
-                                                    <button class="btn btn-sm d-block w-100 btn-outline-secondary border-400">Create Label</button>
+                                            </th>
+                                            <th class="text-black dark__text-white align-middle">Sales Status</th>
+                                            <th class="text-black dark__text-white align-middle">Serial Number</th>
+                                            <th class="text-black dark__text-white align-middle">Tag Supplier</th>
+                                            <th class="text-black dark__text-white align-middle">Supplier Name</th>
+                                            <th class="text-black dark__text-white align-middle">Supplier Org. Name</th>
+                                            <th class="text-black dark__text-white align-middle">Remarks</th> 
+                                        </tr>
+                                    </thead>
+                                    <tbody id="bulk-select-body">
+                                        <tr>
+                                            <td class="align-middle white-space-nowrap">
+                                                <div class="form-check mb-0">
+                                                    <input class="form-check-input" type="checkbox" id="checkbox-1" data-bulk-select-row="data-bulk-select-row" />
                                                 </div>
+                                            </td>
+                                            <td class="align-middle">
+                                                <select name="salesStatus" id="salesStatus" class="form-control-sm form-rounded"> 
+                                                    <option value="">Yes</option>
+                                                    <option value="">No</option>
+                                                    <!-- Add more options here -->
+                                                </select>
+                                            </td>
+                                            <td class="align-middle">
+                                                <input type="text" class="form-control form-control-sm form-rounded" placeholder="Serial Number">
+                                            </td>
+                                            <td class="align-middle">
+                                                <input type="text" class="form-control form-control-sm form-rounded" placeholder="Tag Supplier" readonly>
+                                            </td>
+                                            <td class="align-middle">
+                                                <input type="text" class="form-control form-control-sm form-rounded" placeholder="Supplier Name" readonly>
+                                            </td>
+                                            <td class="align-middle">
+                                                <input type="text" class="form-control form-control-sm form-rounded" placeholder="Supplier Org. Name" readonly>
+                                            </td> 
+                                            <td class="align-middle">
+                                                <input type="text" class="form-control form-control-sm form-rounded" placeholder="Remarks">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div >
+                    </div>                  
+                </div>
+            </div>
+        </div>
+    </div>
+</div >
+
+<div class="modal fade" id="staticBackdrop-1" data-bs-keyboard="false" data-bs-backdrop="static" tabindex="-1" aria-labelledby="staticBackdropLabel-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg mt-6" role="document">
+        <div class="modal-content border-0">
+            <div class="position-absolute top-0 end-0 mt-3 me-3 z-1">
+                <button class="btn-close btn btn-sm btn-circle d-flex flex-center transition-base" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-0">
+                <div class="p-2">
+                    @* <div class="card overflow-hidden card-body card-body-scrollable" style="width: 20rem;">
+                        <div class="card-img-top"><img class="img-fluid" src="../../assets/img/generic/3.jpg" alt="Card image cap" /></div>
+                        <div class="card-body">
+                            <h5 class="card-title">Camera</h5>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Category :</li>
+                            <li class="list-group-item">Sub Category:</li>
+                            <li class="list-group-item">Name/ Model:</li>
+                            <li class="list-group-item">Buying Price:</li>
+                            <li class="list-group-item">Selling Price:</li>
+                            <li class="list-group-item">Unit Type:</li>
+                            <li class="list-group-item">Opening Quantity:</li>
+                            <li class="list-group-item">Alert Quantity:</li>
+                            <li class="list-group-item">Vat (in %):</li>
+                            <li class="list-group-item">Discount(%):</li>
+                        </ul>
+                        <div class="card-body"><a class="card-link" href="#!">Card link</a><a class="card-link" href="#!">Another link</a></div>
+                    </div> *@
+                    <div class="card">
+                        <div class="card-header bg-body-tertiary">
+                            <h5 class="mb-0" data-anchor="data-anchor">Timeline with media</h5>
+                        </div>
+                        <div class="card-body px-sm-4 px-md-8 px-lg-6 px-xxl-8">
+                            <div class="timeline-zigzag">
+                                <div class="row timeline-item timeline-item-end">
+                                    <div class="col-lg-6 timeline-item-content">
+                                        <span class="bullet"></span>
+                                        <div class="row g-0 mt-n4">
+                                            <div class="col timeline-item-text">
+                                                <h3 class="text-primary mt-4 mt-sm-0">2000</h3>
+                                                <h6 class="mt-2 mb-1 mt-sm-3">1 Ghz pentium and athlon</h6>
+                                                <p class="fs-10">AMD and intel release chips clocked at 1 GHz. Sony releases the play station 2.</p>
                                             </div>
+                                            <div class="col-sm-auto"><img class="timeline-item-media rounded" src="../../assets/img/gallery/2000.jpg" width="188" height="250" alt="" /></div>
                                         </div>
                                     </div>
-                                    <hr class="my-4" />
+                                </div>
+                                <div class="row timeline-item timeline-item-start">
+                                    <div class="col-lg-6 timeline-item-content">
+                                        <span class="bullet"></span>
+                                        <div class="row g-0 mt-n4">
+                                            <div class="col timeline-item-text">
+                                                <h3 class="text-primary mt-4 mt-sm-0">2001</h3>
+                                                <h6 class="mt-2 mb-1 mt-sm-3">Mac OS X/ windows XP</h6>
+                                                <p class="fs-10">New version of the three major operation systems are released.</p>
+                                            </div>
+                                            <div class="col-sm-auto"><img class="timeline-item-media rounded" src="../../assets/img/gallery/2001.jpg" width="188" height="250" alt="" /></div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="d-flex">
-                                <span class="fa-stack ms-n1 me-3"><i class="fas fa-circle fa-stack-2x text-200"></i><i class="fa-inverse fa-stack-1x text-primary fas fa-align-left" data-fa-transform="shrink-2"></i></span>
-                                <div class="flex-1">
-                                    <h5 class="mb-2 fs-9">Description</h5>
-                                    <p class="text-break fs-10">The illustration must match to the contrast of the theme. The illustraion must described the concept of the design. To know more about the theme visit the page. </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <h6 class="mt-5 mt-lg-0">Add To Card</h6>
-                            <ul class="nav flex-lg-column fs-10">
-                                <li class="nav-item me-2 me-lg-0"><a class="nav-link nav-link-card-details" href="#!"><span class="fas fa-user me-2"></span>Members</a></li>
-                                <li class="nav-item me-2 me-lg-0"><a class="nav-link nav-link-card-details" href="#!"><span class="fas fa-tag me-2"></span>Label</a></li>
-                                <li class="nav-item me-2 me-lg-0"><a class="nav-link nav-link-card-details" href="#!"><span class="fas fa-paperclip me-2"></span>Attachments</a></li>
-                                <li class="nav-item me-2 me-lg-0"><a class="nav-link nav-link-card-details" href="#!"><span class="fa fa-align-left me-2"></span>Description </a></li>
-                            </ul>
                         </div>
                     </div>
+                    
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+ @code {
 
- 
-
-<script src="assets/js/theme.js"></script>
-@code 
-{
-
-}
+    }
