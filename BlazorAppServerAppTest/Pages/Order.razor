@@ -140,13 +140,13 @@
         {
             if (OrderObject.OrderId == 0)
             {
-                await orderService.AddOrder(OrderObject);
+                OrderObject.OrderId = await orderService.AddOrder(OrderObject);
             }
             else
             {
                 await orderService.UpdateOrder(OrderObject);
             }
-            OrderObject = new BlazorAppServerAppTest.Models.Order(); // Clear the form after save/update
+             // Clear the form after save/update
             await LoadOrders(); // Reload orders after save/update
         }
         catch (Exception ex)
@@ -181,7 +181,7 @@
     private async void EditLoadData(BlazorAppServerAppTest.Models.Order order)
     {
 
-       // var editObj =await orderService.GetOrderById(OrderId);
+        var editObj =await orderService.GetOrderById(order.OrderId);
         OrderObject = order;
     }
 
