@@ -10,7 +10,7 @@ namespace Pms.Data.Repository
 
         public BaseHandaler(DbConnection db)
         {
-            _db = db.GetConnection();
+            _db = db.GetDbConnection();
         }
         public async Task<IEnumerable<T>> GetEntities<T>(string storedProcedureName, object parameters = null)
         {

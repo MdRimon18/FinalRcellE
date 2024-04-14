@@ -12,7 +12,7 @@ namespace Pms.Data.Repository
 
         public TaskRepository(DbConnection dbConnectionFactory)
         {
-            _dbConnection = dbConnectionFactory.GetConnection();
+            _dbConnection = dbConnectionFactory.GetDbConnection();
         }
 
         public async Task<IEnumerable<Task>> GetTask()

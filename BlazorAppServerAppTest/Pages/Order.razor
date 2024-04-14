@@ -106,6 +106,7 @@
 
 @code {
     [Inject]
+    
     OrderServiceWithSp orderService { get; set; }
     List<BlazorAppServerAppTest.Models.Order> OrderList = new List<BlazorAppServerAppTest.Models.Order>();
     BlazorAppServerAppTest.Models.Order OrderObject = new BlazorAppServerAppTest.Models.Order();
@@ -141,8 +142,8 @@
         {
             if (OrderObject.OrderId == 0)
             {
-                OrderObject.EntryDateTime = DateTimeHelper.BangladeshTime();
-                OrderObject.EntryBy = UserService.UserId;
+                OrderObject.EntryDateTime = DateTimeHelper.CurrentDateTime();
+                OrderObject.EntryBy = UserInfo.UserId;
                 OrderObject.OrderId = await orderService.AddOrder(OrderObject);
             }
             else

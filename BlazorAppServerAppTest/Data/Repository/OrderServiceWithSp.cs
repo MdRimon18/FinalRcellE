@@ -16,7 +16,7 @@ namespace Pms.Data.Repository
 
         public OrderServiceWithSp(DbConnection db)
         {
-            _db = db.GetConnection();
+            _db = db.GetDbConnection();
             _handaler = new BaseHandaler(db);
         }
         public async Task<IEnumerable<Order>> GetOrders(long? order_id,string? product_name,int? pagenumber, int? pageSize)

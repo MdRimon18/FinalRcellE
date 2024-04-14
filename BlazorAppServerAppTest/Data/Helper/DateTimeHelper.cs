@@ -27,10 +27,16 @@
             DateTime dateTime = TimeZoneInfo.ConvertTime(DateTime.Now, timeZoneInfo);
             return dateTime;
         }
-        public static DateTime BangladeshTime()
+        public static DateTime CurrentDateTime()
         {
-            var timeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById("Bangladesh Standard Time");
-            DateTime dateTime = TimeZoneInfo.ConvertTime(DateTime.Now, timeZoneInfo);
+            DateTime dateTime= DateTime.Now;
+            //here date time will be return according to Country 
+            if("Bangladesh"== "Bangladesh")
+            {
+                var timeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById("Bangladesh Standard Time");
+                dateTime = TimeZoneInfo.ConvertTime(DateTime.Now, timeZoneInfo);
+            }
+
             return dateTime;
         }
 
