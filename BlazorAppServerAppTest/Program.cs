@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Pms.Data.DbContex;
 using Pms.Data.Repository;
 using BlazorAppServerAppTest.Models;
+using Pms.Data.Repository.Inventory;
 
 var builder = WebApplication.CreateBuilder(args);
   builder.Services.AddControllersWithViews();
@@ -22,6 +23,7 @@ builder.Services.AddDbContext<practiceDbContext>
 
 
 // Add services to the container.
+builder.Services.AddControllers();
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
@@ -34,6 +36,9 @@ builder.Services.AddScoped<TaskService>();
 
 builder.Services.AddScoped<OrderService>();
 builder.Services.AddScoped<OrderServiceWithSp>();
+
+builder.Services.AddScoped<UnitService>();
+
 //builder.Services.AddSingleton<ProductRepositoyWithSp>();
 builder.Services.AddSingleton<TaskRepository>();
 var app = builder.Build();
@@ -54,5 +59,9 @@ app.UseRouting();
 
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
-
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers(); // Add this line to map controllers
+                                // Other endpoint mappings
+});
 app.Run();

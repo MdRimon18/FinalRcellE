@@ -10,13 +10,13 @@ namespace Pms.Data.Repository
 
         public BaseHandaler(DbConnection db)
         {
-            _db = db.GetConnection();
+            _db = db.GetDbConnection();
         }
-        public async Task<IEnumerable<T>> GetEntities<T>(string storedProcedureName)
+        public async Task<IEnumerable<T>> GetEntities<T>(string storedProcedureName, object parameters = null)
         {
             try
             {
-                return await _db.QueryAsync<T>(storedProcedureName, commandType: CommandType.StoredProcedure);
+                return await _db.QueryAsync<T>(storedProcedureName, parameters, commandType: CommandType.StoredProcedure);
             }
             catch (Exception ex)
             {
@@ -25,24 +25,7 @@ namespace Pms.Data.Repository
                 return Enumerable.Empty<T>();
             }
         }
-        public async Task<T> GetEntityById<T>(long id, string storedProcedureName)
-        {
-            try
-            {
-                return await _db.QueryFirstOrDefaultAsync<T>(
-                    storedProcedureName,
-                    new { OrderId = id },
-                    commandType: CommandType.StoredProcedure
-                ) ?? throw new InvalidOperationException($"{typeof(T).Name} with ID {id} not found.");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An error occurred while fetching {typeof(T).Name} with ID {id}: {ex.Message}");
-                // Return a default instance of T or null, depending on your requirement
-                return default;
-            }
-        }
-
+        
         public async Task<long> AddEntity<T>(T entity, string outputParameterName, string storedProcedureName)
         {
             try
@@ -80,7 +63,7 @@ namespace Pms.Data.Repository
                     parameters.Add($"@{property.Name}", property.GetValue(entity));
                 }
                 parameters.Add("@success", dbType: DbType.Int32, direction: ParameterDirection.Output);
-               
+                
                 await _db.ExecuteAsync(storedProcedureName, parameters,
                               commandType: CommandType.StoredProcedure);
 

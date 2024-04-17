@@ -105,17 +105,17 @@
     // This method will be called when the component is initialized
     protected override async Task OnInitializedAsync()
     {
-        OrderList = await orderService.GetOrders();
+      //  OrderList = await orderService.GetOrders();
     }
     private async void AddOrder()
     {
         orderService.AddOrder(OrderObject);
-        OrderList = await orderService.GetOrders();
+       // OrderList = await orderService.GetOrders();
 
     }
     private async void GetAll()
     {
-        OrderList = await orderService.GetOrders();
+      //  OrderList = await orderService.GetOrders();
 
     }
     private async Task GetById(long OrderId)

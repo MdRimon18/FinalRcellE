@@ -14,7 +14,7 @@ public class ProductRepository
 
     public ProductRepository(DbConnection dbConnectionFactory)
     {
-        _dbConnection = dbConnectionFactory.GetConnection();
+        _dbConnection = dbConnectionFactory.GetDbConnection();
     }
 
     public async Task<IEnumerable<Products>> GetProducts()

@@ -13,6 +13,8 @@ public partial class Order
     [Key]//primary key
     public long OrderId { get; set; }  //bigint
 
+    public Guid OrderKey { get; set; }
+
     [Required]
     [StringLength(100)]
     public string ProductName { get; set; }//string datatype //nvarchar
@@ -21,6 +23,8 @@ public partial class Order
 
     [Column(TypeName = "datetime")]
     public DateTime? OrderDate { get; set; }
-
     public bool? IsProductRecieve { get; set; }
+    public DateTime EntryDateTime { get; set; }
+    public long EntryBy { get; set; }
+    public string Status { get; set; }
 }

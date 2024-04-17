@@ -11,7 +11,7 @@ public class OrderServiceWithSpV2
 
     public OrderServiceWithSpV2(DbConnection db)
     {
-        _db = db.GetConnection();
+        _db = db.GetDbConnection();
          
     }
     public async Task<IEnumerable<Order>> GetOrders()

@@ -1,8 +1,11 @@
 ﻿
+using BlazorAppServerAppTest.Models;
 using Dapper;
+using Newtonsoft.Json.Linq;
 using Pms.Data.DbContex;
 using Pms.Pages;
 using System.Data;
+using System.Drawing.Printing;
 using Order = BlazorAppServerAppTest.Models.Order;
 namespace Pms.Data.Repository
 {
@@ -13,16 +16,18 @@ namespace Pms.Data.Repository
 
         public OrderServiceWithSp(DbConnection db)
         {
-            _db = db.GetConnection();
+            _db = db.GetDbConnection();
             _handaler = new BaseHandaler(db);
         }
-        public async Task<IEnumerable<Order>> GetOrders()
+        public async Task<IEnumerable<Order>> GetOrders(long? order_id,string? product_name,int? pagenumber, int? pageSize)
         {
-            return await _handaler.GetEntities<Order>("sp_order_getAll");
+            return await _handaler.GetEntities<Order>("sp_order_getAll", new { @OrderId = order_id, @ProductName = product_name, @page= pagenumber, @page_size= pageSize});
         }
-        public async Task<Order> GetOrderById(long id)
+        public async Task<Order> GetOrderById(long order_id)
+
         {
-            return await _handaler.GetEntityById<Order>(id, "sp_order_get_by_id");
+          var order= await (GetOrders(order_id, null, 1, 10));
+          return order.FirstOrDefault();
         }
         public async Task<long> AddOrder(Order order)
         {
@@ -36,7 +41,15 @@ namespace Pms.Data.Repository
         }
         public async Task<bool> DeleteOrder(long OrderId)
         {
-            bool isDeleted = await _handaler.DeleteEntityById(OrderId, "@order_id", "sp_delete_Order");
+            var order = await (GetOrders(OrderId, null, 1, 10));
+            var deleteObj =   order.FirstOrDefault();
+            bool isDeleted = false;
+            if (deleteObj != null)
+            {
+                deleteObj.Status = "Deleted";
+                isDeleted = await _handaler.UpdateEntity<Order>(deleteObj, "sp_order_update");
+            }
+          
             return isDeleted;
         }
         
