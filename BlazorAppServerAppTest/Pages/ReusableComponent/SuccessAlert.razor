@@ -1,0 +1,24 @@
+﻿<div class="alert alert-success border-0 d-flex align-items-center" role="alert" style="@alertStyle">
+    <div class="bg-success me-3 icon-item"><span class="fas fa-check-circle text-white fs-6"></span></div>
+    <p class="mb-0 flex-1">@Message</p>
+    @if (ShowCloseButton)
+    {
+        <button class="btn-close" @onclick="OnClose" type="button" aria-label="Close"></button>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public string Message { get; set; }
+
+    [Parameter]
+    public bool Show { get; set; }
+
+    [Parameter]
+    public bool ShowCloseButton { get; set; } = true;
+
+    private string alertStyle => Show ? "" : "display: none;";
+
+    [Parameter]
+    public EventCallback OnClose { get; set; }
+}
