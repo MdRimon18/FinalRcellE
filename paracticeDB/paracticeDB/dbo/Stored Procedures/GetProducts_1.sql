@@ -1,0 +1,5 @@
+﻿ CREATE PROCEDURE GetProducts
+AS
+BEGIN
+    SELECT * FROM Products;
+END;
