@@ -1,7 +1,6 @@
 ﻿CREATE TABLE [stt].[Currencies] (
     [CurrencyId]        BIGINT           IDENTITY (1, 1) NOT NULL,
     [CurrencyKey]       UNIQUEIDENTIFIER NULL,
-    [BranchId]          BIGINT           NOT NULL,
     [LanguageId]        INT              NOT NULL,
     [CurrencyName]      NVARCHAR (100)   NOT NULL,
     [CurrencyCode]      VARCHAR (10)     NULL,
@@ -17,4 +16,6 @@
     [Status]            VARCHAR (10)     NULL,
     CONSTRAINT [PK_Currencies] PRIMARY KEY CLUSTERED ([CurrencyId] ASC)
 );
+
+
 

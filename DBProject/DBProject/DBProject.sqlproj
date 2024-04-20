@@ -56,5 +56,95 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="dbo" />
+    <Folder Include="dbo\Functions" />
+    <Folder Include="dbo\Stored Procedures" />
+    <Folder Include="dbo\Tables" />
+    <Folder Include="Import Schema Logs" />
+    <Folder Include="invnt" />
+    <Folder Include="invnt\Tables" />
+    <Folder Include="obj" />
+    <Folder Include="obj\Debug" />
+    <Folder Include="Security" />
+    <Folder Include="stt" />
+    <Folder Include="stt\Tables" />
+    <Folder Include="tst" />
+    <Folder Include="tst\Stored Procedures" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Functions\MostSuccessNdFaildCampaing.sql" />
+    <Build Include="dbo\Functions\Party_seats_won_function.sql" />
+    <Build Include="dbo\Stored Procedures\AddProduct.sql" />
+    <Build Include="dbo\Stored Procedures\CreateProduct.sql" />
+    <Build Include="dbo\Stored Procedures\Currency_Get_SP.sql" />
+    <Build Include="dbo\Stored Procedures\Currency_Insert_SP.sql" />
+    <Build Include="dbo\Stored Procedures\Currency_Update_SP.sql" />
+    <Build Include="dbo\Stored Procedures\DeleteProduct.sql" />
+    <Build Include="dbo\Stored Procedures\GetProduct.sql" />
+    <Build Include="dbo\Stored Procedures\GetProducts.sql" />
+    <Build Include="dbo\Stored Procedures\Language_Get_SP.sql" />
+    <Build Include="dbo\Stored Procedures\Language_Insert_SP.sql" />
+    <Build Include="dbo\Stored Procedures\Language_Update_SP.sql" />
+    <Build Include="dbo\Stored Procedures\Meeting_Minutes _Details_Save_SP.sql" />
+    <Build Include="dbo\Stored Procedures\pr_tableDetails.sql" />
+    <Build Include="dbo\Stored Procedures\sp_delete_Order.sql" />
+    <Build Include="dbo\Stored Procedures\sp_insert_order.sql" />
+    <Build Include="dbo\Stored Procedures\sp_order_getAll.sql" />
+    <Build Include="dbo\Stored Procedures\sp_order_update.sql" />
+    <Build Include="dbo\Stored Procedures\Status_Setting_Get_SP.sql" />
+    <Build Include="dbo\Stored Procedures\Status_Setting_Insert_SP.sql" />
+    <Build Include="dbo\Stored Procedures\Status_Settings_Update_SP.sql" />
+    <Build Include="dbo\Stored Procedures\Unit_Get_SP.sql" />
+    <Build Include="dbo\Stored Procedures\Unit_Insert_SP.sql" />
+    <Build Include="dbo\Stored Procedures\Unit_Update_SP.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateProduct.sql" />
+    <Build Include="dbo\Tables\__EFMigrationsHistory.sql" />
+    <Build Include="dbo\Tables\AspNetRoleClaims.sql" />
+    <Build Include="dbo\Tables\AspNetRoles.sql" />
+    <Build Include="dbo\Tables\AspNetUserClaims.sql" />
+    <Build Include="dbo\Tables\AspNetUserLogins.sql" />
+    <Build Include="dbo\Tables\AspNetUserRoles.sql" />
+    <Build Include="dbo\Tables\AspNetUsers.sql" />
+    <Build Include="dbo\Tables\AspNetUserTokens.sql" />
+    <Build Include="dbo\Tables\Bonus.sql" />
+    <Build Include="dbo\Tables\campaigns.sql" />
+    <Build Include="dbo\Tables\candidates.sql" />
+    <Build Include="dbo\Tables\candidates_tab.sql" />
+    <Build Include="dbo\Tables\customers.sql" />
+    <Build Include="dbo\Tables\events.sql" />
+    <Build Include="dbo\Tables\loan_data.sql" />
+    <Build Include="dbo\Tables\loan_data2.sql" />
+    <Build Include="dbo\Tables\Order.sql" />
+    <Build Include="dbo\Tables\Products.sql" />
+    <Build Include="dbo\Tables\results.sql" />
+    <Build Include="dbo\Tables\results_tab.sql" />
+    <Build Include="dbo\Tables\Students.sql" />
+    <Build Include="dbo\Tables\SupplierInfo.sql" />
+    <Build Include="dbo\Tables\Tasks.sql" />
+    <Build Include="dbo\Tables\Title.sql" />
+    <Build Include="dbo\Tables\Worker.sql" />
+    <Build Include="dbo\Tables\WorkerClone.sql" />
+    <Build Include="invnt\Tables\ProductCategories.sql" />
+    <Build Include="invnt\Tables\ProductSubCategories.sql" />
+    <Build Include="invnt\Tables\Units.sql" />
+    <Build Include="Security\ecom.sql" />
+    <Build Include="Security\invnt.sql" />
+    <Build Include="Security\stt.sql" />
+    <Build Include="Security\tst.sql" />
+    <Build Include="stt\Tables\BusinessTypes.sql" />
+    <Build Include="stt\Tables\Countries.sql" />
+    <Build Include="stt\Tables\Currencies.sql" />
+    <Build Include="stt\Tables\Language.sql" />
+    <Build Include="stt\Tables\MainDbConfig.sql" />
+    <Build Include="stt\Tables\StatusSetting.sql" />
+    <Build Include="tst\Stored Procedures\Meeting_Minutes _Details_Save_SP.sql" />
+    <Build Include="tst\Stored Procedures\Meeting_Minutes_Master_Save_SP.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Import Schema Logs\DBProject_20240420045555.log" />
+    <None Include="obj\Debug\DBProject.sqlproj.AssemblyReference.cache" />
+    <None Include="DBProject.dbmdl" />
+    <None Include="DBProject.jfm" />
+    <None Include="DBProject.sqlproj.user" />
   </ItemGroup>
 </Project>
