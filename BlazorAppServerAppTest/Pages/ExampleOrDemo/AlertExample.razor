@@ -1,18 +1,19 @@
-﻿ @page "/save_alert"
-@using System.Threading.Tasks
+﻿@page "/save_alert"
 
-@if (showAlert)
-{
-    <SuccessAlert Message="@alertMessage" Show="@showAlert" OnClose="HideAlert" />
-}
 
+<SuccessAlert Message="@alertMessage" Show="@showAlert" />
+  
+<DangerAlert Message="@alertMessage" Show="@showAlert" OnClose="HideAlert" />
+ 
+ 
+ 
 
 <button @onclick="SaveData">Save</button>
 
 @code {
     private bool showAlert = false;
     private string alertMessage = "";
-
+    
     private async Task SaveData()
     {
         // Your logic to save data here
@@ -22,8 +23,8 @@
         StateHasChanged(); // Notify Blazor to re-render the component
 
         // Hide the alert after 0.5 seconds
-        await Task.Delay(1000);
-        showAlert = false;
+        //await Task.Delay(500);
+        //showAlert = false;
     }
 
     private Task HideAlert()
