@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[Bonus] (
+    [WORKER_REF_ID] INT      NULL,
+    [BONUS_AMOUNT]  INT      NULL,
+    [BONUS_DATE]    DATETIME NULL,
+    [WORKER_ID]     INT      NULL,
+    FOREIGN KEY ([WORKER_ID]) REFERENCES [dbo].[Worker] ([WORKER_ID]) ON DELETE CASCADE
+);
+
