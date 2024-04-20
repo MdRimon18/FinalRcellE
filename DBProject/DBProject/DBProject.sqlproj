@@ -134,11 +134,11 @@
     <Build Include="stt\Tables\BusinessTypes.sql" />
     <Build Include="stt\Tables\Countries.sql" />
     <Build Include="stt\Tables\Currencies.sql" />
-    <Build Include="stt\Tables\Language.sql" />
     <Build Include="stt\Tables\MainDbConfig.sql" />
     <Build Include="stt\Tables\StatusSetting.sql" />
     <Build Include="tst\Stored Procedures\Meeting_Minutes _Details_Save_SP.sql" />
     <Build Include="tst\Stored Procedures\Meeting_Minutes_Master_Save_SP.sql" />
+    <Build Include="stt\Tables\Languages.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Import Schema Logs\DBProject_20240420045555.log" />

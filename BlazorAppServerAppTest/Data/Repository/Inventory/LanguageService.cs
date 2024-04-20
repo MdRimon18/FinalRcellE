@@ -2,8 +2,9 @@
 using Microsoft.CodeAnalysis;
 using Pms.Data.DbContex;
 using Pms.Helper;
+using Pms.Models.Entity.Settings;
 using System.Data;
-using static Pms.Models.Entity.Inventory.Languages;
+ 
 
 namespace Pms.Data.Repository.Inventory
 {
@@ -25,7 +26,6 @@ namespace Pms.Data.Repository.Inventory
 
                 parameters.Add("@LanguageId", LanguageId);
                 parameters.Add("@LanguageKey", LanguageKey);
-               
                 parameters.Add("@LanguageName", LanguageName);
                 parameters.Add("@page_number", pagenumber);
                 parameters.Add("@page_size", pageSize);
@@ -55,13 +55,13 @@ namespace Pms.Data.Repository.Inventory
         }
 
 
-        public async Task<long> Save(Language language)
+        public async Task<int> Save(Language language)
         {
             try
             {
                 var parameters = new DynamicParameters();
 
-                parameters.Add("@LanguageId", dbType: DbType.Int64, direction: ParameterDirection.Output);
+                parameters.Add("@LanguageId", dbType: DbType.Int32, direction: ParameterDirection.Output);
                
                 parameters.Add("@LanguageName", language.LanguageName);
                 parameters.Add("@entryDateTime", language.EntryDateTime);
@@ -70,7 +70,7 @@ namespace Pms.Data.Repository.Inventory
 
 
 
-                return parameters.Get<long>("@LanguageId");
+                return parameters.Get<int>("@LanguageId");
             }
             catch (Exception ex)
             {
@@ -109,6 +109,7 @@ namespace Pms.Data.Repository.Inventory
             if (deleteObj != null)
             {
                 deleteObj.DeletedDate = DateTimeHelper.CurrentDateTime();
+                deleteObj.DeletedBy= UserInfo.UserId;
                 deleteObj.Status = "Deleted";
                 isDeleted = await Update(deleteObj);
             }

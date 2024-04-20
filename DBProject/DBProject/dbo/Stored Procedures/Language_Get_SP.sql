@@ -1,9 +1,8 @@
 ﻿
- create PROCEDURE [dbo].[Language_Get_SP](
+ CREATE PROCEDURE [dbo].[Language_Get_SP](
  @LanguageId int=null,
  @LanguageKey nvarchar(40)=null,
  @LanguageName nvarchar(100)=null,
- @BranchId Int=null,
  @page_number INT = 1,
  @page_size INT =10
  )

@@ -1,6 +1,6 @@
 ﻿
- Create PROCEDURE [dbo].[Language_Insert_SP](
-  @LanguageId BIGINT OUTPUT, 
+ CREATE PROCEDURE [dbo].[Language_Insert_SP](
+  @LanguageId int OUTPUT, 
   @LanguageKey uniqueidentifier=null,
 
   @LanguageName NVARCHAR(100), 
@@ -18,9 +18,9 @@
 		-- Check if @unitName already exists (case-insensitive, trimmed, and with white spaces replaced)
 		IF EXISTS (
 			SELECT 1
-			FROM [stt].[Languages]  
+			 FROM [stt].[Languages]  
 			WHERE
-			
+			Status='Active' and
 			LOWER(LTRIM(RTRIM(REPLACE([LanguageName], ' ', '')))) = LOWER(LTRIM(RTRIM(REPLACE(@LanguageName, ' ', ''))))
 		)
 		BEGIN
@@ -32,7 +32,7 @@
 			-- Insert new record
 			INSERT INTO [stt].[Languages] (
 				[LanguageKey],  
-			
+
 				[LanguageName],
 				[EntryDateTime],
 				[EntryBy],

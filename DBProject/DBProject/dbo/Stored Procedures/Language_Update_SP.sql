@@ -1,6 +1,6 @@
 ﻿
-create procedure [dbo].[Language_Update_SP](
-  @LanguageId BIGINT, 
+CREATE procedure [dbo].[Language_Update_SP](
+  @LanguageId int, 
   @LanguageKey uniqueidentifier=null,
 
   @LanguageName NVARCHAR(100), 
