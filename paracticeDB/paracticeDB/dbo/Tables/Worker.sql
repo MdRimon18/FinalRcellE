@@ -1,0 +1,10 @@
+﻿CREATE TABLE [dbo].[Worker] (
+    [WORKER_ID]    INT           NOT NULL,
+    [SALARY]       INT           NULL,
+    [JOINING_DATE] DATETIME      NULL,
+    [DEPARTMENT]   CHAR (25)     NULL,
+    [FIRST_NAME]   VARCHAR (100) NULL,
+    [LAST_NAME]    VARCHAR (100) NULL,
+    PRIMARY KEY CLUSTERED ([WORKER_ID] ASC)
+);
+
