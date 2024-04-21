@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\GitHubrCellEProject\\BlazorAppServerAppTest\\Pms.csproj": {}
+    "F:\\project2\\FinalRcellE\\BlazorAppServerAppTest\\Pms.csproj": {}
   },
   "projects": {
-    "E:\\GitHubrCellEProject\\BlazorAppServerAppTest\\Pms.csproj": {
+    "F:\\project2\\FinalRcellE\\BlazorAppServerAppTest\\Pms.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\GitHubrCellEProject\\BlazorAppServerAppTest\\Pms.csproj",
+        "projectUniqueName": "F:\\project2\\FinalRcellE\\BlazorAppServerAppTest\\Pms.csproj",
         "projectName": "Pms",
-        "projectPath": "E:\\GitHubrCellEProject\\BlazorAppServerAppTest\\Pms.csproj",
-        "packagesPath": "C:\\Users\\atier\\.nuget\\packages\\",
-        "outputPath": "E:\\GitHubrCellEProject\\BlazorAppServerAppTest\\obj\\",
+        "projectPath": "F:\\project2\\FinalRcellE\\BlazorAppServerAppTest\\Pms.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "F:\\project2\\FinalRcellE\\BlazorAppServerAppTest\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\atier\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -38,11 +34,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -66,6 +57,10 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[7.0.9, )"
+            },
+            "QRCoder": {
+              "target": "Package",
+              "version": "[1.4.3, )"
             }
           },
           "imports": [
@@ -87,7 +82,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

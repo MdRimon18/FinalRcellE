@@ -26,12 +26,40 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkVGFzay5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/GitHubrCellEProject/BlazorAppServerAppTest/Pages/Authentication/Associatons.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aGVudGljYXRpb25cQXNzb2NpYXRvbnMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/GitHubrCellEProject/BlazorAppServerAppTest/Pages/Authentication/Calendar.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aGVudGljYXRpb25cQ2FsZW5kYXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/GitHubrCellEProject/BlazorAppServerAppTest/Pages/Authentication/ChartJs.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aGVudGljYXRpb25cQ2hhcnRKcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/GitHubrCellEProject/BlazorAppServerAppTest/Pages/Authentication/Confirm_mail.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aGVudGljYXRpb25cQ29uZmlybV9tYWlsLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/GitHubrCellEProject/BlazorAppServerAppTest/Pages/Authentication/ErrorOne.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aGVudGljYXRpb25cRXJyb3JPbmUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/GitHubrCellEProject/BlazorAppServerAppTest/Pages/Authentication/ErrorTwo.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aGVudGljYXRpb25cRXJyb3JUd28ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/GitHubrCellEProject/BlazorAppServerAppTest/Pages/Authentication/ForgotPassword.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aGVudGljYXRpb25cRm9yZ290UGFzc3dvcmQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/GitHubrCellEProject/BlazorAppServerAppTest/Pages/Authentication/InvitePeople.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aGVudGljYXRpb25cSW52aXRlUGVvcGxlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/GitHubrCellEProject/BlazorAppServerAppTest/Pages/Authentication/LandingPage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aGVudGljYXRpb25cTGFuZGluZ1BhZ2UucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/GitHubrCellEProject/BlazorAppServerAppTest/Pages/Authentication/LockScreen.razor]
@@ -46,6 +74,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aGVudGljYXRpb25cTG9nb3V0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/GitHubrCellEProject/BlazorAppServerAppTest/Pages/Authentication/PrivacyPolicy.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aGVudGljYXRpb25cUHJpdmFjeVBvbGljeS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/GitHubrCellEProject/BlazorAppServerAppTest/Pages/Authentication/Register.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aGVudGljYXRpb25cUmVnaXN0ZXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
@@ -54,8 +86,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aGVudGljYXRpb25cUmVzZXRQYXNzd29yZC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/GitHubrCellEProject/BlazorAppServerAppTest/Pages/Authentication/Starter.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aGVudGljYXRpb25cU3RhcnRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/GitHubrCellEProject/BlazorAppServerAppTest/Pages/BonousList.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQm9ub3VzTGlzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/GitHubrCellEProject/BlazorAppServerAppTest/Pages/BSQ/StockInfo.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQlNRXFN0b2NrSW5mby5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/GitHubrCellEProject/BlazorAppServerAppTest/Pages/CallDDLExmpl.razor]
@@ -142,6 +182,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRcRXZlbnRMaXN0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/GitHubrCellEProject/BlazorAppServerAppTest/Pages/ExampleOrDemo/AlertExample.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXhhbXBsZU9yRGVtb1xBbGVydEV4YW1wbGUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/GitHubrCellEProject/BlazorAppServerAppTest/Pages/Faq/FaQ.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmFxXEZhUS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -210,24 +254,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW52ZW50b3J5XFByaWNpbmdEZWZhdWx0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/GitHubrCellEProject/BlazorAppServerAppTest/Pages/Inventory/ProductCategory.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW52ZW50b3J5XFByb2R1Y3RDYXRlZ29yeS5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/GitHubrCellEProject/BlazorAppServerAppTest/Pages/Inventory/ProductCategoryDisplay.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW52ZW50b3J5XFByb2R1Y3RDYXRlZ29yeURpc3BsYXkucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/GitHubrCellEProject/BlazorAppServerAppTest/Pages/Inventory/ProductCategoryInfo.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW52ZW50b3J5XFByb2R1Y3RDYXRlZ29yeUluZm8ucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
 [E:/GitHubrCellEProject/BlazorAppServerAppTest/Pages/Inventory/ProductEntry.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW52ZW50b3J5XFByb2R1Y3RFbnRyeS5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/GitHubrCellEProject/BlazorAppServerAppTest/Pages/Inventory/ProductInfo.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW52ZW50b3J5XFByb2R1Y3RJbmZvLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/GitHubrCellEProject/BlazorAppServerAppTest/Pages/Inventory/ProfileAccount.razor]
@@ -246,6 +274,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW52ZW50b3J5XFRyYWluZXJQcm9maWxlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/GitHubrCellEProject/BlazorAppServerAppTest/Pages/Inventory/Unit.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW52ZW50b3J5XFVuaXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/GitHubrCellEProject/BlazorAppServerAppTest/Pages/Login.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW4ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
@@ -262,8 +294,40 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGVyc2lvbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/GitHubrCellEProject/BlazorAppServerAppTest/Pages/Products/ProductCategory.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdHNcUHJvZHVjdENhdGVnb3J5LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/GitHubrCellEProject/BlazorAppServerAppTest/Pages/Products/ProductCategoryDisplay.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdHNcUHJvZHVjdENhdGVnb3J5RGlzcGxheS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/GitHubrCellEProject/BlazorAppServerAppTest/Pages/Products/ProductCategoryInfo.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdHNcUHJvZHVjdENhdGVnb3J5SW5mby5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/GitHubrCellEProject/BlazorAppServerAppTest/Pages/Products/ProductEntry.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdHNcUHJvZHVjdEVudHJ5LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/GitHubrCellEProject/BlazorAppServerAppTest/Pages/Products/ProductInfo.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdHNcUHJvZHVjdEluZm8ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/GitHubrCellEProject/BlazorAppServerAppTest/Pages/ReusableComponent/DangerAlert.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmV1c2FibGVDb21wb25lbnRcRGFuZ2VyQWxlcnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/GitHubrCellEProject/BlazorAppServerAppTest/Pages/ReusableComponent/SuccessAlert.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmV1c2FibGVDb21wb25lbnRcU3VjY2Vzc0FsZXJ0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/GitHubrCellEProject/BlazorAppServerAppTest/Pages/SearchExample.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2VhcmNoRXhhbXBsZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/GitHubrCellEProject/BlazorAppServerAppTest/Pages/Settings/Language.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2V0dGluZ3NcTGFuZ3VhZ2UucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/GitHubrCellEProject/BlazorAppServerAppTest/Pages/Tables.razor]
