@@ -75,7 +75,7 @@ namespace Pms.Data.Repository
 
                 await _db.ExecuteAsync("BillingPlan_InsertOrUpdate_SP", parameters, commandType: CommandType.StoredProcedure);
 
-
+                 
 
                 return parameters.Get<long>("@BillingPlanId");
             }
