@@ -39,7 +39,7 @@ builder.Services.AddScoped<OrderServiceWithSp>();
 
 builder.Services.AddScoped<UnitService>();
 builder.Services.AddScoped<LanguageService>();
-
+builder.Services.AddScoped<BillingPlanService>();
 //builder.Services.AddSingleton<ProductRepositoyWithSp>();
 builder.Services.AddSingleton<TaskRepository>();
 var app = builder.Build();
