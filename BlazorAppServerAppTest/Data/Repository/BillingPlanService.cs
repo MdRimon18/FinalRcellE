@@ -30,7 +30,7 @@ namespace Pms.Data.Repository
                 parameters.Add("@PageNumber", PageNumber);
                 parameters.Add("@PageSize", PageSize);
 
-                return await _db.QueryAsync<Models.Entity.Settings.BillingPlan>("BillingPlan_Get_SP", parameters, commandType: CommandType.StoredProcedure);
+                return await _db.QueryAsync<BillingPlan>("BillingPlan_Get_SP", parameters, commandType: CommandType.StoredProcedure);
 
             }
             catch (Exception ex)
@@ -61,7 +61,7 @@ namespace Pms.Data.Repository
             {
                 var parameters = new DynamicParameters();
 
-                parameters.Add("@BillingPlanId", billingPlan.BillingPlanId, dbType: DbType.Int64, direction: ParameterDirection.Output);
+                parameters.Add("@BillingPlanId", billingPlan.BillingPlanId);
                 parameters.Add("@BillingPlanKey", billingPlan.BillingPlanKey);
                 parameters.Add("@LanguageId", billingPlan.LanguageId);
                 parameters.Add("@BillingPlanName", billingPlan.BillingPlanName);
@@ -72,12 +72,10 @@ namespace Pms.Data.Repository
                 parameters.Add("@DeletedDate", billingPlan.DeletedDate);
                 parameters.Add("@DeletedBy", billingPlan.DeletedBy);
                 parameters.Add("@Status", billingPlan.Status);
-
+                parameters.Add("@SuccessOrFailId", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 await _db.ExecuteAsync("BillingPlan_InsertOrUpdate_SP", parameters, commandType: CommandType.StoredProcedure);
-
-                 
-
-                return parameters.Get<long>("@BillingPlanId");
+ 
+                return   (long)parameters.Get<int>("@SuccessOrFailId");
             }
             catch (Exception ex)
             {
@@ -87,10 +85,10 @@ namespace Pms.Data.Repository
             }
         }
  
-        public async Task<bool> Delete(long UnitId)
+        public async Task<bool> Delete(long BillingPlanId)
         {
-            var unit = await (Get(UnitId, null, null, null, 1, 1));
-            var deleteObj = unit.FirstOrDefault();
+            var billingPlan = await (Get(BillingPlanId, null, null, null, 1, 1));
+            var deleteObj = billingPlan.FirstOrDefault();
             long DeletedSatatus = 0;
             if (deleteObj != null)
             {
