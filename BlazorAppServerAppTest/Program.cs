@@ -47,6 +47,7 @@ builder.Services.AddScoped<StatusSettingService>();
 builder.Services.AddScoped<CurrencyService>();
 
 
+builder.Services.AddScoped<BillingPlanService>();
 //builder.Services.AddSingleton<ProductRepositoyWithSp>();
 builder.Services.AddSingleton<TaskRepository>();
 var app = builder.Build();

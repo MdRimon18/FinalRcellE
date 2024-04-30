@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "G:\\MyBlazor\\BlazorAppServerAppTest\\",
   "Documents": [
     {
+<<<<<<< HEAD
+      "AbsoluteMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|e:\\githubrcelleproject\\blazorappserverapptest\\shared\\sidenavbar.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|solutionrelative:blazorappserverapptest\\shared\\sidenavbar.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+=======
       "AbsoluteMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|g:\\myblazor\\blazorappserverapptest\\blazorappserverapptest\\data\\repository\\orderservicewithsp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|solutionrelative:blazorappserverapptest\\data\\repository\\orderservicewithsp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -196,6 +200,7 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|G:\\mythme\\public\\app\\e-commerce\\orders\\order-list.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+>>>>>>> 4ca81143a4f8924b20f1a53ca4619cdadb5b819a
     }
   ],
   "DocumentGroupContainers": [
@@ -210,6 +215,17 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+<<<<<<< HEAD
+              "Title": "SideNavBar.razor",
+              "DocumentMoniker": "E:\\GitHubrCellEProject\\BlazorAppServerAppTest\\Shared\\SideNavBar.razor",
+              "RelativeDocumentMoniker": "BlazorAppServerAppTest\\Shared\\SideNavBar.razor",
+              "ToolTip": "E:\\GitHubrCellEProject\\BlazorAppServerAppTest\\Shared\\SideNavBar.razor",
+              "RelativeToolTip": "BlazorAppServerAppTest\\Shared\\SideNavBar.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-02T04:56:17.065Z",
+              "EditorCaption": ""
+=======
               "Title": "OrderServiceWithSp.cs",
               "DocumentMoniker": "G:\\MyBlazor\\BlazorAppServerAppTest\\BlazorAppServerAppTest\\Data\\Repository\\OrderServiceWithSp.cs",
               "RelativeDocumentMoniker": "BlazorAppServerAppTest\\Data\\Repository\\OrderServiceWithSp.cs",
@@ -831,6 +847,7 @@
               "ViewState": "AQIAAOkLAAAAAAAAAAAAAPILAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
               "WhenOpened": "2024-03-14T15:13:21.686Z"
+>>>>>>> 4ca81143a4f8924b20f1a53ca4619cdadb5b819a
             }
           ]
         }
