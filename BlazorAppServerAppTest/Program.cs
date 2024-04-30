@@ -40,6 +40,8 @@ builder.Services.AddScoped<OrderServiceWithSp>();
 builder.Services.AddScoped<CountryServiceV2>();
 builder.Services.AddScoped<ShippingByService>();
 builder.Services.AddScoped<UnitService>();
+builder.Services.AddScoped<BusinessTypesService>();
+
 builder.Services.AddScoped<LanguageService>();
 builder.Services.AddScoped<ProductCategoryService>();
 builder.Services.AddScoped<AccHeadService>();
