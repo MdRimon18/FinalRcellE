@@ -109,6 +109,7 @@ namespace Pms.Data.Repository.Inventory
             bool isDeleted = false;
             if (deleteObj != null)
             {
+                deleteObj.DeletedBy = UserInfo.UserId;
                 deleteObj.DeletedDate = DateTimeHelper.CurrentDateTime();
                 deleteObj.Status = "Deleted";
                 isDeleted = await Update(deleteObj);
