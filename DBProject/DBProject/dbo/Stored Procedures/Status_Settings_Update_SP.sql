@@ -1,14 +1,14 @@
 ﻿
  
-create procedure [dbo].[Status_Settings_Update_SP](
+CREATE procedure [dbo].[Status_Settings_Update_SP](
     @StatusSettingId bigint,
 	@StatusSettingKey uniqueidentifier=NULL,
 	@BranchId bigint,
 	@StatusSettingName nvarchar(100),
 	@PageName nvarchar(100),
 	@Position int=NULL,
-	@EntryDateTime datetime,
-	@EntryBy bigint,
+	@EntryDateTime datetime=null,
+	@EntryBy bigint=null,
 	@LastModifyDate datetime =NULL,
 	@LastModifyBy bigint =NULL,
 	@DeletedDate datetime =NULL,

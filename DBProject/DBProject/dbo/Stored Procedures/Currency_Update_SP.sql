@@ -1,17 +1,17 @@
 ﻿
  
-create procedure [dbo].[Currency_Update_SP](
+CREATE procedure [dbo].[Currency_Update_SP](
   @CurrencyId BIGINT, 
   @CurrencyKey uniqueidentifier=null,
-  @BranchId  BIGINT = NULL,
+ 
   @CurrencyName NVARCHAR(100),
   @LanguageId int,
-  @CurrencyCode varchar=null,
-  @CurrencyShortName nvarchar,
-  @Symbol varchar,
+  @CurrencyCode varchar(10)=null,
+  @CurrencyShortName nvarchar(15),
+  @Symbol varchar(12),
   @ExchangeRate decimal,
-  @EntryDateTime DATETIME,
-  @EntryBy BIGINT,
+  @EntryDateTime DATETIME=null,
+  @EntryBy BIGINT=null,
   @LastModifyDate DATETIME = NULL,
   @LastModifyBy BIGINT = NULL,
   @DeletedDate DATETIME = NULL,
@@ -28,9 +28,9 @@ create procedure [dbo].[Currency_Update_SP](
 		UPDATE 
 		a WITH(ROWLOCK) 
 		SET 
-		  [BranchId] = COALESCE(@branchId, [BranchId]),
+		 
           [CurrencyName] = COALESCE(@CurrencyName, [CurrencyName]),
-		  [BranchId] = COALESCE(@branchId, [BranchId]),
+		 
 		  [LanguageId] = COALESCE(@LanguageId, [LanguageId]),
 		  [CurrencyCode ] = COALESCE(@CurrencyCode , [CurrencyCode]),
 		  [CurrencyShortName] = COALESCE(@CurrencyShortName, [CurrencyShortName]),
@@ -42,7 +42,7 @@ create procedure [dbo].[Currency_Update_SP](
           [DeletedBy] = COALESCE(@deletedBy, [DeletedBy]),
           [Status] = COALESCE(@status, [Status])
 		 FROM 
-		  [stt].[CurrencyId] a WITH(ROWLOCK) 
+		  [stt].[Currencies] a WITH(ROWLOCK) 
 		  WHERE 
 		  a.CurrencyId = @CurrencyId 
 
@@ -53,5 +53,5 @@ create procedure [dbo].[Currency_Update_SP](
      END CATCH
   END
 
- --select *   FROM [stt].[Units]
+ --select *   FROM [stt].[Currencies]
 

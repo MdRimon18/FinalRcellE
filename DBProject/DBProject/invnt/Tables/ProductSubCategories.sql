@@ -4,8 +4,8 @@
     [BranchId]       BIGINT           NOT NULL,
     [ProdCtgId]      BIGINT           NOT NULL,
     [ProdSubCtgName] NVARCHAR (100)   NOT NULL,
-    [EntryDateTime]  DATETIME         NOT NULL,
-    [EntryBy]        BIGINT           NOT NULL,
+    [EntryDateTime]  DATETIME         NULL,
+    [EntryBy]        BIGINT           NULL,
     [LastModifyDate] DATETIME         NULL,
     [LastModifyBy]   BIGINT           NULL,
     [DeletedDate]    DATETIME         NULL,
@@ -13,4 +13,6 @@
     [Status]         VARCHAR (10)     NULL,
     CONSTRAINT [PK_ProductSubCategories] PRIMARY KEY CLUSTERED ([ProdSubCtgId] ASC)
 );
+
+
 

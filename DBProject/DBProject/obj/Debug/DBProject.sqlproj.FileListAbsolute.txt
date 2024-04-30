@@ -1,0 +1,10 @@
+F:\project2\FinalRcellE\DBProject\DBProject\bin\Debug\DBProject.dacpac
+F:\project2\FinalRcellE\DBProject\DBProject\obj\Debug\DBProject.sqlproj.AssemblyReference.cache
+F:\project2\FinalRcellE\DBProject\DBProject\obj\Debug\Model.xml
+F:\project2\FinalRcellE\DBProject\DBProject\obj\Debug\refactor.xml
+F:\project2\FinalRcellE\DBProject\DBProject\obj\Debug\postdeploy.sql
+F:\project2\FinalRcellE\DBProject\DBProject\obj\Debug\predeploy.sql
+F:\project2\FinalRcellE\DBProject\DBProject\obj\Debug\DBProject.dll
+F:\project2\FinalRcellE\DBProject\DBProject\obj\Debug\DBProject.pdb
+F:\project2\FinalRcellE\DBProject\DBProject\bin\Debug\DBProject.dll
+F:\project2\FinalRcellE\DBProject\DBProject\bin\Debug\DBProject.pdb

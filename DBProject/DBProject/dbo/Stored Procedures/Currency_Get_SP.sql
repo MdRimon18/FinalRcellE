@@ -1,12 +1,12 @@
 ﻿
- create PROCEDURE [dbo].[Currency_Get_SP](
+ CREATE PROCEDURE [dbo].[Currency_Get_SP](
  @CurrencyId bigint=null,
  @CurrencyKey nvarchar(40)=null,
  @LanguageId int,
  @CurrencyName nvarchar(100)=null,
- @CurrencyCode varchar=null,
- @CurrencyShortName nvarchar,
- @Symbol varchar,
+ @CurrencyCode varchar(10)=null,
+ @CurrencyShortName nvarchar(15),
+ @Symbol varchar(12),
  @ExchangeRate decimal,
  @BranchId Int=null,
  @page_number INT = 1,

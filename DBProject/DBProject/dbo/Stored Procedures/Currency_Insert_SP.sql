@@ -1,12 +1,12 @@
 ﻿ CREATE PROCEDURE [dbo].[Currency_Insert_SP](
   @CurrencyId BIGINT OUTPUT, 
   @CurrencyKey uniqueidentifier=null,
-  @BranchId  BIGINT = NULL,
+ 
   @CurrencyName NVARCHAR(100),
   @LanguageId int,
-  @CurrencyCode varchar=null,
-  @CurrencyShortName nvarchar,
-  @Symbol varchar,
+  @CurrencyCode varchar(10)=null,
+  @CurrencyShortName nvarchar(15),
+  @Symbol varchar(12),
   @ExchangeRate decimal,
   @EntryDateTime DATETIME,
   @EntryBy BIGINT,
@@ -74,5 +74,5 @@
 		END
 
 -- Return the @unitId value
-SELECT @CurrencyId AS unitId;
+SELECT @CurrencyId AS CurrencyId;
 END;

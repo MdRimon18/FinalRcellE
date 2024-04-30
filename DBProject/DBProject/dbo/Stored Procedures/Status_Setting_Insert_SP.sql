@@ -1,5 +1,5 @@
 ﻿
- create PROCEDURE [dbo].[Status_Setting_Insert_SP](
+ CREATE PROCEDURE [dbo].[Status_Setting_Insert_SP](
     @StatusSettingId BIGINT OUTPUT,
 	@StatusSettingKey uniqueidentifier=NULL,
 	@BranchId bigint,
@@ -67,5 +67,5 @@
 		END
 
 -- Return the @unitId value
-SELECT @StatusSettingId AS unitId;
+--SELECT @StatusSettingId AS unitId;
 END;
