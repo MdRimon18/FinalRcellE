@@ -1,8 +1,9 @@
 ﻿using Dapper;
 using Pms.Data.DbContex;
 using Pms.Helper;
+using Pms.Models.Entity.Settings;
 using System.Data;
-using static Pms.Models.Entity.Inventory.Currencies;
+
 
 namespace Pms.Data.Repository.Inventory
 {
@@ -16,7 +17,7 @@ namespace Pms.Data.Repository.Inventory
             _db = db.GetDbConnection();
 
         }
-        public async Task<IEnumerable<Currency>> Get(long? CurrencyId, string? CurrencyKey, long? BranchId,int? LanguageId, string? CurrencyName, string? CurrencyCode, string? CurrencyShortName, string? Symbol, decimal? ExchangeRate, int? pagenumber, int? pageSize)
+        public async Task<IEnumerable<Currency>> Get(long? CurrencyId, string? CurrencyKey, int? LanguageId, string? CurrencyName, string? CurrencyCode, string? CurrencyShortName, string? Symbol, decimal? ExchangeRate, int? pagenumber, int? pageSize)
         {
             try
             {
@@ -24,7 +25,7 @@ namespace Pms.Data.Repository.Inventory
 
                 parameters.Add("@CurrencyId", CurrencyId);
                 parameters.Add("@CurrencyKey", CurrencyKey);
-                parameters.Add("@BranchId", BranchId);
+                
                 parameters.Add("@LanguageId", LanguageId);
                 parameters.Add("@CurrencyName", CurrencyName);
                 parameters.Add("@CurrencyCode", CurrencyCode);
@@ -47,14 +48,14 @@ namespace Pms.Data.Repository.Inventory
         public async Task<Currency> GetById(long CurrencyId)
 
         {
-            var Currencies = await (Get(CurrencyId, null, null, null, null, null, null, null, null, 1, 1));
+            var Currencies = await (Get(CurrencyId, null, null, null, null, null, null, null, 1, 1));
             return Currencies.FirstOrDefault();
         }
 
         public async Task<Currency> GetByKey(string CurrencyKey)
 
         {
-            var Currencies = await (Get(null, CurrencyKey, null, null, null, null, null, null, null, 1, 1));
+            var Currencies = await (Get(null, CurrencyKey, null, null, null, null, null, null, 1, 1));
             return Currencies.FirstOrDefault();
         }
 
@@ -66,7 +67,7 @@ namespace Pms.Data.Repository.Inventory
                 var parameters = new DynamicParameters();
 
                 parameters.Add("@CurrencyId", dbType: DbType.Int64, direction: ParameterDirection.Output);
-                parameters.Add("@branchId", currency.BranchId);
+              
                 parameters.Add("@LanguageId", currency.LanguageId);
                 parameters.Add("@CurrencyName", currency.CurrencyName);
                 parameters.Add("@CurrencyCode", currency.CurrencyCode);
@@ -94,7 +95,7 @@ namespace Pms.Data.Repository.Inventory
         {
             var parameters = new DynamicParameters();
             parameters.Add("@CurrencyId", currency.CurrencyId);
-            parameters.Add("@branchId", currency.BranchId);
+           
             parameters.Add("@LanguageId", currency.LanguageId);
             parameters.Add("@CurrencyName", currency.CurrencyName);
             parameters.Add("@CurrencyCode", currency.CurrencyCode);
@@ -117,7 +118,7 @@ namespace Pms.Data.Repository.Inventory
 
         public async Task<bool> Delete(long CurrencyId)
         {
-            var currency = await (Get(CurrencyId, null, null, null, null, null, null, null, null, 1, 1));
+            var currency = await (Get(CurrencyId, null, null, null, null, null, null, null, 1, 1));
             var deleteObj = currency.FirstOrDefault();
             bool isDeleted = false;
             if (deleteObj != null)

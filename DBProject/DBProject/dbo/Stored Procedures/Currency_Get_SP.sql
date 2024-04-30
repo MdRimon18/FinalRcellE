@@ -22,7 +22,7 @@ AS
 
       SELECT a.[CurrencyId]
       ,a.[CurrencyKey]
-      ,a.[BranchId]
+     
       ,a.[LanguageId]
       ,a.[CurrencyName]
       ,a.[CurrencyCode]
@@ -40,7 +40,7 @@ AS
       FROM   [stt].[Currencies] a
 	  WHERE  (@CurrencyId IS NULL OR a.CurrencyId = @CurrencyId) and
 	         (@CurrencyKey IS NULL OR a.CurrencyKey = @CurrencyKey) and
-			 (@BranchId IS NULL OR a.BranchId = @BranchId) and
+			 
 			 (@CurrencyCode IS NULL OR a.CurrencyCode = @CurrencyCode) and
 			(@CurrencyShortName IS NULL OR a.CurrencyShortName = @CurrencyShortName) and
 			(@Symbol IS NULL OR a.Symbol = @Symbol) and

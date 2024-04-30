@@ -37,8 +37,15 @@ builder.Services.AddScoped<TaskService>();
 builder.Services.AddScoped<OrderService>();
 builder.Services.AddScoped<OrderServiceWithSp>();
 
+builder.Services.AddScoped<CountryServiceV2>();
+builder.Services.AddScoped<ShippingByService>();
 builder.Services.AddScoped<UnitService>();
 builder.Services.AddScoped<LanguageService>();
+builder.Services.AddScoped<ProductCategoryService>();
+builder.Services.AddScoped<AccHeadService>();
+builder.Services.AddScoped<StatusSettingService>();
+builder.Services.AddScoped<CurrencyService>();
+
 
 //builder.Services.AddSingleton<ProductRepositoyWithSp>();
 builder.Services.AddSingleton<TaskRepository>();

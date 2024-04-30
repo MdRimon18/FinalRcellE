@@ -1,8 +1,8 @@
 ﻿using Dapper;
 using Pms.Data.DbContex;
 using Pms.Helper;
+using Pms.Models.Entity.Settings;
 using System.Data;
-using static Pms.Models.Entity.Inventory.StatusSettings;
 
 namespace Pms.Data.Repository.Inventory
 {
@@ -16,7 +16,7 @@ namespace Pms.Data.Repository.Inventory
             _db = db.GetDbConnection();
 
         }
-        public async Task<IEnumerable<StatusSetting>> Get(long? StatusSettingId, string? StatusSettingKey, long? BranchId, string? StatusSettingName, int? PageName,string? Position, int? pagenumber, int? pageSize)
+        public async Task<IEnumerable<StatusSetting>> Get(long? StatusSettingId, string? StatusSettingKey, long? BranchId, string? StatusSettingName,string? PageName,int? Position, int? pagenumber, int? pageSize)
         {
             try
             {
@@ -44,15 +44,15 @@ namespace Pms.Data.Repository.Inventory
         public async Task<StatusSetting> GetById(long StatusSettingId)
 
         {
-            var statusSettingId = await (Get(StatusSettingId, null, null, null,null,null, 1, 1));
-            return statusSettingId.FirstOrDefault();
+            var statusSetting = await (Get(StatusSettingId, null,null,null, null, null, 1, 1));
+            return statusSetting.FirstOrDefault();
         }
 
         public async Task<StatusSetting> GetByKey(string StatusSettingKey)
 
         {
-            var statusSettingKey = await (Get(null, StatusSettingKey, null, null,null,null, 1, 1));
-            return statusSettingKey.FirstOrDefault();
+            var statusSetting = await (Get(null, StatusSettingKey, null,null,null, null, 1, 1));
+            return statusSetting.FirstOrDefault();
         }
 
 
@@ -87,7 +87,7 @@ namespace Pms.Data.Repository.Inventory
         public async Task<bool> Update(StatusSetting statusSetting)
         {
             var parameters = new DynamicParameters();
-            parameters.Add("@StatusSettingId", statusSetting.StatusSettingId);
+            parameters.Add("@StatusSettingId", statusSetting.StatusSettingId    );
             parameters.Add("@branchId", statusSetting.BranchId);
             parameters.Add("@StatusSettingName", statusSetting.StatusSettingName);
             parameters.Add("@PageName", statusSetting.PageName);
@@ -108,8 +108,8 @@ namespace Pms.Data.Repository.Inventory
 
         public async Task<bool> Delete(long StatusSettingId)
         {
-            var statusSetting = await (Get(StatusSettingId, null, null, null,null,null, 1, 1));
-            var deleteObj = statusSetting.FirstOrDefault();
+            var unit = await (Get(StatusSettingId, null, null, null,null,null, 1, 1));
+            var deleteObj = unit.FirstOrDefault();
             bool isDeleted = false;
             if (deleteObj != null)
             {

@@ -1,5 +1,4 @@
-﻿
- create PROCEDURE [dbo].[Currency_Insert_SP](
+﻿ CREATE PROCEDURE [dbo].[Currency_Insert_SP](
   @CurrencyId BIGINT OUTPUT, 
   @CurrencyKey uniqueidentifier=null,
   @BranchId  BIGINT = NULL,
@@ -25,7 +24,7 @@
 			SELECT 1
 			FROM [stt].[Currencies]  
 			WHERE
-			BranchId =@branchId  and
+			
 			LOWER(LTRIM(RTRIM(REPLACE([CurrencyName], ' ', '')))) = LOWER(LTRIM(RTRIM(REPLACE(@CurrencyName, ' ', ''))))
 		)
 		BEGIN
@@ -37,7 +36,7 @@
 			-- Insert new record
 		INSERT INTO [stt].[Currencies] (	
       [CurrencyKey],
-      [BranchId],
+      
       [LanguageId],
       [CurrencyName],
       [CurrencyCode],
@@ -54,7 +53,7 @@
 	) 
 			VALUES (
 				NEWID(),  
-				@BranchId,
+			
 				@LanguageId,
 				@CurrencyName,
 				@CurrencyCode,
