@@ -218,6 +218,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW52ZW50b3J5XEFkZFVzZXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/GitHubrCellEProject/BlazorAppServerAppTest/Pages/Inventory/BusinessTypes.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW52ZW50b3J5XEJ1c2luZXNzVHlwZXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/GitHubrCellEProject/BlazorAppServerAppTest/Pages/Inventory/ChatInbox.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW52ZW50b3J5XENoYXRJbmJveC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -304,10 +308,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [E:/GitHubrCellEProject/BlazorAppServerAppTest/Pages/Products/ProductCategoryInfo.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdHNcUHJvZHVjdENhdGVnb3J5SW5mby5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/GitHubrCellEProject/BlazorAppServerAppTest/Pages/Products/ProductEntry.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdHNcUHJvZHVjdEVudHJ5LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/GitHubrCellEProject/BlazorAppServerAppTest/Pages/Products/ProductInfo.razor]

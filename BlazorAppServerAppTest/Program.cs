@@ -38,6 +38,8 @@ builder.Services.AddScoped<OrderService>();
 builder.Services.AddScoped<OrderServiceWithSp>();
 
 builder.Services.AddScoped<UnitService>();
+builder.Services.AddScoped<BusinessTypesService>();
+
 builder.Services.AddScoped<LanguageService>();
 
 //builder.Services.AddSingleton<ProductRepositoyWithSp>();

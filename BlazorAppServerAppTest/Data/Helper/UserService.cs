@@ -9,6 +9,7 @@
     public static class CompanyInfo
     {
         public static long BranchId { get; set; } = 1;
+        public static long LanguageId { get; set; } = 1;
 
 
     }
