@@ -80,7 +80,6 @@
     <Build Include="dbo\Stored Procedures\CreateProduct.sql" />
     <Build Include="dbo\Stored Procedures\Currency_Get_SP.sql" />
     <Build Include="dbo\Stored Procedures\Currency_Insert_SP.sql" />
-    <Build Include="dbo\Stored Procedures\Currency_Update_SP.sql" />
     <Build Include="dbo\Stored Procedures\DeleteProduct.sql" />
     <Build Include="dbo\Stored Procedures\GetProduct.sql" />
     <Build Include="dbo\Stored Procedures\GetProducts.sql" />
@@ -95,7 +94,6 @@
     <Build Include="dbo\Stored Procedures\sp_order_update.sql" />
     <Build Include="dbo\Stored Procedures\Status_Setting_Get_SP.sql" />
     <Build Include="dbo\Stored Procedures\Status_Setting_Insert_SP.sql" />
-    <Build Include="dbo\Stored Procedures\Status_Settings_Update_SP.sql" />
     <Build Include="dbo\Stored Procedures\Unit_Get_SP.sql" />
     <Build Include="dbo\Stored Procedures\Unit_Insert_SP.sql" />
     <Build Include="dbo\Stored Procedures\Unit_Update_SP.sql" />
@@ -157,13 +155,19 @@
     <Build Include="dbo\Stored Procedures\invoice_type_Update_SP.sql" />
     <Build Include="dbo\Stored Procedures\invoice_type_Insert_SP.sql" />
     <Build Include="dbo\Stored Procedures\invoice_type_Get_SP.sql" />
-    <Build Include="dbo\Stored Procedures\Country_Update_SP.sql" />
     <Build Include="dbo\Stored Procedures\Country_Insert_SP.sql" />
     <Build Include="dbo\Stored Procedures\Country_Get_SP.sql" />
     <Build Include="dbo\Stored Procedures\Acc_head_Update_SP.sql" />
     <Build Include="dbo\Stored Procedures\Acc_Head_Insert_SP.sql" />
     <Build Include="dbo\Stored Procedures\Acc_Head_Get_SP.sql" />
     <Build Include="Security\Acc.sql" />
+    <Build Include="stt\Tables\BillingPlans.sql" />
+    <Build Include="dbo\Stored Procedures\BillingPlan_InsertOrUpdate_SP.sql" />
+    <Build Include="dbo\Stored Procedures\BillingPlan_Get_SP.sql" />
+    <Build Include="stt\Tables\role_branch.sql" />
+    <Build Include="dbo\Stored Procedures\Status_Settings_Update_SP_1.sql" />
+    <Build Include="dbo\Stored Procedures\Currency_Update_SP_1.sql" />
+    <Build Include="dbo\Stored Procedures\Country_Update_SP_1.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Import Schema Logs\DBProject_20240420045555.log" />

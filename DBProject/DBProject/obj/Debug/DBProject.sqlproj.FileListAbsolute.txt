@@ -8,3 +8,13 @@ F:\project2\FinalRcellE\DBProject\DBProject\obj\Debug\DBProject.dll
 F:\project2\FinalRcellE\DBProject\DBProject\obj\Debug\DBProject.pdb
 F:\project2\FinalRcellE\DBProject\DBProject\bin\Debug\DBProject.dll
 F:\project2\FinalRcellE\DBProject\DBProject\bin\Debug\DBProject.pdb
+G:\MyBlazor\BlazorAppServerAppTest\DBProject\DBProject\bin\Debug\DBProject.dacpac
+G:\MyBlazor\BlazorAppServerAppTest\DBProject\DBProject\obj\Debug\DBProject.sqlproj.AssemblyReference.cache
+G:\MyBlazor\BlazorAppServerAppTest\DBProject\DBProject\obj\Debug\Model.xml
+G:\MyBlazor\BlazorAppServerAppTest\DBProject\DBProject\obj\Debug\refactor.xml
+G:\MyBlazor\BlazorAppServerAppTest\DBProject\DBProject\obj\Debug\postdeploy.sql
+G:\MyBlazor\BlazorAppServerAppTest\DBProject\DBProject\obj\Debug\predeploy.sql
+G:\MyBlazor\BlazorAppServerAppTest\DBProject\DBProject\obj\Debug\DBProject.dll
+G:\MyBlazor\BlazorAppServerAppTest\DBProject\DBProject\obj\Debug\DBProject.pdb
+G:\MyBlazor\BlazorAppServerAppTest\DBProject\DBProject\bin\Debug\DBProject.dll
+G:\MyBlazor\BlazorAppServerAppTest\DBProject\DBProject\bin\Debug\DBProject.pdb
