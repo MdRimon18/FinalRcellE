@@ -168,10 +168,25 @@
                 <div class="card-footer">
                     <div class="row align-items-center">
                         <div class="pagination d-none"></div>
-                        <div class="col"><span class="d-none d-sm-inline-block me-2 fs-10" data-list-info="data-list-info"></span></div>
+                        <div class="col"><span class="d-none d-sm-inline-block me-2 fs-10"> @TotalRecord</span></div>
                         <div class="col-auto d-flex">
-                            <button class="btn btn-sm btn-primary" type="button" data-list-pagination="prev"><span>Previous</span></button>
-                            <button class="btn btn-sm btn-primary px-4 ms-2" type="button" data-list-pagination="next"><span>Next</span></button>
+
+                            <!-- Pagination controls -->
+                            <ul class="pagination justify-content-end">
+                                <li class="page-item" disabled="@IsFirstPage">
+                                    <button class="page-link" tabindex="-1" aria-disabled="true" @onclick="GoToPreviousPage">Previous</button>
+                                </li>
+                                @for (int i = 1; i <= TotalPages; i++)
+                                {
+                                    <li class="page-item @(i == CurrentPage ? "active" : "")">
+                                        <button class="page-link" @onclick="() => GoToPage(i)">@i</button>
+                                    </li>
+                                }
+                                <li class="page-item" disabled="@IsLastPage">
+                                    <button class="page-link"   @onclick="GoToNextPage">Next</button>
+                                </li>
+                            </ul>
+                            
                         </div>
                     </div>
                 </div>
@@ -214,12 +229,18 @@
                 <div class="card-footer">
                     <div class="row align-items-center">
                         <div class="pagination d-none"></div>
-                        <div class="col"><span class="d-none d-sm-inline-block me-2 fs-10" data-list-info="data-list-info"></span></div>
+                        <div class="col"><span class="d-none d-sm-inline-block me-2 fs-10" data-list-info="data-list-info">1 of 5</span></div>
                         <div class="col-auto d-flex">
-                            <button class="btn btn-sm btn-primary" type="button" data-list-pagination="prev"><span>Previous</span></button>
-                            <button class="btn btn-sm btn-primary px-4 ms-2" type="button" data-list-pagination="next"><span>Next</span></button>
+                            <ul class="pagination justify-content-end">
+                                <li class="page-item"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a></li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                            </ul>
                         </div>
                     </div>
+                   
                 </div>
             </div>
         }
@@ -248,6 +269,14 @@
     private bool isLoading = true;
 
 
+    int PageSize = 2; // Number of items per page
+    int CurrentPage = 1; // Current page number
+    int TotalPages { get; set; } // Total number of pages
+    int TotalRecord { get; set; }
+    bool IsFirstPage => CurrentPage == 1;
+    bool IsLastPage => CurrentPage == TotalPages;
+
+
 
     protected override async Task OnInitializedAsync()
     {
@@ -259,7 +288,20 @@
     {
         try
         {
-            billingPlan_list = (await billingService.Get(null,null, null, null, 1, 10)).ToList();
+
+            billingPlan_list = (await billingService.Get(null, null, null, null, CurrentPage, PageSize)).ToList();
+            if (billingPlan_list.Count > 0)
+            {
+                TotalRecord = billingPlan_list[0].total_row;
+                TotalPages = (TotalRecord / PageSize);
+
+            }
+            else
+            {
+                TotalRecord = 0;
+                TotalPages = 0;
+            }
+
         }
         catch (Exception ex)
         {
@@ -382,5 +424,32 @@
     {
         showDangerAlert = false;
         return Task.CompletedTask;
+    }
+
+
+
+
+     void GoToPage(int pageNumber)
+    {
+        CurrentPage = pageNumber;
+         LoadLanguages();
+    }
+
+     void GoToPreviousPage()
+    {
+        if (!IsFirstPage)
+        {
+            CurrentPage--;
+             LoadLanguages();
+        }
+    }
+
+     void GoToNextPage()
+    {
+        if (!IsLastPage)
+        {
+            CurrentPage++;
+             LoadLanguages();
+        }
     }
 }
