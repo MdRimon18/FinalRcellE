@@ -172,7 +172,7 @@
                         <div class="col-auto d-flex">
 
                             <!-- Pagination controls -->
-                            <ul class="pagination justify-content-end">
+                            @* <ul class="pagination justify-content-end">
                                 <li class="page-item" disabled="@IsFirstPage">
                                     <button class="page-link" tabindex="-1" aria-disabled="true" @onclick="GoToPreviousPage">Previous</button>
                                 </li>
@@ -185,7 +185,7 @@
                                 <li class="page-item" disabled="@IsLastPage">
                                     <button class="page-link"   @onclick="GoToNextPage">Next</button>
                                 </li>
-                            </ul>
+                            </ul> *@
                             
                         </div>
                     </div>
@@ -229,15 +229,14 @@
                 <div class="card-footer">
                     <div class="row align-items-center">
                         <div class="pagination d-none"></div>
-                        <div class="col"><span class="d-none d-sm-inline-block me-2 fs-10" data-list-info="data-list-info">1 of 5</span></div>
+                        <div class="col"><span class="d-none d-sm-inline-block me-2 fs-10">@currentPage of @totalPages</span></div>
                         <div class="col-auto d-flex">
-                            <ul class="pagination justify-content-end">
-                                <li class="page-item"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a></li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                            </ul>
+                            @* <PageSizeSelectr PageSize="@PageSize" PageSizeChanged="HandlePageSizeChanged" />
+ *@
+                         <PageSizeSelection SelectedPageSize="@PageSize" SelectedPageSizeChanged="HandlePageSizeChanged" />
+
+                            <PaginationV2 TotalPages="totalPages"  CurrentPage="currentPage" OnPageChange="ChangePage" />
+                          
                         </div>
                     </div>
                    
@@ -268,13 +267,12 @@
 
     private bool isLoading = true;
 
+    private int PageSize { get; set; } =2; // Number of items per page
 
-    int PageSize = 2; // Number of items per page
-    int CurrentPage = 1; // Current page number
-    int TotalPages { get; set; } // Total number of pages
-    int TotalRecord { get; set; }
-    bool IsFirstPage => CurrentPage == 1;
-    bool IsLastPage => CurrentPage == TotalPages;
+    int totalPages { get; set; }
+    int currentPage= 1; // Example current page
+
+    private int TotalRecord { get; set; }
 
 
 
@@ -289,19 +287,19 @@
         try
         {
 
-            billingPlan_list = (await billingService.Get(null, null, null, null, CurrentPage, PageSize)).ToList();
+            billingPlan_list = (await billingService.Get(null, null, null, null, currentPage, PageSize)).ToList();
             if (billingPlan_list.Count > 0)
             {
                 TotalRecord = billingPlan_list[0].total_row;
-                TotalPages = (TotalRecord / PageSize);
-
+                totalPages = (TotalRecord / PageSize);
+                if (totalPages == 0){ totalPages = 1; }
             }
             else
             {
                 TotalRecord = 0;
-                TotalPages = 0;
+                totalPages = 0;
             }
-
+            StateHasChanged(); // Ensure UI reflects changes
         }
         catch (Exception ex)
         {
@@ -427,29 +425,18 @@
     }
 
 
+    // int currentPage = 1;
 
-
-     void GoToPage(int pageNumber)
+    private async void ChangePage(int pageNumber)
     {
-        CurrentPage = pageNumber;
-         LoadLanguages();
+        currentPage = pageNumber;
+        await  LoadLanguages();
     }
 
-     void GoToPreviousPage()
+    async Task HandlePageSizeChanged(int newSize)
     {
-        if (!IsFirstPage)
-        {
-            CurrentPage--;
-             LoadLanguages();
-        }
-    }
-
-     void GoToNextPage()
-    {
-        if (!IsLastPage)
-        {
-            CurrentPage++;
-             LoadLanguages();
-        }
+        PageSize = newSize;
+        currentPage = 1;
+        await LoadLanguages();
     }
 }
