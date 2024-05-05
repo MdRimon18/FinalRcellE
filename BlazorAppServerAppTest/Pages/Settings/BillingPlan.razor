@@ -1,7 +1,9 @@
-﻿@page "/billing_plan"
-@using Pms.Data.Repository
+﻿@using Pms.Data.Repository
+ 
 
+@page "/billing_plan"
 
+ 
 
 <!-- Right Offcanvas-->
 @* <button class="btn btn-primary mb-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Right Offcanvas</button> *@
@@ -19,9 +21,8 @@
         <div class="col-lg-12 ps-lg-2 mb-3">
             <div class="row g-0 h-100 align-items-stretch">
                 <div class="col-lg-12 mb-3">
-                    <div class="card h-100">
-
-                        <div class="card-body bg-body-tertiary pb-0">
+          
+                        <div class="pb-0">
                             <a class="mb-4 d-block d-flex align-items-center" href="#experience-form" data-bs-toggle="collapse" aria-expanded="true" aria-controls="experience-form"><span class="circle-dashed"><span class="fas fa-plus"></span></span><span class="ms-3">Add new Language</span></a>
 
                             <div class="collapse show" id="experience-form">
@@ -36,7 +37,7 @@
                                             <label class="form-label" for="unitName">Billing Plan Name</label>
                                         </div>
                                         <div class="col-9 col-sm-7 mb-3">
-                                            <InputText class="form-control form-control-sm" id="unitName" @bind-Value="@billingPlan.BillingPlanName" />
+                                            <InputText  class="form-control form-control-sm" id="unitName" @bind-Value="@billingPlan.BillingPlanName" />
                                             <ValidationMessage class="text-danger" For="@(() => billingPlan.BillingPlanName)" />
                                         </div>
                                         <div class="col-9 col-sm-7 offset-3">
@@ -56,7 +57,7 @@
                                 <div class="border-dashed-bottom my-4"></div>
                             </div>
                         </div>
-                    </div>
+                    
                 </div>
 
             </div>
@@ -71,7 +72,6 @@
         <div class="d-lg-flex justify-content-between">
             <div class="row flex-between-center gy-2 px-x1">
                 <div class="col-auto pe-0">
-
                     <h6 class="mb-0">
                         search
                     </h6>
@@ -79,8 +79,12 @@
                 <div class="col-auto">
                     <form>
                         <div class="input-group input-search-width">
-                            <input class="form-control form-control-sm shadow-none" type="search" placeholder="Search  by name" aria-label="search" />
-                            <button class="btn btn-sm btn-outline-secondary border-300 hover-border-secondary"><span class="fa fa-search fs-10"></span></button>
+                            <input class="form-control form-control-sm shadow-none" type="search" placeholder="Search  by name" aria-label="search" @bind="BillingPlanNameSearch" />
+                            <button type="button" class="btn btn-sm btn-outline-secondary border-300 hover-border-secondary" @onclick="()=>LoadBillingPlan()">
+                                <span class="fa fa-search fs-10"></span>
+                              
+                                </button>
+                            <button class="btn btn-falcon-default btn-sm ms-sm-1" type="button" @onclick="()=>OnRefresh()"><span class="fas fa-redo"></span></button>
                         </div>
                     </form>
                 </div>
@@ -95,7 +99,9 @@
                         <div class="dropdown-menu dropdown-toggle-item dropdown-menu-end border py-2" aria-labelledby="dashboard-layout" role="tablist"><a class="dropdown-item active" id="tableView" data-bs-toggle="tab" href="#table-view" role="tab" aria-controls="table-view">Table View</a><a class="dropdown-item" id="cardView" data-bs-toggle="tab" href="#card-view" role="tab" aria-controls="card-view">Card View</a></div>
                     </div>
 
-                    <a class="btn btn-falcon-default btn-sm mx-2" href="#!" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><span class="fas fa-plus" data-fa-transform="shrink-3"></span><span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1">New</span></a>
+                    <a @onclick="()=>OnClickAddBtn()" class="btn btn-falcon-default btn-sm mx-2" href="#!" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                        <span class="fas fa-plus" data-fa-transform="shrink-3"></span>
+                        <span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1">New</span></a>
 
                 </div>
             </div>
@@ -276,27 +282,27 @@
 
     private bool isLoading = true;
 
-    private int PageSize { get; set; } =4; // Number of items per page
+    private int PageSize { get; set; } =5; // Number of items per page
 
     int totalPages { get; set; }
     int currentPage= 1; // Example current page
 
     private int TotalRecord { get; set; }
 
-
+    public string? BillingPlanNameSearch { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
-        await LoadLanguages(); 
+        await LoadBillingPlan(); 
 
     }
 
-    private async Task LoadLanguages()
+    private async Task LoadBillingPlan()
     {
         try
         {
-
-            billingPlan_list = (await billingService.Get(null, null, null, null, currentPage, PageSize)).ToList();
+            if (BillingPlanNameSearch == "") { BillingPlanNameSearch = null; }
+            billingPlan_list = (await billingService.Get(null, null, BillingPlanNameSearch, null, currentPage, PageSize)).ToList();
             if (billingPlan_list.Count > 0)
             {
                 TotalRecord = billingPlan_list[0].total_row;
@@ -308,7 +314,7 @@
                 TotalRecord = 0;
                 totalPages = 0;
             }
-            StateHasChanged(); // Ensure UI reflects changes
+
         }
         catch (Exception ex)
         {
@@ -317,6 +323,7 @@
         finally
         {
             isLoading = false;
+            StateHasChanged(); // Ensure UI reflects changes
         }
     }
 
@@ -375,7 +382,7 @@
                 }
             }
             // Clear the form after save/update
-            await LoadLanguages(); // Reload orders after save/update
+            await LoadBillingPlan(); // Reload orders after save/update
             billingPlan = new Pms.Models.Entity.Settings.BillingPlan();
         }
         catch (Exception ex)
@@ -403,7 +410,7 @@
                 if (result)
                 {
                     await JSRuntime.InvokeVoidAsync("showSuccessMessage");
-                    await LoadLanguages();
+                    await LoadBillingPlan();
                 }
                 else
                 {
@@ -422,10 +429,6 @@
     }
 
 
-    private void onSearch(string OrderId)
-    {
-        /// OrderList = OrderList.Where(w => w.orderNo == OrderId).ToList();
-    }
 
     private Task HideAlert()
     {
@@ -433,13 +436,19 @@
         return Task.CompletedTask;
     }
 
-
-    // int currentPage = 1;
-
+    private async void OnClickAddBtn()
+    {
+        billingPlan = new Pms.Models.Entity.Settings.BillingPlan();
+    }
+    private async void OnRefresh()
+    {
+        BillingPlanNameSearch = null;
+        await LoadBillingPlan();
+    }
     private async void ChangePage(int pageNumber)
     {
         currentPage = pageNumber;
-        await  LoadLanguages();
+        await  LoadBillingPlan();
     }
 
    void HandlePageSizeChanged(int newSize)

@@ -1,10 +1,15 @@
-﻿namespace Pms.Models.Entity.Settings
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+
+namespace Pms.Models.Entity.Settings
 {
     public class BillingPlan
     {
         public long BillingPlanId { get; set; }
         public Guid BillingPlanKey { get; set; }
         public int LanguageId { get; set; }
+        [Required(ErrorMessage = "Billing Plan Name is required")]
+        [DisplayName("Billing Plan Name")]
         public string BillingPlanName { get; set; }
         public DateTime? EntryDateTime { get; set; }
         public long? EntryBy { get; set; }

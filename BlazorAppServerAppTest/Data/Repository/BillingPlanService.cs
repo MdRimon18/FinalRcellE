@@ -17,7 +17,7 @@ namespace Pms.Data.Repository
             _db = db.GetDbConnection();
 
         }
-        public async Task<IEnumerable<BillingPlan>> Get(long? BillingPlanId, string? BillingPlanKey,string BillingPlanName, long? LanguageId,int? PageNumber, int? PageSize)
+        public async Task<IEnumerable<BillingPlan>> Get(long? BillingPlanId, string? BillingPlanKey,string? BillingPlanName, long? LanguageId,int? PageNumber, int? PageSize)
         {
             try
             {
