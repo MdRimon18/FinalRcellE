@@ -168,27 +168,26 @@
                 <div class="card-footer">
                     <div class="row align-items-center">
                         <div class="pagination d-none"></div>
-                        <div class="col"><span class="d-none d-sm-inline-block me-2 fs-10"> @TotalRecord</span></div>
-                        <div class="col-auto d-flex">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <span class="d-none d-sm-inline-block me-2 fs-10">page @currentPage of @totalPages, Total Record @TotalRecord </span>
 
-                            <!-- Pagination controls -->
-                            @* <ul class="pagination justify-content-end">
-                                <li class="page-item" disabled="@IsFirstPage">
-                                    <button class="page-link" tabindex="-1" aria-disabled="true" @onclick="GoToPreviousPage">Previous</button>
-                                </li>
-                                @for (int i = 1; i <= TotalPages; i++)
-                                {
-                                    <li class="page-item @(i == CurrentPage ? "active" : "")">
-                                        <button class="page-link" @onclick="() => GoToPage(i)">@i</button>
-                                    </li>
-                                }
-                                <li class="page-item" disabled="@IsLastPage">
-                                    <button class="page-link"   @onclick="GoToNextPage">Next</button>
-                                </li>
-                            </ul> *@
-                            
+                                </div>
+                                <div class="col-md-2">
+                                    <PageSizeSelection SelectedPageSize="@PageSize" SelectedPageSizeChanged="HandlePageSizeChanged" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="col-auto d-flex">
+
+                                <PaginationV2 TotalPages="totalPages" CurrentPage="currentPage" OnPageChange="ChangePage" />
+
+                            </div>
                         </div>
                     </div>
+
                 </div>
             </div>
             <div class="fade tab-pane" id="card-view" role="tabpanel" aria-labelledby="cardView" data-list='{"valueNames":["client","subject","status","priority","agent"],"page":4,"pagination":true}'>
@@ -277,7 +276,7 @@
 
     private bool isLoading = true;
 
-    private int PageSize { get; set; } =2; // Number of items per page
+    private int PageSize { get; set; } =4; // Number of items per page
 
     int totalPages { get; set; }
     int currentPage= 1; // Example current page
@@ -301,8 +300,8 @@
             if (billingPlan_list.Count > 0)
             {
                 TotalRecord = billingPlan_list[0].total_row;
-                totalPages = (TotalRecord / PageSize);
-                if (totalPages == 0){ totalPages = 1; }
+                //  totalPages = TotalRecord / PageSize;
+                totalPages = (int)Math.Ceiling((double)TotalRecord / PageSize);
             }
             else
             {
@@ -443,10 +442,10 @@
         await  LoadLanguages();
     }
 
-    async Task HandlePageSizeChanged(int newSize)
+   void HandlePageSizeChanged(int newSize)
     {
         PageSize = newSize;
-        currentPage = 1;
-        await LoadLanguages();
+          ChangePage(1);
+  
     }
 }
