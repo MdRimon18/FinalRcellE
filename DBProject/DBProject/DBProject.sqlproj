@@ -70,6 +70,8 @@
     <Folder Include="stt\Tables" />
     <Folder Include="tst" />
     <Folder Include="tst\Stored Procedures" />
+    <Folder Include="Acc\" />
+    <Folder Include="Acc\Tables\" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Functions\MostSuccessNdFaildCampaing.sql" />
@@ -78,7 +80,6 @@
     <Build Include="dbo\Stored Procedures\CreateProduct.sql" />
     <Build Include="dbo\Stored Procedures\Currency_Get_SP.sql" />
     <Build Include="dbo\Stored Procedures\Currency_Insert_SP.sql" />
-    <Build Include="dbo\Stored Procedures\Currency_Update_SP.sql" />
     <Build Include="dbo\Stored Procedures\DeleteProduct.sql" />
     <Build Include="dbo\Stored Procedures\GetProduct.sql" />
     <Build Include="dbo\Stored Procedures\GetProducts.sql" />
@@ -93,7 +94,6 @@
     <Build Include="dbo\Stored Procedures\sp_order_update.sql" />
     <Build Include="dbo\Stored Procedures\Status_Setting_Get_SP.sql" />
     <Build Include="dbo\Stored Procedures\Status_Setting_Insert_SP.sql" />
-    <Build Include="dbo\Stored Procedures\Status_Settings_Update_SP.sql" />
     <Build Include="dbo\Stored Procedures\Unit_Get_SP.sql" />
     <Build Include="dbo\Stored Procedures\Unit_Insert_SP.sql" />
     <Build Include="dbo\Stored Procedures\Unit_Update_SP.sql" />
@@ -135,10 +135,39 @@
     <Build Include="stt\Tables\Countries.sql" />
     <Build Include="stt\Tables\Currencies.sql" />
     <Build Include="stt\Tables\MainDbConfig.sql" />
-    <Build Include="stt\Tables\StatusSetting.sql" />
     <Build Include="tst\Stored Procedures\Meeting_Minutes _Details_Save_SP.sql" />
     <Build Include="tst\Stored Procedures\Meeting_Minutes_Master_Save_SP.sql" />
     <Build Include="stt\Tables\Languages.sql" />
+    <Build Include="stt\Tables\StatusSettings.sql" />
+    <Build Include="stt\Tables\ShippingBy.sql" />
+    <Build Include="stt\Tables\InvoiceTypes.sql" />
+    <Build Include="Acc\Tables\AccHeads.sql" />
+    <Build Include="dbo\Stored Procedures\Shipping_By_Update_SP.sql" />
+    <Build Include="dbo\Stored Procedures\Shipping_By_type_Insert_SP.sql" />
+    <Build Include="dbo\Stored Procedures\shipping_By_type_Get_SP.sql" />
+    <Build Include="dbo\Stored Procedures\Shipping_By_Insert_SP.sql" />
+    <Build Include="dbo\Stored Procedures\shipping_By_Get_SP.sql" />
+    <Build Include="dbo\Stored Procedures\Product_Ctg_Update_SP.sql" />
+    <Build Include="dbo\Stored Procedures\Product_Ctg_Insert_SP.sql" />
+    <Build Include="dbo\Stored Procedures\Product_Ctg_Get_SP.sql" />
+    <Build Include="dbo\Stored Procedures\Prdct_Sub_Ctg_InsertOrUpdate_SP.sql" />
+    <Build Include="dbo\Stored Procedures\Prdct_Sub_Ctg_Get_SP.sql" />
+    <Build Include="dbo\Stored Procedures\invoice_type_Update_SP.sql" />
+    <Build Include="dbo\Stored Procedures\invoice_type_Insert_SP.sql" />
+    <Build Include="dbo\Stored Procedures\invoice_type_Get_SP.sql" />
+    <Build Include="dbo\Stored Procedures\Country_Insert_SP.sql" />
+    <Build Include="dbo\Stored Procedures\Country_Get_SP.sql" />
+    <Build Include="dbo\Stored Procedures\Acc_head_Update_SP.sql" />
+    <Build Include="dbo\Stored Procedures\Acc_Head_Insert_SP.sql" />
+    <Build Include="dbo\Stored Procedures\Acc_Head_Get_SP.sql" />
+    <Build Include="Security\Acc.sql" />
+    <Build Include="stt\Tables\BillingPlans.sql" />
+    <Build Include="dbo\Stored Procedures\BillingPlan_InsertOrUpdate_SP.sql" />
+    <Build Include="dbo\Stored Procedures\BillingPlan_Get_SP.sql" />
+    <Build Include="stt\Tables\role_branch.sql" />
+    <Build Include="dbo\Stored Procedures\Status_Settings_Update_SP_1.sql" />
+    <Build Include="dbo\Stored Procedures\Currency_Update_SP_1.sql" />
+    <Build Include="dbo\Stored Procedures\Country_Update_SP_1.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Import Schema Logs\DBProject_20240420045555.log" />

@@ -1,7 +1,6 @@
 ﻿CREATE TABLE [stt].[Countries] (
     [CountryId]      BIGINT           IDENTITY (1, 1) NOT NULL,
     [CountryKey]     UNIQUEIDENTIFIER NULL,
-    [BranchId]       BIGINT           NOT NULL,
     [LanguageId]     INT              NOT NULL,
     [CountryName]    NVARCHAR (100)   NOT NULL,
     [CntryShortName] NVARCHAR (15)    NULL,
@@ -19,4 +18,6 @@
     [Status]         VARCHAR (10)     NULL,
     CONSTRAINT [PK_Countries] PRIMARY KEY CLUSTERED ([CountryId] ASC)
 );
+
+
 

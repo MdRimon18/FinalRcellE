@@ -31,6 +31,7 @@ namespace Pms.Data.Repository.Inventory
 
                     parameters.Add("@page_number", pagenumber);
                     parameters.Add("@page_size", pageSize);
+                 
 
                     return await _db.QueryAsync<ShippingBy>("shipping_By_Get_SP", parameters, commandType: CommandType.StoredProcedure);
 

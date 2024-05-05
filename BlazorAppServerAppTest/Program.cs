@@ -49,6 +49,7 @@ builder.Services.AddScoped<ProductCategoryService>();
 builder.Services.AddScoped<AccHeadService>();
 builder.Services.AddScoped<StatusSettingService>();
 builder.Services.AddScoped<CurrencyService>();
+builder.Services.AddScoped<ProductSubCategoryService>();
 
 builder.Services.AddScoped<PaymentTypesService>();
 builder.Services.AddScoped<BillingPlanService>();
