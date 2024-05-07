@@ -229,17 +229,26 @@
                 <div class="card-footer">
                     <div class="row align-items-center">
                         <div class="pagination d-none"></div>
-                        <div class="col"><span class="d-none d-sm-inline-block me-2 fs-10">@currentPage of @totalPages</span></div>
-                        <div class="col-auto d-flex">
-                            @* <PageSizeSelectr PageSize="@PageSize" PageSizeChanged="HandlePageSizeChanged" />
- *@
-                         <PageSizeSelection SelectedPageSize="@PageSize" SelectedPageSizeChanged="HandlePageSizeChanged" />
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-4 p-2">
+                                    <span class="d-none d-sm-inline-block me-2 fs-10">page @currentPage of @totalPages, Total Record @TotalRecord </span>
 
-                            <PaginationV2 TotalPages="totalPages"  CurrentPage="currentPage" OnPageChange="ChangePage" />
-                          
+                                </div>
+                                <div class="col-md-2  p-2">
+                                    <PageSizeSelection SelectedPageSize="@PageSize" SelectedPageSizeChanged="HandlePageSizeChanged" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="col-auto d-flex p-2">
+
+                                <PaginationV2 TotalPages="totalPages" CurrentPage="currentPage" OnPageChange="ChangePage" />
+
+                            </div>
                         </div>
                     </div>
-                   
+
                 </div>
             </div>
         }
