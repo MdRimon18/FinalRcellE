@@ -1,4 +1,4 @@
-﻿  Create PROCEDURE [dbo].[Prdct_Sub_Ctg_Get_SP](
+﻿  CREATE PROCEDURE [dbo].[Prdct_Sub_Ctg_Get_SP](
  @ProdSubCtgId bigint=null,
  @ProdSubCtgKey nvarchar(40)=null,
  @BranchId bigint,
@@ -31,9 +31,12 @@ AS
 	         (@ProdSubCtgKey IS NULL OR a.ProdSubCtgKey = @ProdSubCtgKey) and
 			 (@BranchId IS NULL OR a.BranchId = @BranchId) and
 			 (@ProdCtgId IS NULL OR a.ProdCtgId = @ProdCtgId) and
-		     (@ProdSubCtgName IS NULL OR a.ProdSubCtgName = @ProdSubCtgName)  
+		     (@ProdSubCtgName IS NULL OR
+			   
+			 LOWER(LTRIM(RTRIM(REPLACE(a.ProdSubCtgName, ' ', '')))) LIKE '%' + LOWER(LTRIM(RTRIM(REPLACE(@ProdSubCtgName, ' ', ''))))  + '%')
 			 and a.Status='Active'
       )
+      
 
 		SELECT 
 			a.*,

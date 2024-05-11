@@ -149,6 +149,25 @@
 			</Relationship>
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="7" />
 		</Element>
+		<Element Type="SqlPrimaryKeyConstraint">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[stt].[role_branch].[role_branch_id]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[stt].[role_branch]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="8" />
+		</Element>
 		<Element Type="SqlSchema" Name="[Acc]">
 			<Relationship Name="Authorizer">
 				<Entry>
@@ -320,7 +339,7 @@
 					<References Name="[Acc]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="8" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="9" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[Acc].[PK_AccHeads]">
 			<Relationship Name="ColumnSpecifications">
@@ -339,7 +358,7 @@
 					<References Name="[Acc].[AccHeads]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="8" />
+			<AttachedAnnotation Disambiguator="9" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[__EFMigrationsHistory]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -384,7 +403,7 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="9" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="10" />
 		</Element>
 		<Element Type="SqlProcedure" Name="[dbo].[Acc_Head_Get_SP]">
 			<Property Name="BodyScript">
@@ -1345,8 +1364,8 @@ END]]></Value>
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="10" />
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="11" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="12" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[AspNetRoles]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -1422,7 +1441,7 @@ END]]></Value>
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="12" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="13" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[AspNetUserClaims]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -1499,8 +1518,8 @@ END]]></Value>
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="13" />
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="14" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="15" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[AspNetUserLogins]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -1578,8 +1597,8 @@ END]]></Value>
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="15" />
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="16" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="17" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[AspNetUserRoles]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -1624,9 +1643,9 @@ END]]></Value>
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="17" />
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="18" />
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="19" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="20" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[AspNetUsers]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -1878,7 +1897,7 @@ END]]></Value>
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="20" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="21" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[AspNetUserTokens]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -1956,8 +1975,724 @@ END]]></Value>
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="21" />
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="22" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="23" />
+		</Element>
+		<Element Type="SqlProcedure" Name="[dbo].[BillingPlan_Get_SP]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[
+  BEGIN
+      SET nocount ON
+      SET TRANSACTION isolation level READ uncommitted;
+ 
+	  WITH CTE AS (
+				  SELECT a.[BillingPlanId]
+				  ,a.[BillingPlanKey]
+				  ,a.[LanguageId]
+				  ,a.[BillingPlanName]
+				  ,a.[EntryDateTime]
+				  ,a.[EntryBy]
+				  ,a.[LastModifyDate]
+				  ,a.[LastModifyBy]
+				  ,a.[DeletedDate]
+				  ,a.[DeletedBy]
+				  ,a.[Status]
+				  ,ROW_NUMBER() OVER (ORDER BY a.BillingPlanId ASC) AS RowNum 
+      FROM   [stt].[BillingPlans] a
+	  WHERE  (@BillingPlanId IS NULL OR a.BillingPlanId = @BillingPlanId) and
+	         (@BillingPlanKey IS NULL OR a.BillingPlanKey = @BillingPlanKey) and
+			 (@LanguageId IS NULL OR a.LanguageId = @LanguageId) and
+		     (@BillingPlanName IS NULL OR a.BillingPlanName = @BillingPlanName)  
+			 and a.Status='Active'
+      )
+
+		SELECT 
+			a.*,
+			(SELECT COUNT(*) FROM CTE) AS total_row
+		FROM   
+        CTE a
+        WHERE  
+        RowNum > ((@PageNumber - 1) * @PageSize) AND RowNum <= (@PageNumber * @PageSize)     
+        ORDER BY 
+        a.BillingPlanId DESC;
+  END]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References Name="[stt].[BillingPlans]" />
+				</Entry>
+				<Entry>
+					<References Name="[stt].[BillingPlans].[BillingPlanId]" />
+				</Entry>
+				<Entry>
+					<References Name="[stt].[BillingPlans].[BillingPlanKey]" />
+				</Entry>
+				<Entry>
+					<References Name="[stt].[BillingPlans].[LanguageId]" />
+				</Entry>
+				<Entry>
+					<References Name="[stt].[BillingPlans].[BillingPlanName]" />
+				</Entry>
+				<Entry>
+					<References Name="[stt].[BillingPlans].[EntryDateTime]" />
+				</Entry>
+				<Entry>
+					<References Name="[stt].[BillingPlans].[EntryBy]" />
+				</Entry>
+				<Entry>
+					<References Name="[stt].[BillingPlans].[LastModifyDate]" />
+				</Entry>
+				<Entry>
+					<References Name="[stt].[BillingPlans].[LastModifyBy]" />
+				</Entry>
+				<Entry>
+					<References Name="[stt].[BillingPlans].[DeletedDate]" />
+				</Entry>
+				<Entry>
+					<References Name="[stt].[BillingPlans].[DeletedBy]" />
+				</Entry>
+				<Entry>
+					<References Name="[stt].[BillingPlans].[Status]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BillingPlan_Get_SP].[@BillingPlanId]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BillingPlan_Get_SP].[@BillingPlanKey]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BillingPlan_Get_SP].[@LanguageId]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BillingPlan_Get_SP].[@BillingPlanName]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BillingPlan_Get_SP].[@PageNumber]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BillingPlan_Get_SP].[@PageSize]" />
+				</Entry>
+				<Entry>
+					<References Name="[stt].[BillingPlans].[BillingPlanId]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="DynamicObjects">
+				<Entry>
+					<Element Type="SqlDynamicColumnSource" Name="[dbo].[BillingPlan_Get_SP].[CTE1].[CTE]">
+						<Relationship Name="Columns">
+							<Entry>
+								<Element Type="SqlComputedColumn" Name="[dbo].[BillingPlan_Get_SP].[CTE1].[CTE].[BillingPlanId]">
+									<Relationship Name="ExpressionDependencies">
+										<Entry>
+											<References Name="[stt].[BillingPlans].[BillingPlanId]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+							<Entry>
+								<Element Type="SqlComputedColumn" Name="[dbo].[BillingPlan_Get_SP].[CTE1].[CTE].[BillingPlanKey]">
+									<Relationship Name="ExpressionDependencies">
+										<Entry>
+											<References Name="[stt].[BillingPlans].[BillingPlanKey]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+							<Entry>
+								<Element Type="SqlComputedColumn" Name="[dbo].[BillingPlan_Get_SP].[CTE1].[CTE].[LanguageId]">
+									<Relationship Name="ExpressionDependencies">
+										<Entry>
+											<References Name="[stt].[BillingPlans].[LanguageId]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+							<Entry>
+								<Element Type="SqlComputedColumn" Name="[dbo].[BillingPlan_Get_SP].[CTE1].[CTE].[BillingPlanName]">
+									<Relationship Name="ExpressionDependencies">
+										<Entry>
+											<References Name="[stt].[BillingPlans].[BillingPlanName]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+							<Entry>
+								<Element Type="SqlComputedColumn" Name="[dbo].[BillingPlan_Get_SP].[CTE1].[CTE].[EntryDateTime]">
+									<Relationship Name="ExpressionDependencies">
+										<Entry>
+											<References Name="[stt].[BillingPlans].[EntryDateTime]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+							<Entry>
+								<Element Type="SqlComputedColumn" Name="[dbo].[BillingPlan_Get_SP].[CTE1].[CTE].[EntryBy]">
+									<Relationship Name="ExpressionDependencies">
+										<Entry>
+											<References Name="[stt].[BillingPlans].[EntryBy]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+							<Entry>
+								<Element Type="SqlComputedColumn" Name="[dbo].[BillingPlan_Get_SP].[CTE1].[CTE].[LastModifyDate]">
+									<Relationship Name="ExpressionDependencies">
+										<Entry>
+											<References Name="[stt].[BillingPlans].[LastModifyDate]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+							<Entry>
+								<Element Type="SqlComputedColumn" Name="[dbo].[BillingPlan_Get_SP].[CTE1].[CTE].[LastModifyBy]">
+									<Relationship Name="ExpressionDependencies">
+										<Entry>
+											<References Name="[stt].[BillingPlans].[LastModifyBy]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+							<Entry>
+								<Element Type="SqlComputedColumn" Name="[dbo].[BillingPlan_Get_SP].[CTE1].[CTE].[DeletedDate]">
+									<Relationship Name="ExpressionDependencies">
+										<Entry>
+											<References Name="[stt].[BillingPlans].[DeletedDate]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+							<Entry>
+								<Element Type="SqlComputedColumn" Name="[dbo].[BillingPlan_Get_SP].[CTE1].[CTE].[DeletedBy]">
+									<Relationship Name="ExpressionDependencies">
+										<Entry>
+											<References Name="[stt].[BillingPlans].[DeletedBy]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+							<Entry>
+								<Element Type="SqlComputedColumn" Name="[dbo].[BillingPlan_Get_SP].[CTE1].[CTE].[Status]">
+									<Relationship Name="ExpressionDependencies">
+										<Entry>
+											<References Name="[stt].[BillingPlans].[Status]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+							<Entry>
+								<Element Type="SqlComputedColumn" Name="[dbo].[BillingPlan_Get_SP].[CTE1].[CTE].[RowNum]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[BillingPlan_Get_SP].[@BillingPlanId]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[null]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[bigint]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[BillingPlan_Get_SP].[@BillingPlanKey]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[null]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="40" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[BillingPlan_Get_SP].[@BillingPlanName]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[null]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="100" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[BillingPlan_Get_SP].[@LanguageId]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[null]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[BillingPlan_Get_SP].[@PageNumber]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[1]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[BillingPlan_Get_SP].[@PageSize]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[10]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="CreateOffset" Value="4" />
+				<Property Name="Length" Value="1306" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value=" &#xD;&#xA; CREATE PROCEDURE [dbo].[BillingPlan_Get_SP](&#xD;&#xA; @BillingPlanId bigint=null,&#xD;&#xA; @BillingPlanKey nvarchar(40)=null,&#xD;&#xA; @BillingPlanName nvarchar(100)=null,&#xD;&#xA; @LanguageId Int=null,&#xD;&#xA; @PageNumber INT = 1,&#xD;&#xA; @PageSize INT =10&#xD;&#xA; )&#xD;&#xA;AS" />
+			</Annotation>
+		</Element>
+		<Element Type="SqlProcedure" Name="[dbo].[BillingPlan_InsertOrUpdate_SP]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[ BEGIN 
+      SET NOCOUNT ON;
+      SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+
+		-- Check if @unitName already exists (case-insensitive, trimmed, and with white spaces replaced)
+		IF EXISTS (
+			SELECT 1
+			FROM [stt].[BillingPlans]  
+			WHERE
+			Status='Active' and
+			@BillingPlanId=0 and
+			LOWER(LTRIM(RTRIM(REPLACE([BillingPlanName], ' ', '')))) = LOWER(LTRIM(RTRIM(REPLACE(@BillingPlanName, ' ', ''))))
+		)
+		BEGIN 
+			-- If BillingPlanName already exists, set  @BillingPlanId to -1
+			SET @SuccessOrFailId =-1;
+		END
+       ELSE
+         BEGIN
+		  IF(@BillingPlanId=0)
+			 Begin 
+			  -- Insert new record
+			  INSERT INTO [stt].[BillingPlans] (
+				   [BillingPlanKey]
+				  ,[LanguageId]
+				  ,[BillingPlanName]
+				  ,[EntryDateTime]
+				  ,[EntryBy]
+				  ,[LastModifyDate]
+				  ,[LastModifyBy]
+				  ,[DeletedDate]
+				  ,[DeletedBy]
+				  ,[Status]
+			   ) 
+		VALUES (
+				NEWID(),  
+				@LanguageId,
+				@BillingPlanName,
+				@EntryDateTime,
+				@EntryBy,
+				@LastModifyDate,
+				@LastModifyBy,
+				@DeletedDate,
+				@DeletedBy,
+				'Active'
+			);
+			   SET @SuccessOrFailId = SCOPE_IDENTITY(); --Get Newly Created Id
+             --  SELECT  @BillingPlanId AS BillingPlanId;  --Set Newly Created Id
+			 
+			  End
+         Else
+		   BEGIN TRY  --try start for update
+					UPDATE 
+					a WITH(ROWLOCK) 
+					SET 
+					  
+					  [BillingPlanName] = @BillingPlanName,
+					  [LanguageId]=@LanguageId,
+					  [LastModifyDate] = COALESCE(@lastModifyDate, [LastModifyDate]),
+					  [LastModifyBy] = COALESCE(@lastModifyBy, [LastModifyBy]),
+					  [DeletedDate] = COALESCE(@deletedDate, [DeletedDate]),
+					  [DeletedBy] = COALESCE(@deletedBy, [DeletedBy]),
+					  [Status] = COALESCE(@status, [Status])
+					 FROM 
+					  [stt].[BillingPlans] a WITH(ROWLOCK) 
+					  WHERE 
+					  a.BillingPlanId = @BillingPlanId 
+
+					 SET @SuccessOrFailId = @BillingPlanId; -- Set success flag  updated Id
+				 END TRY
+				 BEGIN CATCH
+					SET @SuccessOrFailId = 0; -- Error occurred, set success flag to 0
+				 END CATCH
+		 END 
+
+		  
+END;
+
+--select * from [stt].[BillingPlans]]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References Name="[stt].[BillingPlans]" />
+				</Entry>
+				<Entry>
+					<References Name="[stt].[BillingPlans].[Status]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BillingPlan_InsertOrUpdate_SP].[@BillingPlanId]" />
+				</Entry>
+				<Entry>
+					<References Name="[stt].[BillingPlans].[BillingPlanName]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BillingPlan_InsertOrUpdate_SP].[@BillingPlanName]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BillingPlan_InsertOrUpdate_SP].[@SuccessOrFailId]" />
+				</Entry>
+				<Entry>
+					<References Name="[stt].[BillingPlans].[BillingPlanKey]" />
+				</Entry>
+				<Entry>
+					<References Name="[stt].[BillingPlans].[LanguageId]" />
+				</Entry>
+				<Entry>
+					<References Name="[stt].[BillingPlans].[BillingPlanName]" />
+				</Entry>
+				<Entry>
+					<References Name="[stt].[BillingPlans].[EntryDateTime]" />
+				</Entry>
+				<Entry>
+					<References Name="[stt].[BillingPlans].[EntryBy]" />
+				</Entry>
+				<Entry>
+					<References Name="[stt].[BillingPlans].[LastModifyDate]" />
+				</Entry>
+				<Entry>
+					<References Name="[stt].[BillingPlans].[LastModifyBy]" />
+				</Entry>
+				<Entry>
+					<References Name="[stt].[BillingPlans].[DeletedDate]" />
+				</Entry>
+				<Entry>
+					<References Name="[stt].[BillingPlans].[DeletedBy]" />
+				</Entry>
+				<Entry>
+					<References Name="[stt].[BillingPlans].[Status]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BillingPlan_InsertOrUpdate_SP].[@LanguageId]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BillingPlan_InsertOrUpdate_SP].[@EntryDateTime]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BillingPlan_InsertOrUpdate_SP].[@EntryBy]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BillingPlan_InsertOrUpdate_SP].[@LastModifyDate]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BillingPlan_InsertOrUpdate_SP].[@LastModifyBy]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BillingPlan_InsertOrUpdate_SP].[@DeletedDate]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BillingPlan_InsertOrUpdate_SP].[@DeletedBy]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[BillingPlan_InsertOrUpdate_SP].[@Status]" />
+				</Entry>
+				<Entry>
+					<References Name="[stt].[BillingPlans].[BillingPlanId]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[BillingPlan_InsertOrUpdate_SP].[@BillingPlanId]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[bigint]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[BillingPlan_InsertOrUpdate_SP].[@BillingPlanKey]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[null]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[uniqueidentifier]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[BillingPlan_InsertOrUpdate_SP].[@LanguageId]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[bigint]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[BillingPlan_InsertOrUpdate_SP].[@BillingPlanName]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="100" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[BillingPlan_InsertOrUpdate_SP].[@EntryDateTime]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[NUll]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[datetime]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[BillingPlan_InsertOrUpdate_SP].[@EntryBy]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[NULL]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[bigint]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[BillingPlan_InsertOrUpdate_SP].[@LastModifyDate]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[NULL]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[datetime]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[BillingPlan_InsertOrUpdate_SP].[@LastModifyBy]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[NULL]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[bigint]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[BillingPlan_InsertOrUpdate_SP].[@DeletedDate]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[NULL]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[datetime]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[BillingPlan_InsertOrUpdate_SP].[@DeletedBy]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[NULL]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[bigint]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[BillingPlan_InsertOrUpdate_SP].[@Status]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[NuLL]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="10" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[varchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[BillingPlan_InsertOrUpdate_SP].[@SuccessOrFailId]">
+						<Property Name="IsOutput" Value="True" />
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="CreateOffset" Value="3" />
+				<Property Name="Length" Value="2604" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value=" &#xD;&#xA;CREATE PROCEDURE [dbo].[BillingPlan_InsertOrUpdate_SP](&#xD;&#xA;  @BillingPlanId BIGINT, &#xD;&#xA;  @BillingPlanKey uniqueidentifier=null,&#xD;&#xA;  @LanguageId BIGINT,&#xD;&#xA;  @BillingPlanName NVARCHAR(100), &#xD;&#xA;  @EntryDateTime DATETIME=NUll,&#xD;&#xA;  @EntryBy BIGINT=NULL,&#xD;&#xA;  @LastModifyDate DATETIME = NULL,&#xD;&#xA;  @LastModifyBy BIGINT = NULL,&#xD;&#xA;  @DeletedDate DATETIME = NULL,&#xD;&#xA;  @DeletedBy BIGINT = NULL,&#xD;&#xA;  @Status VARCHAR(10)=NuLL,&#xD;&#xA;  @SuccessOrFailId INT OUTPUT&#xD;&#xA;) AS" />
+			</Annotation>
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[Bonus]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -4053,7 +4788,7 @@ END;]]></Value>
 					<References Name="[dbo].[AspNetRoles]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="11" />
+			<AttachedAnnotation Disambiguator="12" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_AspNetUserClaims_AspNetUsers_UserId]">
 			<Property Name="OnDeleteAction" Value="1" />
@@ -4077,7 +4812,7 @@ END;]]></Value>
 					<References Name="[dbo].[AspNetUsers]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="14" />
+			<AttachedAnnotation Disambiguator="15" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_AspNetUserLogins_AspNetUsers_UserId]">
 			<Property Name="OnDeleteAction" Value="1" />
@@ -4101,7 +4836,7 @@ END;]]></Value>
 					<References Name="[dbo].[AspNetUsers]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="16" />
+			<AttachedAnnotation Disambiguator="17" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_AspNetUserRoles_AspNetRoles_RoleId]">
 			<Property Name="OnDeleteAction" Value="1" />
@@ -4125,7 +4860,7 @@ END;]]></Value>
 					<References Name="[dbo].[AspNetRoles]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="18" />
+			<AttachedAnnotation Disambiguator="19" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_AspNetUserRoles_AspNetUsers_UserId]">
 			<Property Name="OnDeleteAction" Value="1" />
@@ -4149,7 +4884,7 @@ END;]]></Value>
 					<References Name="[dbo].[AspNetUsers]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="19" />
+			<AttachedAnnotation Disambiguator="20" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_AspNetUserTokens_AspNetUsers_UserId]">
 			<Property Name="OnDeleteAction" Value="1" />
@@ -4173,7 +4908,7 @@ END;]]></Value>
 					<References Name="[dbo].[AspNetUsers]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="22" />
+			<AttachedAnnotation Disambiguator="23" />
 		</Element>
 		<Element Type="SqlProcedure" Name="[dbo].[GetProduct]">
 			<Property Name="BodyScript">
@@ -6642,7 +7377,7 @@ where rnk=1
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="23" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="24" />
 		</Element>
 		<Element Type="SqlInlineTableValuedFunction" Name="[dbo].[Party_seats_won_function]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -6797,7 +7532,7 @@ group by party
 					<References Name="[dbo].[__EFMigrationsHistory]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="9" />
+			<AttachedAnnotation Disambiguator="10" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_AspNetRoleClaims]">
 			<Relationship Name="ColumnSpecifications">
@@ -6816,7 +7551,7 @@ group by party
 					<References Name="[dbo].[AspNetRoleClaims]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="10" />
+			<AttachedAnnotation Disambiguator="11" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_AspNetRoles]">
 			<Relationship Name="ColumnSpecifications">
@@ -6835,7 +7570,7 @@ group by party
 					<References Name="[dbo].[AspNetRoles]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="12" />
+			<AttachedAnnotation Disambiguator="13" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_AspNetUserClaims]">
 			<Relationship Name="ColumnSpecifications">
@@ -6854,7 +7589,7 @@ group by party
 					<References Name="[dbo].[AspNetUserClaims]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="13" />
+			<AttachedAnnotation Disambiguator="14" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_AspNetUserLogins]">
 			<Relationship Name="ColumnSpecifications">
@@ -6882,7 +7617,7 @@ group by party
 					<References Name="[dbo].[AspNetUserLogins]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="15" />
+			<AttachedAnnotation Disambiguator="16" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_AspNetUserRoles]">
 			<Relationship Name="ColumnSpecifications">
@@ -6910,7 +7645,7 @@ group by party
 					<References Name="[dbo].[AspNetUserRoles]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="17" />
+			<AttachedAnnotation Disambiguator="18" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_AspNetUsers]">
 			<Relationship Name="ColumnSpecifications">
@@ -6929,7 +7664,7 @@ group by party
 					<References Name="[dbo].[AspNetUsers]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="20" />
+			<AttachedAnnotation Disambiguator="21" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_AspNetUserTokens]">
 			<Relationship Name="ColumnSpecifications">
@@ -6966,7 +7701,7 @@ group by party
 					<References Name="[dbo].[AspNetUserTokens]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="21" />
+			<AttachedAnnotation Disambiguator="22" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_Order]">
 			<Relationship Name="ColumnSpecifications">
@@ -6985,7 +7720,7 @@ group by party
 					<References Name="[dbo].[Order]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="23" />
+			<AttachedAnnotation Disambiguator="24" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_SupplierInfo]">
 			<Relationship Name="ColumnSpecifications">
@@ -7004,7 +7739,7 @@ group by party
 					<References Name="[dbo].[SupplierInfo]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="24" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="25" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_Task]">
 			<Relationship Name="ColumnSpecifications">
@@ -7023,7 +7758,7 @@ group by party
 					<References Name="[dbo].[Tasks]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="25" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="26" />
 		</Element>
 		<Element Type="SqlProcedure" Name="[dbo].[pr_tableDetails]">
 			<Property Name="BodyScript">
@@ -12654,7 +13389,7 @@ END;]]></Value>
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="24" />
+			<AttachedAnnotation Disambiguator="25" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[Tasks]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -12713,7 +13448,7 @@ END;]]></Value>
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="25" />
+			<AttachedAnnotation Disambiguator="26" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[Title]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -13979,7 +14714,7 @@ END;]]></Value>
 					<References Name="[invnt].[ProductCategories]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="26" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="27" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[invnt].[PK_ProductSubCategories]">
 			<Relationship Name="ColumnSpecifications">
@@ -13998,7 +14733,7 @@ END;]]></Value>
 					<References Name="[invnt].[ProductSubCategories]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="27" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="28" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[invnt].[PK_Units]">
 			<Relationship Name="ColumnSpecifications">
@@ -14017,7 +14752,7 @@ END;]]></Value>
 					<References Name="[invnt].[Units]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="28" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="29" />
 		</Element>
 		<Element Type="SqlTable" Name="[invnt].[ProductCategories]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -14201,7 +14936,7 @@ END;]]></Value>
 					<References Name="[invnt]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="26" />
+			<AttachedAnnotation Disambiguator="27" />
 		</Element>
 		<Element Type="SqlTable" Name="[invnt].[ProductSubCategories]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -14399,7 +15134,7 @@ END;]]></Value>
 					<References Name="[invnt]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="27" />
+			<AttachedAnnotation Disambiguator="28" />
 		</Element>
 		<Element Type="SqlTable" Name="[invnt].[Units]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -14581,7 +15316,7 @@ END;]]></Value>
 					<References Name="[invnt]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="28" />
+			<AttachedAnnotation Disambiguator="29" />
 		</Element>
 		<Element Type="SqlSchema" Name="[stt]">
 			<Relationship Name="Authorizer">
@@ -14589,6 +15324,188 @@ END;]]></Value>
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
+		</Element>
+		<Element Type="SqlTable" Name="[stt].[BillingPlans]">
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="Columns">
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[stt].[BillingPlans].[BillingPlanId]">
+						<Property Name="IsNullable" Value="False" />
+						<Property Name="IsIdentity" Value="True" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[bigint]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[stt].[BillingPlans].[BillingPlanKey]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[uniqueidentifier]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[stt].[BillingPlans].[LanguageId]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[stt].[BillingPlans].[BillingPlanName]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="100" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[stt].[BillingPlans].[EntryDateTime]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[datetime]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[stt].[BillingPlans].[EntryBy]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[bigint]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[stt].[BillingPlans].[LastModifyDate]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[datetime]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[stt].[BillingPlans].[LastModifyBy]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[bigint]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[stt].[BillingPlans].[DeletedDate]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[datetime]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[stt].[BillingPlans].[DeletedBy]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[bigint]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[stt].[BillingPlans].[Status]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="10" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[varchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References Name="[stt]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="30" />
 		</Element>
 		<Element Type="SqlTable" Name="[stt].[BusinessTypes]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -14772,7 +15689,7 @@ END;]]></Value>
 					<References Name="[stt]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="29" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="31" />
 		</Element>
 		<Element Type="SqlTable" Name="[stt].[Countries]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -15056,7 +15973,7 @@ END;]]></Value>
 					<References Name="[stt]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="30" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="32" />
 		</Element>
 		<Element Type="SqlTable" Name="[stt].[Currencies]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -15308,7 +16225,7 @@ END;]]></Value>
 					<References Name="[stt]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="31" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="33" />
 		</Element>
 		<Element Type="SqlTable" Name="[stt].[InvoiceTypes]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -15492,7 +16409,7 @@ END;]]></Value>
 					<References Name="[stt]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="32" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="34" />
 		</Element>
 		<Element Type="SqlTable" Name="[stt].[Languages]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -15660,7 +16577,7 @@ END;]]></Value>
 					<References Name="[stt]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="33" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="35" />
 		</Element>
 		<Element Type="SqlTable" Name="[stt].[MainDbConfig]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -15848,7 +16765,26 @@ END;]]></Value>
 					<References Name="[stt]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="34" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="36" />
+		</Element>
+		<Element Type="SqlPrimaryKeyConstraint" Name="[stt].[PK_BillingPlanId]">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[stt].[BillingPlans].[BillingPlanId]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[stt].[BillingPlans]" />
+				</Entry>
+			</Relationship>
+			<AttachedAnnotation Disambiguator="30" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[stt].[PK_BusinessTypes]">
 			<Relationship Name="ColumnSpecifications">
@@ -15867,7 +16803,7 @@ END;]]></Value>
 					<References Name="[stt].[BusinessTypes]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="29" />
+			<AttachedAnnotation Disambiguator="31" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[stt].[PK_Countries]">
 			<Relationship Name="ColumnSpecifications">
@@ -15886,7 +16822,7 @@ END;]]></Value>
 					<References Name="[stt].[Countries]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="30" />
+			<AttachedAnnotation Disambiguator="32" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[stt].[PK_Currencies]">
 			<Relationship Name="ColumnSpecifications">
@@ -15905,7 +16841,7 @@ END;]]></Value>
 					<References Name="[stt].[Currencies]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="31" />
+			<AttachedAnnotation Disambiguator="33" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[stt].[PK_InvoiceTypes]">
 			<Relationship Name="ColumnSpecifications">
@@ -15924,7 +16860,7 @@ END;]]></Value>
 					<References Name="[stt].[InvoiceTypes]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="32" />
+			<AttachedAnnotation Disambiguator="34" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[stt].[PK_Languages]">
 			<Relationship Name="ColumnSpecifications">
@@ -15943,7 +16879,7 @@ END;]]></Value>
 					<References Name="[stt].[Languages]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="33" />
+			<AttachedAnnotation Disambiguator="35" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[stt].[PK_MainDbConfig]">
 			<Relationship Name="ColumnSpecifications">
@@ -15962,7 +16898,7 @@ END;]]></Value>
 					<References Name="[stt].[MainDbConfig]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="34" />
+			<AttachedAnnotation Disambiguator="36" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[stt].[PK_ShippingBy]">
 			<Relationship Name="ColumnSpecifications">
@@ -15981,7 +16917,7 @@ END;]]></Value>
 					<References Name="[stt].[ShippingBy]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="35" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="37" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[stt].[PK_StatusSettings]">
 			<Relationship Name="ColumnSpecifications">
@@ -16000,7 +16936,67 @@ END;]]></Value>
 					<References Name="[stt].[StatusSettings]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="36" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="38" />
+		</Element>
+		<Element Type="SqlTable" Name="[stt].[role_branch]">
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="Columns">
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[stt].[role_branch].[role_branch_id]">
+						<Property Name="IsNullable" Value="False" />
+						<Property Name="IsIdentity" Value="True" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[bigint]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[stt].[role_branch].[role_id]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[bigint]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[stt].[role_branch].[branch_id]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[bigint]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References Name="[stt]" />
+				</Entry>
+			</Relationship>
+			<AttachedAnnotation Disambiguator="8" />
 		</Element>
 		<Element Type="SqlTable" Name="[stt].[ShippingBy]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -16184,7 +17180,7 @@ END;]]></Value>
 					<References Name="[stt]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="35" />
+			<AttachedAnnotation Disambiguator="37" />
 		</Element>
 		<Element Type="SqlTable" Name="[stt].[StatusSettings]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -16400,7 +17396,7 @@ END;]]></Value>
 					<References Name="[stt]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="36" />
+			<AttachedAnnotation Disambiguator="38" />
 		</Element>
 		<Element Type="SqlSchema" Name="[tst]">
 			<Relationship Name="Authorizer">

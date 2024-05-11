@@ -1,5 +1,5 @@
 ﻿
- create PROCEDURE [dbo].[Product_Ctg_Get_SP](
+ CREATE PROCEDURE [dbo].[Product_Ctg_Get_SP](
  @ProdCtgId bigint=null,
  @ProdCtgKey nvarchar(40)=null,
  @ProdCtgName nvarchar(100)=null,
@@ -10,12 +10,10 @@
 AS
   BEGIN
       SET nocount ON
-      SET TRANSACTION isolation level READ uncommitted
+      SET TRANSACTION isolation level READ uncommitted;
 
-      DECLARE @offset BIGINT
-      SET @offset = (@page_number - 1) * @page_size;
-
-      SELECT a.[ProdCtgId]
+     
+    with CTE as (  SELECT a.[ProdCtgId]
       ,a.[ProdCtgKey]
       ,a.[BranchId]
       ,a.[ProdCtgName]
@@ -26,16 +24,27 @@ AS
       ,a.[DeletedDate]
       ,a.[DeletedBy]
       ,a.[Status]
-	  
+	   ,ROW_NUMBER() OVER (ORDER BY a.ProdCtgId ASC) AS RowNum
       FROM   [invnt].[ProductCategories] a
 	  WHERE  (@ProdCtgId IS NULL OR a.ProdCtgId = @ProdCtgId) and
 	         (@ProdCtgKey IS NULL OR a.ProdCtgKey = @ProdCtgKey) and
 			 (@BranchId IS NULL OR a.BranchId = @BranchId) and
-		     (@ProdCtgName IS NULL OR a.ProdCtgName = @ProdCtgName)  
-			 and a.Status='Active'
-      ORDER  BY a.ProdCtgId Desc
+		     (@ProdCtgName IS NULL OR
 
-	 OFFSET @offset ROWS FETCH NEXT @page_size ROWS ONLY;
+			 LOWER(LTRIM(RTRIM(REPLACE(a.ProdCtgName, ' ', '')))) LIKE '%' + LOWER(LTRIM(RTRIM(REPLACE(@ProdCtgName, ' ', ''))))  + '%')
+			 and a.Status='Active'
+      )
+      
+	  
+	  SELECT 
+			a.*,
+			(SELECT COUNT(*) FROM CTE) AS total_row
+		FROM   
+        CTE a
+        WHERE  
+        RowNum > ((@page_number - 1) * @page_size) AND RowNum <= (@page_number * @page_size)     
+        ORDER BY 
+        a.ProdCtgId DESC;
   END 
   
  -- select * from  [invnt].[ProductCategories]

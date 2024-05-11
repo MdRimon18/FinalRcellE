@@ -36,6 +36,8 @@ builder.Services.AddScoped<TaskService>();
 
 builder.Services.AddScoped<OrderService>();
 builder.Services.AddScoped<OrderServiceWithSp>();
+builder.Services.AddScoped<ColorService>();
+
 
 
 builder.Services.AddScoped<CountryServiceV2>();

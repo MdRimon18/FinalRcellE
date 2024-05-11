@@ -70,7 +70,7 @@ namespace Pms.Data.Repository.Inventory
                     parameters.Add("@ShippingByName", shippingBy.ShippingByName);
                     parameters.Add("@entryDateTime", shippingBy.EntryDateTime);
                     parameters.Add("@entryBy", shippingBy.EntryBy);
-                    await _db.ExecuteAsync("Shipping_By_Insert_SP", parameters, commandType: CommandType.StoredProcedure);
+                    await _db.ExecuteAsync("Shipping_By_type_Insert_SP", parameters, commandType: CommandType.StoredProcedure);
 
 
 

@@ -145,8 +145,6 @@
     <Build Include="dbo\Stored Procedures\Shipping_By_Update_SP.sql" />
     <Build Include="dbo\Stored Procedures\Shipping_By_type_Insert_SP.sql" />
     <Build Include="dbo\Stored Procedures\shipping_By_type_Get_SP.sql" />
-    <Build Include="dbo\Stored Procedures\Shipping_By_Insert_SP.sql" />
-    <Build Include="dbo\Stored Procedures\shipping_By_Get_SP.sql" />
     <Build Include="dbo\Stored Procedures\Product_Ctg_Update_SP.sql" />
     <Build Include="dbo\Stored Procedures\Product_Ctg_Insert_SP.sql" />
     <Build Include="dbo\Stored Procedures\Product_Ctg_Get_SP.sql" />
@@ -164,10 +162,18 @@
     <Build Include="stt\Tables\BillingPlans.sql" />
     <Build Include="dbo\Stored Procedures\BillingPlan_InsertOrUpdate_SP.sql" />
     <Build Include="dbo\Stored Procedures\BillingPlan_Get_SP.sql" />
-    <Build Include="stt\Tables\role_branch.sql" />
+    <Build Include="stt\Tables\Menus.sql" />
+    <Build Include="stt\Tables\Colors.sql" />
+    <Build Include="invnt\Tables\ProductSizes.sql" />
     <Build Include="dbo\Stored Procedures\Status_Settings_Update_SP_1.sql" />
+    <Build Include="dbo\Stored Procedures\Product_Size_InsertOrUpdate_SP.sql" />
+    <Build Include="dbo\Stored Procedures\PrdcuctSize_GetSP.sql" />
+    <Build Include="dbo\Stored Procedures\Menus_InsertOrUpdate_SP.sql" />
+    <Build Include="dbo\Stored Procedures\Menus_Get_SP.sql" />
     <Build Include="dbo\Stored Procedures\Currency_Update_SP_1.sql" />
     <Build Include="dbo\Stored Procedures\Country_Update_SP_1.sql" />
+    <Build Include="dbo\Stored Procedures\Color_InsertOrUpdate_SP.sql" />
+    <Build Include="dbo\Stored Procedures\Color_Get_SP.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Import Schema Logs\DBProject_20240420045555.log" />

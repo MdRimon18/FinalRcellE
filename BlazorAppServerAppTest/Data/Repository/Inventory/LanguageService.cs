@@ -18,7 +18,7 @@ namespace Pms.Data.Repository.Inventory
             _db = db.GetDbConnection();
 
         }
-        public async Task<IEnumerable<Language>> Get(long? LanguageId, string? LanguageKey, long? LanguageName, int? pagenumber, int? pageSize)
+        public async Task<IEnumerable<Language>> Get(long? LanguageId, string? LanguageKey, string? LanguageName, int? pagenumber, int? pageSize)
         {
             try
             {

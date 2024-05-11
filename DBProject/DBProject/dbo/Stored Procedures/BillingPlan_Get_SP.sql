@@ -1,4 +1,4 @@
-﻿ 
+﻿
  CREATE PROCEDURE [dbo].[BillingPlan_Get_SP](
  @BillingPlanId bigint=null,
  @BillingPlanKey nvarchar(40)=null,
@@ -29,7 +29,8 @@ AS
 	  WHERE  (@BillingPlanId IS NULL OR a.BillingPlanId = @BillingPlanId) and
 	         (@BillingPlanKey IS NULL OR a.BillingPlanKey = @BillingPlanKey) and
 			 (@LanguageId IS NULL OR a.LanguageId = @LanguageId) and
-		     (@BillingPlanName IS NULL OR a.BillingPlanName = @BillingPlanName)  
+		     (@BillingPlanName IS NULL OR 
+			 LOWER(LTRIM(RTRIM(REPLACE(a.BillingPlanName, ' ', '')))) LIKE '%' + LOWER(LTRIM(RTRIM(REPLACE(@BillingPlanName, ' ', ''))))  + '%')
 			 and a.Status='Active'
       )
 

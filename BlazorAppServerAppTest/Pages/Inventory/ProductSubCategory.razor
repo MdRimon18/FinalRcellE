@@ -30,7 +30,23 @@
                                         <SuccessAlert Message="@SuccessMessage" Show="@showSuccessAlert" />
                                         <DangerAlert Message="@DangerMessage" Show="@showDangerAlert" OnClose="HideAlert" />
                                        
-                                      
+                                        
+
+                                        <div class="col-3 mb-3 text-lg-end">
+
+                                            <label class="form-label" for="ProdCtgId">Product Category</label>
+                                        </div>
+                                        <div class="col-9 col-sm-7 mb-3">
+                                            <select class="form-control form-control-sm" @bind="@productSubCategory.ProdCtgId">
+                                                @foreach (var item in productCategory_list)
+                                                {
+                                                    <option value=@item.ProdCtgId>@item.ProdCtgName</option>
+                                                }
+
+                                            </select>
+
+                                            <ValidationMessage class="text-danger" For="@(() => productSubCategory.ProdCtgId)" />
+                                        </div>
 
                                         <div class="col-3 mb-3 text-lg-end">
 
@@ -40,14 +56,8 @@
                                             <InputText class="form-control form-control-sm" id="ProdSubCtgName" @bind-Value="@productSubCategory.ProdSubCtgName" />
                                             <ValidationMessage class="text-danger" For="@(() => productSubCategory.ProdSubCtgName)" />
                                         </div>
-                                        <div class="col-3 mb-3 text-lg-end">
 
-                                            <label class="form-label" for="ProdCtgId">Product Category Id</label>
-                                        </div>
-                                        <div class="col-9 col-sm-7 mb-3">
-                                            <InputNumber class="form-control form-control-sm" id="ProdCtgId" @bind-Value="@productSubCategory.ProdCtgId" />
-                                            <ValidationMessage class="text-danger" For="@(() => productSubCategory.ProdCtgId)" />
-                                        </div>
+
 
                                         <div class="col-9 col-sm-7 offset-3">
                                             @if (productSubCategory.ProdSubCtgId > 0)
@@ -256,6 +266,11 @@
     ProductSubCategoryService productSubCategoryService { get; set; }
     List<Pms.Models.Entity.Settings.ProductSubCategory> productSubCategory_list = new List<Pms.Models.Entity.Settings.ProductSubCategory>();
 
+    [Inject]
+    ProductCategoryService productCategoryService { get; set; }
+    List<Pms.Models.Entity.Settings.ProductCategories> productCategory_list = new List<Pms.Models.Entity.Settings.ProductCategories>();
+
+
     private bool showSuccessAlert = false;
     private bool showDangerAlert = false;
 
@@ -270,7 +285,8 @@
 
     protected override async Task OnInitializedAsync()
     {
-        await LoadProdSubCtg();
+        await LoadProdSubCtg();      
+        productCategory_list = (await productCategoryService.Get(null, null, null, null, 1, 1000)).ToList();
 
     }
 
