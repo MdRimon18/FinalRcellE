@@ -30,7 +30,7 @@
                                         <DangerAlert Message="@DangerMessage" Show="@showDangerAlert" OnClose="HideAlert" />
 
                                         <div class="col-4 mb-3 text-lg-start">
-                                            <label class="form-label" for="BusinessTypeName">BusinessTypes Name</label>
+                                            <label class="form-label" for="BusinessTypeName"><span class="error-star">*</span>BusinessTypes Name</label>
                                         </div>
                                         <div class="col-9 col-sm-7 mb-3">
                                             <InputText class="form-control form-control-sm" id="BusinessTypeName" @bind-Value="@businessType.BusinessTypeName" />
@@ -67,19 +67,23 @@
     <div class="card-header border-bottom border-200 px-0">
         <div class="d-lg-flex justify-content-between">
             <div class="row flex-between-center gy-2 px-x1">
-                <div class="col-auto pe-0">
 
-                    <h6 class="mb-0">
-                        search
-                    </h6>
-                </div>
+                <div class="col-auto pe-0">
+                    <h5 class="mb-0">Business Types</h5>
+                    
+                </div
+                
                 <div class="col-auto">
-                    <form>
+                    
                         <div class="input-group input-search-width">
-                            <input class="form-control form-control-sm shadow-none" type="search" placeholder="Search  by BusinessTypes" aria-label="search" />
-                            <button class="btn btn-sm btn-outline-secondary border-300 hover-border-secondary"><span class="fa fa-search fs-10"></span></button>
+                            <input class="form-control form-control-sm shadow-none" type="search" placeholder="Search  by name" aria-label="search" @bind="BusinessTypeNameSearch" />
+                            <button type="button" class="btn btn-sm btn-outline-secondary border-300 hover-border-secondary" @onclick="()=>LoadBusinessType()">
+                                <span class="fa fa-search fs-10"></span>
+                              
+                                </button>
+                            <button class="btn btn-falcon-default btn-sm ms-sm-1" type="button" @onclick="()=>OnRefresh()"><span class="fas fa-redo"></span></button>
                         </div>
-                    </form>
+                   
                 </div>
             </div>
             <div class="border-bottom border-200 my-3"></div>
@@ -162,16 +166,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="card-footer">
-                    <div class="row align-items-center">
-                        <div class="pagination d-none"></div>
-                        <div class="col"><span class="d-none d-sm-inline-block me-2 fs-10" data-list-info="data-list-info"></span></div>
-                        <div class="col-auto d-flex">
-                            <button class="btn btn-sm btn-primary" type="button" data-list-pagination="prev"><span>Previous</span></button>
-                            <button class="btn btn-sm btn-primary px-4 ms-2" type="button" data-list-pagination="next"><span>Next</span></button>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
             <div class="fade tab-pane" id="card-view" role="tabpanel" aria-labelledby="cardView" data-list='{"valueNames":["client","subject","status","priority","agent"],"page":4,"pagination":true}'>
                 <div class="card-body p-0">
@@ -208,17 +203,34 @@
                         <p class="fw-bold fs-8 mt-3">No ticket found</p>
                     </div>
                 </div>
-                <div class="card-footer">
-                    <div class="row align-items-center">
-                        <div class="pagination d-none"></div>
-                        <div class="col"><span class="d-none d-sm-inline-block me-2 fs-10" data-list-info="data-list-info"></span></div>
-                        <div class="col-auto d-flex">
-                            <button class="btn btn-sm btn-primary" type="button" data-list-pagination="prev"><span>Previous</span></button>
-                            <button class="btn btn-sm btn-primary px-4 ms-2" type="button" data-list-pagination="next"><span>Next</span></button>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="pagination d-none"></div>
+                        <div class="col-md-8">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <span class="d-none d-sm-inline-block me-2 fs-10">page @currentPage of @totalPages, Total Record @TotalRecord </span>
+
+                                </div>
+                                <div class="col-md-2">
+                                 
+                                    <PageSizeSelection SelectedPageSize="@PageSize" SelectedPageSizeChanged="HandlePageSizeChanged" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="col-auto d-flex justify-content-end">
+
+                                <PaginationV2 TotalPages="totalPages" CurrentPage="currentPage" OnPageChange="ChangePage" />
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
         }
     </div>
 
@@ -243,6 +255,16 @@
     private string errorMessage;
 
     private bool isLoading = true;
+    
+    private int PageSize { get; set; } = 5;  // Number of items per page
+
+    int totalPages { get; set; }
+    int currentPage= 1; // Example current page
+
+    private int TotalRecord { get; set; }
+
+    public string? BusinessTypeNameSearch { get; set; }
+
 
 
 
@@ -252,11 +274,24 @@
 
     }
 
-    private async Task LoadBusinessType()
+     private async Task LoadBusinessType()
     {
         try
         {
-            businessTypes_list = (await businessTypesService.Get(null, null, null, null, 1, 10)).ToList();
+            if (BusinessTypeNameSearch == "") { BusinessTypeNameSearch = null; }
+            businessTypes_list = (await businessTypesService.Get(null, null, null,BusinessTypeNameSearch, currentPage, PageSize)).ToList();
+            if (businessTypes_list.Count > 0)
+            {
+                TotalRecord = businessTypes_list[0].total_row;
+                //  totalPages = TotalRecord / PageSize;
+                totalPages = (int)Math.Ceiling((double)TotalRecord / PageSize);
+            }
+            else
+            {
+                TotalRecord = 0;
+                totalPages = 0;
+            }
+
         }
         catch (Exception ex)
         {
@@ -265,6 +300,7 @@
         finally
         {
             isLoading = false;
+            StateHasChanged(); // Ensure UI reflects changes
         }
     }
 
@@ -277,7 +313,7 @@
                 businessType.EntryDateTime = DateTimeHelper.CurrentDateTime();
                 businessType.EntryBy = UserInfo.UserId;
                 businessType.LanguageId = CompanyInfo.LanguageId;
-                businessType.BusinessTypeId = await businessTypesService.Save(businessType);
+                businessType.BusinessTypeId = await businessTypesService.SaveOrUpdate(businessType);
                 if (businessType.BusinessTypeId > 0)
                 {
                     showSuccessAlert = true;
@@ -304,8 +340,8 @@
                 businessType.LanguageId = CompanyInfo.LanguageId;
                 businessType.LastModifyDate = DateTimeHelper.CurrentDateTime();
                 businessType.LastModifyBy = UserInfo.UserId;
-                bool isUpdate = await businessTypesService.Update(businessType);
-                if (isUpdate)
+               businessType.BusinessTypeId = await businessTypesService.SaveOrUpdate(businessType);
+                    if (businessType.BusinessTypeId>0)
                 {
                     showSuccessAlert = true;
                     SuccessMessage = MessageManager.UpdateSuccess;
@@ -378,5 +414,26 @@
     {
         showDangerAlert = false;
         return Task.CompletedTask;
+    }
+    private async void OnClickAddBtn()
+    {
+        businessType = new Pms.Models.Entity.Inventory.BusinessType();
+    }
+    private async void OnRefresh()
+    {
+        BusinessTypeNameSearch = null;
+        await LoadBusinessType();
+    }
+    private async void ChangePage(int pageNumber)
+    {
+        currentPage = pageNumber;
+        await  LoadBusinessType();
+    }
+
+   void HandlePageSizeChanged(int newSize)
+    {
+        PageSize = newSize;
+          ChangePage(1);
+  
     }
 }

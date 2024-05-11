@@ -45,6 +45,8 @@ builder.Services.AddScoped<ShippingByService>();
 builder.Services.AddScoped<UnitService>();
 builder.Services.AddScoped<BusinessTypesService>();
 builder.Services.AddScoped<RoleService>();
+builder.Services.AddScoped<InvoiceTypeService>();
+
 
 builder.Services.AddScoped<LanguageService>();
 builder.Services.AddScoped<ProductCategoryService>();

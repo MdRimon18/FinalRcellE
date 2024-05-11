@@ -30,10 +30,10 @@ namespace Pms.Data.Repository.Inventory
                 parameters.Add("@BusinessTypeKey", BusinessTypeKey);
                 parameters.Add("@LanguageId", LanguageId);
                 parameters.Add("@BusinessTypeName", BusinessTypeName);
-                parameters.Add("@page_number", pagenumber);
-                parameters.Add("@page_size", pageSize);
+                parameters.Add("@PageNumber", pagenumber);
+                parameters.Add("@PageSize", pageSize);
 
-                return await _db.QueryAsync<BusinessType>("BusinessTypes_Get_SP", parameters, commandType: CommandType.StoredProcedure);
+                return await _db.QueryAsync<BusinessType>("BusinessType_Get_SP", parameters, commandType: CommandType.StoredProcedure);
 
             }
             catch (Exception ex)
@@ -58,23 +58,29 @@ namespace Pms.Data.Repository.Inventory
         }
 
 
-        public async Task<long> Save(BusinessType businessType)
+        public async Task<long> SaveOrUpdate(BusinessType businessType)
         {
             try
             {
                 var parameters = new DynamicParameters();
 
-                parameters.Add("@businessTypeId", dbType: DbType.Int64, direction: ParameterDirection.Output);
-                parameters.Add("@languageId", businessType.LanguageId);
-                parameters.Add("@businessTypeKey", businessType.BusinessTypeKey);
-                parameters.Add("@businessTypeName", businessType.BusinessTypeName);
-                parameters.Add("@entryDateTime", businessType.EntryDateTime);
-                parameters.Add("@entryBy", businessType.EntryBy);
-                await _db.ExecuteAsync("BusinessTypes_Insert_SP", parameters, commandType: CommandType.StoredProcedure);
+                parameters.Add("@BusinessTypeId", businessType.BusinessTypeId);
+                parameters.Add("@LanguageId", businessType.LanguageId);
+                parameters.Add("@BusinessTypeKey", businessType.BusinessTypeKey);
+                parameters.Add("@BusinessTypeName", businessType.BusinessTypeName);
+                parameters.Add("@EntryDateTime", businessType.EntryDateTime);
+                parameters.Add("@EntryBy", businessType.EntryBy);
+                parameters.Add("@LastModifyDate", businessType.LastModifyDate);
+                parameters.Add("@LastModifyBy", businessType.LastModifyBy);
+                parameters.Add("@DeletedDate", businessType.DeletedDate);
+                parameters.Add("@DeletedBy", businessType.DeletedBy);
+                parameters.Add("@Status", businessType.Status);
+                parameters.Add("@SuccessOrFailId", dbType: DbType.Int64, direction: ParameterDirection.Output);
+                await _db.ExecuteAsync("BusinessType_InsertOrUpdate_SP", parameters, commandType: CommandType.StoredProcedure);
 
 
 
-                return parameters.Get<long>("@businessTypeId");
+                return parameters.Get<long>("@SuccessOrFailId");
             }
             catch (Exception ex)
             {
@@ -85,40 +91,22 @@ namespace Pms.Data.Repository.Inventory
         }
 
 
-        public async Task<bool> Update(BusinessType businessType)
+
+
+
+        public async Task<bool> Delete(long BillingPlanId)
         {
-            var parameters = new DynamicParameters();
-            parameters.Add("@businessTypeId", businessType.BusinessTypeId);
-            parameters.Add("@languageId", businessType.LanguageId);
-            parameters.Add("@businessTypeName", businessType.BusinessTypeName);
-            parameters.Add("@lastModifyDate", businessType.LastModifyDate);
-            parameters.Add("@lastModifyBy", businessType.LastModifyBy);
-            parameters.Add("@deletedDate", businessType.DeletedDate);
-            parameters.Add("@DeletedBy", businessType.DeletedBy);
-            parameters.Add("@Status", businessType.Status);
-            parameters.Add("@success", dbType: DbType.Int32, direction: ParameterDirection.Output);
-            await _db.ExecuteAsync("BusinessTypes_Update_SP",
-                  parameters, commandType: CommandType.StoredProcedure);
-
-            int success = parameters.Get<int>("@success");
-            return success > 0;
-        }
-
-
-        public async Task<bool> Delete(long BusinessTypeId)
-        {
-            var businessTypes = await (Get(BusinessTypeId, null, null, null, 1, 1));
-            var deleteObj = businessTypes.FirstOrDefault();
-            bool isDeleted = false;
+            var billingPlan = await (Get(BillingPlanId, null, null, null, 1, 1));
+            var deleteObj = billingPlan.FirstOrDefault();
+            long DeletedSatatus = 0;
             if (deleteObj != null)
             {
                 deleteObj.DeletedDate = DateTimeHelper.CurrentDateTime();
-                deleteObj.DeletedBy = UserInfo.UserId;
                 deleteObj.Status = "Deleted";
-                isDeleted = await Update(deleteObj);
+                DeletedSatatus = await SaveOrUpdate(deleteObj);
             }
 
-            return isDeleted;
+            return DeletedSatatus > 0;
         }
     }
-}
+}   

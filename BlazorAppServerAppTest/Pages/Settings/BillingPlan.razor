@@ -88,7 +88,7 @@
                     </h6>
                 </div> *@
                 <div class="col-auto">
-                    
+                        
                         <div class="input-group input-search-width">
                             <input class="form-control form-control-sm shadow-none" type="search" placeholder="Search  by name" aria-label="search" @bind="BillingPlanNameSearch" />
                             <button type="button" class="btn btn-sm btn-outline-secondary border-300 hover-border-secondary" @onclick="()=>LoadBillingPlan()">
@@ -224,32 +224,32 @@
                
        
     </div>
-            <div class="card-footer">
-                <div class="row">
-                    <div class="pagination d-none"></div>
-                    <div class="col-md-8">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <span class="d-none d-sm-inline-block me-2 fs-10">page @currentPage of @totalPages, Total Record @TotalRecord </span>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="pagination d-none"></div>
+                        <div class="col-md-8">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <span class="d-none d-sm-inline-block me-2 fs-10">page @currentPage of @totalPages, Total Record @TotalRecord </span>
 
-                            </div>
-                            <div class="col-md-2">
+                                </div>
+                                <div class="col-md-2">
                                  
-                                <PageSizeSelection SelectedPageSize="@PageSize" SelectedPageSizeChanged="HandlePageSizeChanged" />
+                                    <PageSizeSelection SelectedPageSize="@PageSize" SelectedPageSizeChanged="HandlePageSizeChanged" />
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="col-auto d-flex justify-content-end">
+                        <div class="col-md-4">
+                            <div class="col-auto d-flex justify-content-end">
 
-                            <PaginationV2 TotalPages="totalPages" CurrentPage="currentPage" OnPageChange="ChangePage" />
+                                <PaginationV2 TotalPages="totalPages" CurrentPage="currentPage" OnPageChange="ChangePage" />
 
+                            </div>
                         </div>
+
                     </div>
 
                 </div>
-
-            </div>
         }
 </div>
 </div>
@@ -272,7 +272,7 @@
 
     private bool isLoading = true;
 
-    private int PageSize { get; set; }  // Number of items per page
+    private int PageSize { get; set; } = 5;  // Number of items per page
 
     int totalPages { get; set; }
     int currentPage= 1; // Example current page
@@ -283,7 +283,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        PageSize = 5;
+        
         await LoadBillingPlan(); 
 
     }

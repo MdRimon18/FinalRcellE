@@ -94,7 +94,7 @@ namespace Pms.Data.Repository
             {
                 deleteObj.DeletedDate = DateTimeHelper.CurrentDateTime();
                 deleteObj.Status = "Deleted";
-                DeletedSatatus = await SaveOrUpdate(deleteObj);
+                DeletedSatatus = await SaveOrUpdate(deleteObj); 
             }
 
             return DeletedSatatus > 0;
