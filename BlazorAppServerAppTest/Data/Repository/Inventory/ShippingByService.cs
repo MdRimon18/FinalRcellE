@@ -33,7 +33,7 @@ namespace Pms.Data.Repository.Inventory
                     parameters.Add("@page_size", pageSize);
                  
 
-                    return await _db.QueryAsync<ShippingBy>("shipping_By_Get_SP", parameters, commandType: CommandType.StoredProcedure);
+                    return await _db.QueryAsync<ShippingBy>("shippingBy_Get_SP", parameters, commandType: CommandType.StoredProcedure);
 
                 }
                 catch (Exception ex)
@@ -70,7 +70,7 @@ namespace Pms.Data.Repository.Inventory
                     parameters.Add("@ShippingByName", shippingBy.ShippingByName);
                     parameters.Add("@entryDateTime", shippingBy.EntryDateTime);
                     parameters.Add("@entryBy", shippingBy.EntryBy);
-                    await _db.ExecuteAsync("Shipping_By_type_Insert_SP", parameters, commandType: CommandType.StoredProcedure);
+                    await _db.ExecuteAsync("ShippingBy_Insert_SP", parameters, commandType: CommandType.StoredProcedure);
 
 
 
@@ -99,7 +99,7 @@ namespace Pms.Data.Repository.Inventory
                 parameters.Add("@DeletedBy", shippingBy.DeletedBy);
                 parameters.Add("@Status", shippingBy.Status);
                 parameters.Add("@success", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                await _db.ExecuteAsync("Shipping_By_Update_SP",
+                await _db.ExecuteAsync("ShippingBy_Update_SP",
                       parameters, commandType: CommandType.StoredProcedure);
 
                 int success = parameters.Get<int>("@success");

@@ -4,7 +4,7 @@ namespace Pms.Models.Entity.Settings
 {
     public class AccHead
     {
-         
+
         public long AccHeadId { get; set; }
         public Guid? AccHeadKey { get; set; }
         [Required(ErrorMessage = "AccHead Name is required")]

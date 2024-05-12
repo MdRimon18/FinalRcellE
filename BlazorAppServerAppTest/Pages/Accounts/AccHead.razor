@@ -243,12 +243,12 @@
 
 @code {
     
-    private Pms.Models.Entity.Settings.AccHead accHead = new Pms.Models.Entity.Settings.AccHead();
+    private Models.Entity.Settings.AccHead accHead = new Pms.Models.Entity.Settings.AccHead();
     [Inject]
     protected IJSRuntime JSRuntime { get; set; }
     [Inject]
     AccHeadService accHeadService { get; set; }
-    List<Pms.Models.Entity.Settings.AccHead> accHead_list = new List<Pms.Models.Entity.Settings.AccHead>();
+    List<Models.Entity.Settings.AccHead> accHead_list = new List<Pms.Models.Entity.Settings.AccHead>();
 
 
     private bool showSuccessAlert = false;
@@ -374,7 +374,7 @@
 
 
 
-    private async void EditLoadData(Pms.Models.Entity.Settings.AccHead item)
+    private async void EditLoadData(Models.Entity.Settings.AccHead item)
     {
         accHead = item;
     }

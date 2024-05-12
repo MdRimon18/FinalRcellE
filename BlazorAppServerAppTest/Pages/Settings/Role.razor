@@ -71,17 +71,21 @@
             <div class="row flex-between-center gy-2 px-x1">
                 <div class="col-auto pe-0">
 
-                    <h6 class="mb-0">
-                        search
-                    </h6>
+                    <h5 class="mb-0">
+                        Role
+                    </h5>
                 </div>
                 <div class="col-auto">
-                    <form>
+                    
                         <div class="input-group input-search-width">
-                            <input class="form-control form-control-sm shadow-none" type="search" placeholder="Search  by name" aria-label="search" />
-                            <button class="btn btn-sm btn-outline-secondary border-300 hover-border-secondary"><span class="fa fa-search fs-10"></span></button>
-                        </div>
-                    </form>
+                            <input class="form-control form-control-sm shadow-none" type="search" placeholder="Search  by name" aria-label="search" @bind="RoleNameSearch" />
+                            <button class="btn btn-sm btn-outline-secondary border-300 hover-border-secondary" @onclick="()=>LoadRole()">
+                                <span class="fa fa-search fs-10"></span></button>
+
+                            <button class="btn btn-falcon-default btn-sm ms-sm-1" type="button" @onclick="()=>OnRefresh()"><span class="fas fa-redo"></span></button>
+                        </div
+                        
+                   
                 </div>
             </div>
             <div class="border-bottom border-200 my-3"></div>
@@ -245,6 +249,13 @@
     private string errorMessage;
 
     private bool isLoading = true;
+    private int PageSize { get; set; } = 5;
+    int totalPages { get; set; }
+    int currentPage = 1;
+
+    private int TotalRecord { get; set; }
+
+    public string? RoleNameSearch { get; set; }
 
 
 
@@ -258,7 +269,20 @@
     {
         try
         {
-            role_list = (await roleService.Get(null, null, null, 1, 10)).ToList();
+            if (RoleNameSearch == "") { RoleNameSearch = null; }
+            role_list = (await roleService.Get(null, null,RoleNameSearch, currentPage, PageSize)).ToList();
+            if (role_list.Count > 0)
+            {
+                TotalRecord = role_list[0].total_row;
+                //  totalPages = TotalRecord / PageSize;
+                totalPages = (int)Math.Ceiling((double)TotalRecord / PageSize);
+            }
+            else
+            {
+                TotalRecord = 0;
+                totalPages = 0;
+            }
+
         }
         catch (Exception ex)
         {
@@ -267,6 +291,7 @@
         finally
         {
             isLoading = false;
+            StateHasChanged(); // Ensure UI reflects changes
         }
     }
 
@@ -381,5 +406,26 @@
     {
         showDangerAlert = false;
         return Task.CompletedTask;
+    }
+    private async void OnClickAddBtn()
+    {
+        role = new Pms.Models.Entity.Settings.Role();
+    }
+    private async void OnRefresh()
+    {
+        RoleNameSearch = null;
+        await LoadRole();
+    }
+    private async void ChangePage(int pageNumber)
+    {
+        currentPage = pageNumber;
+        await LoadRole();
+    }
+
+    void HandlePageSizeChanged(int newSize)
+    {
+        PageSize = newSize;
+        ChangePage(1);
+
     }
 }

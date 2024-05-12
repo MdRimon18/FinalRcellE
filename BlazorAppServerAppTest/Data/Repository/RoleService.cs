@@ -17,7 +17,7 @@ namespace Pms.Data.Repository
             _db = db.GetDbConnection();
 
         }
-        public async Task<IEnumerable<Role>> Get(long? RoleId, string? Rolekey, long? RoleName, int? PageNumber, int? PageSize)
+        public async Task<IEnumerable<Role>> Get(long? RoleId, string? Rolekey, string? RoleName, int? PageNumber, int? PageSize)
         {
             try
             {
