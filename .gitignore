@@ -4,9 +4,11 @@
 
 /.vs/Pms/FileContentIndex/2cacd81b-aab7-432d-bdc7-c2706d9de694.vsidx
 /.vs/Pms/FileContentIndex
-/BlazorAppServerAppTest/bin/Debug/net7.0/Pms.dll
+/BlazorAppServerAppTest/bin
 /BlazorAppServerAppTest/bin/Debug/net7.0/Pms.exe
 /BlazorAppServerAppTest/obj/Debug/net7.0/Pms.csproj.CopyComplete
 /BlazorAppServerAppTest/obj/Debug/net7.0/Pms.sourcelink.json
 /BlazorAppServerAppTest/obj/Debug/net7.0/apphost.exe
 /BlazorAppServerAppTest/obj/Debug/net7.0/apphost.exe
+/BlazorAppServerAppTest/obj/Debug
+
