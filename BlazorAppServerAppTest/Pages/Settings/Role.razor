@@ -18,9 +18,9 @@
         <div class="col-lg-12 ps-lg-2 mb-3">
             <div class="row g-0 h-100 align-items-stretch">
                 <div class="col-lg-12 mb-3">
-                    <div class="card h-100">
+                   
 
-                        <div class="card-body bg-body-tertiary pb-0">
+                        <div class="pb-0">
                             <a class="mb-4 d-block d-flex align-items-center" href="#experience-form" data-bs-toggle="collapse" aria-expanded="true" aria-controls="experience-form"><span class="circle-dashed"><span class="fas fa-plus"></span></span><span class="ms-3">Add new Role</span></a>
 
                             <div class="collapse show" id="experience-form">
@@ -32,7 +32,7 @@
 
                                         <div class="col-3 mb-3 text-lg-end">
 
-                                            <label class="form-label" for="roleName">Role Name</label>
+                                            <label class="form-label" for="roleName"> <span class="error-star">*</span>Role Name</label>
                                         </div>
                                         <div class="col-9 col-sm-7 mb-3">
                                             <InputText class="form-control form-control-sm" id="roleName" @bind-Value="@role.RoleName" />
@@ -55,7 +55,7 @@
                                 <div class="border-dashed-bottom my-4"></div>
                             </div>
                         </div>
-                    </div>
+                    
                 </div>
 
             </div>
@@ -168,16 +168,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="card-footer">
-                    <div class="row align-items-center">
-                        <div class="pagination d-none"></div>
-                        <div class="col"><span class="d-none d-sm-inline-block me-2 fs-10" data-list-info="data-list-info"></span></div>
-                        <div class="col-auto d-flex">
-                            <button class="btn btn-sm btn-primary" type="button" data-list-pagination="prev"><span>Previous</span></button>
-                            <button class="btn btn-sm btn-primary px-4 ms-2" type="button" data-list-pagination="next"><span>Next</span></button>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
             <div class="fade tab-pane" id="card-view" role="tabpanel" aria-labelledby="cardView" data-list='{"valueNames":["client","subject","status","priority","agent"],"page":4,"pagination":true}'>
                 <div class="card-body p-0">
@@ -214,17 +205,34 @@
                         <p class="fw-bold fs-8 mt-3">No ticket found</p>
                     </div>
                 </div>
-                <div class="card-footer">
-                    <div class="row align-items-center">
-                        <div class="pagination d-none"></div>
-                        <div class="col"><span class="d-none d-sm-inline-block me-2 fs-10" data-list-info="data-list-info"></span></div>
-                        <div class="col-auto d-flex">
-                            <button class="btn btn-sm btn-primary" type="button" data-list-pagination="prev"><span>Previous</span></button>
-                            <button class="btn btn-sm btn-primary px-4 ms-2" type="button" data-list-pagination="next"><span>Next</span></button>
-                        </div>
-                    </div>
-                </div>
+               
             </div>
+            <div class="card-footer">
+                    <div class="row">
+                        <div class="pagination d-none"></div>
+                        <div class="col-md-8">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <span class="d-none d-sm-inline-block me-2 fs-10">page @currentPage of @totalPages, Total Record @TotalRecord </span>
+
+                                </div>
+                                <div class="col-md-2">
+                                 
+                                    <PageSizeSelection SelectedPageSize="@PageSize" SelectedPageSizeChanged="HandlePageSizeChanged" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="col-auto d-flex justify-content-end">
+
+                                <PaginationV2 TotalPages="totalPages" CurrentPage="currentPage" OnPageChange="ChangePage" />
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
         }
     </div>
 

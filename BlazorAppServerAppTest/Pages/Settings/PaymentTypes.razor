@@ -18,9 +18,9 @@
         <div class="col-lg-12 ps-lg-2 mb-3">
             <div class="row g-0 h-100 align-items-stretch">
                 <div class="col-lg-12 mb-3">
-                    <div class="card h-100">
+                  
 
-                        <div class="card-body bg-body-tertiary pb-0">
+                        <div class="pb-0">
                             <a class="mb-4 d-block d-flex align-items-center" href="#experience-form" data-bs-toggle="collapse" aria-expanded="true" aria-controls="experience-form"><span class="circle-dashed"><span class="fas fa-plus"></span></span><span class="ms-3">Add new PaymentTypes</span></a>
 
                             <div class="collapse show" id="experience-form">
@@ -32,7 +32,7 @@
 
                                         <div class="col-3 mb-3 text-lg-end">
 
-                                            <label class="form-label" for="paymentType">Payment Type Name</label>
+                                            <label class="form-label" for="paymentType"><span class="error-star">*</span>Payment Type Name</label>
                                         </div>
                                         <div class="col-9 col-sm-7 mb-3">
                                             <InputText class="form-control form-control-sm" id="paymentType" @bind-Value="@paymentTypes.PaymentTypesName" />
@@ -55,7 +55,7 @@
                                 <div class="border-dashed-bottom my-4"></div>
                             </div>
                         </div>
-                    </div>
+                   
                 </div>
 
             </div>
@@ -71,17 +71,21 @@
             <div class="row flex-between-center gy-2 px-x1">
                 <div class="col-auto pe-0">
 
-                    <h6 class="mb-0">
-                        search
-                    </h6>
+                    <h5 class="mb-0">
+                        Payment Types
+                    </h5>
                 </div>
-                <div class="col-auto">
-                    <form>
+               <div class="col-auto">
+                    
                         <div class="input-group input-search-width">
-                            <input class="form-control form-control-sm shadow-none" type="search" placeholder="Search  by name" aria-label="search" />
-                            <button class="btn btn-sm btn-outline-secondary border-300 hover-border-secondary"><span class="fa fa-search fs-10"></span></button>
-                        </div>
-                    </form>
+                            <input class="form-control form-control-sm shadow-none" type="search" placeholder="Search  by name" aria-label="search" @bind="PaymentNameSearch" />
+                            <button class="btn btn-sm btn-outline-secondary border-300 hover-border-secondary" @onclick="()=>LoadPaymentTypes()">
+                                <span class="fa fa-search fs-10"></span></button>
+
+                            <button class="btn btn-falcon-default btn-sm ms-sm-1" type="button" @onclick="()=>OnRefresh()"><span class="fas fa-redo"></span></button>
+                        </div
+                        
+                   
                 </div>
             </div>
             <div class="border-bottom border-200 my-3"></div>
@@ -164,16 +168,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="card-footer">
-                    <div class="row align-items-center">
-                        <div class="pagination d-none"></div>
-                        <div class="col"><span class="d-none d-sm-inline-block me-2 fs-10" data-list-info="data-list-info"></span></div>
-                        <div class="col-auto d-flex">
-                            <button class="btn btn-sm btn-primary" type="button" data-list-pagination="prev"><span>Previous</span></button>
-                            <button class="btn btn-sm btn-primary px-4 ms-2" type="button" data-list-pagination="next"><span>Next</span></button>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
             <div class="fade tab-pane" id="card-view" role="tabpanel" aria-labelledby="cardView" data-list='{"valueNames":["client","subject","status","priority","agent"],"page":4,"pagination":true}'>
                 <div class="card-body p-0">
@@ -210,17 +205,34 @@
                         <p class="fw-bold fs-8 mt-3">No ticket found</p>
                     </div>
                 </div>
-                <div class="card-footer">
-                    <div class="row align-items-center">
-                        <div class="pagination d-none"></div>
-                        <div class="col"><span class="d-none d-sm-inline-block me-2 fs-10" data-list-info="data-list-info"></span></div>
-                        <div class="col-auto d-flex">
-                            <button class="btn btn-sm btn-primary" type="button" data-list-pagination="prev"><span>Previous</span></button>
-                            <button class="btn btn-sm btn-primary px-4 ms-2" type="button" data-list-pagination="next"><span>Next</span></button>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
+            <div class="card-footer">
+                    <div class="row">
+                        <div class="pagination d-none"></div>
+                        <div class="col-md-8">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <span class="d-none d-sm-inline-block me-2 fs-10">page @currentPage of @totalPages, Total Record @TotalRecord </span>
+
+                                </div>
+                                <div class="col-md-2">
+                                 
+                                    <PageSizeSelection SelectedPageSize="@PageSize" SelectedPageSizeChanged="HandlePageSizeChanged" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="col-auto d-flex justify-content-end">
+
+                                <PaginationV2 TotalPages="totalPages" CurrentPage="currentPage" OnPageChange="ChangePage" />
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
         }
     </div>
 
@@ -245,6 +257,13 @@
     private string errorMessage;
 
     private bool isLoading = true;
+     private int PageSize { get; set; } = 5;
+    int totalPages { get; set; }
+    int currentPage = 1;
+
+    private int TotalRecord { get; set; }
+
+    public string? PaymentNameSearch { get; set; }
 
 
 
@@ -258,7 +277,20 @@
     {
         try
         {
-            paymentTypes_list = (await paymentTypesService.Get(null, null, null, null, 1, 10)).ToList();
+            if (PaymentNameSearch == "") { PaymentNameSearch = null; }
+            paymentTypes_list = (await paymentTypesService.Get(null, null, PaymentNameSearch, null, currentPage, PageSize)).ToList();
+            if (paymentTypes_list.Count > 0)
+            {
+                TotalRecord = paymentTypes_list[0].total_row;
+                //  totalPages = TotalRecord / PageSize;
+                totalPages = (int)Math.Ceiling((double)TotalRecord / PageSize);
+            }
+            else
+            {
+                TotalRecord = 0;
+                totalPages = 0;
+            }
+
         }
         catch (Exception ex)
         {
@@ -267,6 +299,7 @@
         finally
         {
             isLoading = false;
+            StateHasChanged(); // Ensure UI reflects changes
         }
     }
 
@@ -381,5 +414,26 @@
     {
         showDangerAlert = false;
         return Task.CompletedTask;
+    }
+    private async void OnClickAddBtn()
+    {
+        paymentTypes = new Pms.Models.Entity.Settings.PaymentTypes();
+    }
+     private async void OnRefresh()
+    {
+        PaymentNameSearch = null;
+        await LoadPaymentTypes();
+    }
+    private async void ChangePage(int pageNumber)
+    {
+        currentPage = pageNumber;
+        await LoadPaymentTypes();
+    }
+
+    void HandlePageSizeChanged(int newSize)
+    {
+        PageSize = newSize;
+        ChangePage(1);
+
     }
 }
