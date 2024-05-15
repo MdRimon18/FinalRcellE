@@ -74,7 +74,7 @@ namespace Pms.Data.Repository.Inventory
                     parameters.Add("@DeletedBy", _ProductSize.DeletedBy);
                     parameters.Add("@Status", _ProductSize.Status);
                     parameters.Add("@SuccessOrFailId", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                    await _db.ExecuteAsync("BillingPlan_InsertOrUpdate_SP", parameters, commandType: CommandType.StoredProcedure);
+                    await _db.ExecuteAsync("Product_Size_InsertOrUpdate_SP", parameters, commandType: CommandType.StoredProcedure);
 
                     return (long)parameters.Get<int>("@SuccessOrFailId");
                 }
@@ -86,10 +86,10 @@ namespace Pms.Data.Repository.Inventory
                 }
             }
 
-            public async Task<bool> Delete(long BillingPlanId)
+            public async Task<bool> Delete(long ProductSizeId)
             {
-                var billingPlan = await (Get(BillingPlanId, null, null, null, 1, 1));
-                var deleteObj = billingPlan.FirstOrDefault();
+                var _ProductSize = await (Get(ProductSizeId, null, null, null, 1, 1));
+                var deleteObj = _ProductSize.FirstOrDefault();
                 long DeletedSatatus = 0;
                 if (deleteObj != null)
                 {
