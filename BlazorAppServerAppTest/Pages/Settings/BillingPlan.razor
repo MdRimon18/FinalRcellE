@@ -87,7 +87,7 @@
                         search
                     </h6>
                 </div> *@
-                <div class="col-auto">
+                <div class="col-auto pe-0">
                         
                         <div class="input-group input-search-width">
                             <input class="form-control form-control-sm shadow-none" type="search" placeholder="Search  by name" aria-label="search" @bind="BillingPlanNameSearch" />
@@ -95,9 +95,12 @@
                                 <span class="fa fa-search fs-10"></span>
                               
                                 </button>
-                            <button class="btn btn-falcon-default btn-sm ms-sm-1" type="button" @onclick="()=>OnRefresh()"><span class="fas fa-redo"></span></button>
+                           
                         </div>
                    
+                </div>
+                <div class="col-auto pe-0">
+                    <button class="btn btn-falcon-default btn-sm ms-sm-1" type="button" @onclick="()=>OnRefresh()"><span class="fas fa-redo"></span></button>
                 </div>
        
             </div>
@@ -255,12 +258,12 @@
 </div>
 
 @code {
-    private Pms.Models.Entity.Settings.BillingPlan billingPlan = new Pms.Models.Entity.Settings.BillingPlan();
+    private Pms.Models.Entity.Settings.BillingPlans billingPlan = new Pms.Models.Entity.Settings.BillingPlans();
     [Inject]
     protected IJSRuntime JSRuntime { get; set; }
     [Inject]
     BillingPlanService billingService { get; set; }
-    List<Pms.Models.Entity.Settings.BillingPlan> billingPlan_list = new List<Pms.Models.Entity.Settings.BillingPlan>();
+    List<Pms.Models.Entity.Settings.BillingPlans> billingPlan_list = new List<Pms.Models.Entity.Settings.BillingPlans>();
 
     private bool showSuccessAlert = false;
     private bool showDangerAlert = false;
@@ -374,7 +377,7 @@
             }
             // Clear the form after save/update
             await LoadBillingPlan(); // Reload orders after save/update
-            billingPlan = new Pms.Models.Entity.Settings.BillingPlan();
+            billingPlan = new Pms.Models.Entity.Settings.BillingPlans();
         }
         catch (Exception ex)
         {
@@ -385,9 +388,9 @@
 
 
 
-    private async void EditLoadData(Pms.Models.Entity.Settings.BillingPlan lnge)
+    private async void EditLoadData(Pms.Models.Entity.Settings.BillingPlans bl)
     {
-        billingPlan = lnge;
+        billingPlan = bl;
     }
 
     private async Task DeleteItem(long BillingPlanId)
@@ -429,7 +432,7 @@
 
     private async void OnClickAddBtn()
     {
-        billingPlan = new Pms.Models.Entity.Settings.BillingPlan();
+        billingPlan = new Pms.Models.Entity.Settings.BillingPlans();
     }
     private async void OnRefresh()
     {

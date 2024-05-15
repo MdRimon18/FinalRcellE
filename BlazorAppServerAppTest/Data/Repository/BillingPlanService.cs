@@ -3,6 +3,7 @@ using Pms.Helper;
 using System.Data;
 using Pms.Data.DbContex; 
 using Pms.Models.Entity.Settings;
+using Pms.Pages.Settings;
 
 
 namespace Pms.Data.Repository
@@ -17,7 +18,7 @@ namespace Pms.Data.Repository
             _db = db.GetDbConnection();
 
         }
-        public async Task<IEnumerable<BillingPlan>> Get(long? BillingPlanId, string? BillingPlanKey,string? BillingPlanName, long? LanguageId,int? PageNumber, int? PageSize)
+        public async Task<IEnumerable<BillingPlans>> Get(long? BillingPlanId, string? BillingPlanKey,string? BillingPlanName, long? LanguageId,int? PageNumber, int? PageSize)
         {
             try
             {
@@ -30,24 +31,24 @@ namespace Pms.Data.Repository
                 parameters.Add("@PageNumber", PageNumber);
                 parameters.Add("@PageSize", PageSize);
 
-                return await _db.QueryAsync<BillingPlan>("BillingPlan_Get_SP", parameters, commandType: CommandType.StoredProcedure);
+                return await _db.QueryAsync<BillingPlans>("BillingPlan_Get_SP", parameters, commandType: CommandType.StoredProcedure);
 
             }
             catch (Exception ex)
             {
 
-                return Enumerable.Empty<BillingPlan>();
+                return Enumerable.Empty<BillingPlans>();
             }
         }
 
-        public async Task<BillingPlan> GetById(long UnitId)
+        public async Task<BillingPlans> GetById(long UnitId)
 
         {
             var units = await (Get(UnitId, null, null, null, 1, 1));
             return units.FirstOrDefault();
         }
 
-        public async Task<BillingPlan> GetByKey(string UnitKey)
+        public async Task<BillingPlans> GetByKey(string UnitKey)
 
         {
             var units = await (Get(null, UnitKey, null, null, 1, 1));
@@ -55,7 +56,7 @@ namespace Pms.Data.Repository
         }
 
 
-        public async Task<long> SaveOrUpdate(BillingPlan billingPlan)
+        public async Task<long> SaveOrUpdate(BillingPlans billingPlan)
         {
             try
             {

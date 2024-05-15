@@ -17,7 +17,7 @@ namespace Pms.Data.Repository.Inventory
             _db = db.GetDbConnection();
 
         }
-        public async Task<IEnumerable<Currency>> Get(long? CurrencyId, string? CurrencyKey, int? LanguageId, string? CurrencyName, string? CurrencyCode, string? CurrencyShortName, string? Symbol, decimal? ExchangeRate, int? pagenumber, int? pageSize)
+        public async Task<IEnumerable<ProductSize>> Get(long? CurrencyId, string? CurrencyKey, int? LanguageId, string? CurrencyName, string? CurrencyCode, string? CurrencyShortName, string? Symbol, decimal? ExchangeRate, int? pagenumber, int? pageSize)
         {
             try
             {
@@ -35,24 +35,24 @@ namespace Pms.Data.Repository.Inventory
                 parameters.Add("@page_number", pagenumber);
                 parameters.Add("@page_size", pageSize);
 
-                return await _db.QueryAsync<Currency>("Currency_Get_SP", parameters, commandType: CommandType.StoredProcedure);
+                return await _db.QueryAsync<ProductSize>("Currency_Get_SP", parameters, commandType: CommandType.StoredProcedure);
 
             }
             catch (Exception ex)
             {
 
-                return Enumerable.Empty<Currency>();
+                return Enumerable.Empty<ProductSize>();
             }
         }
 
-        public async Task<Currency> GetById(long CurrencyId)
+        public async Task<ProductSize> GetById(long CurrencyId)
 
         {
             var Currencies = await (Get(CurrencyId, null, null, null, null, null, null, null, 1, 1));
             return Currencies.FirstOrDefault();
         }
 
-        public async Task<Currency> GetByKey(string CurrencyKey)
+        public async Task<ProductSize> GetByKey(string CurrencyKey)
 
         {
             var Currencies = await (Get(null, CurrencyKey, null, null, null, null, null, null, 1, 1));
@@ -60,7 +60,7 @@ namespace Pms.Data.Repository.Inventory
         }
 
 
-        public async Task<long> Save(Currency currency)
+        public async Task<long> Save(ProductSize currency)
         {
             try
             {
@@ -91,7 +91,7 @@ namespace Pms.Data.Repository.Inventory
         }
 
 
-        public async Task<bool> Update(Currency currency)
+        public async Task<bool> Update(ProductSize currency)
         {
             var parameters = new DynamicParameters();
             parameters.Add("@CurrencyId", currency.CurrencyId);

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Pms.Models.Entity.Settings
 {
-    public class BillingPlan
+    public class BillingPlans
     {
         public long BillingPlanId { get; set; }
         public Guid BillingPlanKey { get; set; }
