@@ -1,4 +1,7 @@
-﻿namespace Pms.Models.Entity.Settings
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+
+namespace Pms.Models.Entity.Settings
 {
     public class ProductSubCategory
     {
@@ -6,6 +9,8 @@
         public Guid? ProdSubCtgKey { get; set; }
         public long BranchId { get; set; }
         public long ProdCtgId { get; set; }
+        [Required(ErrorMessage = "Product Sub Category Name is required")]
+        [DisplayName("Product Sub Category Name")]
         public string ProdSubCtgName { get; set; }
         public DateTime? EntryDateTime { get; set; }
         public long? EntryBy { get; set; }

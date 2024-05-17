@@ -1,10 +1,15 @@
-﻿namespace Pms.Models.Entity.Settings
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+
+namespace Pms.Models.Entity.Settings
 {
     public class ProductSze
     {
         public long ProductSizeId { get; set; }
         public Guid? ProductSizeKey { get; set; }
         public int LanguageId { get; set; }
+        [Required(ErrorMessage = "Product Size Name is required")]
+        [DisplayName("Product Size Name")]
         public string ProductSizeName { get; set; }
         public DateTime? EntryDateTime { get; set; }
         public long? EntryBy { get; set; }

@@ -7,7 +7,7 @@ namespace Pms.Models.Entity.Settings
         public long ProdCtgId { get; set; }
         public Guid? ProdCtgKey { get; set; }
         public long? BranchId { get; set; }
-        [Required(ErrorMessage = "ProductCategories Name is required")]
+        [Required(ErrorMessage = "Product Category Name is required")]
         [StringLength(100, ErrorMessage = "ProductCategories Name must not exceed 100 characters")]
         public string ProdCtgName { get; set; }
         public DateTime EntryDateTime { get; set; }

@@ -1,10 +1,15 @@
-﻿namespace Pms.Models.Entity.Settings
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+
+namespace Pms.Models.Entity.Settings
 {
     public class PaymentTypes
     {
         public long PaymentTypeId { get; set; }
         public Guid PaymentTypeKey { get; set; }
         public int LanguageId { get; set; }
+        [Required(ErrorMessage = "Payment Type Name is required")]
+        [DisplayName("Payment Type Name")]
         public string PaymentTypesName { get; set; }
         public DateTime? EntryDateTime { get; set; }
         public long? EntryBy { get; set; }
