@@ -87,13 +87,13 @@
                                         <ValidationMessage class="text-danger" For="@(() => emailSetup.PortNumber)" />
                                     </div>
                                     <div class="col-3 mb-3 text-lg-end">
-
                                         <label class="form-label" for="IsDefault">Is Default</label>
                                     </div>
                                     <div class="col-9 col-sm-7 mb-3">
-                                        <InputCheckbox class="form-control form-control-sm" id="IsDefault" @bind-Value="@emailSetup.IsDefault" />
-                                        <ValidationMessage class="text-danger" For="@(() => emailSetup.IsDefault)" />
+                                        <InputCheckbox @bind-Value="emailSetup.IsDefault" class="form-check-input" />
+                                        <ValidationMessage For="@(() => emailSetup.IsDefault)" class="text-danger" />
                                     </div>
+
                                     <div class="col-9 col-sm-7 offset-3">
                                         @if (emailSetup.EmailSetupId > 0)
                                         {

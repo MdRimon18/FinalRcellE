@@ -16,7 +16,7 @@ namespace Pms.Data.Repository.Inventory
             _db = db.GetDbConnection();
 
         }
-        public async Task<IEnumerable<EmailSetup>> Get(int? EmailSetupId, String? EmailSetupkey, string FromEmail, string FromName, string UserName, string Password, long? PortNumber, int? PageNumber, int? PageSize)
+        public async Task<IEnumerable<EmailSetup>> Get(int? EmailSetupId, string? EmailSetupkey, string FromEmail, string FromName, string UserName, string Password, long? PortNumber, int? PageNumber, int? PageSize)
         {
             try
             {
@@ -28,8 +28,8 @@ namespace Pms.Data.Repository.Inventory
                 parameters.Add("@FromName", FromName);
                 parameters.Add("@UserName", UserName);
                 parameters.Add("@Password", Password);
-                parameters.Add("@Password", PortNumber);
-                parameters.Add("@PortNumber", PageNumber);
+                parameters.Add("@PortNumber", PortNumber);
+                parameters.Add("@PageNumber", PageNumber);
                 parameters.Add("@PageSize", PageSize);
 
                 return await _db.QueryAsync<EmailSetup>("EmailSetup_Get_SP", parameters, commandType: CommandType.StoredProcedure);
@@ -64,7 +64,7 @@ namespace Pms.Data.Repository.Inventory
                 var parameters = new DynamicParameters();
 
                 parameters.Add("@EmailSetupId", emailSetup.EmailSetupId);
-                parameters.Add("@EmailSetupkey",emailSetup.EmailSetupkey);
+              //  parameters.Add("@EmailSetupkey",emailSetup.EmailSetupkey);
                 parameters.Add("@BranchId", emailSetup.BranchId);
 
                 parameters.Add("@FromEmail", emailSetup.FromEmail);

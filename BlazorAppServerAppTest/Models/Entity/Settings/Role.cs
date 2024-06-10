@@ -4,7 +4,7 @@ namespace Pms.Models.Entity.Settings
 {
     public class Role
     {
-        public long EmailSetupId { get; set; }
+        public long RoleId { get; set; }
         public Guid? Rolekey { get; set; }
 
         [Required(ErrorMessage = "Role Name is required")]
