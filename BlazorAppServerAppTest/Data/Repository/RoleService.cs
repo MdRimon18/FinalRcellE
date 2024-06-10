@@ -60,7 +60,7 @@ namespace Pms.Data.Repository
             {
                 var parameters = new DynamicParameters();
 
-                parameters.Add("@RoleId", role.RoleId);
+                parameters.Add("@RoleId", role.EmailSetupId);
                 parameters.Add("@Rolekey", role.Rolekey);
                 parameters.Add("@RoleName", role.RoleName);
                 parameters.Add("@EntryDateTime", role.EntryDateTime);

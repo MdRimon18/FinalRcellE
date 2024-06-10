@@ -27,10 +27,15 @@
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Pages\ReusableComponent\WarningAlert.razor" />
+    <_ContentIncludedByDefault Remove="Pages\Settings\EmailSetup.razor" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="Pages\ReusableComponent\WarningAlert.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\Settings\EmailSetup.razor" />
   </ItemGroup>
 
 </Project>

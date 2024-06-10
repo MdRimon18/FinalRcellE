@@ -9,12 +9,19 @@ namespace Pms.Models.Entity.Settings
         public Guid? CountryKey { get; set; }
        
         public int LanguageId { get; set; }
+
         [Required(ErrorMessage = "Country Name is required")]
-        [StringLength(100, ErrorMessage = "Country   Name must not exceed 50 characters")]
+        [StringLength(100, ErrorMessage = "Country Name must not exceed 50 characters")]
         public string CountryName { get; set; }
         public string CntryShortName { get; set; }
+        [Required(ErrorMessage = "Country Code is required")]
+       
         public string CountryCode { get; set; }
+        [Required(ErrorMessage = "Capital is required")]
+        
         public string Capital { get; set; }
+        
+       
         public int CurrencyId { get; set; }
         public decimal? CurrentArea { get; set; }
         public decimal? Population { get; set; }

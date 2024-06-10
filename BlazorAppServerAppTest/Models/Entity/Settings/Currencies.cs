@@ -13,8 +13,14 @@ namespace Pms.Models.Entity.Settings
         [StringLength(100, ErrorMessage = "Currency Name must not exceed 50 characters")]
         public string CurrencyName { get; set; }
         public string CurrencyCode { get; set; }
+
+        [Required(ErrorMessage = "Currency Short Name is required")]
         public string CurrencyShortName { get; set; }
+
+        [Required(ErrorMessage = "Symbol is required")]
         public string Symbol { get; set; }
+
+        [Required(ErrorMessage = "Exchange Rate is required")]
         public decimal ExchangeRate { get; set; }
         public DateTime EntryDateTime { get; set; }
         public long EntryBy { get; set; }

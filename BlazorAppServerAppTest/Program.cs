@@ -40,12 +40,19 @@ builder.Services.AddScoped<ColorService>();
 
 
 
+
 builder.Services.AddScoped<CountryServiceV2>();
 builder.Services.AddScoped<ShippingByService>();
 builder.Services.AddScoped<UnitService>();
 builder.Services.AddScoped<BusinessTypesService>();
 builder.Services.AddScoped<RoleService>();
 builder.Services.AddScoped<InvoiceTypeService>();
+builder.Services.AddScoped<LocationService>();
+builder.Services.AddScoped<ProductOrCupponCodeService>();
+builder.Services.AddScoped<WarehouseService>();
+builder.Services.AddScoped<EmailSetupService>();
+
+
 
 
 builder.Services.AddScoped<LanguageService>();
