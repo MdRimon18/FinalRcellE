@@ -26,7 +26,7 @@
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
                                 <label for="name" class="label text-dark">Name/Model</label> <span class="error-star">*</span>
-                                <input name="name" type="text" class=" form-control form-control-sm form-rounded invalid-border-input" placeholder="Name/Model" required>
+                                <input @bind-value=@product.ProdName name="name" type="text" class=" form-control form-control-sm form-rounded invalid-border-input" placeholder="Name/Model" required>
                                 <div class="text-left invalid-message-color">
                                  Name/Model Required!
                                 </div>
@@ -219,13 +219,13 @@
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
                                 <label for="size" class="label text-dark">Size</label>
-                                <input name="size" type="text" class="form-control form-control-sm form-rounded" id="size" placeholder="Size">
+                                <input  name="size" type="text" class="form-control form-control-sm form-rounded" id="size" placeholder="Size">
                             </div>
                         </div>
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
                                 <label class="label text-dark">Shipping</label><span class="error-star">*</span>
-                                <select name="unit" required class="form-control form-control-sm form-rounded invalid-border-input">
+                                <select   @bind=product.ShippingById required class="form-control form-control-sm form-rounded invalid-border-input">
                                     @foreach (var item in shippingBy_list)
                                     {
                                         <option value=@item.ShippingById>@item.ShippingByName</option>
@@ -274,8 +274,8 @@
                                 <label for="shippingDay" class="label text-dark">Product Status</label>
                                 <select class="form-control form-control-sm form-rounded" id="origin-country" name="origin-country">
                                     <option value="">Select </option>
-                                    <option value="China">Active</option>
-                                    <option value="India">In Active</option>
+                                    <option value="Active">Active</option>
+                                    <option value="In Active">In Active</option>
 
                                 </select>
                             </div>
@@ -339,7 +339,7 @@
                 </div>
                 <div class="row" >
                     <div class="d-grid gap-2 d-md-block mt-4">
-                        <button class="btn btn-primary btn-sm">Save</button>
+                        <button @onclick="()=>SaveOrUpdate()" class="btn btn-primary btn-sm">Save</button>
                         <button class="btn btn-success btn-sm">Update</button>
                         <button class="btn btn-info btn-sm">Refresh</button>
                         <button class="btn btn-danger btn-sm">Delete</button>
@@ -444,11 +444,12 @@
                             <label class="form-label" for="product-category">Select category:</label>
                             
                             <select class="form-select js-choice" id="organizerSingle2" size="1" required="required" name="organizerSingle" data-options='{"removeItemButton":true,"placeholder":true}'>
-                                <option value="">Select organizer...</option>
-                                <option>Massachusetts Institute of Technology</option>
-                                <option>University of Chicago</option>
-                                <option>GSAS Open Labs At Harvard</option>
-                                <option>California Institute of Technology </option>
+                                <option value="">Select Category...</option>
+                               
+                                @foreach (var item in unit_list)
+                                {
+                                    <option value=@item.UnitId>@item.UnitName</option>
+                                }
                             </select>
                             <div class="invalid-feedback">Please select one</div>
                         </div>
@@ -457,11 +458,7 @@
                             <select class="form-select" id="product-subcategory" name="product-subcategory">
                                 <option value="laptop">Laptop</option>
                                 <option>Class, Training, or Workshop</option>
-                                <option>Concert or Performance</option>
-                                <option>Conference</option>
-                                <option>Convention</option>
-                                <option>Dinner or Gala</option>
-                                <option>Festival or Fair</option>
+                              
                             </select>
                         </div>
                         <div class="col-12 animated-div">
@@ -495,7 +492,7 @@
                             <select class="form-select" id="price-currency" name="price-currency">
                                 @foreach (var item in currency_list)
                                 {
-                                    <option value=@item.CurrencyId>@item.CurrencyName</option>
+                                    <option value=@item.CurrencyId>@item.CurrencyShortName</option>
                                 }
                             </select>
                         </div>
@@ -563,17 +560,21 @@
     ColorService colorService { get; set; }
     List<Pms.Models.Entity.Settings.Colors> color_list = new List<Pms.Models.Entity.Settings.Colors>();
 
+    Pms.Models.Entity.Settings.Products product = new Models.Entity.Settings.Products();
 
     protected override async Task OnInitializedAsync()
     {
         //await LoadUnits();
         unit_list = (await unitService.Get(null, null, null, null, 1, 1000)).ToList();
-       currency_list = (await currencyService.Get(null, null, null, null, null, null, null, null, 1, 1000)).ToList();
+        currency_list = (await currencyService.Get(null, null, null, null, null, null, null, null, 1, 1000)).ToList();
         shippingBy_list = (await shippingByService.Get(null, null, null, null, 1, 1000)).ToList();
         color_list = (await colorService.Get(null, null, null, null, 1, 1000)).ToList();
 
     }
-     
 
-    
+    private async Task SaveOrUpdate()
+    {
+        var prd = product;
+    }
+
 }
