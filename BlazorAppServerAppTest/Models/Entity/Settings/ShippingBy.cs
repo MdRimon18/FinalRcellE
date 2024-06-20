@@ -8,8 +8,8 @@ namespace Pms.Models.Entity.Settings
         public long ShippingById { get; set; }
         public Guid? ShippingByKey { get; set; }
         public int LanguageId { get; set; }
-        [Required(ErrorMessage = "Shipping By Name is required")]
-        [DisplayName("Shipping By Name")]
+        [Required(ErrorMessage = "Shipping Name is required")]
+        [DisplayName("Shipping Name")]
         public string ShippingByName { get; set; }
         public DateTime EntryDateTime { get; set; }
         public long EntryBy { get; set; }

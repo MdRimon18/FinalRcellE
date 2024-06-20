@@ -207,7 +207,13 @@
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
                                 <label for="color" class="label text-dark">Color</label>
-                                <input name="color" type="text" class="form-control form-control-sm form-rounded" id="color" placeholder="Color">
+                               
+                                <select name="color" required class="form-control form-control-sm form-rounded invalid-border-input">
+                                    @foreach (var item in color_list)
+                                    {
+                                        <option value=@item.ColorId>@item.ColorIdName</option>
+                                    }
+                                </select>
                             </div>
                         </div>
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
@@ -220,10 +226,10 @@
                             <div class="form-group">
                                 <label class="label text-dark">Shipping</label><span class="error-star">*</span>
                                 <select name="unit" required class="form-control form-control-sm form-rounded invalid-border-input">
-                                    <option value=''>Delivered by vendor (you)</option>
-                                    <option value=''>Delivered by S. A Poribahan</option>
-                                    <option value=''>Delivered by Other Company</option>
-                                    <!-- Options for UnitList -->
+                                    @foreach (var item in shippingBy_list)
+                                    {
+                                        <option value=@item.ShippingById>@item.ShippingByName</option>
+                                    }
                                 </select>
                                 <div class="text-left invalid-message-color">
                                     Shipping Required!
@@ -462,8 +468,10 @@
                             <div class="form-group">
                                 <label class="label text-dark">Unit Type</label><span class="error-star">*</span>
                                 <select name="unit" required class="form-control form-control-sm form-rounded invalid-border-input">
-                                    <option value=''>Unit Type Select</option>
-                                    <!-- Options for UnitList -->
+                                     @foreach(var item in unit_list)
+                                                {
+                                                    <option value=@item.UnitId>@item.UnitName</option>
+                                                }
                                 </select>
                                 <div class="text-left invalid-message-color">
                                     Unit Type Required!
@@ -485,10 +493,10 @@
                         <div class="col-12">
                             <label class="form-label" for="price-currency">Currency:</label>
                             <select class="form-select" id="price-currency" name="price-currency">
-                                <option value="usd">USD</option>
-                                <option value="eur">EUR</option>
-                                <option value="gbp">GBP</option>
-                                <option value="cad">CAD</option>
+                                @foreach (var item in currency_list)
+                                {
+                                    <option value=@item.CurrencyId>@item.CurrencyName</option>
+                                }
                             </select>
                         </div>
                     </div>
@@ -530,11 +538,42 @@
 </div>
 
 
- 
+
+
 <script src="vendors/tinymce/tinymce.min.js"></script>
 <script src="assets/js/flatpickr.js"></script>
 
 <script src="assets/js/theme.js"></script>
 @code {
+
+    [Inject]
+    UnitService unitService { get; set; }
+    List<Pms.Models.Entity.Inventory.Unit> unit_list = new List<Pms.Models.Entity.Inventory.Unit>();
+
+    [Inject]
+    CurrencyService currencyService { get; set; }
+    List<Pms.Models.Entity.Settings.ProductSize> currency_list = new List<Pms.Models.Entity.Settings.ProductSize>();
+
+
+    [Inject]
+    ShippingByService shippingByService { get; set; }
+    List<Pms.Models.Entity.Settings.ShippingBy> shippingBy_list = new List<Pms.Models.Entity.Settings.ShippingBy>();
+
+    [Inject]
+    ColorService colorService { get; set; }
+    List<Pms.Models.Entity.Settings.Colors> color_list = new List<Pms.Models.Entity.Settings.Colors>();
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        //await LoadUnits();
+        unit_list = (await unitService.Get(null, null, null, null, 1, 1000)).ToList();
+       currency_list = (await currencyService.Get(null, null, null, null, null, null, null, null, 1, 1000)).ToList();
+        shippingBy_list = (await shippingByService.Get(null, null, null, null, 1, 1000)).ToList();
+        color_list = (await colorService.Get(null, null, null, null, 1, 1000)).ToList();
+
+    }
+     
+
     
 }

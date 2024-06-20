@@ -51,6 +51,8 @@ builder.Services.AddScoped<LocationService>();
 builder.Services.AddScoped<ProductOrCupponCodeService>();
 builder.Services.AddScoped<WarehouseService>();
 builder.Services.AddScoped<EmailSetupService>();
+builder.Services.AddScoped<SmsSettinsService>();
+
 
 
 

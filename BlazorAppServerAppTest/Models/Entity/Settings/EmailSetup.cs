@@ -10,12 +10,15 @@ namespace Pms.Models.Entity.Settings
         [Required(ErrorMessage = "Email is required")]
         [StringLength(100, ErrorMessage = "Email must not exceed 100 characters")]
         public string FromEmail { get; set; }
-        
+        [Required(ErrorMessage = "From Name is required")]
         public string FromName { get; set; }
+        [Required(ErrorMessage = "User Name is required")]
         public string UserName { get; set; }
+        [Required(ErrorMessage = "Password is required")]
         public string Password { get; set; }
         public string BaseUrl { get; set; }
         public string ApiKey { get; set; }
+        [Required(ErrorMessage = "Port Number is required")]
         public long? PortNumber { get; set; }
         public bool IsDefault { get; set; }
         public DateTime EntryDateTime { get; set; }
