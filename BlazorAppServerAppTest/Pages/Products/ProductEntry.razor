@@ -35,25 +35,25 @@
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
                                 <label for="name" class="label text-dark">Manufacturar Name</label>
-                                <input name="name" type="text" class=" form-control form-control-sm form-rounded" placeholder="Name/Model">
+                                <input @bind-value=@product.ManufacturarName name="name" type="text" class=" form-control form-control-sm form-rounded" placeholder="Manufacturar Name">
                             </div>
                         </div >
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
                                 <label for="serialNumber" class="label text-dark">Serial Number/UPC</label>
-                                <input readonly name="serialNumber" type="text" class="form-control form-control-sm form-rounded" placeholder="Serial Number" required>
+                                <input @bind-value=@product.SerialNmbrOrUPC readonly name="serialNumber" type="text" class="form-control form-control-sm form-rounded" placeholder="Serial Number/UPC" required>
                             </div>
                         </div>
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
                                 <label for="serialNumber" class="label text-dark">SKU</label>
-                                <input readonly name="serialNumber" type="text" class="form-control form-control-sm form-rounded" placeholder="Serial Number" required>
+                                <input @bind-value=@product.Sku readonly name="serialNumber" type="text" class="form-control form-control-sm form-rounded" placeholder="Sku" required>
                             </div>
                         </div>
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
                                 <label for="quantity" class="label text-dark">Opening Quantity</label><span class="error-star">*</span>
-                                <input name="quantity" type="number" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Opening Quantity" required>
+                                <input @bind-value=@product.OpeningQnty name="quantity" type="number" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Opening Quantity" required>
                                 <div class="text-left invalid-message-color">
                                     Opening Quantity Required!
                                 </div>
@@ -63,7 +63,7 @@
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
                                 <label for="alertQuantity" class="label text-dark">Alert Quantity</label>
-                                <input name="alertQuantity" type="number" class="form-control form-control-sm form-rounded" placeholder="Alert Quantity">
+                                <input @bind-value=@product.AlertQnty name="alertQuantity" type="number" class="form-control form-control-sm form-rounded" placeholder="Alert Quantity">
                                 <!-- <div class="text-left text-danger">
                                     Alert Quantity is Required!
                                 </div> -->
@@ -73,7 +73,7 @@
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
                                 <label for="productBuyingPrice" class="label text-dark">Buying Price</label><span class="error-star">*</span>
-                                <input name="productBuyingPrice" type="number" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Buying Price" required>
+                                <input @bind-value=@product.BuyingPrice name="productBuyingPrice" type="number" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Buying Price" required>
                                 <div class="text-left invalid-message-color">
                                     Buying Price Required!
                                 </div>
@@ -83,7 +83,7 @@
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
                                 <label for="cost" class="label text-dark">Selling Price</label><span class="error-star">*</span>
-                                <input name="cost" type="number" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Selling Price" required>
+                                <input @bind-value=@product.SellingPrice name="cost" type="number" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Selling Price" required>
                                 <div class="text-left invalid-message-color">
                                     Selling Price Required!
                                 </div>
@@ -103,7 +103,7 @@
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
                                 <label for="vatAmount" class="label text-dark">VAT Amount</label>
-                                <input name="vatAmount" type="number" class="form-control form-control-sm form-rounded" id="vatAmount" placeholder="VAT Amount">
+                                <input @bind-value=@product.VatAmount name="vatAmount" type="number" class="form-control form-control-sm form-rounded" id="vatAmount" placeholder="VAT Amount">
                                 <!-- <div class="text-left text-danger">
                                     Barcode is Required!
                                 </div> -->
@@ -123,7 +123,7 @@
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
                                 <label for="discountAmount" class="label text-dark">Discount Amount</label>
-                                <input name="discountAmount" type="number" class="form-control form-control-sm form-rounded" id="discountAmount" placeholder="Discount Amount">
+                                <input @bind-value=@product.DiscountAmount name="discountAmount" type="number" class="form-control form-control-sm form-rounded" id="discountAmount" placeholder="Discount Amount">
                                 <!-- <div class="text-left text-danger">
                                     Barcode is Required!
                                 </div> -->
@@ -132,7 +132,7 @@
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
                                 <label for="barcode" class="label text-dark">Bar Code</label>
-                                <input name="barcode" type="text" class="form-control form-control-sm form-rounded" id="barcode" placeholder="Bar Code">
+                                <input @bind-value=@product.BarCode name="barcode" type="text" class="form-control form-control-sm form-rounded" id="barcode" placeholder="Bar Code">
                                 <!-- <div class="text-left text-danger">
                                     Barcode is Required!
                                 </div> -->
@@ -142,7 +142,7 @@
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
                                 <label class="label text-dark">Link to Supplier</label>
-                                <select name="supplier" required class="form-control form-control-sm form-rounded">
+                                <select  name="supplier" required class="form-control form-control-sm form-rounded">
                                     <option value=''>Select Link to Supplier</option>
                                     <!-- Options for suppliers -->
                                 </select>
@@ -152,23 +152,24 @@
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
                                 <label for="importedForm" class="label text-dark">Imported From</label>
-                                <input name="importedForm" type="text" class="form-control form-control-sm form-rounded" id="importedForm" placeholder="Imported From">
+                                <input @bind-value=@product.ImportedForm name="importedForm" type="text" class="form-control form-control-sm form-rounded" id="importedForm" placeholder="Imported From">
                             </div>
                         </div>
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <label for="importedForm" class="label text-dark">Import Status</label>
                             <select class="form-control form-control-sm form-rounded">
-                                <option value="imported">Imported</option>
-                                <option value="processing">Processing </option>
-                                <option value="validating">Validating </option>
-                                <option value="draft">Draft</option>
+                                @foreach (var item in importStatusSetting_list)
+                                {
+                                    <option value=@item.StatusSettingId>@item.StatusSettingName</option>
+                                }
+
                             </select>
                         </div>
                         
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
                                 <label class="label text-dark">Date</label>
-                                <input class="form-control form-control-sm form-rounded"
+                                <input  class="form-control form-control-sm form-rounded"
                                        type="date"
                                        name="entryDate"
                                        placeholder="Date">
@@ -254,10 +255,10 @@
                             <div class="form-group">
                                 <label for="shippingDay" class="label text-dark">Origin Country</label>
                                 <select class="form-control form-control-sm form-rounded" id="origin-country" name="origin-country">
-                                    <option value="">Select </option>
-                                    <option value="China">China</option>
-                                    <option value="India">India</option>
-                                    <option value="United States">United States</option>
+                                    @foreach (var item in country_list)
+                                    {
+                                        <option value=@item.CountryId>@item.CountryName</option>
+                                    }
 
                                 </select>
                             </div>
@@ -273,9 +274,10 @@
                             <div class="form-group">
                                 <label for="shippingDay" class="label text-dark">Product Status</label>
                                 <select class="form-control form-control-sm form-rounded" id="origin-country" name="origin-country">
-                                    <option value="">Select </option>
-                                    <option value="Active">Active</option>
-                                    <option value="In Active">In Active</option>
+                                    @foreach (var item in statusSetting_list)
+                                    {
+                                        <option value=@item.StatusSettingId>@item.StatusSettingName</option>
+                                    }
 
                                 </select>
                             </div>
@@ -446,9 +448,9 @@
                             <select class="form-select js-choice" id="organizerSingle2" size="1" required="required" name="organizerSingle" data-options='{"removeItemButton":true,"placeholder":true}'>
                                 <option value="">Select Category...</option>
                                
-                                @foreach (var item in unit_list)
+                                @foreach (var item in productCategory_list)
                                 {
-                                    <option value=@item.UnitId>@item.UnitName</option>
+                                    <option value=@item.ProdCtgId>@item.ProdCtgName</option>
                                 }
                             </select>
                             <div class="invalid-feedback">Please select one</div>
@@ -456,8 +458,11 @@
                         <div class="col-12">
                             <label class="form-label" for="product-subcategory">Select sub-category:</label>
                             <select class="form-select" id="product-subcategory" name="product-subcategory">
-                                <option value="laptop">Laptop</option>
-                                <option>Class, Training, or Workshop</option>
+
+                                @foreach (var item in productSubCategory_list)
+                                {
+                                    <option value=@item.ProdSubCtgId>@item.ProdSubCtgName</option>
+                                }
                               
                             </select>
                         </div>
@@ -560,6 +565,24 @@
     ColorService colorService { get; set; }
     List<Pms.Models.Entity.Settings.Colors> color_list = new List<Pms.Models.Entity.Settings.Colors>();
 
+    
+    [Inject]
+    CountryServiceV2 countryServiceV2 { get; set; }
+    List<Pms.Models.Entity.Settings.CountryV2> country_list = new List<Pms.Models.Entity.Settings.CountryV2>();
+
+    [Inject]
+    StatusSettingService _statusSettingService { get; set; }
+    List<Pms.Models.Entity.Settings.StatusSetting> statusSetting_list = new List<Pms.Models.Entity.Settings.StatusSetting>();
+    List<Pms.Models.Entity.Settings.StatusSetting> importStatusSetting_list = new List<Pms.Models.Entity.Settings.StatusSetting>();
+
+    [Inject]
+    ProductSubCategoryService _productSubCategoryService { get; set; }
+    List<Pms.Models.Entity.Settings.ProductSubCategory> productSubCategory_list = new List<Pms.Models.Entity.Settings.ProductSubCategory>();
+
+    [Inject]
+    ProductCategoryService productCategoryService { get; set; }
+    List<Pms.Models.Entity.Settings.ProductCategories> productCategory_list = new List<Pms.Models.Entity.Settings.ProductCategories>();
+
     Pms.Models.Entity.Settings.Products product = new Models.Entity.Settings.Products();
 
     protected override async Task OnInitializedAsync()
@@ -569,7 +592,11 @@
         currency_list = (await currencyService.Get(null, null, null, null, null, null, null, null, 1, 1000)).ToList();
         shippingBy_list = (await shippingByService.Get(null, null, null, null, 1, 1000)).ToList();
         color_list = (await colorService.Get(null, null, null, null, 1, 1000)).ToList();
-
+        country_list = (await countryServiceV2.Get(null, null, null, null, null, null, null, null, null, null, 1, 1000)).ToList();
+        statusSetting_list = (await _statusSettingService.Get(null, null, null, null, null, null, 1, 1000)).ToList();
+        importStatusSetting_list = (await _statusSettingService.Get(null, null, null, null, null, null, 1, 1000)).ToList();
+        productSubCategory_list = (await _productSubCategoryService.Get(null, null, null, null, null, 1, 1000)).ToList();
+        productCategory_list = (await productCategoryService.Get(null, null, null, null, 1, 1000)).ToList();
     }
 
     private async Task SaveOrUpdate()
