@@ -1,4 +1,5 @@
 ﻿@page "/add_user"
+@inject IJSRuntime JS
 
  
 
@@ -11,49 +12,105 @@
     </div>
     <div class="card-body bg-body-tertiary">
          
-
-        <div class="col-sm-5 animated-div">
-            <div class="form-group">
-                <label for="addSupplier" class="label text-dark"> User Name<span class="error-star">*</span></label>
-                <input name="name" type="text" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="User Name" required>
-                <div class="text-left invalid-message-color">
-                    User Name Required!
+        <div class="row">
+            <div class="col-md-6">
+                <div class="col-sm-9 animated-div">
+                    <div class="form-group">
+                        <label for="addSupplier" class="label text-dark"> User Name<span class="error-star">*</span></label>
+                        <input name="name" type="text" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="User Name" required>
+                        <div class="text-left invalid-message-color">
+                            User Name Required!
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="col-sm-5 animated-div">
-            <div class="form-group">
-                <label for="addSupplier" class="label text-dark"> User Phone No <span class="error-star">*</span></label>
-                <input name="name" type="text" class="form-control form-control-sm form-rounded invalid-border-input" placeholder=" User Phone No" required>
-                <div class="text-left invalid-message-color">
-                    Phone No Required!
+                <div class="col-sm-9 animated-div">
+                    <div class="form-group">
+                        <label for="addSupplier" class="label text-dark"> User Phone No <span class="error-star">*</span></label>
+                        <input name="name" type="text" class="form-control form-control-sm form-rounded invalid-border-input" placeholder=" User Phone No" required>
+                        <div class="text-left invalid-message-color">
+                            Phone No Required!
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="col-sm-5 animated-div">
-            <div class="form-group">
-                <label for="addSupplier" class="label text-dark"> User Password <span class="error-star">*</span></label>
-                <input name="name" type="text" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="User Password" required>
-                <div class="text-left invalid-message-color">
-                    Password Required!
+                <div class="col-sm-9 animated-div">
+                    <div class="form-group">
+                        <label for="addSupplier" class="label text-dark"> User Password <span class="error-star">*</span></label>
+                        <input name="name" type="text" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="User Password" required>
+                        <div class="text-left invalid-message-color">
+                            Password Required!
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="col-sm-5 animated-div">
-            <div class="form-group">
-                <label for="addSupplier" class="label text-dark"> Designation</label>
-                <input name="name" type="text" class="form-control form-control-sm form-rounded" placeholder="Write Designation" required>
+                <div class="col-sm-9 animated-div">
+                    <div class="form-group">
+                        <label for="addSupplier" class="label text-dark"> Designation</label>
+                        <input name="name" type="text" class="form-control form-control-sm form-rounded" placeholder="Write Designation" required>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <div class="col-sm-8 col-md-8">
+                    <div class="card-header">
+                        <h5 class="mb-0">Upload Image</h5>
+                    </div>
+                    <div class="image-uploader">
+                        <div class="image-preview">
+                            <img src="@imageData"
+                                 alt="Selected Image" style="width: 160px;height: 160px;" />
+                            @if (imageData != defaultImage)
+                            {
+                                <button class="remove-button" @onclick="RemoveImage">X</button>
+                            }
+                        </div>
+
+                        <InputFile class="file-input form-control form-control-sm form-rounded" OnChange="HandleSelected" id="fileInput" />
+                    </div>
+                </div>
+
+                <div>
             </div>
         </div>
+     
+        
         <div>
             
             <button class="btn btn-primary btn-sm mt-2">Register</button>
         </div>
+        </div>
 </div>    
 </div>
+
 @code {
+        private string defaultImage = "/assets/img/icons/profile_icon.jpg"; // Path to your default image
+        private string? imageData;
+
+        protected override void OnInitialized()
+        {
+            imageData = defaultImage;
+        }
+
+        private async Task HandleSelected(InputFileChangeEventArgs e)
+        {
+            var file = e.File;
+            if (file != null)
+            {
+                using (var stream = new MemoryStream())
+                {
+                    await file.OpenReadStream().CopyToAsync(stream);
+                    imageData = $"data:image/png;base64,{Convert.ToBase64String(stream.ToArray())}";
+                }
+            }
+        }
+
+        private async Task RemoveImage()
+        {
+            imageData = defaultImage;
+            await JS.InvokeVoidAsync("resetFileInput", "fileInput");
+        }
+
 
 }
