@@ -1,4 +1,5 @@
 ﻿@page "/add_suppiler"
+@inject IJSRuntime JS
 
 
 <div class="card mb-3">
@@ -9,9 +10,9 @@
       </h5>
 
    </div>
-   <div class="card-body bg-body-tertiary">
-      <div class="row">
-            <div class="col-sm-5 animated-div">
+    <div class="card-body bg-body-tertiary container">
+        <div class="row">
+         <div class="col-sm-5 ">
                 <div class="form-group">
                     <label for="addSupplier" class="label text-dark">Give Mobile No <span class="error-star">*</span></label>
                     <input name="name" type="text" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Give Mobile No" required>
@@ -20,7 +21,8 @@
                     </div>
                 </div>
             </div>
-         <div class="col-sm-5 animated-div">
+          
+            <div class="col-sm-5 ">
             <div class="form-group">
                     <label for="addSupplier" class="label text-dark">Name<span class="error-star">*</span></label>
                     <input name="name" type="text" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Name" required>
@@ -30,7 +32,7 @@
                
             </div>
          </div>
-         <div class="col-sm-5 animated-div">
+         <div class="col-sm-5 ">
             <div class="form-group">
                <label for="addSupplier" class="label text-dark">Country <span class="error-star">*</span></label>
                <input name="name" type="text" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Select Country Name" required>
@@ -39,7 +41,7 @@
                </div>
                 </div>
             </div>
-         <div class="col-sm-5 animated-div">
+         <div class="col-sm-5 ">
             <div class="form-group">
                     <label for="addSupplier" class="label text-dark">State Name <span class="error-star">*</span></label>
                     <input name="name" type="text" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Give Your State Name" required>
@@ -48,7 +50,7 @@
                     </div>
         </div>
         </div>
-     <div class="col-sm-5 animated-div">
+         <div class="col-sm-5 ">
             <div class="form-group">
                     <label for="addSupplier" class="label text-dark">Organization Name<span class="error-star">*</span> </label>
                     <input name="name" type="text" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Organaization Name" required>
@@ -58,20 +60,21 @@
                 </div>
            </div>
        
-        <div class="col-sm-5 animated-div">
+        <div class="col-sm-5 ">
             <div class="form-group">
                 <label for="addSupplier" class="label text-dark">Supplier Address Line One</label>
                     <input name="name" type="text" class="form-control form-control-sm form-rounded " placeholder="Supplier Address Line One" required>
             
                 </div>
         </div>
-        <div class="col-sm-5 animated-div">
+      
+        <div class="col-sm-5 ">
             <div class="form-group">
                 <label for="addSupplier" class="label text-dark">Supplier Address Line two</label>
                     <input name="name" type="text" class="form-control form-control-sm form-rounded" placeholder="Supplier Address Line Two" required>
             </div>
         </div>
-            <div class="col-sm-5 animated-div">
+            <div class="col-sm-5 ">
                 <div class="form-group">
                     <label for="addSupplier" class="label text-dark">Select Type <span class="error-star">*</span></label>
                     <input name="name" type="text" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Select Type" required>
@@ -80,7 +83,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-5 animated-div">
+            <div class="col-sm-5 ">
                 <div class="form-group">
                     <label for="addSupplier" class="label text-dark">Email</label>
                     <input name="name" type="text" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Write Email" required>
@@ -88,23 +91,31 @@
                 </div>
             </div>
 
-            <div class="col-sm-5 animated-div">
+            <div class="col-sm-5">
             <div class="form-group">
                 <label for="addSupplier" class="label text-dark">Delivery Off Day</label>
                 <input name="name" type="text" class="form-control form-control-sm form-rounded" placeholder="Delivery off Day" required>
             </div>
         </div>
-        
-      
-        <div class="col-sm-5 animated-div">
-            <div class="form-group">
-                    <label for="addSupplier" class="label text-dark">Image Link <span class="error-star">*</span></label>
-                    <input name="name" type="text" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Image Link" required>
-                    <div class="text-left invalid-message-color">
-                        Image Required!
+         
+            <div class="col-sm-5 col-md-5">
+                    <div class="card-header">
+                        <h5 class="mb-0">Upload Image</h5>
                     </div>
-                </div>
-        </div>
+                    <div class="image-uploader">
+                        <div class="image-preview">
+                            <img src="@imageData"
+                                 alt="Selected Image" style="width: 160px;height: 160px;" />
+                            @if (imageData != defaultImage)
+                            {
+                                <button class="remove-button" @onclick="RemoveImage">X</button>
+                            }
+                        </div>
+
+                        <InputFile class="file-input form-control form-control-sm form-rounded" OnChange="HandleSelected" id="fileInput" />
+                    </div>
+                 </div>
+            
         <div>
                 <button class="btn btn-primary btn-sm mt-2">Save</button>
         </div>
@@ -113,6 +124,38 @@
 </div>
 
 
+ <script>
+    window.resetFileInput = function (id) {
+        document.getElementById(id).value = '';
+    }
+ </script>
 @code {
+    private string defaultImage = "/assets/img/icons/profile_icon.jpg"; // Path to your default image
+    private string? imageData;
 
+    protected override void OnInitialized()
+    {
+        imageData = defaultImage;
+    }
+
+    private async Task HandleSelected(InputFileChangeEventArgs e)
+    {
+        var file = e.File;
+        if (file != null)
+        {
+            using (var stream = new MemoryStream())
+            {
+                await file.OpenReadStream().CopyToAsync(stream);
+                imageData = $"data:image/png;base64,{Convert.ToBase64String(stream.ToArray())}";
+            }
+        }
+    }
+
+    private async Task RemoveImage()
+    {
+        imageData = defaultImage;
+        await JS.InvokeVoidAsync("resetFileInput", "fileInput");
+    }
+
+   
 }
