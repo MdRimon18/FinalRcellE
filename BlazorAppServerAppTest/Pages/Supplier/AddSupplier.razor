@@ -12,93 +12,36 @@
    </div>
     <div class="card-body bg-body-tertiary container">
         <div class="row">
-         <div class="col-sm-5 ">
-                <div class="form-group">
-                    <label for="addSupplier" class="label text-dark">Give Mobile No <span class="error-star">*</span></label>
-                    <input name="name" type="text" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Give Mobile No" required>
-                    <div class="text-left invalid-message-color">
-                        Mobile No Required!
-                    </div>
-                </div>
-            </div>
-          
-            <div class="col-sm-5 ">
-            <div class="form-group">
-                    <label for="addSupplier" class="label text-dark">Name<span class="error-star">*</span></label>
-                    <input name="name" type="text" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Name" required>
-                    <div class="text-left invalid-message-color">
-                        Name Required!
-                    </div>
-               
-            </div>
-         </div>
-         <div class="col-sm-5 ">
-            <div class="form-group">
-               <label for="addSupplier" class="label text-dark">Country <span class="error-star">*</span></label>
-               <input name="name" type="text" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Select Country Name" required>
-               <div class="text-left invalid-message-color">
-                  Country Name Required!
-               </div>
-                </div>
-            </div>
-         <div class="col-sm-5 ">
-            <div class="form-group">
-                    <label for="addSupplier" class="label text-dark">State Name <span class="error-star">*</span></label>
-                    <input name="name" type="text" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Give Your State Name" required>
-                    <div class="text-left invalid-message-color">
-                       State Name Required!
-                    </div>
-        </div>
-        </div>
-         <div class="col-sm-5 ">
-            <div class="form-group">
-                    <label for="addSupplier" class="label text-dark">Organization Name<span class="error-star">*</span> </label>
-                    <input name="name" type="text" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Organaization Name" required>
-                    <div class="text-left invalid-message-color">
-                         Organization Name Required!
-                    </div>
-                </div>
-           </div>
-       
-        <div class="col-sm-5 ">
-            <div class="form-group">
-                <label for="addSupplier" class="label text-dark">Supplier Address Line One</label>
-                    <input name="name" type="text" class="form-control form-control-sm form-rounded " placeholder="Supplier Address Line One" required>
-            
-                </div>
-        </div>
-      
-        <div class="col-sm-5 ">
-            <div class="form-group">
-                <label for="addSupplier" class="label text-dark">Supplier Address Line two</label>
-                    <input name="name" type="text" class="form-control form-control-sm form-rounded" placeholder="Supplier Address Line Two" required>
-            </div>
-        </div>
-            <div class="col-sm-5 ">
-                <div class="form-group">
-                    <label for="addSupplier" class="label text-dark">Select Type <span class="error-star">*</span></label>
-                    <input name="name" type="text" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Select Type" required>
-                    <div class="text-left invalid-message-color">
-                        Select Type Required!
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-5 ">
-                <div class="form-group">
-                    <label for="addSupplier" class="label text-dark">Email</label>
-                    <input name="name" type="text" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Write Email" required>
-                    
-                </div>
-            </div>
+            <div class="col-md-6">
+                <div class="col-sm-10 col-md-10 ">
+                    <div class="form-group">
+                        <label for="addSupplier" class="label text-dark">Name<span class="error-star">*</span></label>
+                        <input name="name" type="text" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Name" required>
+                        <div class="text-left invalid-message-color">
+                            Name Required!
+                        </div>
 
-            <div class="col-sm-5">
-            <div class="form-group">
-                <label for="addSupplier" class="label text-dark">Delivery Off Day</label>
-                <input name="name" type="text" class="form-control form-control-sm form-rounded" placeholder="Delivery off Day" required>
+                    </div>
+                </div>
+                <div class="col-sm-10 col-md-10 ">
+                    <div class="form-group">
+                        <label for="addSupplier" class="label text-dark">Enter Mobile No <span class="error-star">*</span></label>
+                        <input name="name" type="text" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Enter Mobile No" required>
+                        <div class="text-left invalid-message-color">
+                            Mobile No Required!
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-10 col-md-10">
+                    <div class="form-group">
+                        <label for="addSupplier" class="label text-dark">Email</label>
+                        <input name="name" type="text" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Write Email" required>
+
+                    </div>
+                </div>
             </div>
-        </div>
-         
-            <div class="col-sm-5 col-md-5">
+            <div class="col-md-6">
+                <div class="col-sm-10 col-md-10">
                     <div class="card-header">
                         <h5 class="mb-0">Upload Image</h5>
                     </div>
@@ -112,14 +55,98 @@
                             }
                         </div>
 
-                        <InputFile class="file-input form-control form-control-sm form-rounded" OnChange="HandleSelected" id="fileInput" />
+                        <InputFile class="file-input form-control form-control-sm form-rounded mb-2" OnChange="HandleSelected" id="fileInput" />
                     </div>
-                 </div>
-            
-        <div>
-                <button class="btn btn-primary btn-sm mt-2">Save</button>
+                </div>
+
+                <div>
+            </div>
         </div>
         </div>
+        <div class="row">
+                <div class="col-md-6">
+                    <div class="col-sm-10 col-md-10 ">
+                        <div class="form-group">
+                            <label for="addSupplier" class="label text-dark">Organization Name<span class="error-star">*</span> </label>
+                            <input name="name" type="text" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Organaization Name" required>
+                            <div class="text-left invalid-message-color">
+                                Organization Name Required!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-10 col-md-10 ">
+                        <div class="form-group">
+                            <label for="addSupplier" class="label text-dark">Country <span class="error-star">*</span></label>
+                            <input name="name" type="text" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Select Country Name" required>
+                            <div class="text-left invalid-message-color">
+                                Country Name Required!
+                            </div>
+                        </div>
+                    </div>
+                    
+                   
+                    <div class="col-sm-10 col-md-10 ">
+                        <div class="form-group">
+                            <label for="addSupplier" class="label text-dark">Supplier Address Line One</label>
+                         
+                           <textarea rows="2"
+                                name="name"
+                                type="text" 
+                                class="form-control form-control-sm form-rounded " 
+                                placeholder="Supplier Address Line One"
+                                required>
+                           </textarea>
+                            
+
+                        </div>
+                    </div>
+                    <div class="col-sm-10 col-md-10">
+                        <div class="form-group">
+                            <label for="addSupplier" class="label text-dark">Delivery Off Day</label>
+                            <input name="name" type="text" class="form-control form-control-sm form-rounded" placeholder="Delivery off Day" required>
+                        </div>
+                    </div>
+                   
+                </div>
+                <div class="col-md-6">
+
+                   
+                    <div class="col-sm-10 col-md-10 ">
+                        <div class="form-group">
+                            <label for="addSupplier" class="label text-dark">Select Type <span class="error-star">*</span></label>
+                            <input name="name" type="text" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Select Type" required>
+                            <div class="text-left invalid-message-color">
+                                Select Type Required!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-10 col-md-10 ">
+                        <div class="form-group">
+                            <label for="addSupplier" class="label text-dark">State Name <span class="error-star">*</span></label>
+                            <input name="name" type="text" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Enter Your State Name" required>
+                            <div class="text-left invalid-message-color">
+                                State Name Required!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-10 col-md-10 ">
+                        <div class="form-group">
+                            <label for="addSupplier" class="label text-dark">Supplier Address Line two</label>
+                            <textarea rows="2" name="name"
+                                type="text"
+                                class="form-control form-control-sm form-rounded"
+                                placeholder="Supplier Address Line Two"
+                                required>
+
+                            </textarea>
+                             
+                        </div>
+                    </div>
+                </div>
+                 
+        </div>
+
+        <button class="btn btn-primary btn-sm mt-2">Save</button>
    </div>
 </div>
 
