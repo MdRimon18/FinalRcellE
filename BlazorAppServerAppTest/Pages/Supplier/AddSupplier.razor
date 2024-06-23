@@ -16,7 +16,7 @@
                 <div class="col-sm-10 col-md-10 ">
                     <div class="form-group">
                         <label for="addSupplier" class="label text-dark">Name<span class="error-star">*</span></label>
-                        <input name="name" type="text" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Name" required>
+                        <input name="name" type="text" class="form-control form-control-sm form-rounded " placeholder="Enter Name" required>
                         <div class="text-left invalid-message-color">
                             Name Required!
                         </div>
@@ -26,7 +26,7 @@
                 <div class="col-sm-10 col-md-10 ">
                     <div class="form-group">
                         <label for="addSupplier" class="label text-dark">Enter Mobile No <span class="error-star">*</span></label>
-                        <input name="name" type="text" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Enter Mobile No" required>
+                        <input name="name" type="text" class="form-control form-control-sm form-rounded " placeholder="Enter Mobile No" required>
                         <div class="text-left invalid-message-color">
                             Mobile No Required!
                         </div>
@@ -35,7 +35,7 @@
                 <div class="col-sm-10 col-md-10">
                     <div class="form-group">
                         <label for="addSupplier" class="label text-dark">Email</label>
-                        <input name="name" type="text" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Write Email" required>
+                        <input name="name" type="text" class="form-control form-control-sm form-rounded " placeholder="Write Email" required>
 
                     </div>
                 </div>
@@ -68,7 +68,7 @@
                     <div class="col-sm-10 col-md-10 ">
                         <div class="form-group">
                             <label for="addSupplier" class="label text-dark">Organization Name<span class="error-star">*</span> </label>
-                            <input name="name" type="text" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Organaization Name" required>
+                            <input name="name" type="text" class="form-control form-control-sm form-rounded " placeholder="Organaization Name" required>
                             <div class="text-left invalid-message-color">
                                 Organization Name Required!
                             </div>
@@ -76,8 +76,13 @@
                     </div>
                     <div class="col-sm-10 col-md-10 ">
                         <div class="form-group">
-                            <label for="addSupplier" class="label text-dark">Country <span class="error-star">*</span></label>
-                            <input name="name" type="text" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Select Country Name" required>
+                            <label for="addSupplier" class="label text-dark"> Select Country <span class="error-star">*</span></label>
+                            <select class="form-select form-rounded form-select-sm " id="selectCountry" required="">
+                                 @foreach (var item in country_list)
+                                {
+                                  <option value=@item.CountryId>@item.CountryName</option>
+                                }
+                           </select>
                             <div class="text-left invalid-message-color">
                                 Country Name Required!
                             </div>
@@ -87,13 +92,13 @@
                    
                     <div class="col-sm-10 col-md-10 ">
                         <div class="form-group">
-                            <label for="addSupplier" class="label text-dark">Supplier Address Line One</label>
+                            <label for="addSupplier" class="label text-dark">Supplier Address One</label>
                          
                            <textarea rows="2"
                                 name="name"
                                 type="text" 
                                 class="form-control form-control-sm form-rounded " 
-                                placeholder="Supplier Address Line One"
+                                placeholder="Supplier Address One"
                                 required>
                            </textarea>
                             
@@ -113,8 +118,8 @@
                    
                     <div class="col-sm-10 col-md-10 ">
                         <div class="form-group">
-                            <label for="addSupplier" class="label text-dark">Select Type <span class="error-star">*</span></label>
-                            <input name="name" type="text" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Select Type" required>
+                            <label for="addSupplier" class="label text-dark">Select Business Type <span class="error-star">*</span></label>
+                            <input name="name" type="text" class="form-control form-control-sm form-rounded " placeholder="Select Business Type" required>
                             <div class="text-left invalid-message-color">
                                 Select Type Required!
                             </div>
@@ -123,7 +128,7 @@
                     <div class="col-sm-10 col-md-10 ">
                         <div class="form-group">
                             <label for="addSupplier" class="label text-dark">State Name <span class="error-star">*</span></label>
-                            <input name="name" type="text" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Enter Your State Name" required>
+                            <input name="name" type="text" class="form-control form-control-sm form-rounded " placeholder="Enter Your State Name" required>
                             <div class="text-left invalid-message-color">
                                 State Name Required!
                             </div>
@@ -131,11 +136,11 @@
                     </div>
                     <div class="col-sm-10 col-md-10 ">
                         <div class="form-group">
-                            <label for="addSupplier" class="label text-dark">Supplier Address Line two</label>
+                            <label for="addSupplier" class="label text-dark">Supplier Address two</label>
                             <textarea rows="2" name="name"
                                 type="text"
                                 class="form-control form-control-sm form-rounded"
-                                placeholder="Supplier Address Line Two"
+                                placeholder="Supplier Address Two"
                                 required>
 
                             </textarea>
@@ -157,6 +162,16 @@
     }
  </script>
 @code {
+    [Inject]
+    CountryServiceV2 countryServiceV2 { get; set; }
+    List<Pms.Models.Entity.Settings.CountryV2> country_list = new List<Pms.Models.Entity.Settings.CountryV2>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        country_list = (await countryServiceV2.Get(null, null, null, null, null, null, null, null, null, null, 1, 1000)).ToList();
+    }
+
+
     private string defaultImage = "/assets/img/icons/profile_icon.jpg"; // Path to your default image
     private string? imageData;
 
