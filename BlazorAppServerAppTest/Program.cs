@@ -54,10 +54,7 @@ builder.Services.AddScoped<EmailSetupService>();
 builder.Services.AddScoped<SmsSettinsService>();
 builder.Services.AddScoped<ProductService>();
 
-
-
-
-
+builder.Services.AddScoped<SupplierService>();
 builder.Services.AddScoped<LanguageService>();
 builder.Services.AddScoped<ProductCategoryService>();
 builder.Services.AddScoped<AccHeadService>();

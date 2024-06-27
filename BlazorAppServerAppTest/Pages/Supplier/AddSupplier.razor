@@ -10,13 +10,18 @@
       </h5>
 
    </div>
+    <EditForm Model="@supplier" OnValidSubmit="SaveOrUpdate">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+        <SuccessAlert Message="@SuccessMessage" Show="@showSuccessAlert" />
+        <DangerAlert Message="@DangerMessage" Show="@showDangerAlert" OnClose="HideAlert" />
     <div class="card-body bg-body-tertiary container">
         <div class="row">
             <div class="col-md-6">
                 <div class="col-sm-10 col-md-10 ">
                     <div class="form-group">
                         <label for="addSupplier" class="label text-dark">Name<span class="error-star">*</span></label>
-                        <input name="name" type="text" class="form-control form-control-sm form-rounded " placeholder="Enter Name" required>
+                        <InputText  name="name" type="text"  @bind-Value="supplier.SupplrName" class="form-control form-control-sm form-rounded " placeholder="Enter Name" required/>
                         <div class="text-left invalid-message-color">
                             Name Required!
                         </div>
@@ -151,8 +156,9 @@
                  
         </div>
 
-        <button class="btn btn-primary btn-sm mt-2">Save</button>
+        <button type="submit" class="btn btn-primary btn-sm mt-2">Save</button>
    </div>
+    </EditForm>
 </div>
 
 
@@ -165,6 +171,19 @@
     [Inject]
     CountryServiceV2 countryServiceV2 { get; set; }
     List<Pms.Models.Entity.Settings.CountryV2> country_list = new List<Pms.Models.Entity.Settings.CountryV2>();
+
+    [Inject]
+    SupplierService supplierService { get; set; }
+    Pms.Models.Entity.Settings.Suppliers supplier = new Models.Entity.Settings.Suppliers();
+
+
+    private bool showSuccessAlert = false;
+    private bool showDangerAlert = false;
+
+    public string SuccessMessage { get; set; }
+    public string DangerMessage { get; set; }
+
+    private string errorMessage;
 
     protected override async Task OnInitializedAsync()
     {
@@ -199,5 +218,73 @@
         await JS.InvokeVoidAsync("resetFileInput", "fileInput");
     }
 
-   
+
+    private Task HideAlert()
+    {
+        showDangerAlert = false;
+        return Task.CompletedTask;
+    }
+    private async Task SaveOrUpdate()
+    {
+        try
+        {
+            if (supplier.SupplierId == 0)
+            {
+                supplier.EntryDateTime = DateTimeHelper.CurrentDateTime();
+                supplier.EntryBy = UserInfo.UserId;
+                supplier.BranchId = CompanyInfo.BranchId;
+
+                supplier.SupplierId = await supplierService.SaveOrUpdate(supplier);
+                if (supplier.SupplierId > 0)
+                {
+                    showSuccessAlert = true;
+                    SuccessMessage = MessageManager.SaveSuccess;
+                    StateHasChanged(); // Notify Blazor to re-render the component
+                                       //Hide the alert after 1 seconds
+
+                    await Task.Delay(1000);
+                    showSuccessAlert = false;
+                }
+                else if (supplier.SupplierId == -1)
+                {
+                    showDangerAlert = true;
+                    DangerMessage = $"{supplier.SupplrName} {MessageManager.Exist}";
+                }
+                else
+                {
+                    showDangerAlert = true;
+                    DangerMessage = MessageManager.SaveFaild;
+                }
+            }
+            else
+            {
+
+                supplier.LastModifyDate = DateTimeHelper.CurrentDateTime();
+                supplier.LastModifyBy = UserInfo.UserId;
+                supplier.SupplierId = await supplierService.SaveOrUpdate(supplier);
+                if (supplier.SupplierId > 0)
+                {
+                    showSuccessAlert = true;
+                    SuccessMessage = MessageManager.UpdateSuccess;
+                    StateHasChanged(); // Notify Blazor to re-render the component
+                                       //Hide the alert after 1 seconds
+
+                    await Task.Delay(1000);
+                    showSuccessAlert = false;
+                }
+                else
+                {
+                    showDangerAlert = true;
+                    DangerMessage = MessageManager.UpdateFaild;
+                }
+            }
+         
+            
+        }
+        catch (Exception ex)
+        {
+            errorMessage = ex.Message;
+        }
+    }
+
 }
