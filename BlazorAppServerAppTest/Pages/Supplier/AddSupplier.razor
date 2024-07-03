@@ -21,7 +21,7 @@
                 <div class="col-sm-10 col-md-10 ">
                     <div class="form-group">
                         <label for="addSupplier" class="label text-dark">Name<span class="error-star">*</span></label>
-                        <InputText  name="name" type="text"  @bind-Value="supplier.SupplrName" class="form-control form-control-sm form-rounded " placeholder="Enter Name" required/>
+                        <InputText type="text"  @bind-Value="supplier.SupplrName" class="form-control form-control-sm form-rounded " placeholder="Enter Name" required/>
                         <div class="text-left invalid-message-color">
                             Name Required!
                         </div>
@@ -31,7 +31,7 @@
                 <div class="col-sm-10 col-md-10 ">
                     <div class="form-group">
                         <label for="addSupplier" class="label text-dark">Enter Mobile No <span class="error-star">*</span></label>
-                        <input name="name" type="text" class="form-control form-control-sm form-rounded " placeholder="Enter Mobile No" required>
+                        <InputText  type="text" @bind-Value="supplier.MobileNo" class="form-control form-control-sm form-rounded " placeholder="Enter Mobile No" required />
                         <div class="text-left invalid-message-color">
                             Mobile No Required!
                         </div>
@@ -40,7 +40,7 @@
                 <div class="col-sm-10 col-md-10">
                     <div class="form-group">
                         <label for="addSupplier" class="label text-dark">Email</label>
-                        <input name="name" type="text" class="form-control form-control-sm form-rounded " placeholder="Write Email" required>
+                         <InputText @bind-Value="supplier.Email" type="text" class="form-control form-control-sm form-rounded " placeholder="Write Email" required />
 
                     </div>
                 </div>
@@ -73,7 +73,7 @@
                     <div class="col-sm-10 col-md-10 ">
                         <div class="form-group">
                             <label for="addSupplier" class="label text-dark">Organization Name<span class="error-star">*</span> </label>
-                            <input name="name" type="text" class="form-control form-control-sm form-rounded " placeholder="Organaization Name" required>
+                            <InputText  @bind-Value="supplier.SuppOrgnznName" type="text" class="form-control form-control-sm form-rounded " placeholder="Organaization Name" required />
                             <div class="text-left invalid-message-color">
                                 Organization Name Required!
                             </div>
@@ -100,7 +100,7 @@
                             <label for="addSupplier" class="label text-dark">Supplier Address One</label>
                          
                            <textarea rows="2"
-                                name="name"
+                             
                                 type="text" 
                                 class="form-control form-control-sm form-rounded " 
                                 placeholder="Supplier Address One"
@@ -113,7 +113,7 @@
                     <div class="col-sm-10 col-md-10">
                         <div class="form-group">
                             <label for="addSupplier" class="label text-dark">Delivery Off Day</label>
-                            <input name="name" type="text" class="form-control form-control-sm form-rounded" placeholder="Delivery off Day" required>
+                            <InputText @bind-Value="supplier.DeliveryOffDay" type="text" class="form-control form-control-sm form-rounded" placeholder="Delivery off Day" required />
                         </div>
                     </div>
                    
@@ -124,7 +124,7 @@
                     <div class="col-sm-10 col-md-10 ">
                         <div class="form-group">
                             <label for="addSupplier" class="label text-dark">Select Business Type <span class="error-star">*</span></label>
-                            <input name="name" type="text" class="form-control form-control-sm form-rounded " placeholder="Select Business Type" required>
+                            <Input type="text" class="form-control form-control-sm form-rounded " placeholder="Select Business Type" required>
                             <div class="text-left invalid-message-color">
                                 Select Type Required!
                             </div>
@@ -133,7 +133,7 @@
                     <div class="col-sm-10 col-md-10 ">
                         <div class="form-group">
                             <label for="addSupplier" class="label text-dark">State Name <span class="error-star">*</span></label>
-                            <input name="name" type="text" class="form-control form-control-sm form-rounded " placeholder="Enter Your State Name" required>
+                            <InputText @bind-Value="supplier.StateName" type="text" class="form-control form-control-sm form-rounded " placeholder="Enter Your State Name" required />
                             <div class="text-left invalid-message-color">
                                 State Name Required!
                             </div>
@@ -142,7 +142,7 @@
                     <div class="col-sm-10 col-md-10 ">
                         <div class="form-group">
                             <label for="addSupplier" class="label text-dark">Supplier Address two</label>
-                            <textarea rows="2" name="name"
+                            <textarea rows="2"
                                 type="text"
                                 class="form-control form-control-sm form-rounded"
                                 placeholder="Supplier Address Two"
