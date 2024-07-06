@@ -226,7 +226,7 @@
         {
             if (selectedImageFile is not null)
             {
-                supplier.SupplrImgLink = await fileUploadService.UploadFileAsync(selectedImageFile, "asset/SupplierImage");
+                supplier.SupplrImgLink = await fileUploadService.UploadFileAsync(selectedImageFile, "assets/SupplierImage");
             }
 
             if (supplier.SupplierId == 0)

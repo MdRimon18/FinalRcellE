@@ -215,7 +215,7 @@
             {
                 if (selectedImageFile is not null)
                 {
-                    customer.CustImgLink = await fileUploadService.UploadFileAsync(selectedImageFile,"asset/CustomerImage");
+                    customer.CustImgLink = await fileUploadService.UploadFileAsync(selectedImageFile,"assets/CustomerImage");
                 }
              
                 customer.EntryDateTime = DateTimeHelper.CurrentDateTime();
