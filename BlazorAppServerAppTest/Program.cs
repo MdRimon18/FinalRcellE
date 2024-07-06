@@ -7,6 +7,7 @@ using Pms.Data.DbContex;
 using Pms.Data.Repository;
 using BlazorAppServerAppTest.Models;
 using Pms.Data.Repository.Inventory;
+using Pms.Data.Repository.Shared;
 
 var builder = WebApplication.CreateBuilder(args);
   builder.Services.AddControllersWithViews();
@@ -37,9 +38,7 @@ builder.Services.AddScoped<TaskService>();
 builder.Services.AddScoped<OrderService>();
 builder.Services.AddScoped<OrderServiceWithSp>();
 builder.Services.AddScoped<ColorService>();
-
-
-
+builder.Services.AddScoped<CustomerService>();
 
 builder.Services.AddScoped<CountryServiceV2>();
 builder.Services.AddScoped<ShippingByService>();
@@ -67,6 +66,9 @@ builder.Services.AddScoped<PaymentTypesService>();
 builder.Services.AddScoped<BillingPlanService>();
 //builder.Services.AddSingleton<ProductRepositoyWithSp>();
 builder.Services.AddSingleton<TaskRepository>();
+
+builder.Services.AddSingleton<FileUploadService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

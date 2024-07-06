@@ -245,12 +245,12 @@
 
 
 @code {
-    private Pms.Models.Entity.Settings.Colors colors = new Pms.Models.Entity.Settings.Colors();
+    private Colors colors = new Colors();
     [Inject]
     protected IJSRuntime JSRuntime { get; set; }
     [Inject]
     ColorService colorService { get; set; }
-    List<Pms.Models.Entity.Settings.Colors> color_list = new List<Pms.Models.Entity.Settings.Colors>();
+    List<Colors> color_list = new List<Colors>();
 
     private bool showSuccessAlert = false;
     private bool showDangerAlert = false;
@@ -274,7 +274,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        await Loadcolor();
+       await Loadcolor();
 
     }
 

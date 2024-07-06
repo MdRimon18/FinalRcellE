@@ -10,7 +10,9 @@ using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
 using Image = System.Drawing.Image;
 
-namespace Pms.Helper
+ 
+
+namespace RoyexEventManagement.Service.Helper
 {
     public class MediaHelper
     {
@@ -235,20 +237,20 @@ namespace Pms.Helper
             }
         }
 
-        //public static string GenerateQrCode(string text)
-        //{
+        public static string GenerateQrCode(string text)
+        {
 
-        //    QRCodeData qrCodeData;
-        //    using (QRCodeGenerator qrGenerator = new QRCodeGenerator())
-        //    {
-        //        qrCodeData = qrGenerator.CreateQrCode(text, QRCodeGenerator.ECCLevel.Q);
-        //    }
-        //  //  var imgType = Base64QRCode.ImageType.Png;
-        //   // var qrCode = new Base64QRCode(qrCodeData);
-        //   // string qrCodeImageAsBase64 = qrCode.GetGraphic(20, SixLabors.ImageSharp.Color.Black, SixLabors.ImageSharp.Color.White, true, imgType);
-        //  //  byte[] imageBytes = Convert.FromBase64String(qrCodeImageAsBase64);
-        //   // var image_url = UploadFile(imageBytes, "Content/QrCode");
-        //    return image_url;
-        //}
+            QRCodeData qrCodeData;
+            using (QRCodeGenerator qrGenerator = new QRCodeGenerator())
+            {
+                qrCodeData = qrGenerator.CreateQrCode(text, QRCodeGenerator.ECCLevel.Q);
+            }
+            var imgType = Base64QRCode.ImageType.Png;
+            var qrCode = new Base64QRCode(qrCodeData);
+            string qrCodeImageAsBase64 = qrCode.GetGraphic(20, Color.Black, Color.White, true, imgType);
+            byte[] imageBytes = Convert.FromBase64String(qrCodeImageAsBase64);
+            var image_url = UploadFile(imageBytes, "Content/QrCode");
+            return image_url;
+        }
     }
 }

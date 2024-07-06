@@ -1,7 +1,9 @@
 ﻿using Dapper;
+using Microsoft.AspNetCore.Components.Forms;
 using Pms.Data.DbContex;
 using Pms.Helper;
 using Pms.Models.Entity.Settings;
+using RoyexEventManagement.Service.Helper;
 using System.Data;
 
 namespace Pms.Data.Repository.Inventory
@@ -113,6 +115,9 @@ namespace Pms.Data.Repository.Inventory
 
             return DeletedSatatus > 0;
         }
+
+
+       
     }
 }
 

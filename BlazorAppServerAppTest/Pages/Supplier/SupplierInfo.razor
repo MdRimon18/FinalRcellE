@@ -226,139 +226,73 @@
     </div>
 
     <div class="tab-content" id="ticketViewContent">
-        <div class="fade tab-pane active show" id="table-view" role="tabpanel" aria-labelledby="tableView" data-list='{"valueNames":["client","subject","status","priority","agent"],"page":6,"pagination":true}'>
-            <div class="card-body p-0">
-                <div class="table-responsive scrollbar">
-                    <table class="table table-sm mb-0 fs-10 table-view-tickets">
-                        <thead class="bg-body-tertiary">
-                            <tr>
-                                @* <th class="py-2 fs-9 pe-2" style="width: 28px;">
+         @if (isLoading)
+        {
+            <p>Loading...</p>
+        }
+        else if (errorMessage != null)
+        {
+            <p>An error occurred: @errorMessage</p>
+        }
+        else
+        {
+            <div class="fade tab-pane active show" id="table-view" role="tabpanel" aria-labelledby="tableView" data-list='{"valueNames":["client","subject","status","priority","agent"],"page":6,"pagination":true}'>
+                <div class="card-body p-0">
+                    <div class="table-responsive scrollbar">
+                        <table class="table table-sm mb-0 fs-10 table-view-tickets">
+                            <thead class="bg-body-tertiary">
+                                <tr>
+                                    @* <th class="py-2 fs-9 pe-2" style="width: 28px;">
                                 <div class="form-check d-flex align-items-center">
                                 Action  <input class="form-check-input" id="checkbox-bulk-table-tickets-select" type="checkbox" data-bulk-select='{"body":"table-ticket-body","actions":"table-ticket-actions","replacedElement":"table-ticket-replace-element"}' />
                                 </div>
                                 </th> *@
-                                <th class="text-800 sort align-middle ps-4" data-sort="action">Action</th>
-                                <th class="text-800 sort align-middle ps-2" data-sort="name">Name</th>
-                                <th class="text-800 sort align-middle ps-2" data-sort="mobilenumber" style="min-width:15.625rem">Mobile Number</th>
-                                <th class="text-800 sort align-middle ps-2" data-sort="status">Gmail</th>
-                                <th class="text-800 sort align-middle ps-2" data-sort="storeType">Store Type</th>
-                                <th class="text-800 sort align-middle ps-2" data-sort="org.Name">Org.Name</th>
-                                <th class="text-800 sort align-middle ps-2" data-sort="address">Address</th>
-                                <th class="text-800 sort align-middle ps-2" data-sort="country">Country</th>
-                            </tr>
-                        </thead>
-                        <tbody class="list" id="table-ticket-body">
-                            <tr>
-                                <td class="align-middle fs-9 py-3">
-                                    <div class="form-check mb-0">
-                                        <input class="form-check-input" type="checkbox" id="table-view-tickets-0" data-bulk-select-row="data-bulk-select-row" />
-                                        <a class="btn btn-falcon-default btn-sm " data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><span class="fas fa-external-link-alt" data-fa-transform="shrink-3"></span><span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1"></span></a>
-                                    </div>
-                                </td>
-                                <td class="align-middle client white-space-nowrap pe-3 pe-xxl-4 ps-2">
-                                    <div class="d-flex align-items-center gap-2 position-relative">
-                                        <div class="avatar avatar-xl avatar-xl">
-                                            <img class="rounded-circle" src="assets/img/team/1-thumb.png" alt="" />
-                                        </div>
-                                        <h6 class="mb-0">Emma Watson</h6>
-                                    </div>
-                                </td>
-                                <td class="align-middle subject py-2 pe-4">017**-******</td>
-                                <td class="align-middle subject py-2 pe-4">test@gmail.com</td>
-                                <td class="align-middle subject py-2 pe-4">technologyStore</td>
-                                <td class="align-middle subject py-2 pe-4">Computer City technologies ltd</td>
-                                <td class="align-middle subject py-2 pe-4">Dhak-1205</td>
-                                <td class="align-middle subject py-2 pe-4">Bangladesh</td>
-                            </tr>
-                            <tr>
-                                <td class="align-middle fs-9 py-3">
-                                    <div class="form-check mb-0">
-                                        <input class="form-check-input" type="checkbox" id="table-view-tickets-0" data-bulk-select-row="data-bulk-select-row" />
-                                        <a class="btn btn-falcon-default btn-sm " data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><span class="fas fa-external-link-alt" data-fa-transform="shrink-3"></span><span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1"></span></a>
-                                    </div>
-                                </td>
-                                <td class="align-middle client white-space-nowrap pe-3 pe-xxl-4 ps-2">
-                                    <div class="d-flex align-items-center gap-2 position-relative">
-                                        <div class="avatar avatar-xl avatar-xl">
-                                            <img class="rounded-circle" src="assets/img/team/1-thumb.png" alt="" />
-                                        </div>
-                                        <h6 class="mb-0">Emma Watson</h6>
-                                    </div>
-                                </td>
-                                <td class="align-middle subject py-2 pe-4">017**-******</td>
-                                <td class="align-middle subject py-2 pe-4">test@gmail.com</td>
-                                <td class="align-middle subject py-2 pe-4">technologyStore</td>
-                                <td class="align-middle subject py-2 pe-4">Computer City technologies ltd</td>
-                                <td class="align-middle subject py-2 pe-4">Dhak-1205</td>
-                                <td class="align-middle subject py-2 pe-4">Bangladesh</td>
-                            </tr>
-                            <tr>
-                                <td class="align-middle fs-9 py-3">
-                                    <div class="form-check mb-0">
-                                        <input class="form-check-input" type="checkbox" id="table-view-tickets-0" data-bulk-select-row="data-bulk-select-row" />
-                                        <a class="btn btn-falcon-default btn-sm " data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><span class="fas fa-external-link-alt" data-fa-transform="shrink-3"></span><span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1"></span></a>
-                                    </div>
-                                </td>
-                                <td class="align-middle client white-space-nowrap pe-3 pe-xxl-4 ps-2">
-                                    <div class="d-flex align-items-center gap-2 position-relative">
-                                        <div class="avatar avatar-xl avatar-xl">
-                                            <img class="rounded-circle" src="assets/img/team/1-thumb.png" alt="" />
-                                        </div>
-                                        <h6 class="mb-0">Emma Watson</h6>
-                                    </div>
-                                </td>
-                                <td class="align-middle subject py-2 pe-4">017**-******</td>
-                                <td class="align-middle subject py-2 pe-4">test@gmail.com</td>
-                                <td class="align-middle subject py-2 pe-4">technologyStore</td>
-                                <td class="align-middle subject py-2 pe-4">Computer City technologies ltd</td>
-                                <td class="align-middle subject py-2 pe-4">Dhak-1205</td>
-                                <td class="align-middle subject py-2 pe-4">Bangladesh</td>
-                            </tr>
-                            <tr>
-                                <td class="align-middle fs-9 py-3">
-                                    <div class="form-check mb-0">
-                                        <input class="form-check-input" type="checkbox" id="table-view-tickets-0" data-bulk-select-row="data-bulk-select-row" />
-                                        <a class="btn btn-falcon-default btn-sm " data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><span class="fas fa-external-link-alt" data-fa-transform="shrink-3"></span><span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1"></span></a>
-                                    </div>
-                                </td>
-                                <td class="align-middle client white-space-nowrap pe-3 pe-xxl-4 ps-2">
-                                    <div class="d-flex align-items-center gap-2 position-relative">
-                                        <div class="avatar avatar-xl avatar-xl">
-                                            <img class="rounded-circle" src="assets/img/team/1-thumb.png" alt="" />
-                                        </div>
-                                        <h6 class="mb-0">Emma Watson</h6>
-                                    </div>
-                                </td>
-                                <td class="align-middle subject py-2 pe-4">017**-******</td>
-                                <td class="align-middle subject py-2 pe-4">test@gmail.com</td>
-                                <td class="align-middle subject py-2 pe-4">technologyStore</td>
-                                <td class="align-middle subject py-2 pe-4">Computer City technologies ltd</td>
-                                <td class="align-middle subject py-2 pe-4">Dhak-1205</td>
-                                <td class="align-middle subject py-2 pe-4">Bangladesh</td>
-                            </tr>
-                            <tr>
-                                <td class="align-middle fs-9 py-3">
-                                    <div class="form-check mb-0">
-                                        <input class="form-check-input" type="checkbox" id="table-view-tickets-0" data-bulk-select-row="data-bulk-select-row" />
-                                        <a class="btn btn-falcon-default btn-sm " data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><span class="fas fa-external-link-alt" data-fa-transform="shrink-3"></span><span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1"></span></a>
-                                    </div>
-                                </td>
-                                <td class="align-middle client white-space-nowrap pe-3 pe-xxl-4 ps-2">
-                                    <div class="d-flex align-items-center gap-2 position-relative">
-                                        <div class="avatar avatar-xl avatar-xl">
-                                            <img class="rounded-circle" src="assets/img/team/1-thumb.png" alt="" />
-                                        </div>
-                                        <h6 class="mb-0">Emma Watson</h6>
-                                    </div>
-                                </td>
-                                <td class="align-middle subject py-2 pe-4">017**-******</td>
-                                <td class="align-middle subject py-2 pe-4">test@gmail.com</td>
-                                <td class="align-middle subject py-2 pe-4">technologyStore</td>
-                                <td class="align-middle subject py-2 pe-4">Computer City technologies ltd</td>
-                                <td class="align-middle subject py-2 pe-4">Dhak-1205</td>
-                                <td class="align-middle subject py-2 pe-4">Bangladesh</td>
-                            </tr>
-                        </tbody>
+                                    <th class="text-800 sort align-middle ps-4" data-sort="action">Action</th>
+                                    <th class="text-800 sort align-middle ps-2" data-sort="name">Name</th>
+                                    <th class="text-800 sort align-middle ps-2" data-sort="mobilenumber" style="min-width:15.625rem">Mobile Number</th>
+                                    <th class="text-800 sort align-middle ps-2" data-sort="status">Gmail</th>
+                                    <th class="text-800 sort align-middle ps-2" data-sort="storeType">Store Type</th>
+                                    <th class="text-800 sort align-middle ps-2" data-sort="org.Name">Org.Name</th>
+                                    <th class="text-800 sort align-middle ps-2" data-sort="address">Address</th>
+                                    <th class="text-800 sort align-middle ps-2" data-sort="country">Country</th>
+                                </tr>
+                            </thead>
+                            <tbody class="list" id="table-ticket-body">
+                                @foreach (var item in suppliers)
+                                {
+                                    <tr>
+                                        <td class="align-middle fs-9 py-3">
+                                            <div class="form-check mb-0">
+                                                <input class="form-check-input" type="checkbox" id="table-view-tickets-0" data-bulk-select-row="data-bulk-select-row" />
+                                                <a class="btn btn-falcon-default btn-sm " data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><span class="fas fa-external-link-alt" data-fa-transform="shrink-3"></span><span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1"></span></a>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle client white-space-nowrap pe-3 pe-xxl-4 ps-2">
+                                            <div class="d-flex align-items-center gap-2 position-relative">
+                                                <div class="avatar avatar-xl avatar-xl">
+                                                    @if(item.SupplrImgLink is not null)
+                                                    {
+                                                        <img class="rounded-circle" src="@item.SupplrImgLink" alt="" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <img src="/assets/commonimage/no-image.png" />
+                                                    }
+                                                   
+                                                   
+                                                </div>
+                                                <h6 class="mb-0">@item.SupplrName</h6>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle subject py-2 pe-4">@item.MobileNo</td>
+                                        <td class="align-middle subject py-2 pe-4">@item.Email</td>
+                                        <td class="align-middle subject py-2 pe-4">@item.BusinessTypeId</td>
+                                        <td class="align-middle subject py-2 pe-4">@item.SuppOrgnznName</td>
+                                        <td class="align-middle subject py-2 pe-4">@item.SupplrAddrssOne</td>
+                                        <td class="align-middle subject py-2 pe-4">@item.CountryId</td>
+                                    </tr>
+                                }
+                            </tbody>
                     </table>
                     <div class="text-center d-none" id="tickets-table-fallback">
                         <p class="fw-bold fs-8 mt-3">No ticket found</p>
@@ -376,212 +310,63 @@
                 </div>
             </div>
         </div>
-        <div class="fade tab-pane" id="card-view" role="tabpanel" aria-labelledby="cardView" data-list='{"valueNames":["client","subject","status","priority","agent"],"page":4,"pagination":true}'>
-            <div class="card-body p-0">
-                <div class="form-check d-none">
-                    <input class="form-check-input" id="checkbox-bulk-card-tickets-select" type="checkbox" data-bulk-select='{"body":"card-ticket-body","actions":"table-ticket-actions","replacedElement":"table-ticket-replace-element"}' />
-                </div>
-                <div class="list bg-body-tertiary p-x1 d-flex flex-column gap-3" id="card-ticket-body">
-                    <div class="bg-white dark__bg-1100 d-md-flex d-xl-inline-block d-xxl-flex align-items-center p-x1 rounded-3 shadow-sm card-view-height">
-                        <div class="d-flex align-items-start align-items-sm-center">
-                            <div class="form-check me-2 me-xxl-3 mb-0">
-                                <input class="form-check-input" type="checkbox" id="card-view-tickets-0" data-bulk-select-row="data-bulk-select-row" />
-                                <a class="btn btn-falcon-default btn-sm" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><span class="fas fa-external-link-alt" data-fa-transform="shrink-3"></span><span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1"></span></a>
-                            </div>
-                            <div class="avatar avatar-xl avatar-3xl">
-                               <img class="rounded-circle" src="assets/img/team/1-thumb.png" alt="" />
-                            </div>
-                            <div class="ms-1 ms-sm-3">
-                                <div class="col-auto me-2">
-                                    <h6 class="client mb-0">Emma Watson</h6>
-                                </div>
-                                <div class="row align-items-center gx-0 gy-2">
-                                    <p class="fw-semi-bold mb-3 mb-sm-2">017**-******</p>
-                                    <div class="col-auto lh-1 me-3">
-                                        <p class="fw-semi-bold mb-3 mb-sm-2">test@gmail.com</p>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                        <div class="border-bottom mt-4 mb-x1"></div>
-                        <div class="d-flex justify-content-between ms-auto">
-                            <div class="col-auto">
-                                <h6 class="mb-0 text-500">technologyStore</h6>
-                            </div>
-                            <div class="col-auto">
-                                <h6 class="mb-0 text-500">Computer City technologies ltd</h6>
-                            </div>
-                            <div class="col-auto">
-                                <h6 class="mb-0 text-500">Dhak-1205</h6>
-                            </div>
-                            <div class="col-auto">
-                                <h6 class="mb-0 text-500">Bangladesh</h6>
-                            </div>  
-                        </div>
+            <div class="fade tab-pane" id="card-view" role="tabpanel" aria-labelledby="cardView" data-list='{"valueNames":["client","subject","status","priority","agent"],"page":4,"pagination":true}'>
+                <div class="card-body p-0">
+                    <div class="form-check d-none">
+                        <input class="form-check-input" id="checkbox-bulk-card-tickets-select" type="checkbox" data-bulk-select='{"body":"card-ticket-body","actions":"table-ticket-actions","replacedElement":"table-ticket-replace-element"}' />
                     </div>
-                </div>
-                <div class="list bg-body-tertiary p-x1 d-flex flex-column gap-3" id="card-ticket-body">
-                    <div class="bg-white dark__bg-1100 d-md-flex d-xl-inline-block d-xxl-flex align-items-center p-x1 rounded-3 shadow-sm card-view-height">
-                        <div class="d-flex align-items-start align-items-sm-center">
-                            <div class="form-check me-2 me-xxl-3 mb-0">
-                                <input class="form-check-input" type="checkbox" id="card-view-tickets-0" data-bulk-select-row="data-bulk-select-row" />
-                                <a class="btn btn-falcon-default btn-sm" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><span class="fas fa-external-link-alt" data-fa-transform="shrink-3"></span><span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1"></span></a>
-                            </div>
-                            <div class="avatar avatar-xl avatar-3xl">
-                                <img class="rounded-circle" src="assets/img/team/1-thumb.png" alt="" />
-                            </div>
-                            <div class="ms-1 ms-sm-3">
-                                <div class="col-auto me-2">
-                                    <h6 class="client mb-0">Emma Watson</h6>
-                                </div>
-                                <div class="row align-items-center gx-0 gy-2">
-                                    <p class="fw-semi-bold mb-3 mb-sm-2">017**-******</p>
-                                    <div class="col-auto lh-1 me-3">
-                                        <p class="fw-semi-bold mb-3 mb-sm-2">test@gmail.com</p>
+                    @foreach (var item in suppliers)
+                    {
+                        <div class="list bg-body-tertiary p-x1 d-flex flex-column gap-3" id="card-ticket-body">
+                            <div class="bg-white dark__bg-1100 d-md-flex d-xl-inline-block d-xxl-flex align-items-center p-x1 rounded-3 shadow-sm card-view-height">
+                                <div class="d-flex align-items-start align-items-sm-center">
+                                    <div class="form-check me-2 me-xxl-3 mb-0">
+                                        <input class="form-check-input" type="checkbox" id="card-view-tickets-0" data-bulk-select-row="data-bulk-select-row" />
+                                        <a class="btn btn-falcon-default btn-sm" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><span class="fas fa-external-link-alt" data-fa-transform="shrink-3"></span><span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1"></span></a>
                                     </div>
+                                    <div class="avatar avatar-xl avatar-3xl">
+                                        @if (item.SupplrImgLink is not null)
+                                        {
+                                            <img class="rounded-circle" src="@item.SupplrImgLink" alt="Supplier Name"/>
+                                        }
+                                        else
+                                        {
+                                            <img src="/assets/commonimage/no-image.png" alt="Supplier Name"/>
+                                        }
+                                       
+                                    </div>
+                                    <div class="ms-1 ms-sm-3">
+                                        <div class="col-auto me-2">
+                                            <h6 class="client mb-0">@item.SupplrName</h6>
+                                        </div>
+                                        <div class="row align-items-center gx-0 gy-2">
+                                            <p class="fw-semi-bold mb-3 mb-sm-2">@item.MobileNo</p>
+                                            <div class="col-auto lh-1 me-3">
+                                                <p class="fw-semi-bold mb-3 mb-sm-2">@item.Email</p>
+                                            </div>
 
-                                </div>
-                            </div>
-                        </div>
-                        <div class="border-bottom mt-4 mb-x1"></div>
-                        <div class="d-flex justify-content-between ms-auto">
-                            <div class="col-auto">
-                                <h6 class="mb-0 text-500">technologyStore</h6>
-                            </div>
-                            <div class="col-auto">
-                                <h6 class="mb-0 text-500">Computer City technologies ltd</h6>
-                            </div>
-                            <div class="col-auto">
-                                <h6 class="mb-0 text-500">Dhak-1205</h6>
-                            </div>
-                            <div class="col-auto">
-                                <h6 class="mb-0 text-500">Bangladesh</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="list bg-body-tertiary p-x1 d-flex flex-column gap-3" id="card-ticket-body">
-                    <div class="bg-white dark__bg-1100 d-md-flex d-xl-inline-block d-xxl-flex align-items-center p-x1 rounded-3 shadow-sm card-view-height">
-                        <div class="d-flex align-items-start align-items-sm-center">
-                            <div class="form-check me-2 me-xxl-3 mb-0">
-                                <input class="form-check-input" type="checkbox" id="card-view-tickets-0" data-bulk-select-row="data-bulk-select-row" />
-                                <a class="btn btn-falcon-default btn-sm" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><span class="fas fa-external-link-alt" data-fa-transform="shrink-3"></span><span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1"></span></a>
-                            </div>
-                            <div class="avatar avatar-xl avatar-3xl">
-                                <img class="rounded-circle" src="assets/img/team/1-thumb.png" alt="" />
-                            </div>
-                            <div class="ms-1 ms-sm-3">
-                                <div class="col-auto me-2">
-                                    <h6 class="client mb-0">Emma Watson</h6>
-                                </div>
-                                <div class="row align-items-center gx-0 gy-2">
-                                    <p class="fw-semi-bold mb-3 mb-sm-2">017**-******</p>
-                                    <div class="col-auto lh-1 me-3">
-                                        <p class="fw-semi-bold mb-3 mb-sm-2">test@gmail.com</p>
+                                        </div>
                                     </div>
-
                                 </div>
-                            </div>
-                        </div>
-                        <div class="border-bottom mt-4 mb-x1"></div>
-                        <div class="d-flex justify-content-between ms-auto">
-                            <div class="col-auto">
-                                <h6 class="mb-0 text-500">technologyStore</h6>
-                            </div>
-                            <div class="col-auto">
-                                <h6 class="mb-0 text-500">Computer City technologies ltd</h6>
-                            </div>
-                            <div class="col-auto">
-                                <h6 class="mb-0 text-500">Dhak-1205</h6>
-                            </div>
-                            <div class="col-auto">
-                                <h6 class="mb-0 text-500">Bangladesh</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="list bg-body-tertiary p-x1 d-flex flex-column gap-3" id="card-ticket-body">
-                    <div class="bg-white dark__bg-1100 d-md-flex d-xl-inline-block d-xxl-flex align-items-center p-x1 rounded-3 shadow-sm card-view-height">
-                        <div class="d-flex align-items-start align-items-sm-center">
-                            <div class="form-check me-2 me-xxl-3 mb-0">
-                                <input class="form-check-input" type="checkbox" id="card-view-tickets-0" data-bulk-select-row="data-bulk-select-row" />
-                                <a class="btn btn-falcon-default btn-sm" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><span class="fas fa-external-link-alt" data-fa-transform="shrink-3"></span><span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1"></span></a>
-                            </div>
-                            <div class="avatar avatar-xl avatar-3xl">
-                                <img class="rounded-circle" src="assets/img/team/1-thumb.png" alt="" />
-                            </div>
-                            <div class="ms-1 ms-sm-3">
-                                <div class="col-auto me-2">
-                                    <h6 class="client mb-0">Emma Watson</h6>
-                                </div>
-                                <div class="row align-items-center gx-0 gy-2">
-                                    <p class="fw-semi-bold mb-3 mb-sm-2">017**-******</p>
-                                    <div class="col-auto lh-1 me-3">
-                                        <p class="fw-semi-bold mb-3 mb-sm-2">test@gmail.com</p>
+                                <div class="border-bottom mt-4 mb-x1"></div>
+                                <div class="d-flex justify-content-between ms-auto">
+                                    <div class="col-auto">
+                                        <h6 class="mb-0 text-500">@item.BusinessTypeId</h6>
                                     </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="border-bottom mt-4 mb-x1"></div>
-                        <div class="d-flex justify-content-between ms-auto">
-                            <div class="col-auto">
-                                <h6 class="mb-0 text-500">technologyStore</h6>
-                            </div>
-                            <div class="col-auto">
-                                <h6 class="mb-0 text-500">Computer City technologies ltd</h6>
-                            </div>
-                            <div class="col-auto">
-                                <h6 class="mb-0 text-500">Dhak-1205</h6>
-                            </div>
-                            <div class="col-auto">
-                                <h6 class="mb-0 text-500">Bangladesh</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="list bg-body-tertiary p-x1 d-flex flex-column gap-3" id="card-ticket-body">
-                    <div class="bg-white dark__bg-1100 d-md-flex d-xl-inline-block d-xxl-flex align-items-center p-x1 rounded-3 shadow-sm card-view-height">
-                        <div class="d-flex align-items-start align-items-sm-center">
-                            <div class="form-check me-2 me-xxl-3 mb-0">
-                                <input class="form-check-input" type="checkbox" id="card-view-tickets-0" data-bulk-select-row="data-bulk-select-row" />
-                                <a class="btn btn-falcon-default btn-sm" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><span class="fas fa-external-link-alt" data-fa-transform="shrink-3"></span><span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1"></span></a>
-                            </div>
-                            <div class="avatar avatar-xl avatar-3xl">
-                                <img class="rounded-circle" src="assets/img/team/1-thumb.png" alt="" />
-                            </div>
-                            <div class="ms-1 ms-sm-3">
-                                <div class="col-auto me-2">
-                                    <h6 class="client mb-0">Emma Watson</h6>
-                                </div>
-                                <div class="row align-items-center gx-0 gy-2">
-                                    <p class="fw-semi-bold mb-3 mb-sm-2">017**-******</p>
-                                    <div class="col-auto lh-1 me-3">
-                                        <p class="fw-semi-bold mb-3 mb-sm-2">test@gmail.com</p>
+                                    <div class="col-auto">
+                                        <h6 class="mb-0 text-500">@item.BusinessTypeId</h6>
                                     </div>
-
+                                    <div class="col-auto">
+                                        <h6 class="mb-0 text-500">@item.SupplrAddrssOne</h6>
+                                    </div>
+                                    <div class="col-auto">
+                                        <h6 class="mb-0 text-500">@item.CountryId</h6>
+                                    </div>  
                                 </div>
                             </div>
                         </div>
-                        <div class="border-bottom mt-4 mb-x1"></div>
-                        <div class="d-flex justify-content-between ms-auto">
-                            <div class="col-auto">
-                                <h6 class="mb-0 text-500">technologyStore</h6>
-                            </div>
-                            <div class="col-auto">
-                                <h6 class="mb-0 text-500">Computer City technologies ltd</h6>
-                            </div>
-                            <div class="col-auto">
-                                <h6 class="mb-0 text-500">Dhak-1205</h6>
-                            </div>
-                            <div class="col-auto">
-                                <h6 class="mb-0 text-500">Bangladesh</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="text-center d-none" id="tickets-card-fallback">
+                    }
+                    <div class="text-center d-none" id="tickets-card-fallback">
                     <p class="fw-bold fs-8 mt-3">No ticket found</p>
                 </div>
             </div>
@@ -596,34 +381,14 @@
                 </div>
             </div>
         </div>
+         }
+    
     </div>
 
 
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
 @code {
     private bool showOverlay = false;
 
@@ -643,10 +408,61 @@
 
     [Inject]
     private NavigationManager NavigationManager { get; set; }
+    [Inject]
+    SupplierService supplierService { get; set; }
+    List<Suppliers> suppliers = new List<Suppliers>();
+    private bool isLoading = true;
+    private int PageSize { get; set; } = 5; // Number of items per page
+
+    int totalPages { get; set; }
+    int currentPage = 1; // Example current page
+    private string errorMessage;
+    private int TotalRecord { get; set; }
+
+    public string? ColorIdNameSearch { get; set; }
+
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadSuppliers();
+
+    }
 
     private void NavigateToCreatePage()
     {
         NavigationManager.NavigateTo("/new_experience");
+    }
+
+   
+    private async Task LoadSuppliers()
+    {
+        try
+        {
+            if (ColorIdNameSearch == "") { ColorIdNameSearch = null; }
+            suppliers = (await supplierService.Get(null, null, ColorIdNameSearch, null, null, null, currentPage, PageSize)).ToList();
+            if (suppliers.Count > 0)
+            {
+                TotalRecord = suppliers[0].total_row;
+                //  totalPages = TotalRecord / PageSize;
+                totalPages = (int)Math.Ceiling((double)TotalRecord / PageSize);
+            }
+            else
+            {
+                TotalRecord = 0;
+                totalPages = 0;
+            }
+
+        }
+        catch (Exception ex)
+        {
+            errorMessage = ex.Message;
+        }
+        finally
+        {
+            isLoading = false;
+            StateHasChanged(); // Ensure UI reflects changes
+        }
     }
 }
 

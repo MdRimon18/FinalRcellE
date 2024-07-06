@@ -12,38 +12,41 @@
    </div>
     <EditForm Model="@supplier" OnValidSubmit="SaveOrUpdate">
     <DataAnnotationsValidator />
-    <ValidationSummary />
+    
         <SuccessAlert Message="@SuccessMessage" Show="@showSuccessAlert" />
         <DangerAlert Message="@DangerMessage" Show="@showDangerAlert" OnClose="HideAlert" />
-    <div class="card-body bg-body-tertiary container">
-        <div class="row">
+       <div class="card-body bg-body-tertiary container">
+         <div class="row">
             <div class="col-md-6">
-                <div class="col-sm-10 col-md-10 ">
+                 <div class="col-sm-10 col-md-10 ">
                     <div class="form-group">
                         <label for="addSupplier" class="label text-dark">Name<span class="error-star">*</span></label>
-                        <InputText type="text"  @bind-Value="supplier.SupplrName" class="form-control form-control-sm form-rounded " placeholder="Enter Name" required/>
-                        <div class="text-left invalid-message-color">
-                            Name Required!
-                        </div>
+                        <InputText type="text"  @bind-Value="supplier.SupplrName" class="form-control form-control-sm form-rounded " placeholder="Enter Name" />
+                            <ValidationMessage class="text-left invalid-message-color" For="@(() => supplier.SupplrName)" />
 
                     </div>
                 </div>
-                <div class="col-sm-10 col-md-10 ">
+                 <div class="col-sm-10 col-md-10 ">
                     <div class="form-group">
-                        <label for="addSupplier" class="label text-dark">Enter Mobile No <span class="error-star">*</span></label>
-                        <InputText  type="text" @bind-Value="supplier.MobileNo" class="form-control form-control-sm form-rounded " placeholder="Enter Mobile No" required />
-                        <div class="text-left invalid-message-color">
-                            Mobile No Required!
+                        <label for="addSupplier" class="label text-dark">Enter Mobile No<span class="error-star">*</span></label>
+                        <InputText  type="text" @bind-Value="supplier.MobileNo" class="form-control form-control-sm form-rounded " placeholder="Enter Mobile No"/>
+                          <ValidationMessage class="text-left invalid-message-color" For="@(() => supplier.MobileNo)" />
+                    </div>
+                </div>
+                 <div class="col-sm-10 col-md-10">
+                    <div class="form-group">
+                            <label for="addSupplier" class="label text-dark">Email<span class="error-star">*</span></label>
+                         <InputText @bind-Value="supplier.Email" type="text" class="form-control form-control-sm form-rounded " placeholder="Write Email"  />
+                         <ValidationMessage class="text-left invalid-message-color" For="@(() => supplier.Email)" />
+                    </div>
+                </div>
+                 <div class="col-sm-10 col-md-10 ">
+                        <div class="form-group">
+                            <label for="addSupplier" class="label text-dark">Organization Name<span class="error-star">*</span> </label>
+                            <InputText @bind-Value="supplier.SuppOrgnznName" type="text" class="form-control form-control-sm form-rounded " placeholder="Organaization Name" />
+                            <ValidationMessage class="text-left invalid-message-color" For="@(() =>supplier.SuppOrgnznName)" />
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-10 col-md-10">
-                    <div class="form-group">
-                        <label for="addSupplier" class="label text-dark">Email</label>
-                         <InputText @bind-Value="supplier.Email" type="text" class="form-control form-control-sm form-rounded " placeholder="Write Email" required />
-
-                    </div>
-                </div>
             </div>
             <div class="col-md-6">
                 <div class="col-sm-10 col-md-10">
@@ -56,7 +59,7 @@
                                  alt="Selected Image" style="width: 160px;height: 160px;" />
                             @if (imageData != defaultImage)
                             {
-                                <button class="remove-button" @onclick="RemoveImage">X</button>
+                                <button type="button" class="remove-button" @onclick="RemoveImage">X</button>
                             }
                         </div>
 
@@ -72,91 +75,74 @@
                 <div class="col-md-6">
                     <div class="col-sm-10 col-md-10 ">
                         <div class="form-group">
-                            <label for="addSupplier" class="label text-dark">Organization Name<span class="error-star">*</span> </label>
-                            <InputText  @bind-Value="supplier.SuppOrgnznName" type="text" class="form-control form-control-sm form-rounded " placeholder="Organaization Name" required />
-                            <div class="text-left invalid-message-color">
-                                Organization Name Required!
-                            </div>
+                            <label for="addSupplier" class="label text-dark">Select Business Type <span class="error-star">*</span></label>
+                            <InputSelect @bind-Value="supplier.BusinessTypeId" class="form-select form-rounded form-select-sm ">
+                                <option value="">Business Type</option>
+                                @foreach (var item in businessTypes_list)
+                                {
+                                    <option value="@item.BusinessTypeId">@item.BusinessTypeName</option>
+                                }
+                            </InputSelect>
+                            <ValidationMessage class="text-left invalid-message-color" For="@(() => supplier.BusinessTypeId)" />
                         </div>
                     </div>
                     <div class="col-sm-10 col-md-10 ">
                         <div class="form-group">
                             <label for="addSupplier" class="label text-dark"> Select Country <span class="error-star">*</span></label>
-                            <select class="form-select form-rounded form-select-sm " id="selectCountry" required="">
+                            <InputSelect @bind-Value="supplier.CountryId" class="form-select form-rounded form-select-sm ">
+                                <option value="">Select Country</option>
                                  @foreach (var item in country_list)
                                 {
-                                  <option value=@item.CountryId>@item.CountryName</option>
+                                  <option value="@item.CountryId">@item.CountryName</option>
                                 }
-                           </select>
-                            <div class="text-left invalid-message-color">
-                                Country Name Required!
-                            </div>
-                        </div>
-                    </div>
-                    
-                   
-                    <div class="col-sm-10 col-md-10 ">
-                        <div class="form-group">
-                            <label for="addSupplier" class="label text-dark">Supplier Address One</label>
-                         
-                           <textarea rows="2"
-                             
-                                type="text" 
-                                class="form-control form-control-sm form-rounded " 
-                                placeholder="Supplier Address One"
-                                required>
-                           </textarea>
-                            
-
-                        </div>
-                    </div>
-                    <div class="col-sm-10 col-md-10">
-                        <div class="form-group">
-                            <label for="addSupplier" class="label text-dark">Delivery Off Day</label>
-                            <InputText @bind-Value="supplier.DeliveryOffDay" type="text" class="form-control form-control-sm form-rounded" placeholder="Delivery off Day" required />
-                        </div>
-                    </div>
-                   
-                </div>
-                <div class="col-md-6">
-
-                   
-                    <div class="col-sm-10 col-md-10 ">
-                        <div class="form-group">
-                            <label for="addSupplier" class="label text-dark">Select Business Type <span class="error-star">*</span></label>
-                            <Input type="text" class="form-control form-control-sm form-rounded " placeholder="Select Business Type" required>
-                            <div class="text-left invalid-message-color">
-                                Select Type Required!
-                            </div>
+                           </InputSelect>
+                            <ValidationMessage class="text-left invalid-message-color" For="@(() =>supplier.CountryId)" />
                         </div>
                     </div>
                     <div class="col-sm-10 col-md-10 ">
                         <div class="form-group">
                             <label for="addSupplier" class="label text-dark">State Name <span class="error-star">*</span></label>
-                            <InputText @bind-Value="supplier.StateName" type="text" class="form-control form-control-sm form-rounded " placeholder="Enter Your State Name" required />
-                            <div class="text-left invalid-message-color">
-                                State Name Required!
-                            </div>
+                            <InputText @bind-Value="supplier.StateName" type="text" class="form-control form-control-sm form-rounded " placeholder="Enter Your State Name" />
+                            <ValidationMessage class="text-left invalid-message-color" For="@(() => supplier.StateName)" />
+                        </div>
+                    </div>
+                    
+                   
+                </div>
+                <div class="col-md-6">
+                    <div class="col-sm-10 col-md-10 ">
+                        <div class="form-group">
+                            <label for="addSupplier" class="label text-dark">Supplier Address One</label>
+
+                            <InputTextArea rows="2" @bind-Value="supplier.SupplrAddrssOne"
+                                           class="form-control form-control-sm form-rounded"
+                                           placeholder="Supplier Address One" />
+
                         </div>
                     </div>
                     <div class="col-sm-10 col-md-10 ">
                         <div class="form-group">
                             <label for="addSupplier" class="label text-dark">Supplier Address two</label>
-                            <textarea rows="2"
-                                type="text"
-                                class="form-control form-control-sm form-rounded"
-                                placeholder="Supplier Address Two"
-                                required>
 
-                            </textarea>
-                             
+                            <InputTextArea rows="2" @bind-Value="supplier.SupplrAddrssTwo"
+                                           class="form-control form-control-sm form-rounded"
+                                           placeholder="Supplier Address Two" />
                         </div>
                     </div>
+                    <div class="col-sm-10 col-md-10">
+                        <div class="form-group">
+                            <label for="addSupplier" class="label text-dark">Delivery Off Day</label>
+                            <InputText @bind-Value="supplier.DeliveryOffDay" type="text" class="form-control form-control-sm form-rounded" placeholder="Delivery off Day" />
+                        </div>
+                    </div>
+                  
+                   
                 </div>
                  
         </div>
 
         <button type="submit" class="btn btn-primary btn-sm mt-2">Save</button>
+         <button type="reset" class="btn btn-primary btn-sm mt-2">Refresh</button>
    </div>
     </EditForm>
 </div>
@@ -170,11 +156,18 @@
 @code {
     [Inject]
     CountryServiceV2 countryServiceV2 { get; set; }
-    List<Pms.Models.Entity.Settings.CountryV2> country_list = new List<Pms.Models.Entity.Settings.CountryV2>();
+    List<CountryV2> country_list = new List<CountryV2>();
+
+    [Inject]
+    BusinessTypesService businessTypesService { get; set; }
+    List<BusinessType> businessTypes_list = new List<BusinessType>();
 
     [Inject]
     SupplierService supplierService { get; set; }
-    Pms.Models.Entity.Settings.Suppliers supplier = new Models.Entity.Settings.Suppliers();
+
+    Suppliers supplier = new Suppliers();//object or Model 
+    [Inject]
+    FileUploadService fileUploadService { get; set; }
 
 
     private bool showSuccessAlert = false;
@@ -185,11 +178,13 @@
 
     private string errorMessage;
 
+    private IBrowserFile selectedImageFile;
+
     protected override async Task OnInitializedAsync()
     {
         country_list = (await countryServiceV2.Get(null, null, null, null, null, null, null, null, null, null, 1, 1000)).ToList();
+        businessTypes_list = (await businessTypesService.Get(null, null, null, null, 1, 1000)).ToList();
     }
-
 
     private string defaultImage = "/assets/img/icons/profile_icon.jpg"; // Path to your default image
     private string? imageData;
@@ -202,6 +197,7 @@
     private async Task HandleSelected(InputFileChangeEventArgs e)
     {
         var file = e.File;
+        selectedImageFile = e.File;
         if (file != null)
         {
             using (var stream = new MemoryStream())
@@ -228,6 +224,11 @@
     {
         try
         {
+            if (selectedImageFile is not null)
+            {
+                supplier.SupplrImgLink = await fileUploadService.UploadFileAsync(selectedImageFile, "asset/SupplierImage");
+            }
+
             if (supplier.SupplierId == 0)
             {
                 supplier.EntryDateTime = DateTimeHelper.CurrentDateTime();
