@@ -1,0 +1,26 @@
+﻿CREATE TABLE [dbo].[InvoiceItems] (
+    [InvoiceItemId]         INT             IDENTITY (1, 1) NOT NULL,
+    [InvoiceId]             INT             NOT NULL,
+    [ProductId]             INT             NOT NULL,
+    [Quantity]              INT             NOT NULL,
+    [BuyingPrice]           DECIMAL (18, 2) NOT NULL,
+    [SellingPrice]          DECIMAL (18, 2) NOT NULL,
+    [TotalPrice]            DECIMAL (18, 2) NOT NULL,
+    [VatPercentg]           DECIMAL (18, 2) DEFAULT ((0.00)) NOT NULL,
+    [VatAmount]             DECIMAL (18, 2) DEFAULT ((0.00)) NOT NULL,
+    [DiscountPercentg]      DECIMAL (18, 2) DEFAULT ((0.00)) NOT NULL,
+    [DiscountAmount]        DECIMAL (18, 2) DEFAULT ((0.00)) NOT NULL,
+    [ExpirationDate]        DATETIME        NULL,
+    [PromoOrCuppnAppliedId] BIGINT          NULL,
+    [ProductImage]          NVARCHAR (180)  NULL,
+    [CategoryName]          NVARCHAR (100)  NULL,
+    [SubCtgName]            NVARCHAR (100)  NULL,
+    [Unit]                  NVARCHAR (100)  NULL,
+    [LastModifyDate]        DATETIME        NULL,
+    [LastModifyBy]          BIGINT          NULL,
+    [DeletedDate]           DATETIME        NULL,
+    [DeletedBy]             BIGINT          NULL,
+    [Status]                VARCHAR (10)    NULL,
+    PRIMARY KEY CLUSTERED ([InvoiceItemId] ASC)
+);
+
