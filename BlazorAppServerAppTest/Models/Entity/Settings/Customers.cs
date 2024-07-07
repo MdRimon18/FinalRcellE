@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components.Forms;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Pms.Models.Entity.Settings
 {
@@ -36,6 +37,10 @@ namespace Pms.Models.Entity.Settings
         public DateTime? DeletedDate { get; set; }
         public long? DeletedBy { get; set; }
         public string Status { get; set; }
-      
-	}
+
+        [NotMapped]
+        public int total_row { get; set; } = 0;
+        public string? CountryName { get; set; }
+        
+    }
 }

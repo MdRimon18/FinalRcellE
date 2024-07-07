@@ -5,6 +5,7 @@ using Pms.Helper;
 using Pms.Models.Entity.Settings;
 using RoyexEventManagement.Service.Helper;
 using System.Data;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Pms.Data.Repository.Inventory
 {
@@ -18,7 +19,10 @@ namespace Pms.Data.Repository.Inventory
             _db = db.GetDbConnection();
 
         }
-        public async Task<IEnumerable<Customers>> Get(long? CustomerId, string CustomerKey, string CustomerName, string MobileNo, string Email, string Occupation, int? PageNumber, int? PageSize)
+        public async Task<IEnumerable<Customers>> Get(long? CustomerId, string CustomerKey,
+            string CustomerName, 
+            string MobileNo, string Email, string Occupation, string StateName,
+            int? PageNumber, int? PageSize)
         {
             try
             {
@@ -29,8 +33,8 @@ namespace Pms.Data.Repository.Inventory
                 parameters.Add("@CustomerName", CustomerName);
                 parameters.Add("@MobileNo", MobileNo);
                 parameters.Add("@Email", Email);
+                parameters.Add("@StateName", StateName);
                 parameters.Add("@Occupation", Occupation);
-
                 parameters.Add("@PageNumber", PageNumber);
                 parameters.Add("@PageSize", PageSize);
 
@@ -47,14 +51,14 @@ namespace Pms.Data.Repository.Inventory
         public async Task<Customers> GetById(long CustomerId)
 
         {
-            var customers = await (Get(CustomerId, null, null, null, null, null, 1, 1));
+            var customers = await (Get(CustomerId, null, null, null, null, null,null, 1, 1));
             return customers.FirstOrDefault();
         }
 
         public async Task<Customers> GetByKey(string CustomerKey)
 
         {
-            var customers = await (Get(null, CustomerKey, null, null, null, null, 1, 1));
+            var customers = await (Get(null, CustomerKey, null, null, null, null,null, 1, 1));
             return customers.FirstOrDefault();
         }
 
@@ -103,7 +107,7 @@ namespace Pms.Data.Repository.Inventory
 
         public async Task<bool> Delete(long CustomerId)
         {
-            var customers = await (Get(CustomerId, null, null, null, null, null, 1, 1));
+            var customers = await (Get(CustomerId, null, null, null, null, null,null, 1, 1));
             var deleteObj = customers.FirstOrDefault();
             long DeletedSatatus = 0;
             if (deleteObj != null)
