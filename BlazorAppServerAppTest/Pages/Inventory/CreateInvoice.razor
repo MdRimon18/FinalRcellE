@@ -23,7 +23,7 @@
                                     <div class="row">
                                         <div class="col-sm-12 animated-div">
                                             <div class="form-group">
-                                                <label for="mobileNumber" class="label text-dark">Mobile Number<span class="error-star">*</span></label>
+                                            <label for="mobileNumber" class="form-label">Mobile Number<span class="error-star">*</span></label>
                                                 <input name="mobileNumber" type="tel" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="017**-******" required>
                                                 <div class="text-left invalid-message-color">
                                                     Mobile Number Is Required!
@@ -32,7 +32,7 @@
                                         </div>
                                         <div class="col-sm-12 animated-div">
                                             <div class="form-group">
-                                                <label for="name" class="label text-dark">Name<span class="error-star">*</span></label>
+                                            <label for="name" class="form-label">Name<span class="error-star">*</span></label>
                                                 <input name="name" type="text" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Name" required>
                                                 <div class="text-left invalid-message-color">
                                                     Name Is Required!
@@ -41,7 +41,7 @@
                                         </div>
                                         <div class="col-sm-12 animated-div">
                                             <div class="form-group">
-                                                <label for="selectCountry" class="label text-dark">Select Country<span class="error-star">*</span></label>
+                                            <label for="selectCountry" class="form-label">Select Country<span class="error-star">*</span></label>
                                                 <select class="form-select form-rounded form-select-sm invalid-border-input" id="selectCountry" required="">
                                                     <option selected="" disabled="" value="">Select Country</option>
                                                     <option value="1">Bangladesh</option>
@@ -54,37 +54,37 @@
                                             </div>
                                             <div class="col-sm-12 animated-div">
                                                 <div class="form-group">
-                                                    <label for="stateName" class="label text-dark">State Name</label>
+                                                <label for="stateName" class="form-label">State Name</label>
                                                     <input name="stateName" type="text" class="form-control form-control-sm form-rounded" placeholder="State Name">
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 animated-div">
                                                 <div class="form-group">
-                                                    <label for="addressLineOne" class="label text-dark">Address Line One</label>
+                                                <label for="addressLineOne" class="form-label">Address Line One</label>
                                                     <input name="addressLineOne" type="text" class="form-control form-control-sm form-rounded" placeholder="Give Customer Address Line One">
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 animated-div">
                                                 <div class="form-group">
-                                                    <label for="addressLineTwo" class="label text-dark">Address Line Two</label>
+                                                <label for="addressLineTwo" class="form-label">Address Line Two</label>
                                                     <input name="addressLineTwo" type="text" class="form-control form-control-sm form-rounded" placeholder="Give Customer Address Line Two">
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 animated-div">
                                                 <div class="form-group">
-                                                    <label for="email" class="label text-dark">Email</label>
+                                                <label for="email" class="form-label">Email</label>
                                                     <input name="email" type="email" class="form-control form-control-sm form-rounded" placeholder="Give Customer Email">
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 animated-div">
                                                 <div class="form-group">
-                                                    <label for="officeName" class="label text-dark">Office Name</label>
+                                                <label for="officeName" class="form-label">Office Name</label>
                                                     <input name="officeName" type="text" class="form-control form-control-sm form-rounded" placeholder="Office Name">
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 animated-div">
                                                 <div class="form-group">
-                                                    <label for="occupation" class="label text-dark">Occupation</label>
+                                                <label for="occupation" class="form-label">Occupation</label>
                                                     <input name="occupation" type="text" class="form-control form-control-sm form-rounded" placeholder="Occupation">
                                                 </div>
                                             </div>
@@ -94,7 +94,7 @@
                                             </div>
                                         </div>
                                         <div>
-                                            <button class="btn btn-primary btn-sm mt-2">Save</button>
+                                        <button class="btn btn-sm btn-light mt-2">Save</button>
                                         </div>
                                     </div>
                                  
@@ -531,8 +531,8 @@
                     <div class="row g-3">
                         <div class="col-lg-3 col-md-3 col-sm-9 col-9 animated-div">
                             <div class="form-group">
-                                <label for="Invoice Type" class="label text-dark">Invoice Type</label><span class="error-star">*</span>
-                                <select required name="invoiceTypeSelect" class="form-control form-control-sm form-rounded">
+                                <label for="InvoiceType" class="form-label">Invoice Type</label><span class="error-star">*</span>
+                                <select required name="invoiceTypeSelect" class="select form-control form-control-sm form-rounded">
                                     <option value="">Invoice Type select</option>
                                     <option value="">New Invoice</option>
                                     <option value="">E-Commerce Invoice</option>
@@ -545,7 +545,7 @@
 
                         <div class="col-lg-3 col-md-3 col-sm-9 col-9 animated-div">
                             <div class="input-group">
-                                <label for="customerMobileNo" class="label text-dark">Customer Mobile No</label><span class="error-star">*</span>
+                                <label for="customerMobileNo" class="form-label">Customer Mobile No</label><span class="error-star">*</span>
 
                                 
                                    @*  <input readonly name="customerMobileNo" type="text" class="form-control form-control-sm form-rounded "
@@ -553,7 +553,7 @@
                                 <div class="input-group">
                                     <input type="text" id="inputField" class="form-control form-control-sm form-rounded " placeholder="Enter Cus. Phone" aria-label="Enter value" aria-describedby="plusButton">
                                     <div class="input-group-append">
-                                        <button class="btn btn-sm btn-outline-secondary" type="button" id="plusButton" data-bs-toggle="offcanvas"
+                                        <button class="btn btn-sm btn-light" type="button" id="plusButton" data-bs-toggle="offcanvas"
                                         data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">+</button>
                                     </div>
                                 </div>
@@ -567,13 +567,13 @@
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-9 col-9 animated-div">
                             <div class="form-group">
-                                <label for="name" class="label text-dark">Customer Email</label>
+                                <label for="name" class="form-label">Customer Email</label>
                                 <input name="name" type="text" class="form-control form-control-sm form-rounded" placeholder="Customer Email" required>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-9 col-9 animated-div">
                             <div class="form-group">
-                                <label for="paymentType" class="label text-dark">Notification Send By</label><span class="error-star">*</span>
+                                <label for="paymentType" class="form-label">Notification Send By</label><span class="error-star">*</span>
                                 <select required name="Mobile" class="form-control form-control-sm form-rounded">
                                     <option value="">Mobile</option>
                                     <option value="">Email</option>
@@ -585,7 +585,7 @@
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-9 col-9 animated-div">
                             <div class="form-group">
-                                <label class="label text-dark">Date</label>
+                                <label class="form-label">Date</label>
                                 <input class="form-control form-control-sm form-rounded"
                                        type="date"
                                        name="entryDate"
@@ -596,13 +596,13 @@
                       
                         <div class="col-lg-3 col-md-3 col-sm-6 col-9 animated-div">
                             <div class="form-group">
-                                <label for="salesBy" class="label text-dark">Sales By</label>
+                                <label for="salesBy" class="form-label">Sales By</label>
                                 <input readonly name="salesBy" type="text" class="form-control form-control-sm form-rounded" placeholder="sales by" required>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-9 col-9 animated-div">
                             <div class="form-group">
-                                <label for="paymentType" class="label text-dark">Payment Type</label><span class="error-star">*</span>
+                                <label for="paymentType" class="form-label">Payment Type</label><span class="error-star">*</span>
                                 <select required name="paymentType" class="form-control form-control-sm form-rounded">
                                     <option value="">Cash In Hand</option>
                                     <option value="">Digital Currency</option>
@@ -614,7 +614,7 @@
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-9 col-9 animated-div">
                             <div class="form-group">
-                                <label for="categorySelect">Category</label>
+                                <label for="categorySelect" class="form-label">Category</label>
                                 <select class="form-select form-select-sm form-select-rounded js-choice" id="categorySelect" multiple="multiple" size="1" name="categorySelect" data-options='{"removeItemButton":true,"placeholder":true}'>
                                     <option value="">Select Category</option>
                                     <option>Category-1</option>
@@ -627,7 +627,7 @@
                         
                         <div class="col-lg-3 col-md-3 col-sm-9 col-9 animated-div">
                             <div class="form-group">
-                                <label for="categorySelect" class="label text-dark">Sub Category</label><span class="error-star">*</span>
+                                <label for="categorySelect" class="form-label">Sub Category</label><span class="error-star">*</span>
                                 <select class="form-control form-control-sm form-rounded">
                                     @* id="organizerSingle2" size="1" required="required" name="organizerSingle" data-options='{"removeItemButton":true,"placeholder":true}'> *@
                                     <option value="">Select Sub-Category</option>
@@ -641,7 +641,7 @@
                        
                         <div class="col-lg-3 col-md-3 col-sm-6 col-9 animated-div" >
                             <div class="form-group">
-                                <label for="chooseProduct" class="label text-dark">Choose Product</label><span class="error-star">*</span>
+                                <label for="chooseProduct" class="form-label">Choose Product</label><span class="error-star">*</span>
                                 <div style="width: 13.5rem;" class="search-box" data-list='{"valueNames":["title"]}'>
                                     <div class="position-relative" data-bs-toggle="search" data-bs-display="static">
                                         <input class="form-control form-control-sm form-rounded search-input" type="search" placeholder="Search..." aria-label="Search" />
@@ -686,7 +686,7 @@
                                 
                             </div>
                             <div class="input-group-append">
-                                <button class="btn btn-sm btn-outline-secondary" type="button" id="plusButton" data-bs-toggle="offcanvas"
+                                <button class="btn btn-sm btn-light" type="button" id="plusButton" data-bs-toggle="offcanvas"
                                         data-bs-target="#offcanvasRight-1" aria-controls="offcanvasRight-1">
                                     +
                                 </button>
@@ -694,7 +694,7 @@
                         </div >
                         <div class="col-lg-3 col-md-3 col-sm-6 col-9 animated-div" >
                             <div class="form-group">
-                                <label for="chooseSerialNumber" class="label text-dark">Choose Serial No</label><span class="error-star">*</span>
+                                <label for="chooseSerialNumber" class="form-label">Choose Serial No</label><span class="error-star">*</span>
                                 
                                 <div style="width: 13.5rem;" class="search-box" data-list='{"valueNames":["title"]}'>
                                     <div class="position-relative" data-bs-toggle="search" data-bs-display="static" >
@@ -748,18 +748,18 @@
                             <table class="class=" table table-sm mb-0 fs-10 table-view-tickets">
                                 <thead class="thdchild">
                                     <tr>
-                                        <th class="label text-dark">
+                                        <th class="form-label">
                                            Image
                                         </th>
-                                        <th scope="col" class="label text-dark">Category</th>
-                                        <th scope="col" class="label text-dark">Name</th>
-                                        <th scope="col" class="label text-dark">Quantity<span class="error-star"><strong class="bigger-asterisk">*</strong></span></th>
-                                        <th scope="col" class="label text-dark">Unit</th>
-                                        <th scope="col" class="label text-dark">Rate</th>
-                                        <th scope="col" class="label text-dark">VAT</th>
-                                        <th scope="col" class="label text-dark">Discount</th>
-                                        <th scope="col" class="label text-dark">Amount</th>
-                                        <th scope="col" class="label text-dark">Action</th>
+                                        <th scope="col" class="form-label">Category</th>
+                                        <th scope="col" class="form-label">Name</th>
+                                        <th scope="col" class="form-label">Quantity<span class="error-star"><strong class="bigger-asterisk">*</strong></span></th>
+                                        <th scope="col" class="form-label">Unit</th>
+                                        <th scope="col" class="form-label">Rate</th>
+                                        <th scope="col" class="form-label">VAT</th>
+                                        <th scope="col" class="form-label">Discount</th>
+                                        <th scope="col" class="form-label">Amount</th>
+                                        <th scope="col" class="form-label">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -796,15 +796,15 @@
                                             <input readonly type="number" class="form-control form-control-sm form-rounded bold-input" placeholder="Amount">
                                         </td>
                                         <td>
-                                            <button type="button" class="btn btn-sm btn-outline-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop">serial</button>
+                                            <button type="button" class="btn btn-sm btn-light me-1 mb-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop">serial</button>
                                         </td>
                                         <td>
-                                            <button title="Info" class="btn btn-sm btn-light ml-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop-1">
-                                                <i class="fa fa-info-circle" style="font-size:24px"></i>
+                                            <button title="Info" class="btn btn-sm btn-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop-1">
+                                                <i class="fa fa-info-circle" style="font-size:18px"></i>
                                             </button>
                                         </td>
                                         <td>
-                                            <button title="Delete" class="btn btn-sm btn-light ml-1">
+                                            <button title="Delete" class="btn btn-sm btn-light">
                                                 <i class="far fa-trash-alt fa-lg text-danger"></i>
                                             </button>
                                         </td>
@@ -815,35 +815,64 @@
                     </div>
                     <div class="row align-items-center mt-2">
                         <div class="col-auto d-flex">
-                            <a href="invoice_preview" class="btn btn-sm btn-outline-primary" type="button">Create Invoice</a>
+                            <a href="invoice_preview" class="btn btn-sm btn-light" type="button">Create Invoice</a>
                           
-                            <a href="shipping_nd_payment" class="btn btn-sm btn-outline-primary px-4 ms-2" type="button">Shipping</a>
+                            <a href="shipping_nd_payment" class="btn btn-sm btn-light px-4 ms-2" type="button">Shipping</a>
                              
-                            <button class="btn btn-sm btn-outline-primary px-4 ms-2" type="button">Refresh</button>
+                            <button class="btn btn-sm btn-light px-4 ms-2" type="button">Refresh</button>
                         </div >
                     </div >
                     <div class="row mt-4">
                         <div class="table-responsive scrollbar">
-                            <table class="table table-sm mb-0 fs-10 table-view-tickets">
+                            <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th scope="col" class="label text-dark bold-text">Product Name</th>
-                                        <th scope="col" class="label text-dark bold-text">Serial No.</th>
-                                        <th scope="col" class="label text-dark bold-text">Supplier Org.</th>
-                                        <th scope="col" class="label text-dark bold-text">Action</th>
+                                        <th scope="col">Product Name</th>
+                                        <th scope="col">Serial No</th>
+                                        <th scope="col">Supplier Org </th>
+                                        <th scope="col">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td class="less-bold-input text-dark">Chochlet</td>
-                                        <td class="less-bold-input text-dark">011</td>
-                                        <td class="less-bold-input text-dark">Sopno</td>
-                                        <td>
-                                            <button title="Delete" class="btn btn-sm btn-light ml-1">
-                                                <i class="far fa-trash-alt fa-lg text-danger"></i>
-                                            </button>
+                                    <tr class="hover-actions-trigger">
+                                        <td class="align-middle text-nowrap">
+                                            <div class="d-flex align-items-center">
+                                                <div class="avatar avatar-xl">
+                                                    <img class="rounded-circle" src="../../assets/img/team/4.jpg" alt="" />
+                                                </div>
+                                                <div class="ms-2">Ricky Antony</div>
+                                            </div>
                                         </td>
+                                        <td class="align-middle">ricky@example.com</td>
+                                        <td class="align-middle text-nowrap">#33GBE2345</td>
+                                        <td class="w-auto">
+                                            <div class="btn-group btn-group hover-actions end-0 me-4">
+                                                <button class="btn btn-tertiary pe-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><span class="fas fa-edit"></span></button>
+                                                <button class="btn btn-tertiary ps-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><span class="fas fa-trash-alt text-danger"></span></button>
+                                            </div>
+                                        </td>
+                                        
                                     </tr>
+                                    <tr class="hover-actions-trigger">
+                                        <td class="align-middle text-nowrap">
+                                            <div class="d-flex align-items-center">
+                                                <div class="avatar avatar-xl">
+                                                    <img class="rounded-circle" src="../../assets/img/team/13.jpg" alt="" />
+                                                </div>
+                                                <div class="ms-2">Emma Watson</div>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle text-nowrap">emma@example.com</td>
+                                        <td class="align-middle text-nowrap">#2265GFR3455</td>
+                                        <td class="w-auto">
+                                            <div class="btn-group btn-group hover-actions end-0 me-4">
+                                                <button class="btn btn-tertiary pe-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><span class="fas fa-edit"></span></button>
+                                                <button class="btn btn-tertiary ps-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><span class="fas fa-trash-alt text-danger"></span></button>
+                                            </div>
+                                        </td>
+                                        
+                                    </tr>
+
                                 </tbody>
                             </table>
                         </div>
@@ -851,33 +880,33 @@
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-2">
                     <div class="form-group">
-                        <label class="label text-dark"><strong>Total</strong></label>
+                        <label class="form-label"><strong>Total</strong></label>
                         <input type="number" class="form-control form-control-sm form-rounded bold-input" readonly id="Total" placeholder="Total Amount">
                     </div>
                     <div class="form-group">
-                        <label class="label text-dark"><strong>Vat</strong></label>
+                        <label class="form-label"><strong>Vat</strong></label>
                         <input type="number" class="form-control form-control-sm form-rounded" readonly id="Vat" placeholder="Vat(%)">
                     </div>
                     <div class="form-group">
-                        <label class="label text-dark"><strong>Discount</strong></label>
+                        <label class="form-label"><strong>Discount</strong></label>
                         <input type="number" class="form-control form-control-sm form-rounded" readonly id="Discount" placeholder="Discount(%)">
                     </div>
                     <div class="form-group">
-                        <label class="label text-dark"><strong>Additional Discount</strong></label>
+                        <label class="form-label"><strong>Additional Discount</strong></label>
                         <input type="number" class="form-control form-control-sm form-rounded" id="additionalDiscount" placeholder="Additional Discount">
                     </div>
 
                     <div class="form-group">
-                        <label class="label text-dark"><strong>Total Payable</strong></label>
+                        <label class="form-label"><strong>Total Payable</strong></label>
                         <input type="number" class="form-control form-control-sm form-rounded bold-input" readonly id="totalPayable" placeholder="Total Payable">
                     </div>
                     <div class="form-group">
-                        <label class="label text-dark"><strong>Receive</strong></label>
+                        <label class="form-label"><strong>Receive</strong></label>
                         <input type="number" class="form-control form-control-sm form-rounded bold-input" placeholder="Receive">
                         <input type="hidden" class="form-control form-control-sm form-rounded">
                     </div>
                     <div class="form-group">
-                        <label class="label text-dark"><strong>Current Due</strong></label>
+                        <label class="form-label"><strong>Current Due</strong></label>
                         <input type="number" class="form-control form-control-sm form-rounded" readonly id="totalCurrentDue" placeholder="Current Due">
                     </div>
                 </div >
