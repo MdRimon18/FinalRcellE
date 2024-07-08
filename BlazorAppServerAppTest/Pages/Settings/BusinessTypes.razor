@@ -242,12 +242,12 @@
 
 
 @code {
-    private Pms.Models.Entity.Inventory.BusinessType businessType = new Pms.Models.Entity.Inventory.BusinessType();
+    private BusinessType businessType = new BusinessType();
     [Inject]
     protected IJSRuntime JSRuntime { get; set; }
     [Inject]
     BusinessTypesService businessTypesService { get; set; }
-    List<Pms.Models.Entity.Inventory.BusinessType> businessTypes_list = new List<Pms.Models.Entity.Inventory.BusinessType>();
+    List<BusinessType> businessTypes_list = new List<BusinessType>();
 
     private bool showSuccessAlert = false;
     private bool showDangerAlert = false;
@@ -267,8 +267,6 @@
     private int TotalRecord { get; set; }
 
     public string? BusinessTypeNameSearch { get; set; }
-
-
 
 
     protected override async Task OnInitializedAsync()
@@ -430,7 +428,8 @@
     private async void ChangePage(int pageNumber)
     {
         currentPage = pageNumber;
-        await  LoadBusinessType();
+        await LoadBusinessType();
+       
     }
 
    void HandlePageSizeChanged(int newSize)

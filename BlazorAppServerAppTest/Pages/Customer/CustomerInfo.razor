@@ -275,16 +275,32 @@
                     </div>
                 </div>
             </div>
-            <div class="card-footer">
-                <div class="row align-items-center">
-                    <div class="pagination d-none"></div>
-                    <div class="col"><span class="d-none d-sm-inline-block me-2 fs-10" data-list-info="data-list-info"></span></div>
-                    <div class="col-auto d-flex">
-                        <button class="btn btn-sm btn-primary" type="button" data-list-pagination="prev"><span>Previous</span></button>
-                        <button class="btn btn-sm btn-primary px-4 ms-2" type="button" data-list-pagination="next"><span>Next</span></button>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="pagination d-none"></div>
+                        <div class="col-md-8">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <span class="d-none d-sm-inline-block me-2 fs-10">page @currentPage of @totalPages, Total Record @TotalRecord </span>
+
+                                </div>
+                                <div class="col-md-2">
+
+                                    <PageSizeSelection SelectedPageSize="@PageSize" SelectedPageSizeChanged="HandlePageSizeChanged" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="col-auto d-flex justify-content-end">
+
+                                <PaginationV2 TotalPages="totalPages" CurrentPage="currentPage" OnPageChange="ChangePage" />
+
+                            </div>
+                        </div>
+
                     </div>
+
                 </div>
-            </div>
         </div>
         <div class="fade tab-pane" id="card-view" role="tabpanel" aria-labelledby="cardView" data-list='{"valueNames":["client","subject","status","priority","agent"],"page":4,"pagination":true}'>
             <div class="card-body p-0">
@@ -348,17 +364,34 @@
                     <p class="fw-bold fs-8 mt-3">No ticket found</p>
                 </div>
             </div>
-            <div class="card-footer">
-                <div class="row align-items-center">
-                    <div class="pagination d-none"></div>
-                    <div class="col"><span class="d-none d-sm-inline-block me-2 fs-10" data-list-info="data-list-info"></span></div>
-                    <div class="col-auto d-flex">
-                        <button class="btn btn-sm btn-primary" type="button" data-list-pagination="prev"><span>Previous</span></button>
-                        <button class="btn btn-sm btn-primary px-4 ms-2" type="button" data-list-pagination="next"><span>Next</span></button>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="pagination d-none"></div>
+                        <div class="col-md-8">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <span class="d-none d-sm-inline-block me-2 fs-10">page @currentPage of @totalPages, Total Record @TotalRecord </span>
+
+                                </div>
+                                <div class="col-md-2">
+
+                                    <PageSizeSelection SelectedPageSize="@PageSize" SelectedPageSizeChanged="HandlePageSizeChanged" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="col-auto d-flex justify-content-end">
+
+                                <PaginationV2 TotalPages="totalPages" CurrentPage="currentPage" OnPageChange="ChangePage" />
+
+                            </div>
+                        </div>
+
                     </div>
+
                 </div>
-            </div>
         </div>
+          
        }
     </div>
 
@@ -436,6 +469,20 @@
             isLoading = false;
             StateHasChanged(); // Ensure UI reflects changes
         }
-    }
+       
 
+      
+    }
+    public async void ChangePage(int pageNumber)
+    {
+        currentPage = pageNumber;
+        await LoadCustomer();
+
+    }
+    void HandlePageSizeChanged(int newSize)
+    {
+        PageSize = newSize;
+        ChangePage(1);
+
+    }
 }
