@@ -33,7 +33,7 @@ namespace Pms.Data.Repository.Inventory
                 parameters.Add("@PageNumber", pagenumber);
                 parameters.Add("@PageSize", pageSize);
 
-                return await _db.QueryAsync<BusinessType>("BusinessType_Get_SP", parameters, commandType: CommandType.StoredProcedure);
+                return await _db.QueryAsync<BusinessType>("BusinessTypes_Get_SP", parameters, commandType: CommandType.StoredProcedure);
 
             }
             catch (Exception ex)
@@ -76,7 +76,7 @@ namespace Pms.Data.Repository.Inventory
                 parameters.Add("@DeletedBy", businessType.DeletedBy);
                 parameters.Add("@Status", businessType.Status);
                 parameters.Add("@SuccessOrFailId", dbType: DbType.Int64, direction: ParameterDirection.Output);
-                await _db.ExecuteAsync("BusinessType_InsertOrUpdate_SP", parameters, commandType: CommandType.StoredProcedure);
+                await _db.ExecuteAsync("BusinessTypes_InsertOrUpdate_SP", parameters, commandType: CommandType.StoredProcedure);
 
 
 
@@ -94,10 +94,10 @@ namespace Pms.Data.Repository.Inventory
 
 
 
-        public async Task<bool> Delete(long BillingPlanId)
+        public async Task<bool> Delete(long BusinessTypeId)
         {
-            var billingPlan = await (Get(BillingPlanId, null, null, null, 1, 1));
-            var deleteObj = billingPlan.FirstOrDefault();
+            var businessType = await (Get(BusinessTypeId, null, null, null, 1, 1));
+            var deleteObj = businessType.FirstOrDefault();
             long DeletedSatatus = 0;
             if (deleteObj != null)
             {
