@@ -11223,11 +11223,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\GitHubrCellEProject\\BlazorAppServerAppTest\\Pms.csproj",
+      "projectUniqueName": "F:\\FinalGitHubrCellE\\BlazorAppServerAppTest\\Pms.csproj",
       "projectName": "Pms",
-      "projectPath": "E:\\GitHubrCellEProject\\BlazorAppServerAppTest\\Pms.csproj",
+      "projectPath": "F:\\FinalGitHubrCellE\\BlazorAppServerAppTest\\Pms.csproj",
       "packagesPath": "C:\\Users\\atier\\.nuget\\packages\\",
-      "outputPath": "E:\\GitHubrCellEProject\\BlazorAppServerAppTest\\obj\\",
+      "outputPath": "F:\\FinalGitHubrCellE\\BlazorAppServerAppTest\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -11307,7 +11307,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205\\RuntimeIdentifierGraph.json"
       }
     }
   }

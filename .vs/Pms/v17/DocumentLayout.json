@@ -1,17 +1,13 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\GitHubrCellEProject\\",
+  "WorkspaceRootPath": "F:\\FinalGitHubrCellE\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|e:\\githubrcelleproject\\blazorappserverapptest\\pages\\settings\\billingplan.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|solutionrelative:blazorappserverapptest\\pages\\settings\\billingplan.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|f:\\finalgithubrcelle\\blazorappserverapptest\\pages\\products\\productentry.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|solutionrelative:blazorappserverapptest\\pages\\products\\productentry.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|e:\\githubrcelleproject\\blazorappserverapptest\\pages\\reusablecomponent\\pagesizeselection.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|solutionrelative:blazorappserverapptest\\pages\\reusablecomponent\\pagesizeselection.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|e:\\githubrcelleproject\\blazorappserverapptest\\pages\\inventory\\createinvoice.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|f:\\finalgithubrcelle\\blazorappserverapptest\\pages\\inventory\\createinvoice.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|solutionrelative:blazorappserverapptest\\pages\\inventory\\createinvoice.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
@@ -22,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,41 +26,29 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PageSizeSelection.razor",
-              "DocumentMoniker": "E:\\GitHubrCellEProject\\BlazorAppServerAppTest\\Pages\\ReusableComponent\\PageSizeSelection.razor",
-              "RelativeDocumentMoniker": "BlazorAppServerAppTest\\Pages\\ReusableComponent\\PageSizeSelection.razor",
-              "ToolTip": "E:\\GitHubrCellEProject\\BlazorAppServerAppTest\\Pages\\ReusableComponent\\PageSizeSelection.razor",
-              "RelativeToolTip": "BlazorAppServerAppTest\\Pages\\ReusableComponent\\PageSizeSelection.razor",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAGAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-05T05:53:15.302Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "BillingPlan.razor",
-              "DocumentMoniker": "E:\\GitHubrCellEProject\\BlazorAppServerAppTest\\Pages\\Settings\\BillingPlan.razor",
-              "RelativeDocumentMoniker": "BlazorAppServerAppTest\\Pages\\Settings\\BillingPlan.razor",
-              "ToolTip": "E:\\GitHubrCellEProject\\BlazorAppServerAppTest\\Pages\\Settings\\BillingPlan.razor*",
-              "RelativeToolTip": "BlazorAppServerAppTest\\Pages\\Settings\\BillingPlan.razor*",
-              "ViewState": "AQIAAOIAAAAAAAAAAAAgwPMAAAA4AAAA",
+              "Title": "ProductEntry.razor",
+              "DocumentMoniker": "F:\\FinalGitHubrCellE\\BlazorAppServerAppTest\\Pages\\Products\\ProductEntry.razor",
+              "RelativeDocumentMoniker": "BlazorAppServerAppTest\\Pages\\Products\\ProductEntry.razor",
+              "ToolTip": "F:\\FinalGitHubrCellE\\BlazorAppServerAppTest\\Pages\\Products\\ProductEntry.razor*",
+              "RelativeToolTip": "BlazorAppServerAppTest\\Pages\\Products\\ProductEntry.razor*",
+              "ViewState": "AQIAAE0BAAAAAAAAAAAAAFoBAAA8AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-05T05:35:44.448Z",
+              "WhenOpened": "2024-06-27T05:21:48.189Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "CreateInvoice.razor",
-              "DocumentMoniker": "E:\\GitHubrCellEProject\\BlazorAppServerAppTest\\Pages\\Inventory\\CreateInvoice.razor",
+              "DocumentMoniker": "F:\\FinalGitHubrCellE\\BlazorAppServerAppTest\\Pages\\Inventory\\CreateInvoice.razor",
               "RelativeDocumentMoniker": "BlazorAppServerAppTest\\Pages\\Inventory\\CreateInvoice.razor",
-              "ToolTip": "E:\\GitHubrCellEProject\\BlazorAppServerAppTest\\Pages\\Inventory\\CreateInvoice.razor",
+              "ToolTip": "F:\\FinalGitHubrCellE\\BlazorAppServerAppTest\\Pages\\Inventory\\CreateInvoice.razor",
               "RelativeToolTip": "BlazorAppServerAppTest\\Pages\\Inventory\\CreateInvoice.razor",
-              "ViewState": "AQIAAGQBAAAAAAAAAAAgwHkBAAAiAAAA",
+              "ViewState": "AQIAABkDAAAAAAAAAAAAAB4DAABdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-02T05:40:02.086Z"
+              "WhenOpened": "2024-05-02T05:40:02.086Z",
+              "EditorCaption": ""
             }
           ]
         }

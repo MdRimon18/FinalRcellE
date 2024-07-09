@@ -25,7 +25,7 @@
                         
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
-                                <label for="name" class="label text-dark">Name/Model</label> <span class="error-star">*</span>
+                                <label for="name" class="form-label">Name/Model</label> <span class="error-star">*</span>
                                 <input @bind-value=@product.ProdName name="name" type="text" class=" form-control form-control-sm form-rounded invalid-border-input" placeholder="Name/Model" required>
                                 <div class="text-left invalid-message-color">
                                  Name/Model Required!
@@ -34,25 +34,25 @@
                         </div>
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
-                                <label for="name" class="label text-dark">Manufacturar Name</label>
+                                <label for="name" class="form-label">Manufacturar Name</label>
                                 <input @bind-value=@product.ManufacturarName name="name" type="text" class=" form-control form-control-sm form-rounded" placeholder="Manufacturar Name">
                             </div>
                         </div >
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
-                                <label for="serialNumber" class="label text-dark">Serial Number/UPC</label>
+                                <label for="serialNumber" class="form-label">Serial Number/UPC</label>
                                 <input @bind-value=@product.SerialNmbrOrUPC readonly name="serialNumber" type="text" class="form-control form-control-sm form-rounded" placeholder="Serial Number/UPC" required>
                             </div>
                         </div>
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
-                                <label for="serialNumber" class="label text-dark">SKU</label>
+                                <label for="serialNumber" class="form-label">SKU</label>
                                 <input @bind-value=@product.Sku readonly name="serialNumber" type="text" class="form-control form-control-sm form-rounded" placeholder="Sku" required>
                             </div>
                         </div>
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
-                                <label for="quantity" class="label text-dark">Opening Quantity</label><span class="error-star">*</span>
+                                <label for="quantity" class="form-label">Opening Quantity</label><span class="error-star">*</span>
                                 <input @bind-value=@product.OpeningQnty name="quantity" type="number" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Opening Quantity" required>
                                 <div class="text-left invalid-message-color">
                                     Opening Quantity Required!
@@ -62,7 +62,7 @@
 
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
-                                <label for="alertQuantity" class="label text-dark">Alert Quantity</label>
+                                <label for="alertQuantity" class="form-label">Alert Quantity</label>
                                 <input @bind-value=@product.AlertQnty name="alertQuantity" type="number" class="form-control form-control-sm form-rounded" placeholder="Alert Quantity">
                                 <!-- <div class="text-left text-danger">
                                     Alert Quantity is Required!
@@ -72,7 +72,7 @@
 
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
-                                <label for="productBuyingPrice" class="label text-dark">Buying Price</label><span class="error-star">*</span>
+                                <label for="productBuyingPrice" class="form-label">Buying Price</label><span class="error-star">*</span>
                                 <input @bind-value=@product.BuyingPrice name="productBuyingPrice" type="number" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Buying Price" required>
                                 <div class="text-left invalid-message-color">
                                     Buying Price Required!
@@ -82,7 +82,7 @@
 
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
-                                <label for="cost" class="label text-dark">Selling Price</label><span class="error-star">*</span>
+                                <label for="cost" class="form-label">Selling Price</label><span class="error-star">*</span>
                                 <input @bind-value=@product.SellingPrice name="cost" type="number" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Selling Price" required>
                                 <div class="text-left invalid-message-color">
                                     Selling Price Required!
@@ -92,7 +92,7 @@
                         
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
-                                <label for="vatPercent" class="label text-dark">VAT in %</label>
+                                <label for="vatPercent" class="form-label">VAT in %</label>
                                 <input (change)="vatAmountNDiscountCalculation()" name="vatPercent" type="number" class="form-control form-control-sm form-rounded" id="vatPercent" placeholder="VAT in %">
                                 <!-- <div class="text-left text-danger">
                                     Barcode is Required!
@@ -102,7 +102,7 @@
 
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
-                                <label for="vatAmount" class="label text-dark">VAT Amount</label>
+                                <label for="vatAmount" class="form-label">VAT Amount</label>
                                 <input @bind-value=@product.VatAmount name="vatAmount" type="number" class="form-control form-control-sm form-rounded" id="vatAmount" placeholder="VAT Amount">
                                 <!-- <div class="text-left text-danger">
                                     Barcode is Required!
@@ -112,7 +112,7 @@
 
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
-                                <label for="discountPercent" class="label text-dark">Discount</label>
+                                <label for="discountPercent" class="form-label">Discount</label>
                                 <input (change)="vatAmountNDiscountCalculation()" name="discountPercent" type="number" class="form-control form-control-sm form-rounded" id="discountPercent" placeholder="Discount">
                                 <!-- <div class="text-left text-danger">
                                     Barcode is Required!
@@ -122,7 +122,7 @@
 
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
-                                <label for="discountAmount" class="label text-dark">Discount Amount</label>
+                                <label for="discountAmount" class="form-label">Discount Amount</label>
                                 <input @bind-value=@product.DiscountAmount name="discountAmount" type="number" class="form-control form-control-sm form-rounded" id="discountAmount" placeholder="Discount Amount">
                                 <!-- <div class="text-left text-danger">
                                     Barcode is Required!
@@ -131,7 +131,7 @@
                         </div>
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
-                                <label for="barcode" class="label text-dark">Bar Code</label>
+                                <label for="barcode" class="form-label">Bar Code</label>
                                 <input @bind-value=@product.BarCode name="barcode" type="text" class="form-control form-control-sm form-rounded" id="barcode" placeholder="Bar Code">
                                 <!-- <div class="text-left text-danger">
                                     Barcode is Required!
@@ -141,7 +141,7 @@
 
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
-                                <label class="label text-dark">Link to Supplier</label>
+                                <label class="form-label">Link to Supplier</label>
                                 <select  name="supplier" required class="form-control form-control-sm form-rounded">
                                     <option value=''>Select Link to Supplier</option>
                                     <!-- Options for suppliers -->
@@ -151,12 +151,12 @@
 
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
-                                <label for="importedForm" class="label text-dark">Imported From</label>
+                                <label for="importedForm" class="form-label">Imported From</label>
                                 <input @bind-value=@product.ImportedForm name="importedForm" type="text" class="form-control form-control-sm form-rounded" id="importedForm" placeholder="Imported From">
                             </div>
                         </div>
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
-                            <label for="importedForm" class="label text-dark">Import Status</label>
+                            <label for="importedForm" class="form-label">Import Status</label>
                             <select class="form-control form-control-sm form-rounded">
                                 @foreach (var item in importStatusSetting_list)
                                 {
@@ -168,7 +168,7 @@
                         
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
-                                <label class="label text-dark">Date</label>
+                                <label class="form-label">Date</label>
                                 <input  class="form-control form-control-sm form-rounded"
                                        type="date"
                                        name="entryDate"
@@ -180,7 +180,7 @@
                         </div>
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
-                                <label for="discountPercent" class="label text-dark">Warrenty Lenth/Year</label>
+                                <label for="discountPercent" class="form-label">Warrenty Lenth/Year</label>
                                 <input (change)="vatAmountNDiscountCalculation()" name="discountPercent" type="number" class="form-control form-control-sm form-rounded" id="discountPercent" placeholder="Discount">
                                 <!-- <div class="text-left text-danger">
                                     Barcode is Required!
@@ -189,7 +189,7 @@
                         </div>
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
-                                <label for="warantyNgurenty" class="label text-dark">Warrenty Policy</label>
+                                <label for="warantyNgurenty" class="form-label">Warrenty Policy</label>
                                 <textarea name="warantyNgurenty"
                                           type="text"
                                           class="form-control form-control-sm form-rounded"
@@ -207,7 +207,7 @@
 
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
-                                <label for="color" class="label text-dark">Color</label>
+                                <label for="color" class="form-label">Color</label>
                                
                                 <select name="color" required class="form-control form-control-sm form-rounded invalid-border-input">
                                     @foreach (var item in color_list)
@@ -219,13 +219,13 @@
                         </div>
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
-                                <label for="size" class="label text-dark">Size</label>
+                                <label for="size" class="form-label">Size</label>
                                 <input  name="size" type="text" class="form-control form-control-sm form-rounded" id="size" placeholder="Size">
                             </div>
                         </div>
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
-                                <label class="label text-dark">Shipping</label><span class="error-star">*</span>
+                                <label class="form-label">Shipping</label><span class="error-star">*</span>
                                 <select   @bind=product.ShippingById required class="form-control form-control-sm form-rounded invalid-border-input">
                                     @foreach (var item in shippingBy_list)
                                     {
@@ -239,7 +239,7 @@
                         </div>
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
-                                <label for="previousCost" class="label text-dark">Shipping Day</label>
+                                <label for="previousCost" class="form-label">Shipping Day</label>
                                 <input name="previousCost" type="number" class="form-control form-control-sm form-rounded" id="previousCost" placeholder="Previous Cost">
                             </div>
                         </div>
@@ -247,13 +247,13 @@
 
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
-                                <label for="shippingDay" class="label text-dark">Shipping Details</label>
+                                <label for="shippingDay" class="form-label">Shipping Details</label>
                                 <textarea name="shippingDetails" type="text" class="form-control form-control-sm form-rounded" id="shippingDetails" placeholder="Shipping Day" cols="50" rows="2"></textarea>
                             </div>
                         </div>
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
-                                <label for="shippingDay" class="label text-dark">Origin Country</label>
+                                <label for="shippingDay" class="form-label">Origin Country</label>
                                 <select class="form-control form-control-sm form-rounded" id="origin-country" name="origin-country">
                                     @foreach (var item in country_list)
                                     {
@@ -265,14 +265,14 @@
                         </div>
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
-                                <label for="previousCost" class="label text-dark">Rating</label>
+                                <label for="previousCost" class="form-label">Rating</label>
                                 <input name="previousCost" type="number" class="form-control form-control-sm form-rounded" id="previousCost" placeholder="Previous Cost">
                             </div>
                         </div>
                         
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
-                                <label for="shippingDay" class="label text-dark">Product Status</label>
+                                <label for="shippingDay" class="form-label">Product Status</label>
                                 <select class="form-control form-control-sm form-rounded" id="origin-country" name="origin-country">
                                     @foreach (var item in statusSetting_list)
                                     {
@@ -284,7 +284,7 @@
                         </div>
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
                             <div class="form-group">
-                                <label for="remarks" class="label text-dark">Remarks</label>
+                                <label for="remarks" class="form-label">Remarks</label>
                                 <textarea name="remarks"
                                           type="text"
                                           class="form-control form-control-sm form-rounded"
@@ -341,10 +341,10 @@
                 </div>
                 <div class="row" >
                     <div class="d-grid gap-2 d-md-block mt-4">
-                        <button @onclick="()=>SaveOrUpdate()" class="btn btn-primary btn-sm">Save</button>
-                        <button class="btn btn-success btn-sm">Update</button>
-                        <button class="btn btn-info btn-sm">Refresh</button>
-                        <button class="btn btn-danger btn-sm">Delete</button>
+                        <button @onclick="()=>SaveOrUpdate()" class="btn btn-sm btn-light">Save</button>
+                        <button class="btn btn-sm btn-light">Update</button>
+                        <button class="btn btn-sm btn-light">Refresh</button>
+                        <button class="btn btn-sm btn-danger">Delete</button>
                     </div>
                 </div>
             </div>
