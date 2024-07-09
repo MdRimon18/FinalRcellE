@@ -1,6 +1,6 @@
-﻿@page "/customer_entry"
+﻿@page "/customer_entry/{key:guid?}"
 @inject IJSRuntime JS
-
+@inject NavigationManager Navigation
 
 
         <div class="col-lg-12 ps-lg-2 mb-2">
@@ -11,7 +11,7 @@
                             <div class="card mb-3">
                         <div class="card-header">
                             <h5 class="mb-0" data-anchor="data-anchor">
-                                <i class="fas fa-arrow-left"></i>
+                                <a class="btn btn-falcon-default btn-sm" @onclick="BackTo"><i class="fas fa-arrow-left"></i></a>
                                 Customer Profile Entry
                             </h5>
 
@@ -130,7 +130,7 @@
                                       </div>
                                    
                                         </div>
-                                        <button class="btn btn-primary btn-sm mt-2" type="submit">Save</button>
+                                <button class="btn btn-primary btn-sm mt-2" type="submit">@SubmitButtonText</button>
                                         <button type="reset" class="btn btn-primary btn-sm mt-2">Refresh</button> 
                                     </div>
                            </EditForm>   
@@ -150,14 +150,20 @@
     }
 </script>
 @code {
+    [Parameter]
+    public Guid? key { get; set; }
+    private bool IsEditMode => key.HasValue;
+    private string SubmitButtonText => IsEditMode ? "Update" : "Create";   
+
     [Inject]
     CountryServiceV2 countryServiceV2 { get; set; }
     List<CountryV2> country_list = new List<CountryV2>();
+
     private IBrowserFile selectedImageFile;
-   
+
     [Inject]
     CustomerService customerService { get; set; }
-    Customers customer = new Models.Entity.Settings.Customers();
+    Customers customer = new Customers();
 
     [Inject]
     FileUploadService fileUploadService { get; set; }
@@ -170,18 +176,43 @@
 
     private string errorMessage;
 
+
+
     protected override async Task OnInitializedAsync()
     {
+        
+        imageData = defaultImage;
+
         country_list = (await countryServiceV2.Get(null, null, null, null, null, null, null, null, null, null, 1, 1000)).ToList();
+
+        if (IsEditMode)
+        {
+            if (key.HasValue)
+            {
+
+                customer = await customerService.GetByKey(key.ToString());
+
+                if (customer == null)
+                {
+                    Navigation.NavigateTo("/customer_info");
+                }
+                else
+                {
+                    imageData = customer.CustImgLink;
+                }
+            }
+            else
+            {
+                customer = new Customers();
+            }
+       
+        }
     }
 
     private string defaultImage = "/assets/img/icons/profile_icon.jpg"; // Path to your default image
     private string? imageData;
 
-    protected override void OnInitialized()
-    {
-        imageData = defaultImage;
-    }
+     
 
     private async Task HandleSelected(InputFileChangeEventArgs e)
     {
@@ -211,13 +242,13 @@
     {
         try
         {
+            if (selectedImageFile is not null)
+            {
+                customer.CustImgLink = await fileUploadService.UploadFileAsync(selectedImageFile, "assets/CustomerImage");
+            }
             if (customer.CustomerId == 0)
             {
-                if (selectedImageFile is not null)
-                {
-                    customer.CustImgLink = await fileUploadService.UploadFileAsync(selectedImageFile,"assets/CustomerImage");
-                }
-             
+               
                 customer.EntryDateTime = DateTimeHelper.CurrentDateTime();
                 customer.EntryBy = UserInfo.UserId;
                 customer.BranchId = CompanyInfo.BranchId;
@@ -274,6 +305,10 @@
             errorMessage = ex.Message;
         }
     }
+   
     
-
+    private void  BackTo()
+    {
+        Navigation.NavigateTo("/customer_info");
+    }
 }
