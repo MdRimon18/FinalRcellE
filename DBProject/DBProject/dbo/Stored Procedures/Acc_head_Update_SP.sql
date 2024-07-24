@@ -1,10 +1,11 @@
 ﻿
  
-create procedure [dbo].[Acc_head_Update_SP](
+CREATE procedure [dbo].[Acc_head_Update_SP](
   @AccHeadId BIGINT, 
   @AccHeadKey uniqueidentifier=null,
  
   @AccHeadName NVARCHAR(100), 
+  @AccType nvarchar(100)=null,
   @EntryDateTime DATETIME=Null,
   @EntryBy BIGINT=Null,
   @LastModifyDate DATETIME = NULL,
@@ -25,6 +26,7 @@ create procedure [dbo].[Acc_head_Update_SP](
 		SET 
 		  
           [AccHeadName] = COALESCE(@AccHeadName, [AccHeadName]),
+		  AccType=@AccType,
           [LastModifyDate] = COALESCE(@lastModifyDate, [LastModifyDate]),
           [LastModifyBy] = COALESCE(@lastModifyBy, [LastModifyBy]),
           [DeletedDate] = COALESCE(@deletedDate, [DeletedDate]),

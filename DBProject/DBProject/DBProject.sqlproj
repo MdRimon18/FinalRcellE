@@ -211,6 +211,8 @@
     <Build Include="dbo\Stored Procedures\Customers_Get_SP.sql" />
     <Build Include="dbo\Stored Procedures\BusinessTypes_InsertOrUpdate_SP.sql" />
     <Build Include="dbo\Stored Procedures\BusinessTypes_Get_SP_1.sql" />
+    <Build Include="Acc\Tables\AccountTypes.sql" />
+    <Build Include="dbo\Stored Procedures\AccountType_Get_SP.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Import Schema Logs\DBProject_20240420045555.log" />

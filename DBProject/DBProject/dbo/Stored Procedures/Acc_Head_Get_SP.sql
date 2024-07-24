@@ -1,6 +1,6 @@
 ﻿
 
- Create PROCEDURE [dbo].[Acc_Head_Get_SP](
+ CREATE PROCEDURE [dbo].[Acc_Head_Get_SP](
  @AccHeadId bigint=null,
  @AccHeadKey nvarchar(40)=null,
  @AccHeadName nvarchar(100)=null,
@@ -18,6 +18,7 @@ AS
       SELECT a.[AccHeadId]
       ,a.[AccHeadKey]
       ,a.[AccHeadName]
+	  ,a.AccType
       ,a.[EntryDateTime]
       ,a.[EntryBy]
       ,a.[LastModifyDate]

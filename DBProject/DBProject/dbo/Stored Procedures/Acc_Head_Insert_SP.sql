@@ -1,8 +1,8 @@
-﻿ create PROCEDURE [dbo].[Acc_Head_Insert_SP](
+﻿ CREATE PROCEDURE [dbo].[Acc_Head_Insert_SP](
   @AccHeadId BIGINT OUTPUT, 
   @AccHeadKey uniqueidentifier=null,
-
   @AccHeadName NVARCHAR(100), 
+  @AccType nvarchar(100)=null,
   @EntryDateTime DATETIME,
   @EntryBy BIGINT,
   @LastModifyDate DATETIME = NULL,
@@ -34,6 +34,7 @@
 				[AccHeadKey],  
 			
 				[AccHeadName],
+				AccType,
 				[EntryDateTime],
 				[EntryBy],
 				[LastModifyDate],
@@ -46,6 +47,7 @@
 				NEWID(),  
 			
 				@AccHeadName,
+				@AccType,
 				@entryDateTime,
 				@entryBy,
 				@lastModifyDate,
@@ -63,4 +65,4 @@
 SELECT @AccHeadId AS unitId;
 END;
 
-select * from [Acc]. AccHeads
+--select * from [Acc]. AccHeads

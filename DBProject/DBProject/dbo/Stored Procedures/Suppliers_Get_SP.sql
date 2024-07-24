@@ -45,8 +45,14 @@ AS
 			 (@MobileNo IS NULL OR a.MobileNo = @MobileNo) and
 			 (@Email IS NULL OR a.Email = @Email) and
 		     (@SupplrName IS NULL OR 
-			 LOWER(LTRIM(RTRIM(REPLACE(a.SupplrName, ' ', '')))) LIKE '%' + LOWER(LTRIM(RTRIM(REPLACE(@SupplrName, ' ', ''))))  + '%')
-			 and a.Status='Active'
+			 LOWER(LTRIM(RTRIM(REPLACE(a.SupplrName, ' ', '')))) LIKE '%' + LOWER(LTRIM(RTRIM(REPLACE(@SupplrName, ' ', ''))))  + '%'
+			 or
+			 LOWER(LTRIM(RTRIM(REPLACE(a.MobileNo, ' ', '')))) LIKE '%' + LOWER(LTRIM(RTRIM(REPLACE(@SupplrName, ' ', ''))))  + '%'
+			 or
+			 LOWER(LTRIM(RTRIM(REPLACE(a.Email, ' ', '')))) LIKE '%' + LOWER(LTRIM(RTRIM(REPLACE(@SupplrName, ' ', ''))))  + '%'
+			 )
+			
+			and a.Status='Active'
       )
 
 		SELECT 
