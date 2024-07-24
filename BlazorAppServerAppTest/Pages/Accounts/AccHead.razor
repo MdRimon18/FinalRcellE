@@ -35,10 +35,30 @@
                                             <label class="form-label" for="unitName"><span class="error-star">*</span>Accounts Head Name</label>
                                         </div>
                                         <div class="col-9 col-sm-7 mb-3">
-                                            <InputText class="form-control form-control-sm" id="unitName" @bind-Value="@accHead.AccHeadName" />
+                                            <InputText class="form-control form-control-sm form-rounded" @bind-Value="@accHead.AccHeadName" />
                                             <ValidationMessage class="text-danger" For="@(() => accHead.AccHeadName)" />
                                         </div>
+                                        <div class="col-3 mb-3 text-lg-end">
 
+                                            <label class="form-label" for="AccTypeId"><span class="error-star">*</span>Account Type</label>
+                                        </div>
+                                        <div class="col-9 col-sm-7 mb-3">
+                                            <InputSelect @bind-Value="accHead.AccType" class="form-control form-control-sm form-rounded">
+                                                <option value=''>Select Account Type</option>
+                                                @if(accTypes is not null)
+                                                {
+                                                    @foreach (var item in accTypes)
+                                                    {
+                                                        <option value=@item.AccTypeName>@item.AccTypeName</option>
+                                                    }
+                                                }
+                                                
+                                            </InputSelect>
+                                            <ValidationMessage class="text-danger" For="@(() => accHead.AccType)"/>
+                                        </div>
+
+
+                             
                                         <div class="col-9 col-sm-7 offset-3">
                                             @if (@accHead.AccHeadId > 0)
                                             {
@@ -135,6 +155,7 @@
                                 </th> *@
                                     <th class="text-800 sort align-middle ps-4" data-sort="client">Action</th>
                                     <th class="text-800 sort align-middle ps-2" data-sort="client">Accounts Head Name</th>
+                                    <th class="text-800 sort align-middle ps-2" data-sort="client">Accounts Type</th>
 
                                 </tr>
                             </thead>
@@ -158,6 +179,15 @@
                                             <div class="d-flex align-items-center gap-2 position-relative">
 
                                                 @item.AccHeadName
+
+
+                                            </div>
+                                        </td>
+
+                                        <td class="align-middle fs-9 py-3">
+                                            <div class="d-flex align-items-center gap-2 position-relative">
+
+                                                @item.AccType
 
 
                                             </div>
@@ -197,6 +227,11 @@
                                         <p class="fw-semi-bold mb-3 mb-sm-2">@item.AccHeadName</p>
 
                                     </div>
+                                    <div class="ms-1 ms-sm-3">
+                                        <p class="fw-semi-bold mb-3 mb-sm-2">@item.AccType</p>
+
+                                    </div>
+
                                 </div>
 
 
@@ -245,13 +280,17 @@
 
 
 @code {
-    
+
     private Models.Entity.Settings.AccHead accHead = new Pms.Models.Entity.Settings.AccHead();
     [Inject]
     protected IJSRuntime JSRuntime { get; set; }
     [Inject]
     AccHeadService accHeadService { get; set; }
     List<Models.Entity.Settings.AccHead> accHead_list = new List<Pms.Models.Entity.Settings.AccHead>();
+
+    [Inject]
+    AccTypeServivce _accTypeServivce { get; set; }
+    IEnumerable<AccType> accTypes;
 
 
     private bool showSuccessAlert = false;
@@ -287,6 +326,7 @@
         {
             if (AccHeadNameSearch == "") { AccHeadNameSearch = null; }
             accHead_list = (await accHeadService.Get(null, null, AccHeadNameSearch, currentPage, PageSize)).ToList();
+            accTypes= await _accTypeServivce.Get(CompanyInfo.LanguageId);
             if (accHead_list.Count > 0)
             {
                 TotalRecord = accHead_list[0].total_row;
