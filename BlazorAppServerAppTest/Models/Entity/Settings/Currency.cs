@@ -2,7 +2,7 @@
 
 namespace Pms.Models.Entity.Settings
 {
-    public class ProductSize
+    public class Currency
     {
         public long CurrencyId { get; set; }
         public Guid? CurrencyKey { get; set; }

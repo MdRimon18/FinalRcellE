@@ -76,7 +76,6 @@
   <ItemGroup>
     <Build Include="dbo\Functions\MostSuccessNdFaildCampaing.sql" />
     <Build Include="dbo\Functions\Party_seats_won_function.sql" />
-    <Build Include="dbo\Stored Procedures\AddProduct.sql" />
     <Build Include="dbo\Stored Procedures\CreateProduct.sql" />
     <Build Include="dbo\Stored Procedures\Currency_Get_SP.sql" />
     <Build Include="dbo\Stored Procedures\Currency_Insert_SP.sql" />
@@ -211,6 +210,15 @@
     <Build Include="dbo\Stored Procedures\Customers_Get_SP.sql" />
     <Build Include="dbo\Stored Procedures\BusinessTypes_InsertOrUpdate_SP.sql" />
     <Build Include="dbo\Stored Procedures\BusinessTypes_Get_SP_1.sql" />
+    <Build Include="stt\Tables\Users.sql" />
+    <Build Include="stt\Tables\CompanyBranch.sql" />
+    <Build Include="stt\Tables\Companies.sql" />
+    <Build Include="dbo\Stored Procedures\Users_Get_SP.sql" />
+    <Build Include="dbo\Stored Procedures\User_InsertOrUpdate_SP.sql" />
+    <Build Include="dbo\Stored Procedures\CompanyBranch_InsertOrUpdate_SP.sql" />
+    <Build Include="dbo\Stored Procedures\CompanyBranch_Get_SP.sql" />
+    <Build Include="dbo\Stored Procedures\Companies_InsertOrUpdate_SP.sql" />
+    <Build Include="dbo\Stored Procedures\Companies_Get_SP.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Import Schema Logs\DBProject_20240420045555.log" />

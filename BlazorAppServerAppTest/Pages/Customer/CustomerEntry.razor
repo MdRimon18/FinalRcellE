@@ -153,7 +153,8 @@
     [Parameter]
     public Guid? key { get; set; }
     private bool IsEditMode => key.HasValue;
-    private string SubmitButtonText => IsEditMode ? "Update" : "Create";   
+    private string SubmitButtonText => IsEditMode ? "Update" : "Create";
+  
 
     [Inject]
     CountryServiceV2 countryServiceV2 { get; set; }
@@ -174,8 +175,10 @@
     public string SuccessMessage { get; set; }
     public string DangerMessage { get; set; }
 
-    private string errorMessage;
+    private string errorMessage;    
 
+    private string defaultImage = "/assets/img/icons/profile_icon.jpg"; // Path to your default image
+    private string? imageData;
 
 
     protected override async Task OnInitializedAsync()
@@ -209,10 +212,7 @@
         }
     }
 
-    private string defaultImage = "/assets/img/icons/profile_icon.jpg"; // Path to your default image
-    private string? imageData;
-
-     
+   
 
     private async Task HandleSelected(InputFileChangeEventArgs e)
     {
@@ -305,7 +305,6 @@
             errorMessage = ex.Message;
         }
     }
-   
     
     private void  BackTo()
     {

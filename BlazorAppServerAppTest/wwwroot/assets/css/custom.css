@@ -14,6 +14,8 @@
 
 .invalid-message-color {
     color: red;
+    font-weight: bold;
+    font-size: small;
 }
 
 .error-star {
@@ -66,3 +68,8 @@ button {
     cursor: pointer;
 }
 */
+.text-danger {
+    color: red;
+    font-weight: bold;
+    font-size: small;
+}

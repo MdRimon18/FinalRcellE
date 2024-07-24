@@ -1,4 +1,4 @@
-﻿@page "/currency"
+﻿@page "/country"
 
 
 <!-- Right Offcanvas-->
@@ -7,7 +7,7 @@
     <div class="offcanvas-header">
         @*   <h5 id="offcanvasRightLabel">Offcanvas right</h5> *@
         <div class="card-header">
-            <h5 class="mb-0">Currency</h5>
+            <h5 class="mb-0">Country</h5>
 
 
         </div>
@@ -18,11 +18,12 @@
             <div class="row g-0 h-100 align-items-stretch">
                 <div class="col-lg-12 mb-3">
                    
+
                         <div class="pb-0">
                             <a class="mb-4 d-block d-flex align-items-center" href="#experience-form" data-bs-toggle="collapse" aria-expanded="true" aria-controls="experience-form"><span class="circle-dashed"><span class="fas fa-plus"></span></span><span class="ms-3">Add new Status</span></a>
 
                             <div class="collapse show" id="experience-form">
-                                <EditForm Model="@currency" OnValidSubmit="SaveOrUpdate">
+                                <EditForm Model="@country" OnValidSubmit="SaveOrUpdate">
                                     <DataAnnotationsValidator />
                                     <div class="row">
                                         <SuccessAlert Message="@SuccessMessage" Show="@showSuccessAlert" />
@@ -30,47 +31,63 @@
 
                                         <div class="col-3 mb-3 text-lg-end">
 
-                                            <label class="form-label" for="CurrencyName"><span class="error-star">*</span>Currency Name</label>
+                                            <label class="form-label" for="CountryName"><span class="error-star">*</span>Country Name</label>
                                         </div>
                                         <div class="col-9 col-sm-7 mb-3">
-                                            <InputText class="form-control form-control-sm" id="CurrencyName" @bind-Value="@currency.CurrencyName" />
-                                            <ValidationMessage class="text-danger" For="@(() => currency.CurrencyName)" />
+                                            <InputText class="form-control form-control-sm" id="CountryName" @bind-Value="@country.CountryName" />
+                                            <ValidationMessage class="text-danger" For="@(() => country.CountryName)" />
                                         </div>
-                                       
+
                                         <div class="col-3 mb-3 text-lg-end">
 
-                                            <label class="form-label" for="CurrencyCode">Currency Code</label>
+                                            <label class="form-label" for="CntryShortName">Country Short Name</label>
                                         </div>
                                         <div class="col-9 col-sm-7 mb-3">
-                                            <InputText class="form-control form-control-sm" id="CurrencyCode" @bind-Value="@currency.CurrencyCode" />
-                                            <ValidationMessage class="text-danger" For="@(() => currency.CurrencyCode)" />
-                                        </div>
-                                        <div class="col-3 mb-3 text-lg-end">
-
-                                            <label class="form-label" for="CurrencyShortName"><span class="error-star">*</span>Currency Short Name</label>
-                                        </div>
-                                        <div class="col-9 col-sm-7 mb-3">
-                                            <InputText class="form-control form-control-sm" id="CurrencyShortName" @bind-Value="@currency.CurrencyShortName" />
-                                            <ValidationMessage class="text-danger" For="@(() => currency.CurrencyShortName)" />
+                                            <InputText class="form-control form-control-sm" id="CntryShortName" @bind-Value="@country.CntryShortName" />
+                                            <ValidationMessage class="text-danger" For="@(() => country.CntryShortName)" />
                                         </div>
                                         <div class="col-3 mb-3 text-lg-end">
 
-                                            <label class="form-label" for="Symbol"><span class="error-star">*</span>Symbol</label>
+                                            <label class="form-label" for="CountryCode"><span class="error-star">*</span>Country Code</label>
                                         </div>
                                         <div class="col-9 col-sm-7 mb-3">
-                                            <InputText class="form-control form-control-sm" id="Symbol" @bind-Value="@currency.Symbol" />
-                                            <ValidationMessage class="text-danger" For="@(() => currency.Symbol)" />
+                                            <InputText class="form-control form-control-sm" id="CountryCode" @bind-Value="@country.CountryCode" />
+                                            <ValidationMessage class="text-danger" For="@(() => country.CountryCode)" />
                                         </div>
                                         <div class="col-3 mb-3 text-lg-end">
 
-                                            <label class="form-label" for="ExchangeRate">Exchange Rate</label>
+                                            <label class="form-label" for="Capital"><span class="error-star">*</span>Capital</label>
                                         </div>
                                         <div class="col-9 col-sm-7 mb-3">
-                                            <InputNumber class="form-control form-control-sm" id="ExchangeRate" @bind-Value="@currency.ExchangeRate" />
-                                            <ValidationMessage class="text-danger" For="@(() => currency.ExchangeRate)" />
+                                            <InputText class="form-control form-control-sm" id="Capital" @bind-Value="@country.Capital" />
+                                            <ValidationMessage class="text-danger" For="@(() => country.Capital)" />
+                                        </div>
+                                        <div class="col-3 mb-3 text-lg-end">
+
+                                            <label class="form-label" for="CurrencyId">Currency Id</label>
+                                        </div>
+                                        <div class="col-9 col-sm-7 mb-3">
+                                            <InputNumber class="form-control form-control-sm" id="CurrencyId" @bind-Value="@country.CurrencyId" />
+                                            <ValidationMessage class="text-danger" For="@(() => country.CurrencyId)" />
+                                        </div>
+                                        <div class="col-3 mb-3 text-lg-end">
+
+                                            <label class="form-label" for="CurrentArea">Current Area</label>
+                                        </div>
+                                        <div class="col-9 col-sm-7 mb-3">
+                                            <InputNumber class="form-control form-control-sm" id="CurrentArea" @bind-Value="@country.CurrentArea" />
+                                            <ValidationMessage class="text-danger" For="@(() => country.CurrentArea)" />
+                                        </div>
+                                        <div class="col-3 mb-3 text-lg-end">
+
+                                            <label class="form-label" for="Population">Population </label>
+                                        </div>
+                                        <div class="col-9 col-sm-7 mb-3">
+                                            <InputNumber class="form-control form-control-sm" id="Population" @bind-Value="@country.Population" />
+                                            <ValidationMessage class="text-danger" For="@(() => country.Population)" />
                                         </div>
                                         <div class="col-9 col-sm-7 offset-3">
-                                            @if (currency.CurrencyId > 0)
+                                            @if (country.CountryId > 0)
                                             {
                                                 <button class="btn btn-primary" type="submit">Update</button>
                                             }
@@ -100,25 +117,28 @@
     <div class="card-header border-bottom border-200 px-0">
         <div class="d-lg-flex justify-content-between">
             <div class="row flex-between-center gy-2 px-x1">
+               
 
-                <div class="col-auto pe-0">
-                    <h5 class="mb-0">Currency</h5>
-                </div>
+
+                    <div class="col-auto pe-0">
+                        <h5 class="mb-0">Country</h5>
+
+                    </div>
                 <div class="col-auto pe-0">
                     
                         <div class="input-group input-search-width">
-                            <input class="form-control form-control-sm shadow-none" type="search" placeholder="Search  by name" aria-label="search" @bind="CurrencyNameSearch" />
-                            <button class="btn btn-sm btn-outline-secondary border-300 hover-border-secondary" @onclick="()=>LoadCurrency()">
-                                <span class="fa fa-search fs-10"></span></button>
+                           <input class="form-control form-control-sm shadow-none" type="search" placeholder="Search  by name" aria-label="search" @bind="CountryNameSearch" />
+                           <button class="btn btn-sm btn-outline-secondary border-300 hover-border-secondary" @onclick="()=>LoadCountryV2()">
+                              <span class="fa fa-search fs-10"></span>
+                           </button>                    
 
-                           
+                            
                         </div>
-                        
-                   
+
                 </div>
                 <div class="col-auto pe-0">
                     <button class="btn btn-falcon-default btn-sm ms-sm-1" type="button" @onclick="()=>OnRefresh()"><span class="fas fa-redo"></span></button>
-                    </div>
+                </div>
             </div>
             <div class="border-bottom border-200 my-3"></div>
             <div class="d-flex align-items-center justify-content-between justify-content-lg-end px-x1">
@@ -162,23 +182,25 @@
                                 </div>
                                 </th> *@
                                     <th class="text-800 sort align-middle ps-4" data-sort="client">Action</th>
-                                    <th class="text-800 sort align-middle ps-2" data-sort="client">Currency Name</th>
-                                    <th class="text-800 sort align-middle ps-2" data-sort="client">Currency Code</th>
-                                    <th class="text-800 sort align-middle ps-2" data-sort="client">Currency Short Name</th>
-                                    <th class="text-800 sort align-middle ps-4" data-sort="client">Symbol</th>
-                                    <th class="text-800 sort align-middle ps-4" data-sort="client">Exchange Rate</th>
+                                    <th class="text-800 sort align-middle ps-2" data-sort="client">Country Name</th>
+                                    <th class="text-800 sort align-middle ps-2" data-sort="client">Country Short Name</th>
+                                    <th class="text-800 sort align-middle ps-2" data-sort="client">Country Code</th>
+                                    <th class="text-800 sort align-middle ps-2" data-sort="client">Capital</th>
+                                    <th class="text-800 sort align-middle ps-4" data-sort="client">Currency Id</th>
+                                    <th class="text-800 sort align-middle ps-4" data-sort="client">Current Area</th>
+                                    <th class="text-800 sort align-middle ps-4" data-sort="client">Population</th>
 
                                 </tr>
                             </thead>
                             <tbody class="list" id="table-ticket-body">
-                                @foreach (var item in currency_list)
+                                @foreach (var item in country_list)
                                 {
                                     <tr>
                                         <td class="align-middle fs-9 py-3">
                                             <div class="form-check mb-0">
 
                                                 <a @onclick="()=>EditLoadData(item)" class="btn btn-falcon-default btn-sm " data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><span class="fas fa-external-link-alt" data-fa-transform="shrink-3"></span><span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1"></span></a>
-                                                <a @onclick="()=>DeleteItem(item.CurrencyId)" class="btn btn-falcon-default btn-sm ">
+                                                <a @onclick="()=>DeleteItem(item.CountryId)" class="btn btn-falcon-default btn-sm ">
                                                     <i class="fa fa-trash text-danger" aria-hidden="true"></i>
                                                 </a>
 
@@ -189,7 +211,7 @@
                                         <td class="align-middle fs-9 py-3">
                                             <div class="d-flex align-items-center gap-2 position-relative">
 
-                                                @item.CurrencyName
+                                                @item.CountryName
 
 
                                             </div>
@@ -197,7 +219,7 @@
                                         <td class="align-middle fs-9 py-3">
                                             <div class="d-flex align-items-center gap-2 position-relative">
 
-                                                @item.CurrencyCode
+                                                @item.CntryShortName
 
 
                                             </div>
@@ -205,15 +227,7 @@
                                         <td class="align-middle fs-9 py-3">
                                             <div class="d-flex align-items-center gap-2 position-relative">
 
-                                                @item.CurrencyShortName
-
-
-                                            </div>
-                                        </td>
-                                         <td class="align-middle fs-9 py-3">
-                                            <div class="d-flex align-items-center gap-2 position-relative">
-
-                                                @item.Symbol
+                                                @item.CountryCode
 
 
                                             </div>
@@ -221,7 +235,31 @@
                                         <td class="align-middle fs-9 py-3">
                                             <div class="d-flex align-items-center gap-2 position-relative">
 
-                                                @item.ExchangeRate
+                                                @item.Capital
+
+
+                                            </div>
+                                        </td>
+                                        <td class="align-middle fs-9 py-3">
+                                            <div class="d-flex align-items-center gap-2 position-relative">
+
+                                                @item.CurrencyId
+
+
+                                            </div>
+                                        </td>
+                                        <td class="align-middle fs-9 py-3">
+                                            <div class="d-flex align-items-center gap-2 position-relative">
+
+                                                @item.CurrentArea
+
+
+                                            </div>
+                                        </td>
+                                        <td class="align-middle fs-9 py-3">
+                                            <div class="d-flex align-items-center gap-2 position-relative">
+
+                                                @item.Population
 
 
                                             </div>
@@ -243,21 +281,21 @@
                         <input class="form-check-input" id="checkbox-bulk-card-tickets-select" type="checkbox" data-bulk-select='{"body":"card-ticket-body","actions":"table-ticket-actions","replacedElement":"table-ticket-replace-element"}' />
                     </div>
                     <div class="list bg-body-tertiary p-x1 d-flex flex-column gap-3" id="card-ticket-body">
-                        @foreach (var item in currency_list)
+                        @foreach (var item in country_list)
                         {
                             <div class="bg-white dark__bg-1100 d-md-flex d-xl-inline-block d-xxl-flex align-items-center p-x1 rounded-3 shadow-sm card-view-height">
                                 <div class="d-flex align-items-start align-items-sm-center">
                                     <div class="form-check me-2 me-xxl-3 mb-0">
 
                                         <a @onclick="()=>EditLoadData(item)" class="btn btn-falcon-default btn-sm" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><span class="fas fa-external-link-alt" data-fa-transform="shrink-3"></span><span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1"></span></a>
-                                        <a @onclick="()=>DeleteItem(item.CurrencyId)" class="btn btn-falcon-default btn-sm ">
+                                        <a @onclick="()=>DeleteItem(item.CountryId)" class="btn btn-falcon-default btn-sm ">
                                             <i class="fa fa-trash text-danger" aria-hidden="true"></i>
                                         </a>
                                     </div><a class="d-none d-sm-block" href="app/support-desk/contact-details.html">
 
                                     </a>
                                     <div class="ms-1 ms-sm-3">
-                                        <p class="fw-semi-bold mb-3 mb-sm-2">@item.CurrencyName</p>
+                                        <p class="fw-semi-bold mb-3 mb-sm-2">@item.CountryName</p>
 
                                     </div>
                                 </div>
@@ -273,34 +311,33 @@
                     </div>
                 </div>
                 
-            </div>  
-
+            </div>
             <div class="card-footer">
-                    <div class="row">
-                        <div class="pagination d-none"></div>
-                        <div class="col-md-8">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <span class="d-none d-sm-inline-block me-2 fs-10">page @currentPage of @totalPages, Total Record @TotalRecord </span>
-
-                                </div>
-                                <div class="col-md-2">
-                                 
-                                    <PageSizeSelection SelectedPageSize="@PageSize" SelectedPageSizeChanged="HandlePageSizeChanged" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="col-auto d-flex justify-content-end">
-
-                                <PaginationV2 TotalPages="totalPages" CurrentPage="currentPage" OnPageChange="ChangePage" />
+                <div class="row">
+                    <div class="pagination d-none"></div>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <span class="d-none d-sm-inline-block me-2 fs-10">page @currentPage of @totalPages, Total Record @TotalRecord </span>
 
                             </div>
-                        </div>
+                            <div class="col-md-2">
 
+                                <PageSizeSelection SelectedPageSize="@PageSize" SelectedPageSizeChanged="HandlePageSizeChanged" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="col-auto d-flex justify-content-end">
+
+                            <PaginationV2 TotalPages="totalPages" CurrentPage="currentPage" OnPageChange="ChangePage" />
+
+                        </div>
                     </div>
 
                 </div>
+
+            </div>
         }
     </div>
 
@@ -309,12 +346,12 @@
 
 
 @code {
-    private Pms.Models.Entity.Settings.ProductSize currency = new Pms.Models.Entity.Settings.ProductSize();
+    private Pms.Models.Entity.Settings.CountryV2 country = new Pms.Models.Entity.Settings.CountryV2();
     [Inject]
     protected IJSRuntime JSRuntime { get; set; }
     [Inject]
-    CurrencyService currencyService { get; set; }
-    List<Pms.Models.Entity.Settings.ProductSize> currency_list = new List<Pms.Models.Entity.Settings.ProductSize>();
+    CountryServiceV2 countryServiceV2 { get; set; }
+    List<Pms.Models.Entity.Settings.CountryV2> country_list = new List<Pms.Models.Entity.Settings.CountryV2>();
 
     private bool showSuccessAlert = false;
     private bool showDangerAlert = false;
@@ -325,35 +362,31 @@
     private string errorMessage;
 
     private bool isLoading = true;
+    private int PageSize { get; set; } = 5; // Number of items per page
 
-    private int PageSize { get; set; } = 5;
     int totalPages { get; set; }
-    int currentPage = 1;
+    int currentPage = 1; // Example current page
 
     private int TotalRecord { get; set; }
 
-    public string? CurrencyNameSearch { get; set; }
-
-
-
+    public string? CountryNameSearch { get; set; }
 
 
     protected override async Task OnInitializedAsync()
     {
-        await LoadCurrency();
+        await LoadCountryV2();
 
     }
 
-    
-    private async Task LoadCurrency()
+    private async Task LoadCountryV2()
     {
         try
         {
-            if (CurrencyNameSearch == "") { CurrencyNameSearch = null; }
-            currency_list = (await currencyService.Get(null, null,null, CurrencyNameSearch,null,null,null, null, currentPage, PageSize)).ToList();
-            if (currency_list.Count > 0)
+            if (CountryNameSearch == "") { CountryNameSearch = null; }
+            country_list = (await countryServiceV2.Get(null, null, null, CountryNameSearch, null, null, null, null, null, null, currentPage, PageSize)).ToList();
+            if (country_list.Count > 0)
             {
-                TotalRecord = currency_list[0].total_row;
+                TotalRecord = country_list[0].total_row;
                 //  totalPages = TotalRecord / PageSize;
                 totalPages = (int)Math.Ceiling((double)TotalRecord / PageSize);
             }
@@ -379,15 +412,15 @@
     {
         try
         {
-            if (currency.CurrencyId == 0)
+            if (country.CountryId == 0)
             {
-                currency.EntryDateTime = DateTimeHelper.CurrentDateTime();
-                currency.EntryBy = UserInfo.UserId;
-                currency.LanguageId = CompanyInfo.LanguageId;
+                country.EntryDateTime = DateTimeHelper.CurrentDateTime();
+                country.EntryBy = UserInfo.UserId;
+                country.LanguageId = CompanyInfo.LanguageId;
 
 
-                currency.CurrencyId = await currencyService.Save(currency);
-                if (currency.CurrencyId > 0)
+                country.CountryId = await countryServiceV2.Save(country);
+                if (country.CountryId > 0)
                 {
                     showSuccessAlert = true;
                     SuccessMessage = MessageManager.SaveSuccess;
@@ -397,10 +430,10 @@
                     await Task.Delay(1000);
                     showSuccessAlert = false;
                 }
-                else if (currency.CurrencyId == -1)
+                else if (country.CountryId == -1)
                 {
                     showDangerAlert = true;
-                    DangerMessage = $"{currency.CurrencyId} {MessageManager.Exist}";
+                    DangerMessage = $"{country.CountryId} {MessageManager.Exist}";
                 }
                 else
                 {
@@ -411,11 +444,11 @@
             else
             {
 
-                currency.LastModifyDate = DateTimeHelper.CurrentDateTime();
-                currency.LastModifyBy = UserInfo.UserId;
-                currency.LanguageId = CompanyInfo.LanguageId;
+                country.LastModifyDate = DateTimeHelper.CurrentDateTime();
+                country.LastModifyBy = UserInfo.UserId;
+                country.LanguageId = CompanyInfo.LanguageId;
 
-                bool isUpdate = await currencyService.Update(currency);
+                bool isUpdate = await countryServiceV2.Update(country);
                 if (isUpdate)
                 {
                     showSuccessAlert = true;
@@ -433,8 +466,8 @@
                 }
             }
             // Clear the form after save/update
-            await LoadCurrency(); // Reload orders after save/update
-            currency = new Pms.Models.Entity.Settings.ProductSize();
+            await LoadCountryV2(); // Reload orders after save/update
+            country = new Pms.Models.Entity.Settings.CountryV2();
         }
         catch (Exception ex)
         {
@@ -445,27 +478,27 @@
 
 
 
-    private async void EditLoadData(Pms.Models.Entity.Settings.ProductSize item)
+    private async void EditLoadData(Pms.Models.Entity.Settings.CountryV2 item)
     {
-        currency = item;
+        country = item;
     }
 
-    private async Task DeleteItem(long CurrencyId)
+    private async Task DeleteItem(long CountryId)
     {
         bool confirmed = await JSRuntime.InvokeAsync<bool>("showDeleteConfirmation");
         if (confirmed)
         {
             try
             {
-                bool result = await currencyService.Delete(CurrencyId);
+                bool result = await countryServiceV2.Delete(CountryId);
                 if (result)
                 {
                     await JSRuntime.InvokeVoidAsync("showSuccessMessage");
-                    await LoadCurrency();
+                    await LoadCountryV2();
                 }
                 else
                 {
-                    errorMessage = $"{MessageManager.DeleteFaild} {CurrencyId}.";
+                    errorMessage = $"{MessageManager.DeleteFaild} {CountryId}.";
                 }
             }
             catch (Exception ex)
@@ -480,29 +513,30 @@
     }
 
 
-    private void onSearch(string CurrencyId)
-    {
-        /// OrderList = OrderList.Where(w => w.orderNo == OrderId).ToList();
-    }
+        private void onSearch(string CountryId)
+        {
+            /// OrderList = OrderList.Where(w => w.orderNo == OrderId).ToList();
+        }
 
     private Task HideAlert()
     {
         showDangerAlert = false;
         return Task.CompletedTask;
     }
+
     private async void OnClickAddBtn()
     {
-        currency = new Pms.Models.Entity.Settings.ProductSize();
+        country = new Pms.Models.Entity.Settings.CountryV2();
     }
     private async void OnRefresh()
     {
-        CurrencyNameSearch = null;
-        await LoadCurrency();
+        CountryNameSearch = null;
+        await LoadCountryV2();
     }
     private async void ChangePage(int pageNumber)
     {
         currentPage = pageNumber;
-        await LoadCurrency();
+        await LoadCountryV2();
     }
 
     void HandlePageSizeChanged(int newSize)
@@ -511,5 +545,4 @@
         ChangePage(1);
 
     }
-
 }

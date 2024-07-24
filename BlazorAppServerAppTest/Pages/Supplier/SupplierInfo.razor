@@ -1,146 +1,5 @@
 ﻿@page "/supplier_info"
-<!-- Right Offcanvas-->
-@* <button class="btn btn-primary mb-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Right Offcanvas</button> *@
-<div class="offcanvas offcanvas-end" id="offcanvasRight" tabindex="-1" aria-labelledby="offcanvasRightLabel">
-    <div class="offcanvas-header">
-        @*   <h5 id="offcanvasRightLabel">Offcanvas right</h5> *@
-        <div class="card-header">
-            <h5 class="mb-0" data-anchor="data-anchor">
-                <i class="fas fa-arrow-left"></i>
-                Supplier Profile Entry
-            </h5>
-        </div>
-        <button class="btn-close text-reset" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-        <div class="col-lg-12 ps-lg-2 mb-2">
-            <div class="row g-0 h-100 align-items-stretch">
-                <div class="col-lg-12 mb-2">
-                    <div class="card-body bg-body-tertiary pb-0">
-                        <a class="mb-2 d-block d-flex align-items-center" href="#supplier-form" data-bs-toggle="collapse" aria-expanded="true" aria-controls="supplier-form"><span class="circle-dashed"><span class="fas fa-plus"></span></span><span class="ms-3">Add new Supplier</span></a>
-                        <div class="collapse show" id="supplier-form">
-                            <div class="card mb-3">
-                                <div class="card-body bg-body-tertiary">
-                                    <div class="row">
-                                        <div class="col-sm-12 animated-div">
-                                            <div class="form-group">
-                                                <label for="addSupplier" class="label text-dark">Name<span class="error-star">*</span></label>
-                                                <input name="name" type="text" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Name" required>
-                                                <div class="text-left invalid-message-color">
-                                                    Name Required!
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12 animated-div">
-                                            <div class="form-group">
-                                               <label for="addSupplier" class="label text-dark">Country <span class="error-star">*</span></label>
-                                               <input name="name" type="text" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Select Country Name" required>
-                                               <div class="text-left invalid-message-color">
-                                                  Country Name Required!
-                                               </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12 animated-div">
-                                            <div class="form-group">
-                                                <label for="addSupplier" class="label text-dark">State Name <span class="error-star">*</span></label>
-                                                <input name="name" type="text" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Give Your State Name" required>
-                                                <div class="text-left invalid-message-color">
-                                                    State Name Required!
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12 animated-div">
-                                            <div class="form-group">
-                                                <label for="addSupplier" class="label text-dark">Organization Name<span class="error-star">*</span> </label>
-                                                <input name="name" type="text" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Organaization Name" required>
-                                                <div class="text-left invalid-message-color">
-                                                    Organization Name Required!
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12 animated-div">
-                                            <div class="form-group">
-                                                <label for="addSupplier" class="label text-dark">Select Type <span class="error-star">*</span></label>
-                                                <input name="name" type="text" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Select Type" required>
-                                                <div class="text-left invalid-message-color">
-                                                    Type Required!
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12 animated-div">
-                                            <div class="form-group">
-                                                <label for="addSupplier" class="label text-dark">Supplier Address Line One</label>
-                                                <input name="name" type="text" class="form-control form-control-sm form-rounded " placeholder="Supplier Adress Line One" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12 animated-div">
-                                            <div class="form-group">
-                                                <label for="addSupplier" class="label text-dark">Supplier Address Line two</label>
-                                                <input name="name" type="text" class="form-control form-control-sm form-rounded" placeholder="Supplier Address Line Two" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12 animated-div">
-                                            <div class="form-group">
-                                                <label for="addSupplier" class="label text-dark">Delivery Off Day</label>
-                                                <input name="name" type="text" class="form-control form-control-sm form-rounded" placeholder="Select Delivery Off Day" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12 animated-div">
-                                            <div class="form-group">
-                                                <label for="addSupplier" class="label text-dark">Email <span class="error-star">*</span></label>
-                                                <input name="name" type="text" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Write Email" required>
-                                                  <div class="text-left invalid-message-color">
-                                                        Email Required!
-                                                  </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12 animated-div">
-                                            <div class="form-group">
-                                                <label for="addSupplier" class="label text-dark">Mobile No <span class="error-star">*</span></label>
-                                                <input name="name" type="text" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Mobile No" required>
-                                                <div class="text-left invalid-message-color">
-                                                    Mobile No Required!
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12 animated-div">
-                                            <div class="form-group">
-                                                <label for="addSupplier" class="label text-dark">Image Link <span class="error-star">*</span></label>
-                                                <input name="name" type="text" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Image Link" required>
-                                                <div class="text-left invalid-message-color">
-                                                    Image Link Required!
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <button class="btn btn-primary btn-sm mt-2">Save</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                             <div class="border-dashed-bottom my-4"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-12 ps-lg-2 mb-2">
-            <div class="row g-0 h-100 align-items-stretch">
-                <div class="col-lg-12 mb-2">
-                    <div class="card-body bg-body-tertiary pb-0">
-                        <a class="mb-2  d-block d-flex align-items-center" href="#product-category" data-bs-toggle="collapse" aria-expanded="true" aria-controls="product-category"><span class="circle-dashed"><span class="fas fa-plus"></span></span><span class="ms-3">Add New Product Category</span></a>
-                        <div class="collapse show" id="product-category">
-                             ....
-                            <div class="border-dashed-bottom my-4"></div>
-                        </div>
-                    </div>
 
-                </div>
-
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="card" id="ticketsTable">
     <div class="card-header border-bottom border-200 px-0">
@@ -153,10 +12,10 @@
                     </h6>
                 </div>
                 <div class="col-auto">
-                    <form>
+                    <form method="get">
                         <div class="input-group input-search-width">
-                            <input class="form-control form-control-sm shadow-none" type="search" placeholder="Search  By Name" aria-label="search" />
-                            <button class="btn btn-sm btn-outline-secondary border-300 hover-border-secondary"><span class="fa fa-search fs-10"></span></button>
+                            <input class="form-control form-control-sm shadow-none" type="search" placeholder="Search By Name" aria-label="search" @bind="SplrNameSearch" />
+                            <button type="button" class="btn btn-sm btn-outline-secondary border-300 hover-border-secondary" @onclick="()=>LoadSuppliers()"><span class="fa fa-search fs-10"></span></button>
                         </div>
                     </form>
                 </div>
@@ -171,7 +30,7 @@
             </div>
             <div class="border-bottom border-200 my-3"></div>
             <div class="d-flex align-items-center justify-content-between justify-content-lg-end px-x1">
-                <button class="btn btn-sm btn-falcon-default" type="button"><span class="fas fa-filter" data-fa-transform="shrink-4 down-1"></span><span class="ms-1 d-none d-sm-inline-block">Filter</span></button>
+               @*  <button class="btn btn-sm btn-falcon-default" type="button"><span class="fas fa-filter" data-fa-transform="shrink-4 down-1"></span><span class="ms-1 d-none d-sm-inline-block">Filter</span></button>
                 <div class="bg-300 mx-3 d-none d-lg-block" style="width:1px; height:29px"></div>
                 <div class="d-none" id="table-ticket-actions">
                     <div class="d-flex">
@@ -183,15 +42,15 @@
                         </select>
                         <button class="btn btn-falcon-default btn-sm ms-2" type="button">Apply</button>
                     </div>
-                </div>
+                </div> *@
                 <div class="d-flex align-items-center" id="table-ticket-replace-element">
                     <div class="dropdown">
                         <button class="btn btn-sm btn-falcon-default dropdown-toggle dropdown-caret-none" type="button" id="dashboard-layout" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block me-1 table-layout">Table View</span><span class="fas fa-chevron-down" data-fa-transform="shrink-3 down-1"></span></button>
                         <div class="dropdown-menu dropdown-toggle-item dropdown-menu-end border py-2" aria-labelledby="dashboard-layout" role="tablist"><a class="dropdown-item active" id="tableView" data-bs-toggle="tab" href="#table-view" role="tab" aria-controls="table-view">Table View</a><a class="dropdown-item" id="cardView" data-bs-toggle="tab" href="#card-view" role="tab" aria-controls="card-view">Card View</a></div>
                     </div>
 
-                    <a class="btn btn-falcon-default btn-sm mx-2" href="#!" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><span class="fas fa-plus" data-fa-transform="shrink-3"></span><span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1">New</span></a>
-                    @* <button class="btn btn-falcon-default btn-sm" type="button"><span class="fas fa-external-link-alt" data-fa-transform="shrink-3"></span><span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1">Edit</span></button> *@
+                    <a class="btn btn-falcon-default btn-sm mx-2" href="add_suppiler"><span class="fas fa-plus" data-fa-transform="shrink-3"></span><span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1">New</span></a>
+                     @* <button class="btn btn-falcon-default btn-sm" type="button"><span class="fas fa-external-link-alt" data-fa-transform="shrink-3"></span><span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1">Edit</span></button> 
                     <div class="dropdown font-sans-serif ms-2">
                         <button class="btn btn-falcon-default text-600 btn-sm dropdown-toggle dropdown-caret-none" type="button" id="preview-dropdown" data-bs-toggle="dropdown" data-boundary="viewport" aria-haspopup="true" aria-expanded="false"><span class="fas fa-ellipsis-h fs-11"></span></button>
                         <div class="dropdown-menu dropdown-menu-end border py-2" aria-labelledby="preview-dropdown">
@@ -201,29 +60,12 @@
                                 Remove
                             </button>
                         </div>
-                    </div>
+                    </div> *@
                 </div>
             </div>
         </div>
     </div>
-    <!-- Confirmation Modal -->
-    <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Confirm Removal</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Are you sure you want to remove this item?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-danger btn-sm" id="confirmRemove">Remove</button>
-                </div>
-            </div>
-        </div>
-    </div>
+   
 
     <div class="tab-content" id="ticketViewContent">
          @if (isLoading)
@@ -263,8 +105,12 @@
                                     <tr>
                                         <td class="align-middle fs-9 py-3">
                                             <div class="form-check mb-0">
-                                                <input class="form-check-input" type="checkbox" id="table-view-tickets-0" data-bulk-select-row="data-bulk-select-row" />
-                                                <a class="btn btn-falcon-default btn-sm " data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><span class="fas fa-external-link-alt" data-fa-transform="shrink-3"></span><span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1"></span></a>
+
+                                                <a @onclick="()=>DeleteItem(item.SupplierId)" class="btn btn-falcon-default btn-sm ">
+                                                    <i class="fa fa-trash text-danger" aria-hidden="true"></i>
+                                                </a>
+
+                                                <a class="btn btn-falcon-default btn-sm" href="add_suppiler/@item.SupplierKey"><span class="fas fa-external-link-alt" data-fa-transform="shrink-3"></span><span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1"></span></a>
                                             </div>
                                         </td>
                                         <td class="align-middle client white-space-nowrap pe-3 pe-xxl-4 ps-2">
@@ -338,7 +184,7 @@
                                 <div class="d-flex align-items-start align-items-sm-center">
                                     <div class="form-check me-2 me-xxl-3 mb-0">
                                         <input class="form-check-input" type="checkbox" id="card-view-tickets-0" data-bulk-select-row="data-bulk-select-row" />
-                                        <a class="btn btn-falcon-default btn-sm" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><span class="fas fa-external-link-alt" data-fa-transform="shrink-3"></span><span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1"></span></a>
+                                        <a class="btn btn-falcon-default btn-sm" href="add_suppiler/@item.SupplierKey"><span class="fas fa-external-link-alt" data-fa-transform="shrink-3"></span><span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1"></span></a>
                                     </div>
                                     <div class="avatar avatar-xl avatar-3xl">
                                         @if (item.SupplrImgLink is not null)
@@ -420,7 +266,6 @@
 
 </div>
 
- 
 @code {
     private bool showOverlay = false;
 
@@ -440,9 +285,16 @@
 
     [Inject]
     private NavigationManager NavigationManager { get; set; }
+
+
+    [Inject]
+    protected IJSRuntime JSRuntime { get; set; }
+
     [Inject]
     SupplierService supplierService { get; set; }
+
     List<Suppliers> suppliers = new List<Suppliers>();
+
     private bool isLoading = true;
     private int PageSize { get; set; } = 5; // Number of items per page
 
@@ -451,9 +303,7 @@
     private string errorMessage;
     private int TotalRecord { get; set; }
 
-    public string? ColorIdNameSearch { get; set; }
-
-
+    public string? SplrNameSearch { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
@@ -471,8 +321,8 @@
     {
         try
         {
-            if (ColorIdNameSearch == "") { ColorIdNameSearch = null; }
-            suppliers = (await supplierService.Get(null, null, ColorIdNameSearch, null, null, null, currentPage, PageSize)).ToList();
+            if (SplrNameSearch == "") { SplrNameSearch = null; }
+            suppliers = (await supplierService.Get(null, null, SplrNameSearch, null, null, null, currentPage, PageSize)).ToList();
             if (suppliers.Count > 0)
             {
                 TotalRecord = suppliers[0].total_row;
@@ -508,6 +358,35 @@
         ChangePage(1);
 
     }
+    private async Task DeleteItem(long SupplierId)
+    {
+        bool confirmed = await JSRuntime.InvokeAsync<bool>("showDeleteConfirmation");
+        if (confirmed)
+        {
+            try
+            {
+                bool result = await supplierService.Delete(SupplierId);
+                if (result)
+                {
+                    await JSRuntime.InvokeVoidAsync("showSuccessMessage");
+                    await LoadSuppliers();
+                }
+                else
+                {
+                    errorMessage = $"{MessageManager.DeleteFaild} {SupplierId}.";
+                }
+            }
+            catch (Exception ex)
+            {
+                errorMessage = ex.Message;
+            }
+        }
+        else
+        {
+
+        }
+    }
+
 }
 
 

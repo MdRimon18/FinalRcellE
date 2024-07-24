@@ -1,110 +1,18 @@
 ﻿@page "/create_invoice"
 
 
-<div class="offcanvas offcanvas-end" id="offcanvasRight" tabindex="-1" aria-labelledby="offcanvasRightLabel">
+<div class="offcanvas offcanvas-end" id="offcanvasRight" tabindex="-1" aria-labelledby="offcanvasRightLabel" style="width: 55%;">
     <div class="offcanvas-header">
-        <div class="card-header">
+       @*  <div class="card-header">
             <h5 class="mb-0" data-anchor="data-anchor">
                 <i class="fas fa-arrow-left"></i>
                 Customer/Buyer Profile
             </h5>
-        </div>
+        </div> *@
         <button class="btn-close text-reset" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body bg-body-tertiary">
-        <div class="col-lg-12 ps-lg-2 mb-2">
-            <div class="row g-0 h-100 align-items-stretch">
-                <div class="col-lg-12 mb-2">
-                    <div class="card-body  pb-0">
-                        @* <a class="mb-2 d-block d-flex align-items-center" href="#supplier-form" data-bs-toggle="collapse" aria-expanded="true" aria-controls="supplier-form"><span class="circle-dashed"><span class="fas fa-plus"></span></span><span class="ms-3">Add new Customer</span></a> *@
-                        <div class="collapse show" id="supplier-form">
-                            <div class="mb-3">
-                                
-                                    <div class="row">
-                                        <div class="col-sm-12 animated-div">
-                                            <div class="form-group">
-                                            <label for="mobileNumber" class="form-label">Mobile Number<span class="error-star">*</span></label>
-                                                <input name="mobileNumber" type="tel" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="017**-******" required>
-                                                <div class="text-left invalid-message-color">
-                                                    Mobile Number Is Required!
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12 animated-div">
-                                            <div class="form-group">
-                                            <label for="name" class="form-label">Name<span class="error-star">*</span></label>
-                                                <input name="name" type="text" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Name" required>
-                                                <div class="text-left invalid-message-color">
-                                                    Name Is Required!
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12 animated-div">
-                                            <div class="form-group">
-                                            <label for="selectCountry" class="form-label">Select Country<span class="error-star">*</span></label>
-                                                <select class="form-select form-rounded form-select-sm invalid-border-input" id="selectCountry" required="">
-                                                    <option selected="" disabled="" value="">Select Country</option>
-                                                    <option value="1">Bangladesh</option>
-                                                    <option value="2">...</option>
-                                                    <option value="3">...</option>
-                                                </select>
-                                                <div class="text-left invalid-message-color">
-                                                    Country Is Required!
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-12 animated-div">
-                                                <div class="form-group">
-                                                <label for="stateName" class="form-label">State Name</label>
-                                                    <input name="stateName" type="text" class="form-control form-control-sm form-rounded" placeholder="State Name">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-12 animated-div">
-                                                <div class="form-group">
-                                                <label for="addressLineOne" class="form-label">Address Line One</label>
-                                                    <input name="addressLineOne" type="text" class="form-control form-control-sm form-rounded" placeholder="Give Customer Address Line One">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-12 animated-div">
-                                                <div class="form-group">
-                                                <label for="addressLineTwo" class="form-label">Address Line Two</label>
-                                                    <input name="addressLineTwo" type="text" class="form-control form-control-sm form-rounded" placeholder="Give Customer Address Line Two">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-12 animated-div">
-                                                <div class="form-group">
-                                                <label for="email" class="form-label">Email</label>
-                                                    <input name="email" type="email" class="form-control form-control-sm form-rounded" placeholder="Give Customer Email">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-12 animated-div">
-                                                <div class="form-group">
-                                                <label for="officeName" class="form-label">Office Name</label>
-                                                    <input name="officeName" type="text" class="form-control form-control-sm form-rounded" placeholder="Office Name">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-12 animated-div">
-                                                <div class="form-group">
-                                                <label for="occupation" class="form-label">Occupation</label>
-                                                    <input name="occupation" type="text" class="form-control form-control-sm form-rounded" placeholder="Occupation">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label class="form-label" for="image">Image</label>
-                                                <input class="form-control form-control-sm" id="image" type="file" />
-                                            </div>
-                                        </div>
-                                        <div>
-                                        <button class="btn btn-sm btn-light mt-2">Save</button>
-                                        </div>
-                                    </div>
-                                 
-                            </div>
-                            <div class="border-dashed-bottom my-4"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <CustomerEntry/>
     </div>
 </div>
 
@@ -531,8 +439,8 @@
                     <div class="row g-3">
                         <div class="col-lg-3 col-md-3 col-sm-9 col-9 animated-div">
                             <div class="form-group">
-                                <label for="InvoiceType" class="form-label">Invoice Type</label><span class="error-star">*</span>
-                                <select required name="invoiceTypeSelect" class="select form-control form-control-sm form-rounded">
+                                <label for="InvoiceType" class="form-label  fw-bold">Invoice Type</label><span class="error-star">*</span>
+                                <select required name="invoiceTypeSelect" class="select form-control form-control-sm form-rounded fw-semi-bold">
                                     <option value="">Invoice Type select</option>
                                     <option value="">New Invoice</option>
                                     <option value="">E-Commerce Invoice</option>
@@ -545,13 +453,13 @@
 
                         <div class="col-lg-3 col-md-3 col-sm-9 col-9 animated-div">
                             <div class="input-group">
-                                <label for="customerMobileNo" class="form-label">Customer Mobile No</label><span class="error-star">*</span>
+                                <label for="customerMobileNo" class="form-label fw-bold">Customer Mobile No</label><span class="error-star">*</span>
 
                                 
                                    @*  <input readonly name="customerMobileNo" type="text" class="form-control form-control-sm form-rounded "
                                        placeholder="customer mobile no" required aria-label="Input group example" id="inputField" aria-describedby="plusButton"> *@
                                 <div class="input-group">
-                                    <input type="text" id="inputField" class="form-control form-control-sm form-rounded " placeholder="Enter Cus. Phone" aria-label="Enter value" aria-describedby="plusButton">
+                                    <input type="text" id="inputField" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="Enter Cus. Phone" aria-label="Enter value" aria-describedby="plusButton">
                                     <div class="input-group-append">
                                         <button class="btn btn-sm btn-light" type="button" id="plusButton" data-bs-toggle="offcanvas"
                                         data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">+</button>
@@ -567,14 +475,14 @@
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-9 col-9 animated-div">
                             <div class="form-group">
-                                <label for="name" class="form-label">Customer Email</label>
-                                <input name="name" type="text" class="form-control form-control-sm form-rounded" placeholder="Customer Email" required>
+                                <label for="name" class="form-label fw-bold">Customer Email</label>
+                                <input name="name" type="text" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="Customer Email" required>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-9 col-9 animated-div">
                             <div class="form-group">
-                                <label for="paymentType" class="form-label">Notification Send By</label><span class="error-star">*</span>
-                                <select required name="Mobile" class="form-control form-control-sm form-rounded">
+                                <label for="paymentType" class="form-label fw-bold">Notification Send By</label><span class="error-star">*</span>
+                                <select required name="Mobile" class="form-control form-control-sm form-rounded fw-semi-bold">
                                     <option value="">Mobile</option>
                                     <option value="">Email</option>
                                     <option value="">Both</option>
@@ -585,8 +493,8 @@
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-9 col-9 animated-div">
                             <div class="form-group">
-                                <label class="form-label">Date</label>
-                                <input class="form-control form-control-sm form-rounded"
+                                <label class="form-label fw-bold">Date</label>
+                                <input class="form-control form-control-sm form-rounded fw-semi-bold"
                                        type="date"
                                        name="entryDate"
                                        placeholder="Date">
@@ -596,14 +504,14 @@
                       
                         <div class="col-lg-3 col-md-3 col-sm-6 col-9 animated-div">
                             <div class="form-group">
-                                <label for="salesBy" class="form-label">Sales By</label>
-                                <input readonly name="salesBy" type="text" class="form-control form-control-sm form-rounded" placeholder="sales by" required>
+                                <label for="salesBy" class="form-label fw-bold">Sales By</label>
+                                <input readonly name="salesBy" type="text" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="sales by" required>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-9 col-9 animated-div">
                             <div class="form-group">
-                                <label for="paymentType" class="form-label">Payment Type</label><span class="error-star">*</span>
-                                <select required name="paymentType" class="form-control form-control-sm form-rounded">
+                                <label for="paymentType" class="form-label fw-bold">Payment Type</label><span class="error-star">*</span>
+                                <select required name="paymentType" class="form-control form-control-sm form-rounded fw-semi-bold">
                                     <option value="">Cash In Hand</option>
                                     <option value="">Digital Currency</option>
                                     <option value="">Bank</option>
@@ -614,7 +522,7 @@
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-9 col-9 animated-div">
                             <div class="form-group">
-                                <label for="categorySelect" class="form-label">Category</label>
+                                <label for="categorySelect" class="form-label fw-bold">Category</label>
                                 <select class="form-select form-select-sm form-select-rounded js-choice" id="categorySelect" multiple="multiple" size="1" name="categorySelect" data-options='{"removeItemButton":true,"placeholder":true}'>
                                     <option value="">Select Category</option>
                                     <option>Category-1</option>
@@ -627,8 +535,8 @@
                         
                         <div class="col-lg-3 col-md-3 col-sm-9 col-9 animated-div">
                             <div class="form-group">
-                                <label for="categorySelect" class="form-label">Sub Category</label><span class="error-star">*</span>
-                                <select class="form-control form-control-sm form-rounded">
+                                <label for="categorySelect" class="form-label fw-bold">Sub Category</label><span class="error-star">*</span>
+                                <select class="form-control form-control-sm form-rounded fw-semi-bold">
                                     @* id="organizerSingle2" size="1" required="required" name="organizerSingle" data-options='{"removeItemButton":true,"placeholder":true}'> *@
                                     <option value="">Select Sub-Category</option>
                                     <option>Sub-Category-1</option>
@@ -641,10 +549,10 @@
                        
                         <div class="col-lg-3 col-md-3 col-sm-6 col-9 animated-div" >
                             <div class="form-group">
-                                <label for="chooseProduct" class="form-label">Choose Product</label><span class="error-star">*</span>
+                                <label for="chooseProduct" class="form-label fw-bold">Choose Product</label><span class="error-star">*</span>
                                 <div style="width: 13.5rem;" class="search-box" data-list='{"valueNames":["title"]}'>
                                     <div class="position-relative" data-bs-toggle="search" data-bs-display="static">
-                                        <input class="form-control form-control-sm form-rounded search-input" type="search" placeholder="Search..." aria-label="Search" />
+                                        <input class="form-control form-control-sm form-rounded search-input fw-semi-bold" type="search" placeholder="Search..." aria-label="Search" />
                                         <span class="fas fa-search search-box-icon"></span >
                                     </div>
                                     <div class="btn-close-falcon-container position-absolute end-0 top-50 translate-middle shadow-none" data-bs-dismiss="search">
@@ -694,11 +602,11 @@
                         </div >
                         <div class="col-lg-3 col-md-3 col-sm-6 col-9 animated-div" >
                             <div class="form-group">
-                                <label for="chooseSerialNumber" class="form-label">Choose Serial No</label><span class="error-star">*</span>
+                                <label for="chooseSerialNumber" class="form-label fw-bold">Choose Serial No</label><span class="error-star">*</span>
                                 
                                 <div style="width: 13.5rem;" class="search-box" data-list='{"valueNames":["title"]}'>
                                     <div class="position-relative" data-bs-toggle="search" data-bs-display="static" >
-                                        <input class="form-control form-control-sm form-rounded search-input" type="search" placeholder="Search..." aria-label="Search" />
+                                        <input class="form-control form-control-sm form-rounded search-input fw-semi-bold" type="search" placeholder="Search..." aria-label="Search" />
                                         <span class="fas fa-search search-box-icon"></span>
 
                                     </div>
@@ -748,18 +656,18 @@
                             <table class="class=" table table-sm mb-0 fs-10 table-view-tickets">
                                 <thead class="thdchild">
                                     <tr>
-                                        <th class="form-label">
+                                        <th class="form-label fw-bold">
                                            Image
                                         </th>
-                                        <th scope="col" class="form-label">Category</th>
-                                        <th scope="col" class="form-label">Name</th>
-                                        <th scope="col" class="form-label">Quantity<span class="error-star"><strong class="bigger-asterisk">*</strong></span></th>
-                                        <th scope="col" class="form-label">Unit</th>
-                                        <th scope="col" class="form-label">Rate</th>
-                                        <th scope="col" class="form-label">VAT</th>
-                                        <th scope="col" class="form-label">Discount</th>
-                                        <th scope="col" class="form-label">Amount</th>
-                                        <th scope="col" class="form-label">Action</th>
+                                        <th scope="col" class="form-label fw-bold">Category</th>
+                                        <th scope="col" class="form-label fw-bold">Name</th>
+                                        <th scope="col" class="form-label fw-bold">Quantity<span class="error-star"><strong class="bigger-asterisk">*</strong></span></th>
+                                        <th scope="col" class="form-label fw-bold">Unit</th>
+                                        <th scope="col" class="form-label fw-bold">Rate</th>
+                                        <th scope="col" class="form-label fw-bold">VAT</th>
+                                        <th scope="col" class="form-label fw-bold">Discount</th>
+                                        <th scope="col" class="form-label fw-bold">Amount</th>
+                                        <th scope="col" class="form-label fw-bold">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -772,28 +680,28 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <input type="text" class="form-control form-control-sm form-rounded bold-input" placeholder="Category" readonly>
+                                            <input type="text" class="form-control form-control-sm form-rounded bold-input fw-semi-bold" placeholder="Category" readonly>
                                         </td>
                                         <td>
-                                            <input type="text" class="form-control form-control-sm form-rounded bold-input" placeholder="Name" readonly>
+                                            <input type="text" class="form-control form-control-sm form-rounded bold-input fw-semi-bold" placeholder="Name" readonly>
                                         </td>
                                         <td>
-                                            <input type="number" class="form-control form-control-sm form-rounded bold-input" placeholder="Quantity" />
+                                            <input type="number" class="form-control form-control-sm form-rounded bold-input fw-semi-bold" placeholder="Quantity" />
                                         </td>
                                         <td>
-                                            <input type="text" class="form-control form-control-sm form-rounded" readonly placeholder="Unit">
+                                            <input type="text" class="form-control form-control-sm form-rounded fw-semi-bold" readonly placeholder="Unit">
                                         </td>
                                         <td>
-                                            <input type="number" class="form-control form-control-sm form-rounded" placeholder="Rate">
+                                            <input type="number" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="Rate">
                                         </td>
                                         <td>
-                                            <input type="number" readonly class="form-control form-control-sm form-rounded" placeholder="V(%)">
+                                            <input type="number" readonly class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="V(%)">
                                         </td>
                                         <td>
-                                            <input type="number" class="form-control form-control-sm form-rounded" placeholder="D(%)">
+                                            <input type="number" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="D(%)">
                                         </td>
                                         <td>
-                                            <input readonly type="number" class="form-control form-control-sm form-rounded bold-input" placeholder="Amount">
+                                            <input readonly type="number" class="form-control form-control-sm form-rounded bold-input fw-semi-bold" placeholder="Amount">
                                         </td>
                                         <td>
                                             <button type="button" class="btn btn-sm btn-light me-1 mb-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop">serial</button>
@@ -880,34 +788,34 @@
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-2">
                     <div class="form-group">
-                        <label class="form-label"><strong>Total</strong></label>
-                        <input type="number" class="form-control form-control-sm form-rounded bold-input" readonly id="Total" placeholder="Total Amount">
+                        <label class="form-label fw-bolder">Total</label>
+                        <input type="number" class="form-control form-control-sm form-rounded fw-bold" readonly id="Total" placeholder="Total Amount">
                     </div>
                     <div class="form-group">
-                        <label class="form-label"><strong>Vat</strong></label>
-                        <input type="number" class="form-control form-control-sm form-rounded" readonly id="Vat" placeholder="Vat(%)">
+                        <label class="form-label fw-bold">Vat</label>
+                        <input type="number" class="form-control form-control-sm form-rounded fw-bold" readonly id="Vat" placeholder="Vat(%)">
                     </div>
                     <div class="form-group">
-                        <label class="form-label"><strong>Discount</strong></label>
-                        <input type="number" class="form-control form-control-sm form-rounded" readonly id="Discount" placeholder="Discount(%)">
+                        <label class="form-label fw-bold">Discount</label>
+                        <input type="number" class="form-control form-control-sm form-rounded fw-bold" readonly id="Discount" placeholder="Discount(%)">
                     </div>
                     <div class="form-group">
-                        <label class="form-label"><strong>Additional Discount</strong></label>
-                        <input type="number" class="form-control form-control-sm form-rounded" id="additionalDiscount" placeholder="Additional Discount">
+                        <label class="form-label fw-bold">Additional Discount</label>
+                        <input type="number" class="form-control form-control-sm form-rounded fw-bold" id="additionalDiscount" placeholder="Additional Discount">
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label"><strong>Total Payable</strong></label>
-                        <input type="number" class="form-control form-control-sm form-rounded bold-input" readonly id="totalPayable" placeholder="Total Payable">
+                        <label class="form-label fw-bolder">Total Payable</label>
+                        <input type="number" class="form-control form-control-sm form-rounded fw-bold" readonly id="totalPayable" placeholder="Total Payable">
                     </div>
                     <div class="form-group">
-                        <label class="form-label"><strong>Receive</strong></label>
-                        <input type="number" class="form-control form-control-sm form-rounded bold-input" placeholder="Receive">
+                        <label class="form-label fw-bolder">Receive</label>
+                        <input type="number" class="form-control form-control-sm form-rounded fw-bold" placeholder="Receive">
                         <input type="hidden" class="form-control form-control-sm form-rounded">
                     </div>
                     <div class="form-group">
-                        <label class="form-label"><strong>Current Due</strong></label>
-                        <input type="number" class="form-control form-control-sm form-rounded" readonly id="totalCurrentDue" placeholder="Current Due">
+                        <label class="form-label fw-bolder">Current Due</label>
+                        <input type="number" class="form-control form-control-sm form-rounded fw-bold" readonly id="totalCurrentDue" placeholder="Current Due">
                     </div>
                 </div >
 
@@ -935,7 +843,7 @@
             </div>
             <div class="col-md-5 col-xl-12 col-xxl-5 ps-lg-4 ps-xl-2 ps-xxl-5 text-center text-md-start text-xl-center text-xxl-start">
                 <div class="border-bottom border-dashed d-block d-md-none d-xl-block d-xxl-none my-4"></div>
-                <div class="fs-7 fw-semi-bold">All Total: <span class="text-primary">$3320</span></div>
+                <div class="fs-7 fw-bold">All Total: <span class="text-primary">$3320</span></div>
                 <a href="digital_payment" class="btn btn-success mt-3 px-5" type="submit">Confirm &amp; Pay</a>
                 <p class="fs-10 mt-3 mb-0">By clicking <strong>Confirm & Pay </strong> button you agree to the <a href="#!">Terms &amp; Conditions</a></p>
             </div>
@@ -952,7 +860,7 @@
             <div class="modal-body p-0">
                 <div class="rounded-top-3 bg-body-tertiary py-3 ps-4 pe-6">
                     <h4 class="mb-1" id="staticBackdropLabel">Add a new Serial Number</h4>
-                    <p class="fs-11 mb-0">Added by <a class="link-600 fw-semi-bold" href="#!">Antony</a></p>
+                    <p class="fs-11 mb-0">Added by <a class="link-600 fw-bold" href="#!">Antony</a></p>
                 </div>
                 <div class="p-4 m-2">
                     <div class="card shadow-none">

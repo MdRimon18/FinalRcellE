@@ -50,7 +50,11 @@ AS
 			 (@Occupation IS NULL OR a.Occupation = @Occupation) and
 			
 		     (@CustomerName IS NULL OR 
-			 LOWER(LTRIM(RTRIM(REPLACE(a.CustomerName, ' ', '')))) LIKE '%' + LOWER(LTRIM(RTRIM(REPLACE(@CustomerName, ' ', ''))))  + '%')
+			 LOWER(LTRIM(RTRIM(REPLACE(a.CustomerName, ' ', '')))) LIKE '%' + LOWER(LTRIM(RTRIM(REPLACE(@CustomerName, ' ', ''))))  + '%'
+			 or
+			 LOWER(LTRIM(RTRIM(REPLACE(a.MobileNo, ' ', '')))) LIKE '%' + LOWER(LTRIM(RTRIM(REPLACE(@CustomerName, ' ', ''))))  + '%'
+			 or
+			 LOWER(LTRIM(RTRIM(REPLACE(a.Email, ' ', '')))) LIKE '%' + LOWER(LTRIM(RTRIM(REPLACE(@CustomerName, ' ', ''))))  + '%')
 			 and a.Status='Active'
       )
 

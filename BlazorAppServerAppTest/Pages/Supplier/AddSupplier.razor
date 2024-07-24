@@ -1,11 +1,12 @@
-﻿@page "/add_suppiler"
+﻿@page "/add_suppiler/{key:guid?}"
 @inject IJSRuntime JS
+@inject NavigationManager Navigation
 
 
 <div class="card mb-3">
    <div class="card-header">
       <h5 class="mb-0" data-anchor="data-anchor">
-         <i class="fas fa-arrow-left"></i>
+            <a class="btn btn-falcon-default btn-sm" @onclick="BackTo"><i class="fas fa-arrow-left"></i></a>
          Supplier Profile Entry
       </h5>
 
@@ -141,7 +142,7 @@
                  
         </div>
 
-        <button type="submit" class="btn btn-primary btn-sm mt-2">Save</button>
+            <button type="submit" class="btn btn-primary btn-sm mt-2">@SubmitButtonText</button>
          <button type="reset" class="btn btn-primary btn-sm mt-2">Refresh</button>
    </div>
     </EditForm>
@@ -154,9 +155,16 @@
     }
  </script>
 @code {
+    [Parameter]
+    public Guid? key { get; set; }
+    private bool IsEditMode => key.HasValue;
+    private string SubmitButtonText => IsEditMode ? "Update" : "Create";
+
+
     [Inject]
     CountryServiceV2 countryServiceV2 { get; set; }
     List<CountryV2> country_list = new List<CountryV2>();
+
 
     [Inject]
     BusinessTypesService businessTypesService { get; set; }
@@ -164,8 +172,9 @@
 
     [Inject]
     SupplierService supplierService { get; set; }
-
     Suppliers supplier = new Suppliers();//object or Model 
+
+
     [Inject]
     FileUploadService fileUploadService { get; set; }
 
@@ -180,18 +189,40 @@
 
     private IBrowserFile selectedImageFile;
 
-    protected override async Task OnInitializedAsync()
-    {
-        country_list = (await countryServiceV2.Get(null, null, null, null, null, null, null, null, null, null, 1, 1000)).ToList();
-        businessTypes_list = (await businessTypesService.Get(null, null, null, null, 1, 1000)).ToList();
-    }
-
+   
     private string defaultImage = "/assets/img/icons/profile_icon.jpg"; // Path to your default image
     private string? imageData;
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
+
         imageData = defaultImage;
+
+        country_list = (await countryServiceV2.Get(null, null, null, null, null, null, null, null, null, null, 1, 1000)).ToList();
+        businessTypes_list = (await businessTypesService.Get(null, null, null, null, 1, 1000)).ToList();
+
+        if (IsEditMode)
+        {
+            if (key.HasValue)
+            {
+
+                supplier = await supplierService.GetByKey(key.ToString());
+
+                if (supplier == null)
+                {
+                    Navigation.NavigateTo("/supplier_info");
+                }
+                else
+                {
+                    imageData = supplier.SupplrImgLink;
+                }
+            }
+            else
+            {
+                supplier = new Suppliers();
+            }
+
+        }
     }
 
     private async Task HandleSelected(InputFileChangeEventArgs e)
@@ -286,6 +317,10 @@
         {
             errorMessage = ex.Message;
         }
+    }
+    private void BackTo()
+    {
+        Navigation.NavigateTo("/supplier_info");
     }
 
 }
