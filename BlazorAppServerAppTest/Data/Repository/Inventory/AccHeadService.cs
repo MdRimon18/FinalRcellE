@@ -63,6 +63,7 @@ namespace Pms.Data.Repository.Inventory
 
                     parameters.Add("@AccHeadId", dbType: DbType.Int64, direction: ParameterDirection.Output);
                 parameters.Add("@AccHeadName", accHead.AccHeadName);
+                parameters.Add("@AccType", accHead.AccType); 
                 parameters.Add("@AccHeadKey", accHead.AccHeadKey);
                     parameters.Add("@entryDateTime", accHead.EntryDateTime);
                     parameters.Add("@entryBy", accHead.EntryBy);
@@ -87,6 +88,7 @@ namespace Pms.Data.Repository.Inventory
                 parameters.Add("@AccHeadId", accHead.AccHeadId);
                 
                 parameters.Add("@AccHeadName", accHead.AccHeadName);
+                parameters.Add("@AccType", accHead.AccType);
                 parameters.Add("@lastModifyDate", accHead.LastModifyDate);
                 parameters.Add("@lastModifyBy", accHead.LastModifyBy);
                 parameters.Add("@deletedDate", accHead.DeletedDate);

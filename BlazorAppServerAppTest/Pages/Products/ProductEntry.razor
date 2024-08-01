@@ -1,4 +1,6 @@
-﻿@page "/product_entry"
+﻿@page "/product_entry/{key:guid?}"
+
+
 
 @* <script>
     alert(1)
@@ -12,294 +14,304 @@
     </div>
 </div>
 
+<EditForm Model="@product" OnInvalidSubmit="SaveOrUpdate">
+    <DataAnnotationsValidator />
+    
+        <SuccessAlert Message="@SuccessMessage" Show="@showSuccessAlert" />
+        <DangerAlert Message="@DangerMessage" Show="@showDangerAlert" OnClose="HideAlert" />
 
-<div class="row g-0">
+   <div class="row g-0">
     <div class="col-lg-9 pe-lg-2">
         <div class="card mb-3">
             <div class="card-header bg-body-tertiary">
-                <h6 class="mb-0">Basic information</h6>
+                <h6 class="fw-semi-bold mb-0">Basic information</h6>
             </div>
             <div class="card-body">
-                <form>
+                <div>
                     <div class="row gx-2">
                         
-                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
                             <div class="form-group">
-                                <label for="name" class="form-label">Name/Model</label> <span class="error-star">*</span>
-                                <input @bind-value=@product.ProdName name="name" type="text" class=" form-control form-control-sm form-rounded invalid-border-input" placeholder="Name/Model" required>
-                                <div class="text-left invalid-message-color">
-                                 Name/Model Required!
-                                </div>
+                                    <label for="ProdName" class="form-label fw-semi-bold fw-semi-bold">Name/Model</label> <span class="error-star">*</span>
+                                    <InputText @bind-Value="product.ProdName" type="text" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="Name/Model" />
+                                    <ValidationMessage class="text-left invalid-message-color" For="@(() => product.ProdName)" />
                             </div>
                         </div>
-                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12">
                             <div class="form-group">
-                                <label for="name" class="form-label">Manufacturar Name</label>
-                                <input @bind-value=@product.ManufacturarName name="name" type="text" class=" form-control form-control-sm form-rounded" placeholder="Manufacturar Name">
+                                    <label for="manufacturarName" class="form-label fw-semi-bold">Manufacturar Name</label>
+                                    <InputText @bind-Value="product.ManufacturarName" type="text" class=" form-control form-control-sm form-rounded fw-semi-bold" placeholder="Manufacturar Name" />
                             </div>
                         </div >
-                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12">
                             <div class="form-group">
-                                <label for="serialNumber" class="form-label">Serial Number/UPC</label>
-                                <input @bind-value=@product.SerialNmbrOrUPC readonly name="serialNumber" type="text" class="form-control form-control-sm form-rounded" placeholder="Serial Number/UPC" required>
+                                <label for="serialNumber" class="form-label fw-semi-bold">Serial Number/UPC</label>
+                                <InputText @bind-Value="product.SerialNmbrOrUPC"   type="text" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="Serial Number/UPC"  />
                             </div>
                         </div>
-                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12">
                             <div class="form-group">
-                                <label for="serialNumber" class="form-label">SKU</label>
-                                <input @bind-value=@product.Sku readonly name="serialNumber" type="text" class="form-control form-control-sm form-rounded" placeholder="Sku" required>
+                                <label for="sku" class="form-label fw-semi-bold">SKU</label>
+                                <InputText @bind-Value="product.Sku"   type="text" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="Sku"  />
                             </div>
                         </div>
-                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
                             <div class="form-group">
-                                <label for="quantity" class="form-label">Opening Quantity</label><span class="error-star">*</span>
-                                <input @bind-value=@product.OpeningQnty name="quantity" type="number" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Opening Quantity" required>
-                                <div class="text-left invalid-message-color">
-                                    Opening Quantity Required!
-                                </div>
+                                <label for="quantity" class="form-label fw-semi-bold">Opening Quantity</label><span class="error-star">*</span>
+                                    <InputNumber  class="form-control form-control-sm form-rounded fw-semi-bold" @bind-Value="product.OpeningQnty" placeholder="Opening Quantity"/>
+                                    <ValidationMessage class="text-left" For="@(() => product.OpeningQnty)" />
                             </div>
-                        </div>
+                        </div>  
 
-                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
                             <div class="form-group">
-                                <label for="alertQuantity" class="form-label">Alert Quantity</label>
-                                <input @bind-value=@product.AlertQnty name="alertQuantity" type="number" class="form-control form-control-sm form-rounded" placeholder="Alert Quantity">
+                                <label for="alertQuantity" class="form-label fw-semi-bold">Alert Quantity</label>                                 
+                                    <InputNumber  class="form-control form-control-sm form-rounded fw-semi-bold" @bind-Value="product.AlertQnty" placeholder="Alert Quantity"  />
                                 <!-- <div class="text-left text-danger">
                                     Alert Quantity is Required!
                                 </div> -->
                             </div>
                         </div>
 
-                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
                             <div class="form-group">
-                                <label for="productBuyingPrice" class="form-label">Buying Price</label><span class="error-star">*</span>
-                                <input @bind-value=@product.BuyingPrice name="productBuyingPrice" type="number" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Buying Price" required>
-                                <div class="text-left invalid-message-color">
-                                    Buying Price Required!
-                                </div>
+                                <label for="productBuyingPrice" class="form-label fw-semi-bold">Buying Price</label><span class="error-star">*</span>
+                                    <InputNumber  class="form-control form-control-sm form-rounded fw-semi-bold" @bind-Value="product.BuyingPrice" placeholder="Buying Price"  />
+                                    <ValidationMessage class="text-left " For="@(() =>product.BuyingPrice)" />
                             </div>
                         </div>
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
+                                <div class="form-group">
+                                    <label for="cost" class="form-label fw-semi-bold">Selling Price</label><span class="error-star">*</span>
+                                    <InputNumber  class="form-control form-control-sm form-rounded fw-semi-bold " @bind-Value="product.SellingPrice" placeholder="Selling Price"  />
+                                    <ValidationMessage class="text-left " For="@(() => product.SellingPrice)"/>
+                                </div>
+                            </div>
 
-                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
-                            <div class="form-group">
-                                <label for="cost" class="form-label">Selling Price</label><span class="error-star">*</span>
-                                <input @bind-value=@product.SellingPrice name="cost" type="number" class="form-control form-control-sm form-rounded invalid-border-input" placeholder="Selling Price" required>
-                                <div class="text-left invalid-message-color">
-                                    Selling Price Required!
-                                </div>
-                            </div>
-                        </div>
+                      
                         
-                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
                             <div class="form-group">
-                                <label for="vatPercent" class="form-label">VAT in %</label>
-                                <input (change)="vatAmountNDiscountCalculation()" name="vatPercent" type="number" class="form-control form-control-sm form-rounded" id="vatPercent" placeholder="VAT in %">
+                                <label for="vatPercent" class="form-label fw-semi-bold">VAT in %</label>
+                                    <InputNumber  class="form-control form-control-sm form-rounded fw-semi-bold"  @bind-Value="product.VatPercent" placeholder="VAT in %" />
                                 <!-- <div class="text-left text-danger">
                                     Barcode is Required!
                                 </div> -->
                             </div>
                         </div>
 
-                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
                             <div class="form-group">
-                                <label for="vatAmount" class="form-label">VAT Amount</label>
-                                <input @bind-value=@product.VatAmount name="vatAmount" type="number" class="form-control form-control-sm form-rounded" id="vatAmount" placeholder="VAT Amount">
+                                <label for="vatAmount" class="form-label fw-semi-bold">VAT Amount</label>
+                                    <InputNumber  class="form-control form-control-sm form-rounded fw-semi-bold"  @bind-Value="product.VatAmount" placeholder="VAT Amount" />
                                 <!-- <div class="text-left text-danger">
                                     Barcode is Required!
                                 </div> -->
                             </div>
                         </div>
 
-                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
                             <div class="form-group">
-                                <label for="discountPercent" class="form-label">Discount</label>
-                                <input (change)="vatAmountNDiscountCalculation()" name="discountPercent" type="number" class="form-control form-control-sm form-rounded" id="discountPercent" placeholder="Discount">
+                                <label for="discountPercent" class="form-label fw-semi-bold">Discount</label>
+                                    <InputNumber   class="form-control form-control-sm form-rounded fw-semi-bold"  @bind-Value="product.DiscountPercentg" placeholder="Discount" />
                                 <!-- <div class="text-left text-danger">
                                     Barcode is Required!
                                 </div> -->
                             </div>
                         </div>
 
-                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
                             <div class="form-group">
-                                <label for="discountAmount" class="form-label">Discount Amount</label>
-                                <input @bind-value=@product.DiscountAmount name="discountAmount" type="number" class="form-control form-control-sm form-rounded" id="discountAmount" placeholder="Discount Amount">
+                                <label for="discountAmount" class="form-label fw-semi-bold">Discount Amount</label>
+                                    <InputNumber  class="form-control form-control-sm form-rounded fw-semi-bold" @bind-Value="product.DiscountAmount" placeholder="Discount Amount" />
                                 <!-- <div class="text-left text-danger">
                                     Barcode is Required!
                                 </div> -->
                             </div>
                         </div>
-                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
                             <div class="form-group">
-                                <label for="barcode" class="form-label">Bar Code</label>
-                                <input @bind-value=@product.BarCode name="barcode" type="text" class="form-control form-control-sm form-rounded" id="barcode" placeholder="Bar Code">
+                                <label for="barcode" class="form-label fw-semi-bold">Bar Code</label>
+                                    <InputText @bind-Value="product.BarCode"  type="text" class="form-control form-control-sm form-rounded fw-semi-bold"  placeholder="Bar Code" />
                                 <!-- <div class="text-left text-danger">
                                     Barcode is Required!
                                 </div> -->
                             </div>
                         </div>
 
-                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
                             <div class="form-group">
-                                <label class="form-label">Link to Supplier</label>
-                                <select  name="supplier" required class="form-control form-control-sm form-rounded">
+                                <label class="form-label fw-semi-bold">Link to Supplier</label>
+                                    <InputSelect @bind-Value="product.SupplirLinkId"  class="form-control form-control-sm form-rounded fw-semi-bold">
                                     <option value=''>Select Link to Supplier</option>
-                                    <!-- Options for suppliers -->
-                                </select>
+
+                                    @foreach (var item in supplier_list)
+                                    {
+                                        <option value="@item.SupplierId">@item.SupplrName</option>
+                                    }
+                                        <!-- Options for suppliers -->
+                                </InputSelect>
                             </div>
                         </div>
 
-                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
                             <div class="form-group">
-                                <label for="importedForm" class="form-label">Imported From</label>
-                                <input @bind-value=@product.ImportedForm name="importedForm" type="text" class="form-control form-control-sm form-rounded" id="importedForm" placeholder="Imported From">
+                                <label for="importedForm" class="form-label fw-semi-bold">Imported From</label>
+                                    <InputText @bind-Value="product.ImportedForm" type="text" class="form-control form-control-sm form-rounded fw-semi-bold"  placeholder="Imported From" />
                             </div>
                         </div>
-                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
-                            <label for="importedForm" class="form-label">Import Status</label>
-                            <select class="form-control form-control-sm form-rounded">
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
+                            <label for="importedForm" class="form-label fw-semi-bold">Import Status</label>
+                                <InputSelect @bind-Value="product.ImportStatusId" class="form-control form-control-sm form-rounded fw-semi-bold">
+                                    <option value=''>Select Status</option>
                                 @foreach (var item in importStatusSetting_list)
                                 {
                                     <option value=@item.StatusSettingId>@item.StatusSettingName</option>
                                 }
 
-                            </select>
+                            </InputSelect>
                         </div>
                         
-                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                        @* <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
                             <div class="form-group">
-                                <label class="form-label">Date</label>
-                                <input  class="form-control form-control-sm form-rounded"
+                                <label class="form-label fw-semi-bold">Date</label>
+                                <Input class="form-control form-control-sm form-rounded fw-semi-bold"
                                        type="date"
-                                       name="entryDate"
-                                       placeholder="Date">
+                                      name="GivenEntryDate"
+                                    
+                                       placeholder="Date" />
                                 <!-- <div class="text-left text-danger">
-                                    Date is required
+                                    Date is 
                                 </div> -->
                             </div>
-                        </div>
-                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                        </div> *@
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
                             <div class="form-group">
-                                <label for="discountPercent" class="form-label">Warrenty Lenth/Year</label>
-                                <input (change)="vatAmountNDiscountCalculation()" name="discountPercent" type="number" class="form-control form-control-sm form-rounded" id="discountPercent" placeholder="Discount">
-                                <!-- <div class="text-left text-danger">
-                                    Barcode is Required!
-                                </div> -->
+                                    <label for="warrentYear" class="form-label fw-semi-bold">Warrenty Lenth/Year</label>
+                                    <InputNumber @bind-Value="product.WarrentYear"  class="form-control form-control-sm form-rounded fw-semi-bold"  placeholder="Warrent Year" />
+                                
                             </div>
                         </div>
-                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
                             <div class="form-group">
-                                <label for="warantyNgurenty" class="form-label">Warrenty Policy</label>
-                                <textarea name="warantyNgurenty"
-                                          type="text"
-                                          class="form-control form-control-sm form-rounded"
-                                          id="warantyNgurenty"
-                                          placeholder="Warrenty or Guarantee"
-                                          cols="50"
-                                          rows="2"></textarea>
-                                <!-- <div class="text-left text-danger">
-                                    Warrenty or Guarantee is Required!
-                                </div> -->
+                                <label for="warantyNgurenty" class="form-label fw-semi-bold">Warrenty Policy</label>
+                                <InputTextArea
+                                              type="text"
+                                              class="form-control form-control-sm form-rounded fw-semi-bold"
+                                               @bind-Value="product.WarrentyPolicy"
+                                              placeholder="Warrenty or Guarantee"
+                                              cols="50"
+                                              rows="2"/>
+                            
                             </div>
                         </div>
 
                         
 
-                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
                             <div class="form-group">
-                                <label for="color" class="form-label">Color</label>
-                               
-                                <select name="color" required class="form-control form-control-sm form-rounded invalid-border-input">
+                                <label for="color" class="form-label fw-semi-bold">Color</label>
+
+                                    <InputSelect @bind-Value="product.ColorId"  class="form-control form-control-sm form-rounded fw-semi-bold ">
+                                    <option value=''>Select Color Name</option>
                                     @foreach (var item in color_list)
                                     {
                                         <option value=@item.ColorId>@item.ColorIdName</option>
                                     }
-                                </select>
+                                </InputSelect>
                             </div>
                         </div>
-                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
                             <div class="form-group">
-                                <label for="size" class="form-label">Size</label>
-                                <input  name="size" type="text" class="form-control form-control-sm form-rounded" id="size" placeholder="Size">
+                                <label for="size" class="form-label fw-semi-bold">Size</label>
+                                <InputNumber @bind-Value="product.SizeId" type="number" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="Size" />
                             </div>
                         </div>
-                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
                             <div class="form-group">
-                                <label class="form-label">Shipping</label><span class="error-star">*</span>
-                                <select   @bind=product.ShippingById required class="form-control form-control-sm form-rounded invalid-border-input">
-                                    @foreach (var item in shippingBy_list)
-                                    {
-                                        <option value=@item.ShippingById>@item.ShippingByName</option>
-                                    }
-                                </select>
-                                <div class="text-left invalid-message-color">
-                                    Shipping Required!
-                                </div>
+                                <label class="form-label fw-semi-bold">Shipping</label><span class="error-star">*</span>
+                                    <InputSelect @bind-Value="product.ShippingById"  class="form-control form-control-sm form-rounded fw-semi-bold ">
+                                        <option value=''>Select Shipping Name</option> 
+                                        @foreach (var item in shippingBy_list)
+                                        {
+                                            <option value=@item.ShippingById>@item.ShippingByName</option>
+                                        }
+                                    </InputSelect>
+                                    <ValidationMessage class="text-left " For="@(() => product.ShippingById)" />
                             </div>
                         </div>
-                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
                             <div class="form-group">
-                                <label for="previousCost" class="form-label">Shipping Day</label>
-                                <input name="previousCost" type="number" class="form-control form-control-sm form-rounded" id="previousCost" placeholder="Previous Cost">
+                                    <label for="ShippingDays" class="form-label fw-semi-bold">Shipping Day</label>
+                                    <InputNumber @bind-Value="product.ShippingDays" type="number" class="form-control form-control-sm form-rounded fw-semi-bold" id="ShippingDays" placeholder="Shipping Day" />
                             </div>
                         </div>
 
 
-                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
                             <div class="form-group">
-                                <label for="shippingDay" class="form-label">Shipping Details</label>
-                                <textarea name="shippingDetails" type="text" class="form-control form-control-sm form-rounded" id="shippingDetails" placeholder="Shipping Day" cols="50" rows="2"></textarea>
+                                    <label for="ShippingDetails" class="form-label fw-semi-bold">Shipping Details</label>
+                                    <InputText @bind-Value="product.ShippingDetails" type="text" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="Shipping Details" cols="50" rows="2"/>
                             </div>
                         </div>
-                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
                             <div class="form-group">
-                                <label for="shippingDay" class="form-label">Origin Country</label>
-                                <select class="form-control form-control-sm form-rounded" id="origin-country" name="origin-country">
-                                    @foreach (var item in country_list)
-                                    {
+                                    <label for="originCountryId" class="form-label fw-semi-bold">Origin Country</label>
+                                    <InputSelect @bind-Value="product.OriginCountryId" class="form-control form-control-sm form-rounded fw-semi-bold">
+                                        <option value=''>Select Country Name</option>
+                                        @foreach (var item in country_list)
+                                        {
                                         <option value=@item.CountryId>@item.CountryName</option>
-                                    }
+                                        }
 
-                                </select>
+                                    </InputSelect>
                             </div>
                         </div>
-                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
                             <div class="form-group">
-                                <label for="previousCost" class="form-label">Rating</label>
-                                <input name="previousCost" type="number" class="form-control form-control-sm form-rounded" id="previousCost" placeholder="Previous Cost">
+                                    <label for="rating" class="form-label fw-semi-bold">Rating</label>
+                                <InputNumber @bind-Value="product.Rating" type="number" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="rating" />
+
                             </div>
                         </div>
                         
-                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
                             <div class="form-group">
-                                <label for="shippingDay" class="form-label">Product Status</label>
-                                <select class="form-control form-control-sm form-rounded" id="origin-country" name="origin-country">
-                                    @foreach (var item in statusSetting_list)
-                                    {
-                                        <option value=@item.StatusSettingId>@item.StatusSettingName</option>
-                                    }
+                                    <label for="prodStatusId" class="form-label fw-semi-bold">Product Status</label>
+                                    <InputSelect @bind-Value="product.ProdStatusId" class="form-control form-control-sm form-rounded fw-semi-bold">
+                                        <option value=''>Select Product Status</option>
+                                            @foreach (var item in statusSetting_list)
+                                            {
+                                                <option value=@item.StatusSettingId>@item.StatusSettingName</option>
+                                            }
 
-                                </select>
+                                    </InputSelect>
                             </div>
                         </div>
-                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
                             <div class="form-group">
-                                <label for="remarks" class="form-label">Remarks</label>
-                                <textarea name="remarks"
+                                <label for="remarks" class="form-label fw-semi-bold">Remarks</label>
+                                <InputText
                                           type="text"
-                                          class="form-control form-control-sm form-rounded"
-                                          id="remarks"
+                                          @bind-Value="product.Remarks"
+                                          class="form-control form-control-sm form-rounded fw-semi-bold"
+                                         
                                           placeholder="Remarks"
                                           cols="50"
-                                          rows="2"></textarea>
-                                <!-- <div class="text-left text-danger">
-                                    Remarks is Required!
-                                </div> -->
+                                          rows="2"/>
+                               
                             </div>
                         </div>
                     </div>
+                        <div class="row">
+                            <div class="d-grid gap-2 d-md-block mt-4">
+                                <button type="submit" class="btn btn-sm btn-light">@SubmitButtonText</button>
+                                <button type="reset" class="btn btn-sm btn-light">Refresh</button>
+                                <button class="btn btn-sm btn-danger">Delete</button>
+                            </div>
+                        </div>
                     
-                </form>
+                </div>
             </div>
         </div>
         <div class="card mb-3">
@@ -309,55 +321,44 @@
             <div class="card-body">
                 <div class="row gx-2">
                     <div class="col-12 mb-3">
-                        <label class="form-label" for="product-description">Product description:</label>
+                        <label class="form-label fw-semi-bold" for="product-description">Product description:</label>
                         <div class="create-product-description-textarea">
-                            <textarea class="tinymce d-none" data-tinymce="data-tinymce" name="product-description" id="product-description" required="required"></textarea>
+                            <InputTextArea class="tinymce d-none" data-tinymce="data-tinymce"  @bind-Value="product.ProdDescription" ></InputTextArea>
                         </div>
                     </div>
-                    <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
                         <div class="form-group">
-                            <label class="label text-dark">Date</label>
-                            <input class="form-control form-control-sm form-rounded"
-                                   type="date"
-                                   name="entryDate"
-                                   placeholder="Date">
-                            <!-- <div class="text-left text-danger">
-                                Date is required
-                            </div> -->
+                                <label class="form-label fw-semi-bold">Date</label>
+                         @*    <Input class="form-control form-control-sm form-rounded fw-semi-bold"
+                                  
+                                  
+                                   placeholder="Date"/> *@
+                            
                         </div>
                     </div >
-                    <div class="col-sm-3 col-md-3 col-lg-3 col-12 animated-div">
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
                         <div class="form-group">
-                            <label class="label text-dark">Release Date:</label>
-                            <input class="form-control form-control-sm form-rounded"
-                                   type="date"
-                                   name="entryDate"
-                                   placeholder="Date">
-                            <!-- <div class="text-left text-danger">
-                                Date is required
-                            </div> -->
+                                <label class="form-label fw-semi-bold">Release Date:</label>
+                            @* <Input class="form-control form-control-sm form-rounded fw-semi-bold"
+                                  
+                                   placeholder="Date"/> *@
+                           
                         </div>
                     </div >
                 </div>
-                <div class="row" >
-                    <div class="d-grid gap-2 d-md-block mt-4">
-                        <button @onclick="()=>SaveOrUpdate()" class="btn btn-sm btn-light">Save</button>
-                        <button class="btn btn-sm btn-light">Update</button>
-                        <button class="btn btn-sm btn-light">Refresh</button>
-                        <button class="btn btn-sm btn-danger">Delete</button>
-                    </div>
-                </div>
+               
             </div>
         </div>
         <div class="card mb-3">
             <div class="card-header bg-body-tertiary">
-                <h6 class="mb-0">Add images</h6>
+                    <h6 class="mb-0  fw-semi-bold">Add images</h6>
             </div>
             <div class="card-body">
-                <form class="dropzone dropzone-multiple p-0" id="dropzoneMultipleFileUpload" data-dropzone="data-dropzone" action="#!" data-options='{"acceptedFiles":"image/*"}'>
+                <div class="dropzone dropzone-multiple p-0" id="dropzoneMultipleFileUpload" data-dropzone="data-dropzone" action="#!" data-options='{"acceptedFiles":"image/*"}'>
                     <div class="fallback">
                         <input name="file" type="file" multiple="multiple" />
                     </div>
+
                     <div class="dz-message" data-dz-message="data-dz-message"> <img class="me-2" src="../../../assets/img/icons/cloud-upload.svg" width="25" alt="" /><span class="d-none d-lg-inline">Drag your image here<br />or, </span><span class="btn btn-link p-0 fs-10">Browse</span></div>
                     <div class="dz-preview dz-preview-multiple m-0 d-flex flex-column">
                         <div class="d-flex media align-items-center mb-3 pb-3 border-bottom btn-reveal-trigger">
@@ -377,7 +378,10 @@
                             </div>
                         </div>
                     </div>
-                </form>
+                        <div class="row">
+                            
+                        </div>
+                </div>
             </div>
         </div>
         
@@ -418,11 +422,11 @@
                 </div>
                 <div class="row gy-3 gx-2">
                     <div class="col-sm-3">
-                        <input class="form-control form-control-sm" id="specification-label" type="text" placeholder="Label" />
+                            <input class="form-control form-control-sm form-label fw-semi-bold" id="specification-label" type="text" placeholder="Label" />
                     </div>
                     <div class="col-sm-9">
                         <div class="d-flex gap-2 flex-between-center">
-                            <input class="form-control form-control-sm" id="specification-property" type="text" placeholder="Property" />
+                                <input class="form-control form-control-sm form-label fw-semi-bold" id="specification-property" type="text" placeholder="Property" />
                             <button class="btn btn-sm btn-falcon-default">Add</button>
                         </div>
                     </div>
@@ -443,63 +447,63 @@
 
 
                         <div class="col-12">
-                            <label class="form-label" for="product-category">Select category:</label>
-                            
-                            <select class="form-select js-choice" id="organizerSingle2" size="1" required="required" name="organizerSingle" data-options='{"removeItemButton":true,"placeholder":true}'>
-                                
-                               
+                            <label class="form-label fw-semi-bold" for="product-category">Select category:</label>
+
+                                <InputSelect @bind-Value="product.ProdCtgId" class="form-select js-choice fw-semi-bold" id="organizerSingle2" size="1">
+
+                                    <option value=''> Select Product Category</option>
                                 @foreach (var item in productCategory_list)
                                 {
                                     <option value=@item.ProdCtgId>@item.ProdCtgName</option>
                                 }
-                            </select>
+                            </InputSelect>
                             <div class="invalid-feedback">Please select one</div>
                         </div>
                         <div class="col-12">
-                            <label class="form-label" for="product-subcategory">Select sub-category:</label>
-                            <select class="form-select" id="product-subcategory" name="product-subcategory">
-
+                            <label class="form-label fw-semi-bold" for="product-subcategory">Select sub-category:</label>
+                                <InputSelect @bind-Value="product.ProdSubCtgId" class="form-select">
+                                    <option value=''> Select Product Sub Category </option>
                                 @foreach (var item in productSubCategory_list)
                                 {
                                     <option value=@item.ProdSubCtgId>@item.ProdSubCtgName</option>
                                 }
                               
-                            </select>
+                            </InputSelect>
                         </div>
-                        <div class="col-12 animated-div">
+                        <div class="col-12 ">
                             <div class="form-group">
-                                <label class="label text-dark">Unit Type</label><span class="error-star">*</span>
-                                <select name="unit" required class="form-control form-control-sm form-rounded invalid-border-input">
-                                     @foreach(var item in unit_list)
-                                                {
-                                                    <option value=@item.UnitId>@item.UnitName</option>
-                                                }
-                                </select>
-                                <div class="text-left invalid-message-color">
-                                    Unit Type Required!
-                                </div>
+                                    <label class="form-label fw-semi-bold">Unit Type</label><span class="error-star">*</span>
+                                    <InputSelect @bind-Value="product.UnitId"  class="form-control form-control-sm form-rounded fw-semi-bold ">
+                                        <option value=''>Select Unit Type </option>
+                                        @foreach(var item in unit_list)
+                                           {
+                                             <option value=@item.UnitId>@item.UnitName</option>
+                                           }
+                                </InputSelect>
+                                    <ValidationMessage class="text-left " For="@(() => product.UnitId)" />
                             </div>
                         </div>
                         <div class="col-12">
 
-                            <label class="form-label" for="final-price">Final price:<span data-bs-toggle="tooltip" data-bs-placement="top" title="Product final price"><span class="fas fa-question-circle text-primary fs-10 ms-1"></span></span></label>
-                            <input class="form-control" id="final-price" disabled="disabled" type="text" />
+                            <label class="form-label fw-semi-bold" for="final-price">Final price:<span data-bs-toggle="tooltip" data-bs-placement="top" title="Product final price"><span class="fas fa-question-circle text-primary fs-10 ms-1"></span></span></label>
+                                <InputNumber @bind-Value="product.FinalPrice" class="form-control"  disabled="disabled" type="number" />
 
                         </div>
                         <div class="col-12">
 
-                            <label class="form-label" for="final-price">Previous price:<span data-bs-toggle="tooltip" data-bs-placement="top" title="Product final price"><span class="fas fa-question-circle text-primary fs-10 ms-1"></span></span></label>
-                            <input class="form-control" id="final-price" type="text" />
+                            <label class="form-label fw-semi-bold" for="final-price">Previous price:<span data-bs-toggle="tooltip" data-bs-placement="top" title="Product final price"><span class="fas fa-question-circle text-primary fs-10 ms-1"></span></span></label>
+                                <InputNumber @bind-Value="product.PreviousPrice" class="form-control"  type="number" />
 
                         </div>
                         <div class="col-12">
-                            <label class="form-label" for="price-currency">Currency:</label>
-                            <select class="form-select" id="price-currency" name="price-currency">
-                                @foreach (var item in currency_list)
+                            <label class="form-label fw-semi-bold" for="price-currency">Currency:</label>
+                                <InputSelect @bind-Value="product.CurrencyId" class="form-select">
+                                    <option value=''>Select Currency</option>
+                                    @foreach (var item in currency_list)
                                 {
                                     <option value=@item.CurrencyId>@item.CurrencyShortName</option>
                                 }
-                            </select>
+                            </InputSelect>
                         </div>
                     </div>
                 </div>
@@ -508,17 +512,17 @@
              
             <div class="card mb-3">
                 <div class="card-header bg-body-tertiary">
-                    <h6 class="mb-0">Tags</h6>
+                        <h6 class="mb-0 fw-semi-bold">Tags</h6>
                 </div>
                 <div class="card-body">
-                    <label class="form-label" for="product-tags">Add a keyword:</label>
-                    <input class="form-control js-choice" id="product-tags" type="text" name="tags" required="required" size="1" data-options='{"removeItemButton":true,"placeholder":false}' />
+                    <label class="form-label fw-semi-bold" for="product-tags">Add a keyword:</label>
+                        <InputText @bind-Value="product.TagWord" class="form-control js-choice"  type="text"  size="1"  />
                 </div>
             </div>
              
             <div class="card mb-3">
                 <div class="card-header bg-body-tertiary">
-                    <h6 class="mb-0">Stock status</h6>
+                        <h6 class="mb-0 fw-semi-bold">Stock status</h6>
                 </div>
                 <div class="card-body">
                     <div class="form-check">
@@ -538,7 +542,7 @@
         </div>
     </div>
 </div>
-
+</EditForm>
 
 
 
@@ -546,48 +550,63 @@
 <script src="assets/js/flatpickr.js"></script>
 
 <script src="assets/js/theme.js"></script>
+
 @code {
+    [Parameter]
+    public Guid? key { get; set; }
+    private bool IsEditMode => key.HasValue;
+    private string SubmitButtonText => IsEditMode ? "Update" : "Create";
 
     [Inject]
     UnitService unitService { get; set; }
-    List<Pms.Models.Entity.Inventory.Unit> unit_list = new List<Pms.Models.Entity.Inventory.Unit>();
+    List<Unit> unit_list = new List<Unit>();
+
+    [Inject]
+    SupplierService supplierService { get; set; }
+    List<Suppliers> supplier_list = new List<Suppliers>();
+
 
     [Inject]
     CurrencyService currencyService { get; set; }
-    List<Pms.Models.Entity.Settings.ProductSize> currency_list = new List<Pms.Models.Entity.Settings.ProductSize>();
+    List<ProductSize> currency_list = new List<ProductSize>();
 
 
     [Inject]
     ShippingByService shippingByService { get; set; }
-    List<Pms.Models.Entity.Settings.ShippingBy> shippingBy_list = new List<Pms.Models.Entity.Settings.ShippingBy>();
+    List<ShippingBy> shippingBy_list = new List<ShippingBy>();
 
     [Inject]
     ColorService colorService { get; set; }
-    List<Pms.Models.Entity.Settings.Colors> color_list = new List<Pms.Models.Entity.Settings.Colors>();
+    List<Colors> color_list = new List<Colors>();
 
-    
+
     [Inject]
     CountryServiceV2 countryServiceV2 { get; set; }
-    List<Pms.Models.Entity.Settings.CountryV2> country_list = new List<Pms.Models.Entity.Settings.CountryV2>();
+    List<CountryV2> country_list = new List<CountryV2>();
 
     [Inject]
     StatusSettingService _statusSettingService { get; set; }
-    List<Pms.Models.Entity.Settings.StatusSetting> statusSetting_list = new List<Pms.Models.Entity.Settings.StatusSetting>();
-    List<Pms.Models.Entity.Settings.StatusSetting> importStatusSetting_list = new List<Pms.Models.Entity.Settings.StatusSetting>();
+    List<StatusSetting> statusSetting_list = new List<StatusSetting>();
+    List<StatusSetting> importStatusSetting_list = new List<StatusSetting>();
 
     [Inject]
     ProductSubCategoryService _productSubCategoryService { get; set; }
-    List<Pms.Models.Entity.Settings.ProductSubCategory> productSubCategory_list = new List<Pms.Models.Entity.Settings.ProductSubCategory>();
+    List<ProductSubCategory> productSubCategory_list = new List<ProductSubCategory>();
 
     [Inject]
     ProductCategoryService productCategoryService { get; set; }
-    List<Pms.Models.Entity.Settings.ProductCategories> productCategory_list = new List<Pms.Models.Entity.Settings.ProductCategories>();
+    List<ProductCategories> productCategory_list = new List<ProductCategories>();
 
-    Pms.Models.Entity.Settings.Products product = new Models.Entity.Settings.Products();
+    [Inject]
+    ProductService _productService { get; set; }
+    Products product = new Products();
+
 
     protected override async Task OnInitializedAsync()
     {
         //await LoadUnits();
+
+        supplier_list = (await supplierService.Get(null, null, null, null, null, null, 1, 1000)).ToList();
         unit_list = (await unitService.Get(null, null, null, null, 1, 1000)).ToList();
         currency_list = (await currencyService.Get(null, null, null, null, null, null, null, null, 1, 1000)).ToList();
         shippingBy_list = (await shippingByService.Get(null, null, null, null, 1, 1000)).ToList();
@@ -597,11 +616,111 @@
         importStatusSetting_list = (await _statusSettingService.Get(null, null, null, null, null, null, 1, 1000)).ToList();
         productSubCategory_list = (await _productSubCategoryService.Get(null, null, null, null, null, 1, 1000)).ToList();
         productCategory_list = (await productCategoryService.Get(null, null, null, null, 1, 1000)).ToList();
+
+        if (IsEditMode)
+        {
+            if (key.HasValue)
+            {
+
+                product = await _productService.GetByKey(key.ToString());
+
+                if (product == null)
+                {
+                    //  Navigation.NavigateTo("/customer_info");
+                }
+                else
+                {
+                    // imageData = customer.CustImgLink;
+                }
+            }
+            else
+            {
+                product = new Products();
+            }
+
+        }
+    }
+    private bool showSuccessAlert = false;
+    private bool showDangerAlert = false;
+
+    public string SuccessMessage { get; set; }
+    public string DangerMessage { get; set; }
+
+    private string errorMessage;
+
+    private Task HideAlert()
+    {
+        showDangerAlert = false;
+        return Task.CompletedTask;
     }
 
     private async Task SaveOrUpdate()
     {
-        var prd = product;
+        if (!string.IsNullOrEmpty(product.ProdName))
+        {
+            try
+            {
+
+
+                if (product.ProductId == 0)
+                {
+                    product.EntryDateTime = DateTimeHelper.CurrentDateTime();
+                    product.EntryBy = UserInfo.UserId;
+                    product.BranchId = CompanyInfo.BranchId;
+
+                    product.ProductId = await _productService.SaveOrUpdate(product);
+                    if (product.ProductId > 0)
+                    {
+                        showSuccessAlert = true;
+                        SuccessMessage = MessageManager.SaveSuccess;
+                        StateHasChanged(); // Notify Blazor to re-render the component
+                                           //Hide the alert after 1 seconds
+
+                        await Task.Delay(1000);
+                        showSuccessAlert = false;
+                    }
+                    else if (product.ProductId == -1)
+                    {
+                        showDangerAlert = true;
+                        DangerMessage = $"{product.ProdName} {MessageManager.Exist}";
+                    }
+                    else
+                    {
+                        showDangerAlert = true;
+                        DangerMessage = MessageManager.SaveFaild;
+                    }
+                }
+                else
+                {
+
+                    product.LastModifyDate = DateTimeHelper.CurrentDateTime();
+                    product.LastModifyBy = UserInfo.UserId;
+                    product.ProductId = await _productService.SaveOrUpdate(product);
+                    if (product.ProductId > 0)
+                    {
+                        showSuccessAlert = true;
+                        SuccessMessage = MessageManager.UpdateSuccess;
+                        StateHasChanged(); // Notify Blazor to re-render the component
+                                           //Hide the alert after 1 seconds
+
+                        await Task.Delay(1000);
+                        showSuccessAlert = false;
+                    }
+                    else
+                    {
+                        showDangerAlert = true;
+                        DangerMessage = MessageManager.UpdateFaild;
+                    }
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                errorMessage = ex.Message;
+            }
+        }
+      
     }
 
 }

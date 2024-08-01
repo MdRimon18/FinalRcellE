@@ -12,7 +12,7 @@ namespace Pms.Data.Repository.Inventory
 	public class ProductService
 	{
 		private readonly IDbConnection _db;
-
+													
 
 		public ProductService(DbConnection db)
 		{
