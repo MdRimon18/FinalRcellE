@@ -2,7 +2,7 @@
 
 namespace Pms.Data.Repository.Shared
 {
-    public class FileUploadService
+    public class FileUploadService  
     {
         public async Task<string> UploadFileAsync(IBrowserFile file, string urlPath)
         {
