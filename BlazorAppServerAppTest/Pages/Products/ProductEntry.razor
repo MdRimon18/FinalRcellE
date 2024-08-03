@@ -305,7 +305,7 @@
                     </div>
                         <div class="row">
                             <div class="d-grid gap-2 d-md-block mt-4">
-                                <button type="submit" class="btn btn-sm btn-light">@SubmitButtonText</button>
+                                <button type="button" @onclick="SaveOrUpdate" class="btn btn-sm btn-light">@SubmitButtonText</button>
                                 <button type="reset" class="btn btn-sm btn-light">Refresh</button>
                                 <button class="btn btn-sm btn-danger">Delete</button>
                             </div>
@@ -568,7 +568,7 @@
 
     [Inject]
     CurrencyService currencyService { get; set; }
-    List<ProductSize> currency_list = new List<ProductSize>();
+    List<Currency> currency_list = new List<Currency>();
 
 
     [Inject]
