@@ -68,6 +68,7 @@ builder.Services.AddScoped<CompanyBranceService>();
 
 builder.Services.AddScoped<PaymentTypesService>();
 builder.Services.AddScoped<BillingPlanService>();
+builder.Services.AddScoped<AccTypeServivce>(); 
 //builder.Services.AddSingleton<ProductRepositoyWithSp>();
 builder.Services.AddSingleton<TaskRepository>();
 

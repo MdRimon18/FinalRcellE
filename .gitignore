@@ -13,3 +13,7 @@
 /BlazorAppServerAppTest/obj/Debug
 
 /.vs
+
+
+bin/
+obj/
