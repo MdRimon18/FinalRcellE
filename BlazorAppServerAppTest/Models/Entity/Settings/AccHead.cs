@@ -7,8 +7,8 @@ namespace Pms.Models.Entity.Settings
 
         public long AccHeadId { get; set; }
         public Guid? AccHeadKey { get; set; }
-        [Required(ErrorMessage = "AccHead Name is required")]
-        [StringLength(100, ErrorMessage = "AccHead Name must not exceed 100 characters")]
+        [Required(ErrorMessage = "Accounts Head Name is required")]
+        [StringLength(100, ErrorMessage = "Account Head Name must not exceed 100 characters")]
         public string AccHeadName { get; set; }
         public DateTime? EntryDateTime { get; set; }
         public long? EntryBy { get; set; }

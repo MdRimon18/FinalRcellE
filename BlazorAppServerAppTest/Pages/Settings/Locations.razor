@@ -33,10 +33,10 @@
 
                                     <div class="col-3 mb-3 text-lg-end">
 
-                                        <label class="form-label" for="LocationName">Location Name</label>
+                                        <label class="form-label fw-semi-bold" for="LocationName">Location Name<span class="error-star">*</span></label>
                                     </div>
                                     <div class="col-9 col-sm-7 mb-3">
-                                        <InputText class="form-control form-control-sm" id="LocationName" @bind-Value="@location.LocationName" />
+                                        <InputText class="form-control form-control-sm form-rounded" id="LocationName" @bind-Value="@location.LocationName" />
                                         <ValidationMessage class="text-danger" For="@(() => location.LocationName)" />
                                     </div>
 

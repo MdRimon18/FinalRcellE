@@ -27,7 +27,7 @@
                                          <div class="col-md-6">
                                              <div class="col-sm-10">
                                                      <div class="form-group">
-                                                       <label for="name" class="label text-dark">Enter Name<span class="error-star">*</span></label>
+                                                <label for="name" class="form-label fw-semi-bold">Enter Name<span class="error-star">*</span></label>
                                                       <InputText @bind-Value="customer.CustomerName" type="text" class="form-control form-control-sm form-rounded" placeholder="Enter Name"  />
 
                                                     <ValidationMessage class="text-left invalid-message-color" For="@(() => customer.CustomerName)" />
@@ -36,20 +36,20 @@
                                             </div>
                                              <div class="col-sm-10">
                                                     <div class="form-group">
-                                                        <label for="mobileNumber" class="label text-dark">Mobile Number<span class="error-star">*</span></label>
+                                                <label for="mobileNumber" class="form-label fw-semi-bold">Mobile Number<span class="error-star">*</span></label>
                                                         <InputText @bind-Value="customer.MobileNo" name="mobileNumber" type="tel" class="form-control form-control-sm form-rounded" placeholder="Enter Mobile Number"  />
                                                        <ValidationMessage class="text-left invalid-message-color" For="@(() => customer.MobileNo)" />
                                                     </div>
                                                 </div>
                                               <div class="col-sm-10">
                                                      <div class="form-group">
-                                                       <label for="email" class="label text-dark">Email</label>
+                                                <label for="email" class="form-label fw-semi-bold">Email</label>
                                                        <InputText @bind-Value="customer.Email"  name="email"   class="form-control form-control-sm form-rounded" placeholder="Write Email" />                                                   
                                                      </div>
                                                 </div>
                                              <div class="col-sm-10">
                                             <div class="form-group">
-                                                <label for="selectCountry" class="label text-dark">Select Country<span class="error-star">*</span></label>
+                                                <label for="selectCountry" class="form-label fw-semi-bold">Select Country<span class="error-star">*</span></label>
                                                 <InputSelect @bind-Value="customer.CountryId" class="form-select form-rounded form-select-sm ">
                                                     <option value="">Select Country</option>
                                                     @foreach (var item in country_list)
@@ -89,19 +89,19 @@
                                         <div class="col-md-6">
                                         <div class="col-sm-10">
                                             <div class="form-group">
-                                                <label for="stateName" class="label text-dark">State Name</label>
+                                                <label for="stateName" class="form-label fw-semi-bold">State Name</label>
                                                 <InputText @bind-Value="customer.StateName" name="stateName" type="text" class="form-control form-control-sm form-rounded" placeholder="Enter Your State Name" />
                                             </div>
                                         </div>
                                         <div class="col-sm-10">
                                             <div class="form-group">
-                                                <label for="occupation" class="label text-dark">Occupation</label>
+                                                <label for="occupation" class="form-label fw-semi-bold">Occupation</label>
                                                 <InputText @bind-Value="customer.Occupation" name="occupation" type="text" class="form-control form-control-sm form-rounded" placeholder="Occupation" />
                                             </div>
                                         </div>
                                         <div class="col-sm-10">
                                             <div class="form-group">
-                                                <label for="officeName" class="label text-dark">Office Name</label>
+                                                <label for="officeName" class="form-label fw-semi-bold">Office Name</label>
                                                 <InputText @bind-Value="customer.OfficeName" name="officeName" type="text" class="form-control form-control-sm form-rounded" placeholder="Office Name" />
                                             </div>
                                         </div>
@@ -109,7 +109,7 @@
                                         <div class="col-md-6">
                                         <div class="col-sm-10">
                                             <div class="form-group">
-                                                <label for="addressLineOne" class="label text-dark">Address One</label>
+                                                <label for="addressLineOne" class="form-label fw-semi-bold">Address One</label>
                                                 <InputTextArea rows="2" @bind-Value="customer.CustAddrssOne"
                                                                class="form-control form-control-sm form-rounded"
                                                                placeholder="Customer Address One" />
@@ -118,7 +118,7 @@
                                         </div>
                                         <div class="col-sm-10">
                                             <div class="form-group">
-                                                <label for="addressLineTwo" class="label text-dark">Address Two</label>
+                                                <label for="addressLineTwo" class="form-label fw-semi-bold">Address Two</label>
 
                                                 <InputTextArea rows="2" @bind-Value="customer.CustAddrssTwo"
                                                                class="form-control form-control-sm form-rounded"
