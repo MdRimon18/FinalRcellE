@@ -31,11 +31,11 @@
 
                                     <div class="col-3 mb-3 text-lg-end">
 
-                                        <label class="form-label" for="productName">Product Size Name</label>
+                                        <label class="form-label fw-semi-bold" for="productName">Product Size Name</label>
                                     </div>
 
                                     <div class="col-9 col-sm-7 mb-3">
-                                        <InputText class="form-control form-control-sm" id="productName" @bind-Value="@_ProductSize.ProductSizeName" />
+                                        <InputText class="form-control form-control-sm form-rounded" id="productName" @bind-Value="@_ProductSize.ProductSizeName" />
                                         <ValidationMessage class="text-danger" For="@(() => _ProductSize.ProductSizeName)" />
                                     </div>
                                     

@@ -34,10 +34,10 @@
 
                                         <div class="col-3 mb-3 text-lg-end">
 
-                                            <label class="form-label" for="ProdCtgId"><span class="error-star">*</span>Product Category</label>
+                                        <label class="form-label fw-semi-bold" for="ProdCtgId">Product Category<span class="error-star">*</span></label>
                                         </div>
                                         <div class="col-9 col-sm-7 mb-3">
-                                            <select class="form-control form-control-sm" @bind="@productSubCategory.ProdCtgId">
+                                        <select class="form-control form-control-sm form-rounded" @bind="@productSubCategory.ProdCtgId">
                                                 @foreach (var item in productCategory_list)
                                                 {
                                                     <option value=@item.ProdCtgId>@item.ProdCtgName</option>
@@ -50,10 +50,10 @@
 
                                         <div class="col-3 mb-3 text-lg-end">
 
-                                            <label class="form-label" for="ProdSubCtgName"><span class="error-star">*</span>Product Sub Category Name</label>
+                                        <label class="form-label fw-semi-bold" for="ProdSubCtgName">Product Sub Category Name<span class="error-star">*</span></label>
                                         </div>
                                         <div class="col-9 col-sm-7 mb-3">
-                                            <InputText class="form-control form-control-sm" id="ProdSubCtgName" @bind-Value="@productSubCategory.ProdSubCtgName" />
+                                        <InputText class="form-control form-control-sm form-rounded" id="ProdSubCtgName" @bind-Value="@productSubCategory.ProdSubCtgName" />
                                             <ValidationMessage class="text-danger" For="@(() => productSubCategory.ProdSubCtgName)" />
                                         </div>
 

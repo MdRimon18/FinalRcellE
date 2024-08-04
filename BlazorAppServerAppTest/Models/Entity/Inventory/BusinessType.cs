@@ -8,8 +8,8 @@ namespace Pms.Models.Entity.Inventory
         public Guid? BusinessTypeKey { get; set; }
         public long? LanguageId { get; set; }
 
-        [Required(ErrorMessage = "Business Type Name Name is required")]
-        [StringLength(100, ErrorMessage = "Business Type Name Name must not exceed 100 characters")]
+        [Required(ErrorMessage = "Business Type Name is required")]
+        [StringLength(100, ErrorMessage = "Business Type Name must not exceed 100 characters")]
         public string BusinessTypeName { get; set; }
         public DateTime EntryDateTime { get; set; }
         public long EntryBy { get; set; }

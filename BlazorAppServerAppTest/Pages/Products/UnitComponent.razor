@@ -31,10 +31,10 @@
 
                                         <div class="col-3 mb-3 text-lg-end">
                                             
-                                            <label class="form-label" for="unitName">Unit Name</label>
+                                            <label class="form-label fw-semi-bold" for="unitName">Unit Name</label>
                                         </div>
                                         <div class="col-9 col-sm-7 mb-3">
-                                            <InputText  class="form-control form-control-sm" id="unitName" @bind-Value="@unit.UnitName" />
+                                            <InputText  class="form-control form-control-sm form-rounded" id="unitName" @bind-Value="@unit.UnitName" />
                                             <ValidationMessage class="text-danger" For="@(() => unit.UnitName)" />
                                         </div>
                                         <div class="col-9 col-sm-7 offset-3">

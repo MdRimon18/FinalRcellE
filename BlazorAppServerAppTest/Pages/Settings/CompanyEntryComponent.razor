@@ -22,7 +22,7 @@
                 <div class="col-md-6">
                     <div class="col-sm-10 col-md-10 ">
                         <div class="form-group">
-                            <label for="companyComponent" class="label text-dark">Company Name<span class="error-star">*</span></label>
+                            <label for="companyComponent" class="form-label fw-semi-bold">Company Name<span class="error-star">*</span></label>
                             <InputText type="text" @bind-Value="company.CompanyName" class="form-control form-control-sm form-rounded " placeholder="Enter Company Name" />
                             <ValidationMessage class="text-left invalid-message-color" For="@(() => company.CompanyName)" />
 
@@ -30,21 +30,21 @@
                     </div>
                     <div class="col-sm-10 col-md-10 ">
                         <div class="form-group">
-                            <label for="companyComponent" class="label text-dark">Mobile No<span class="error-star">*</span></label>
+                            <label for="companyComponent" class="form-label fw-semi-bold">Mobile No<span class="error-star">*</span></label>
                             <InputText type="text" @bind-Value="company.CompMobileNo" class="form-control form-control-sm form-rounded " placeholder="Enter Mobile No" />
                             <ValidationMessage class="text-left invalid-message-color" For="@(() => company.CompMobileNo)" />
                         </div>
                     </div>
                     <div class="col-sm-10 col-md-10">
                         <div class="form-group">
-                            <label for="companyComponent" class="label text-dark">Email<span class="error-star">*</span></label>
+                            <label for="companyComponent" class="form-label fw-semi-bold">Email<span class="error-star">*</span></label>
                             <InputText @bind-Value="company.CompanyEmail" type="text" class="form-control form-control-sm form-rounded " placeholder="Write Email" />
                             <ValidationMessage class="text-left invalid-message-color" For="@(() => company.CompanyEmail)" />
                         </div>
                     </div>
                     <div class="col-sm-10 col-md-10 ">
                         <div class="form-group">
-                            <label for="companyComponent" class="label text-dark">Select Business Type <span class="error-star">*</span></label>
+                            <label for="companyComponent" class="form-label fw-semi-bold">Select Business Type <span class="error-star">*</span></label>
                             <InputSelect @bind-Value="company.BusinessTypeId" class="form-select form-rounded form-select-sm ">
                                 <option value=""> Select Business Type</option>
                                 @foreach (var item in businessTypes_list)
@@ -57,7 +57,7 @@
                     </div>
                    @*  <div class="col-sm-10 col-md-10 ">
                         <div class="form-group">
-                            <label for="addSupplier" class="label text-dark">Organization Name<span class="error-star">*</span> </label>
+                            <label for="addSupplier" class="form-label fw-semi-bold">Organization Name<span class="error-star">*</span> </label>
                             <InputText @bind-Value="supplier.SuppOrgnznName" type="text" class="form-control form-control-sm form-rounded " placeholder="Organaization Name" />
                             <ValidationMessage class="text-left invalid-message-color" For="@(() =>supplier.SuppOrgnznName)" />
                         </div>
@@ -91,7 +91,7 @@
                     
                     <div class="col-sm-10 col-md-10 ">
                         <div class="form-group">
-                            <label for="addSupplier" class="label text-dark"> Select Country <span class="error-star">*</span></label>
+                            <label for="addSupplier" class="form-label fw-semi-bold"> Select Country <span class="error-star">*</span></label>
                             <InputSelect @bind-Value="company.CountryId" class="form-select form-rounded form-select-sm ">
                                 <option value="">Select Country</option>
                                 @foreach (var item in country_list)
@@ -104,14 +104,14 @@
                     </div>
                     <div class="col-sm-10 col-md-10 ">
                         <div class="form-group">
-                            <label for="companyComponent" class="label text-dark">State Name <span class="error-star">*</span></label>
+                            <label for="companyComponent" class="form-label fw-semi-bold">State Name <span class="error-star">*</span></label>
                             <InputText @bind-Value="company.StateName" type="text" class="form-control form-control-sm form-rounded " placeholder="Enter Your State Name" />
                             <ValidationMessage class="text-left invalid-message-color" For="@(() => company.StateName)" />
                         </div>
                     </div>
                     <div class="col-sm-10 col-md-10">
                         <div class="form-group">
-                            <label for="companyComponent" class="label text-dark">Company Address</label>
+                            <label for="companyComponent" class="form-label fw-semi-bold">Company Address</label>
 
                             <InputTextArea rows="2" @bind-Value="company.CompAddrss"
                                            class="form-control form-control-sm form-rounded"
@@ -121,7 +121,7 @@
                     </div>
                     <div class="col-sm-10 col-md-10 mt-3">
                         <div class="form-group">
-                            <label for="companyComponent" class="label text-dark">Is have Company Branch?</label>
+                            <label for="companyComponent" class="form-label fw-semi-bold">Is have Company Branch?</label>
                             <InputCheckbox @bind-Value="company.IsHasBranch"/>
                              
 
@@ -132,7 +132,7 @@
                   
                     <div class="col-sm-10 col-md-10 ">
                         <div class="form-group">
-                            <label for="companyComponent" class="label text-dark"> Currency <span class="error-star">*</span></label>
+                            <label for="companyComponent" class="form-label fw-semi-bold"> Currency <span class="error-star">*</span></label>
                             <InputSelect @bind-Value="company.CurrencyId" class="form-select form-rounded form-select-sm ">
                                 <option value="">Select Currency</option>
                                 @foreach (var item in currency_list)
@@ -145,7 +145,7 @@
                     </div>
                     <div class="col-sm-10 col-md-10 ">
                         <div class="form-group">
-                            <label for="companyComponent" class="label text-dark"> Select Biling Plan<span class="error-star">*</span></label>
+                            <label for="companyComponent" class="form-label fw-semi-bold"> Select Biling Plan<span class="error-star">*</span></label>
                             <InputSelect @bind-Value="company.BillingPlanId" class="form-select form-rounded form-select-sm ">
                                 <option value="">Select Billing Plan</option>
                                 @foreach (var item in biling_list)
@@ -158,7 +158,7 @@
                     </div>
                     <div class="col-sm-10 col-md-10 ">
                         <div class="form-group">
-                            <label for="companyComponent" class="label text-dark">Working Days</label>
+                            <label for="companyComponent" class="form-label fw-semi-bold">Working Days</label>
 
                             <InputText rows="2" @bind-Value="company.WorkingDays"
                                            class="form-control form-control-sm form-rounded"
@@ -167,7 +167,7 @@
                     </div>
                     <div class="col-sm-10 col-md-10">
                         <div class="form-group">
-                            <label for="addSupplier" class="label text-dark">Start To End Time</label>
+                            <label for="addSupplier" class="form-label fw-semi-bold">Start To End Time</label>
                             <InputText @bind-Value="company.StartToEndTime" type="text" class="form-control form-control-sm form-rounded" placeholder="Start To End Time" />
                         </div>
                     </div>

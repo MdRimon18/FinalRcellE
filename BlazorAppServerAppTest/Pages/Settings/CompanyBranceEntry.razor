@@ -21,7 +21,7 @@
                 <div class="col-md-6">
                     <div class="col-sm-10 col-md-10 ">
                         <div class="form-group">
-                            <label for="companyBranceEntry" class="label text-dark">Company Name<span class="error-star">*</span></label>
+                            <label for="companyBranceEntry" class="form-label fw-semi-bold">Company Name<span class="error-star">*</span></label>
                             <InputText type="text" @bind-Value="companyBranch.BranchName" class="form-control form-control-sm form-rounded " placeholder="Enter Company Name" />
                             <ValidationMessage class="text-left invalid-message-color" For="@(() =>companyBranch.BranchName)" />
 
@@ -29,21 +29,21 @@
                     </div>
                     <div class="col-sm-10 col-md-10 ">
                         <div class="form-group">
-                            <label for="companyBranceEntry" class="label text-dark">Mobile No<span class="error-star">*</span></label>
+                            <label for="companyBranceEntry" class="form-label fw-semi-bold">Mobile No<span class="error-star">*</span></label>
                             <InputText type="text" @bind-Value="companyBranch.MobileNo" class="form-control form-control-sm form-rounded " placeholder="Enter Mobile No" />
                             <ValidationMessage class="text-left invalid-message-color" For="@(() =>companyBranch.MobileNo)" />
                         </div>
                     </div>
                     <div class="col-sm-10 col-md-10">
                         <div class="form-group">
-                            <label for="companyBranceEntry" class="label text-dark">Email<span class="error-star">*</span></label>
+                            <label for="companyBranceEntry" class="form-label fw-semi-bold">Email<span class="error-star">*</span></label>
                             <InputText @bind-Value="companyBranch.Email" type="text" class="form-control form-control-sm form-rounded " placeholder="Write Email" />
                            
                         </div>
                     </div>                  
                      <div class="col-sm-10 col-md-10 ">
                         <div class="form-group">
-                            <label for="companyBranceEntry" class="label text-dark">State Name<span class="error-star">*</span> </label>
+                            <label for="companyBranceEntry" class="form-label fw-semi-bold">State Name<span class="error-star">*</span> </label>
                             <InputText @bind-Value="companyBranch.StateName" type="text" class="form-control form-control-sm form-rounded " placeholder="Organaization Name" />
                             <ValidationMessage class="text-left invalid-message-color" For="@(() =>companyBranch.StateName)" />
                         </div>
@@ -77,7 +77,7 @@
                   
                     <div class="col-sm-10 col-md-10">
                         <div class="form-group">
-                            <label for="companyBranceEntry" class="label text-dark">Address</label>
+                            <label for="companyBranceEntry" class="form-label fw-semi-bold">Address</label>
 
                             <InputTextArea rows="2" @bind-Value="companyBranch.Address"
                                            class="form-control form-control-sm form-rounded"
@@ -88,7 +88,7 @@
                     </div>
                     @* <div class="col-sm-10 col-md-10 mt-3">
                         <div class="form-group">
-                            <label for="companyComponent" class="label text-dark">Is have Company Branch?</label>
+                            <label for="companyComponent" class="form-label fw-semi-bold">Is have Company Branch?</label>
                             <InputCheckbox @bind-Value="company.IsHasBranch"/>
                              
 
@@ -99,7 +99,7 @@
                   
                    @*  <div class="col-sm-10 col-md-10 ">
                         <div class="form-group">
-                            <label for="companyComponent" class="label text-dark"> Currency <span class="error-star">*</span></label>
+                            <label for="companyComponent" class="form-label fw-semi-bold"> Currency <span class="error-star">*</span></label>
                             <InputSelect @bind-Value="company.CurrencyId" class="form-select form-rounded form-select-sm ">
                                 <option value="">Select Currency</option>
                                 @foreach (var item in currency_list)
@@ -112,7 +112,7 @@
                     </div> *@
                     @* <div class="col-sm-10 col-md-10 ">
                         <div class="form-group">
-                            <label for="companyComponent" class="label text-dark"> Select Biling Plan<span class="error-star">*</span></label>
+                            <label for="companyComponent" class="form-label fw-semi-bold"> Select Biling Plan<span class="error-star">*</span></label>
                             <InputSelect @bind-Value="company.BillingPlanId" class="form-select form-rounded form-select-sm ">
                                 <option value="">Select Billing Plan</option>
                                 @foreach (var item in biling_list)
@@ -125,7 +125,7 @@
                     </div> *@
                     <div class="col-sm-10 col-md-10 ">
                         <div class="form-group">
-                            <label for="companyBranceEntry" class="label text-dark">Branch Manager Name</label>
+                            <label for="companyBranceEntry" class="form-label fw-semi-bold">Branch Manager Name</label>
 
                             <InputText rows="2" @bind-Value="companyBranch.BrnchManagerName"
                                            class="form-control form-control-sm form-rounded"
@@ -134,7 +134,7 @@
                     </div>
                     <div class="col-sm-10 col-md-10">
                         <div class="form-group">
-                            <label for="companyBranceEntry" class="label text-dark">Manager Mobile</label>
+                            <label for="companyBranceEntry" class="form-label fw-semi-bold">Manager Mobile</label>
                             <InputText @bind-Value="companyBranch.ManagerMobile" type="text" class="form-control form-control-sm form-rounded" placeholder="Manager Mobile" />
                         </div>
                     </div>

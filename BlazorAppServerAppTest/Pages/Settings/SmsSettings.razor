@@ -1,6 +1,4 @@
 ﻿
-
-
 @page "/sms_setting"
 
 
@@ -34,90 +32,90 @@
 
                                     <div class="col-3 mb-3 text-lg-end">
 
-                                        <label class="form-label" for="Title">
+                                        <label class="form-label fw-semi-bold" for="Title">
                                             Title
                                         </label>
 
                                     </div>
                                     <div class="col-9 col-sm-7 mb-3">
 
-                                        <InputText class="form-control form-control-sm" id="Title" @bind-Value="@smsSettings.Title" />
+                                        <InputText class="form-control form-control-sm form-rounded" id="Title" @bind-Value="@smsSettings.Title" />
                                         <ValidationMessage class="text-danger" For="@(() => smsSettings.Title)" />
                                     </div>
                                     <div class="col-3 mb-3 text-lg-end">
 
-                                        <label class="form-label" for="SenderName">
+                                        <label class="form-label fw-semi-bold" for="SenderName">
                                             Sender Name
                                         </label>
 
                                     </div>
                                     <div class="col-9 col-sm-7 mb-3">
 
-                                        <InputText class="form-control form-control-sm" id="SenderName" @bind-Value="@smsSettings.SenderName" />
+                                        <InputText class="form-control form-control-sm form-rounded" id="SenderName" @bind-Value="@smsSettings.SenderName" />
                                         <ValidationMessage class="text-danger" For="@(() => smsSettings.SenderName)" />
                                     </div>
                                     <div class="col-3 mb-3 text-lg-end">
 
-                                        <label class="form-label" for="SmsCode">
+                                        <label class="form-label fw-semi-bold" for="SmsCode">
                                             Sms Code
                                         </label>
 
                                     </div>
                                     <div class="col-9 col-sm-7 mb-3">
 
-                                        <InputText class="form-control form-control-sm" id="SmsCode" @bind-Value="@smsSettings.SmsCode" />
+                                        <InputText class="form-control form-control-sm form-rounded" id="SmsCode" @bind-Value="@smsSettings.SmsCode" />
                                         <ValidationMessage class="text-danger" For="@(() => smsSettings.SmsCode)" />
                                     </div>
                                     <div class="col-3 mb-3 text-lg-end">
 
-                                        <label class="form-label" for="ApiUrl">
+                                        <label class="form-label fw-semi-bold" for="ApiUrl">
                                             Api Url
                                         </label>
 
                                     </div>
                                     <div class="col-9 col-sm-7 mb-3">
 
-                                        <InputText class="form-control form-control-sm" id="ApiUrl" @bind-Value="@smsSettings.ApiUrl" />
+                                        <InputText class="form-control form-control-sm form-rounded" id="ApiUrl" @bind-Value="@smsSettings.ApiUrl" />
                                         <ValidationMessage class="text-danger" For="@(() => smsSettings.ApiUrl)" />
                                     </div>
                                     <div class="col-3 mb-3 text-lg-end">
 
-                                        <label class="form-label" for="UserName">
+                                        <label class="form-label fw-semi-bold" for="UserName">
                                            User Name
                                         </label>
 
                                     </div>
                                     <div class="col-9 col-sm-7 mb-3">
 
-                                        <InputText class="form-control form-control-sm" id="UserName" @bind-Value="@smsSettings.UserName" />
+                                        <InputText class="form-control form-control-sm form-rounded" id="UserName" @bind-Value="@smsSettings.UserName" />
                                         <ValidationMessage class="text-danger" For="@(() => smsSettings.UserName)" />
                                     </div>
                                     <div class="col-3 mb-3 text-lg-end">
 
-                                        <label class="form-label" for="Password">
+                                        <label class="form-label fw-semi-bold" for="Password">
                                             Password
                                         </label>
 
                                     </div>
                                     <div class="col-9 col-sm-7 mb-3">
 
-                                        <InputText class="form-control form-control-sm" id="Password" @bind-Value="@smsSettings.Password" />
+                                        <InputText class="form-control form-control-sm form-rounded" id="Password" @bind-Value="@smsSettings.Password" />
                                         <ValidationMessage class="text-danger" For="@(() => smsSettings.Password)" />
                                     </div>
                                     <div class="col-3 mb-3 text-lg-end">
 
-                                        <label class="form-label" for="PortNumber">
+                                        <label class="form-label fw-semi-bold" for="PortNumber">
                                             Port Number
                                         </label>
 
                                     </div>
                                     <div class="col-9 col-sm-7 mb-3">
 
-                                        <InputText class="form-control form-control-sm" id="PortNumber" @bind-Value="@smsSettings.PortNumber" />
+                                        <InputText class="form-control form-control-sm form-rounded" id="PortNumber" @bind-Value="@smsSettings.PortNumber" />
                                         <ValidationMessage class="text-danger" For="@(() => smsSettings.PortNumber)" />
                                     </div>
                                     <div class="col-3 mb-3 text-lg-end">
-                                        <label class="form-label" for="IsDefault">Is Default</label>
+                                        <label class="form-label fw-semi-bold" for="IsDefault">Is Default</label>
                                     </div>
                                     <div class="col-9 col-sm-7 mb-3">
                                         <InputCheckbox @bind-Value="smsSettings.IsDefault" class="form-check-input" />
@@ -125,14 +123,14 @@
                                     </div>
                                     <div class="col-3 mb-3 text-lg-end">
 
-                                        <label class="form-label" for="Remarks">
+                                        <label class="form-label fw-semi-bold" for="Remarks">
                                             Remarks
                                         </label>
 
                                     </div>
                                     <div class="col-9 col-sm-7 mb-3">
 
-                                        <InputText class="form-control form-control-sm" id="Remarks" @bind-Value="@smsSettings.Remarks" />
+                                        <InputText class="form-control form-control-sm form-rounded" id="Remarks" @bind-Value="@smsSettings.Remarks" />
                                         <ValidationMessage class="text-danger" For="@(() => smsSettings.Remarks)" />
                                     </div>
                                     <div class="col-9 col-sm-7 offset-3">
@@ -181,7 +179,7 @@
                 <div class="col-auto pe-0">
 
                     <div class="input-group input-search-width">
-                        <input class="form-control form-control-sm shadow-none" type="search" placeholder="Search  by name" aria-label="search" @bind="SmsNameSearch"/>
+                        <input class="form-control form-control-sm form-rounded shadow-none" type="search" placeholder="Search  by name" aria-label="search" @bind="SmsNameSearch"/>
                         <button type="button" class="btn btn-sm btn-outline-secondary border-300 hover-border-secondary" @onclick="()=>LoadSms()">
                             <span class="fa fa-search fs-10"></span>
 

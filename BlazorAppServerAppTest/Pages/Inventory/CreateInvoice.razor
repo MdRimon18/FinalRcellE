@@ -396,7 +396,7 @@
             </div>
         </div>
     </div>
-    <div class="card-footer">
+    @* <div class="card-footer">
         <div class="row">
             <div class="pagination d-none"></div>
             <div class="col-md-8">
@@ -421,7 +421,7 @@
 
         </div>
 
-    </div>
+    </div> *@
 </div>
 
 
@@ -439,21 +439,22 @@
                     <div class="row g-3">
                         <div class="col-lg-3 col-md-3 col-sm-9 col-9 animated-div">
                             <div class="form-group">
-                                <label for="InvoiceType" class="form-label  fw-bold">Invoice Type</label><span class="error-star">*</span>
-                                <select required name="invoiceTypeSelect" class="select form-control form-control-sm form-rounded fw-semi-bold">
-                                    <option value="">Invoice Type select</option>
-                                    <option value="">New Invoice</option>
-                                    <option value="">E-Commerce Invoice</option>
-                                    <option value="">Sales Return</option>
-                                    <option value="">E-Commerce Return</option>
-                                    <!-- Options for productCategories -->
-                                </select>
+                                <label for="InvoiceType" class="form-label fw-semi-bold">Invoice Type</label><span class="error-star">*</span>
+                                <select  class="form-select form-rounded form-select-sm ">
+                                    <option value="">Select Invoice Type</option>
+                                    @foreach (var item in invoiceType_list)
+                                        {
+                                        <option value="@item.InvoiceTypeId">@item.InvoiceTypeName</option>
+                                        }
+                                </select> 
+                                
+                               
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-md-3 col-sm-9 col-9 animated-div">
                             <div class="input-group">
-                                <label for="customerMobileNo" class="form-label fw-bold">Customer Mobile No</label><span class="error-star">*</span>
+                                <label for="customerMobileNo" class="form-label fw-semi-bold">Customer Mobile No</label><span class="error-star">*</span>
 
                                 
                                    @*  <input readonly name="customerMobileNo" type="text" class="form-control form-control-sm form-rounded "
@@ -475,13 +476,13 @@
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-9 col-9 animated-div">
                             <div class="form-group">
-                                <label for="name" class="form-label fw-bold">Customer Email</label>
+                                <label for="name" class="form-label fw-semi-bold">Customer Email</label>
                                 <input name="name" type="text" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="Customer Email" required>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-9 col-9 animated-div">
                             <div class="form-group">
-                                <label for="paymentType" class="form-label fw-bold">Notification Send By</label><span class="error-star">*</span>
+                                <label for="paymentType" class="form-label fw-semi-bold">Notification Send By</label><span class="error-star">*</span>
                                 <select required name="Mobile" class="form-control form-control-sm form-rounded fw-semi-bold">
                                     <option value="">Mobile</option>
                                     <option value="">Email</option>
@@ -493,7 +494,7 @@
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-9 col-9 animated-div">
                             <div class="form-group">
-                                <label class="form-label fw-bold">Date</label>
+                                <label class="form-label fw-semi-bold">Date</label>
                                 <input class="form-control form-control-sm form-rounded fw-semi-bold"
                                        type="date"
                                        name="entryDate"
@@ -504,52 +505,51 @@
                       
                         <div class="col-lg-3 col-md-3 col-sm-6 col-9 animated-div">
                             <div class="form-group">
-                                <label for="salesBy" class="form-label fw-bold">Sales By</label>
+                                <label for="salesBy" class="form-label fw-semi-bold">Sales By</label>
                                 <input readonly name="salesBy" type="text" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="sales by" required>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-9 col-9 animated-div">
                             <div class="form-group">
-                                <label for="paymentType" class="form-label fw-bold">Payment Type</label><span class="error-star">*</span>
-                                <select required name="paymentType" class="form-control form-control-sm form-rounded fw-semi-bold">
-                                    <option value="">Cash In Hand</option>
-                                    <option value="">Digital Currency</option>
-                                    <option value="">Bank</option>
-                                    
-                                    <!-- Options for productCategories -->
+                                <label for="paymentType" class="form-label fw-semi-bold">Payment Type</label><span class="error-star">*</span>
+                                <select class="form-select form-rounded form-select-sm ">
+                                    <option value="">Select Payment Type</option>
+                                    @foreach (var item in PaymentTypes_list)
+                                    {
+                                        <option value="@item.PaymentTypeId">@item.PaymentTypesName</option>
+                                    }
                                 </select>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-9 col-9 animated-div">
                             <div class="form-group">
-                                <label for="categorySelect" class="form-label fw-bold">Category</label>
-                                <select class="form-select form-select-sm form-select-rounded js-choice" id="categorySelect" multiple="multiple" size="1" name="categorySelect" data-options='{"removeItemButton":true,"placeholder":true}'>
+                                <label for="categorySelect" class="form-label fw-semi-bold">Category</label>
+                                <select class="form-select form-rounded form-select-sm ">
                                     <option value="">Select Category</option>
-                                    <option>Category-1</option>
-                                    <option>Category-2</option>
-                                    <option>Category-3</option>
-                                    <option>Category-4</option>
+                                    @foreach (var item in productCategory_list)
+                                    {
+                                        <option value="@item.ProdCtgId">@item.ProdCtgName</option>
+                                    }
                                 </select>
                             </div>
                         </div>
                         
                         <div class="col-lg-3 col-md-3 col-sm-9 col-9 animated-div">
                             <div class="form-group">
-                                <label for="categorySelect" class="form-label fw-bold">Sub Category</label><span class="error-star">*</span>
-                                <select class="form-control form-control-sm form-rounded fw-semi-bold">
-                                    @* id="organizerSingle2" size="1" required="required" name="organizerSingle" data-options='{"removeItemButton":true,"placeholder":true}'> *@
-                                    <option value="">Select Sub-Category</option>
-                                    <option>Sub-Category-1</option>
-                                    <option>Sub-Category-2</option>
-                                    <option>Sub-Category-3</option>
-                                    <option>Sub-Category-4 </option>
+                                <label for="categorySelect" class="form-label fw-semi-bold">Sub Category</label><span class="error-star">*</span>
+                                <select class="form-select form-rounded form-select-sm ">
+                                    <option value=""> Select Sub Category</option>
+                                    @foreach (var item in productSubCategory_list)
+                                    {
+                                        <option value="@item.ProdSubCtgId">@item.ProdSubCtgName</option>
+                                    }
                                 </select>
                             </div>
                         </div >
                        
                         <div class="col-lg-3 col-md-3 col-sm-6 col-9 animated-div" >
                             <div class="form-group">
-                                <label for="chooseProduct" class="form-label fw-bold">Choose Product</label><span class="error-star">*</span>
+                                <label for="chooseProduct" class="form-label fw-semi-bold">Choose Product</label><span class="error-star">*</span>
                                 <div style="width: 13.5rem;" class="search-box" data-list='{"valueNames":["title"]}'>
                                     <div class="position-relative" data-bs-toggle="search" data-bs-display="static">
                                         <input class="form-control form-control-sm form-rounded search-input fw-semi-bold" type="search" placeholder="Search..." aria-label="Search" />
@@ -587,7 +587,7 @@
                                             </a >
                                         </div>
                                         <div class="text-center mt-n3">
-                                            <p class="fallback fw-bold fs-8 d-none">No Result Found.</p>
+                                            <p class="fallback fw-semi-bold fs-8 d-none">No Result Found.</p>
                                         </div>
                                     </div>
                                 </div >
@@ -602,7 +602,7 @@
                         </div >
                         <div class="col-lg-3 col-md-3 col-sm-6 col-9 animated-div" >
                             <div class="form-group">
-                                <label for="chooseSerialNumber" class="form-label fw-bold">Choose Serial No</label><span class="error-star">*</span>
+                                <label for="chooseSerialNumber" class="form-label fw-semi-bold">Choose Serial No</label><span class="error-star">*</span>
                                 
                                 <div style="width: 13.5rem;" class="search-box" data-list='{"valueNames":["title"]}'>
                                     <div class="position-relative" data-bs-toggle="search" data-bs-display="static" >
@@ -642,7 +642,7 @@
                                             </a >
                                         </div>
                                         <div class="text-center mt-n3">
-                                            <p class="fallback fw-bold fs-8 d-none">No Result Found.</p>
+                                            <p class="fallback fw-semi-bold fs-8 d-none">No Result Found.</p>
                                         </div>
                                     </div>
                                 </div >
@@ -656,18 +656,18 @@
                             <table class="class=" table table-sm mb-0 fs-10 table-view-tickets">
                                 <thead class="thdchild">
                                     <tr>
-                                        <th class="form-label fw-bold">
+                                        <th class="form-label fw-semi-bold">
                                            Image
                                         </th>
-                                        <th scope="col" class="form-label fw-bold">Category</th>
-                                        <th scope="col" class="form-label fw-bold">Name</th>
-                                        <th scope="col" class="form-label fw-bold">Quantity<span class="error-star"><strong class="bigger-asterisk">*</strong></span></th>
-                                        <th scope="col" class="form-label fw-bold">Unit</th>
-                                        <th scope="col" class="form-label fw-bold">Rate</th>
-                                        <th scope="col" class="form-label fw-bold">VAT</th>
-                                        <th scope="col" class="form-label fw-bold">Discount</th>
-                                        <th scope="col" class="form-label fw-bold">Amount</th>
-                                        <th scope="col" class="form-label fw-bold">Action</th>
+                                        <th scope="col" class="form-label fw-semi-bold">Category</th>
+                                        <th scope="col" class="form-label fw-semi-bold">Name</th>
+                                        <th scope="col" class="form-label fw-semi-bold">Quantity<span class="error-star"><strong class="bigger-asterisk">*</strong></span></th>
+                                        <th scope="col" class="form-label fw-semi-bold">Unit</th>
+                                        <th scope="col" class="form-label fw-semi-bold">Rate</th>
+                                        <th scope="col" class="form-label fw-semi-bold">VAT</th>
+                                        <th scope="col" class="form-label fw-semi-bold">Discount</th>
+                                        <th scope="col" class="form-label fw-semi-bold">Amount</th>
+                                        <th scope="col" class="form-label fw-semi-bold">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -735,7 +735,7 @@
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Product Name</th>
+                                        <th class="fw-semi-bold" scope="col">Product Name</th>
                                         <th scope="col">Serial No</th>
                                         <th scope="col">Supplier Org </th>
                                         <th scope="col">Action</th>
@@ -771,8 +771,8 @@
                                             </div>
                                         </td>
                                         <td class="align-middle text-nowrap">emma@example.com</td>
-                                        <td class="align-middle text-nowrap">#2265GFR3455</td>
                                         <td class="w-auto">
+                                        <td class="align-middle text-nowrap">#2265GFR3455</td>
                                             <div class="btn-group btn-group hover-actions end-0 me-4">
                                                 <button class="btn btn-tertiary pe-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><span class="fas fa-edit"></span></button>
                                                 <button class="btn btn-tertiary ps-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><span class="fas fa-trash-alt text-danger"></span></button>
@@ -1049,17 +1049,31 @@
 </div>
 
 <script src="assets/js/theme.js"></script>
- @code {
-    private async void ChangePage(int pageNumber)
+@code {
+     [Inject]
+     InvoiceTypeService invoiceTypeService { get; set; }
+     List<InvoiceType> invoiceType_list = new List<InvoiceType>();
+
+    [Inject]
+    ProductCategoryService productCategoryService { get; set; }
+    List<ProductCategories> productCategory_list = new List<ProductCategories>();
+
+    [Inject]
+    ProductSubCategoryService productSubCategoryService { get; set; }
+    List<ProductSubCategory> productSubCategory_list = new List<ProductSubCategory>();
+
+
+    [Inject]
+    PaymentTypesService paymentTypesService { get; set; }
+    List<PaymentTypes> PaymentTypes_list = new List<PaymentTypes>();
+
+     protected override async Task OnInitializedAsync()
     {
-       // currentPage = pageNumber;
-       // await LoadBillingPlan();
+        invoiceType_list = (await invoiceTypeService.Get(null, null, null, null, 1, 1000)).ToList();
+        productCategory_list = (await productCategoryService.Get(null,null, null, null, 1, 1000)).ToList();
+        productSubCategory_list = (await productSubCategoryService.Get(null, null, null, null, null, 1, 1000)).ToList();
+        PaymentTypes_list = (await paymentTypesService.Get(null, null, null, null, 1, 1000)).ToList();
+       
     }
 
-    void HandlePageSizeChanged(int newSize)
-    {
-        //PageSize = newSize;
-        //ChangePage(1);
-
-    }
- }
+}

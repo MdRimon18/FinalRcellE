@@ -32,10 +32,10 @@
 
                                         <div class="col-3 mb-3 text-lg-end">
 
-                                            <label class="form-label" for="unitName"><sapn class="error-star">*</sapn>Product Category Name</label>
+                                        <label class="form-label fw-semi-bold" for="unitName">Product Category Name<sapn class="error-star">*</sapn></label>
                                         </div>
                                         <div class="col-9 col-sm-7 mb-3">
-                                            <InputText class="form-control form-control-sm" id="unitName" @bind-Value="@productCategories.ProdCtgName" />
+                                         <InputText class="form-select form-rounded form-select-sm" id="unitName" @bind-Value="@productCategories.ProdCtgName" />
                                             <ValidationMessage class="text-danger" For="@(() => productCategories.ProdCtgName)" />
                                         </div>
                                         <div class="col-9 col-sm-7 offset-3">
