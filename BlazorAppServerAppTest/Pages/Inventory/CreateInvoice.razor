@@ -440,13 +440,13 @@
                         <div class="col-lg-3 col-md-3 col-sm-9 col-9 animated-div">
                             <div class="form-group">
                                 <label for="InvoiceType" class="form-label fw-semi-bold">Invoice Type</label><span class="error-star">*</span>
-                                <select  class="form-select form-rounded form-select-sm ">
+                                <InputSelect @bind-Value="invoice.InvoiceTypeId" class="form-select form-rounded form-select-sm ">
                                     <option value="">Select Invoice Type</option>
                                     @foreach (var item in invoiceType_list)
                                         {
                                         <option value="@item.InvoiceTypeId">@item.InvoiceTypeName</option>
                                         }
-                                </select> 
+                                </InputSelect> 
                                 
                                
                             </div>
@@ -457,10 +457,10 @@
                                 <label for="customerMobileNo" class="form-label fw-semi-bold">Customer Mobile No</label><span class="error-star">*</span>
 
                                 
-                                   @*  <input readonly name="customerMobileNo" type="text" class="form-control form-control-sm form-rounded "
+                                    @*  <input  readonly name="customerMobileNo" type="text" class="form-control form-control-sm form-rounded "
                                        placeholder="customer mobile no" required aria-label="Input group example" id="inputField" aria-describedby="plusButton"> *@
                                 <div class="input-group">
-                                    <input type="text" id="inputField" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="Enter Cus. Phone" aria-label="Enter value" aria-describedby="plusButton">
+                                    <InputText  @bind-Value="invoice.InvoiceNumber" type="text" id="inputField" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="Enter Cus. Phone" aria-label="Enter value" aria-describedby="plusButton"/>
                                     <div class="input-group-append">
                                         <button class="btn btn-sm btn-light" type="button" id="plusButton" data-bs-toggle="offcanvas"
                                         data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">+</button>
@@ -505,20 +505,20 @@
                       
                         <div class="col-lg-3 col-md-3 col-sm-6 col-9 animated-div">
                             <div class="form-group">
-                                <label for="salesBy" class="form-label fw-semi-bold">Sales By</label>
-                                <input readonly name="salesBy" type="text" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="sales by" required>
+                                <label for="salesBy" class="form-label fw-semi-bold">Seller</label>
+                                <InputText @bind-Value="invoice.SalesByName" readonly name="salesBy" type="text" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="seller" required />
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-9 col-9 animated-div">
                             <div class="form-group">
                                 <label for="paymentType" class="form-label fw-semi-bold">Payment Type</label><span class="error-star">*</span>
-                                <select class="form-select form-rounded form-select-sm ">
+                                <InputSelect @bind-Value="invoice.PaymentTypeId" class="form-select form-rounded form-select-sm ">
                                     <option value="">Select Payment Type</option>
                                     @foreach (var item in PaymentTypes_list)
                                     {
                                         <option value="@item.PaymentTypeId">@item.PaymentTypesName</option>
                                     }
-                                </select>
+                                </InputSelect>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-9 col-9 animated-div">
@@ -648,6 +648,7 @@
                                 </div >
                             </div>
                         </div >
+
                     </div >
                     <div class="row">
 
@@ -789,35 +790,38 @@
                 <div class="col-lg-2 col-md-2 col-sm-2 col-2">
                     <div class="form-group">
                         <label class="form-label fw-bolder">Total</label>
-                        <input type="number" class="form-control form-control-sm form-rounded fw-bold" readonly id="Total" placeholder="Total Amount">
+                        <InputNumber @bind-Value="invoice.TotalAmount" type="number" class="form-control form-control-sm form-rounded fw-bold"  placeholder="Total Amount" />
                     </div>
                     <div class="form-group">
                         <label class="form-label fw-bold">Vat</label>
-                        <input type="number" class="form-control form-control-sm form-rounded fw-bold" readonly id="Vat" placeholder="Vat(%)">
-                    </div>
+                        <InputNumber  @bind-Value="invoice.TotalVat" type="number" class="form-control form-control-sm form-rounded fw-bold" placeholder="Vat(%)"/>
+                    </div
                     <div class="form-group">
                         <label class="form-label fw-bold">Discount</label>
-                        <input type="number" class="form-control form-control-sm form-rounded fw-bold" readonly id="Discount" placeholder="Discount(%)">
+                        <InputNumber @bind-Value="invoice.TotalDiscount" type="number" class="form-control form-control-sm form-rounded fw-bold" placeholder="Discount(%)"/>
                     </div>
                     <div class="form-group">
                         <label class="form-label fw-bold">Additional Discount</label>
-                        <input type="number" class="form-control form-control-sm form-rounded fw-bold" id="additionalDiscount" placeholder="Additional Discount">
+                        <InputNumber @bind-Value="invoice.TotalAddiDiscount" type="number" class="form-control form-control-sm form-rounded fw-bold" id="additionalDiscount" placeholder="Additional Discount"/>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label fw-bolder">Total Payable</label>
-                        <input type="number" class="form-control form-control-sm form-rounded fw-bold" readonly id="totalPayable" placeholder="Total Payable">
+                        <InputNumber @bind-Value="invoice.TotalPayable" type="number" class="form-control form-control-sm form-rounded fw-bold" placeholder="Total Payable"/>
                     </div>
                     <div class="form-group">
                         <label class="form-label fw-bolder">Receive</label>
-                        <input type="number" class="form-control form-control-sm form-rounded fw-bold" placeholder="Receive">
+                        <InputNumber @bind-Value="invoice.RecieveAmount" type="number" class="form-control form-control-sm form-rounded fw-bold" placeholder="Receive"/>
                         <input type="hidden" class="form-control form-control-sm form-rounded">
                     </div>
                     <div class="form-group">
                         <label class="form-label fw-bolder">Current Due</label>
-                        <input type="number" class="form-control form-control-sm form-rounded fw-bold" readonly id="totalCurrentDue" placeholder="Current Due">
+                        <InputNumber @bind-Value="invoice.DueAmount" type="number" class="form-control form-control-sm form-rounded fw-bold" placeholder="Current Due"/>
                     </div>
                 </div >
+
+                <button type="button" @onclick=OnSave class="btn btn-primary btn-sm mt-2">Save</button>
+                <button type="reset" class="btn btn-primary btn-sm mt-2">Refresh</button>
 
             </form>
         </div>
@@ -1050,9 +1054,13 @@
 
 <script src="assets/js/theme.js"></script>
 @code {
-     [Inject]
-     InvoiceTypeService invoiceTypeService { get; set; }
-     List<InvoiceType> invoiceType_list = new List<InvoiceType>();
+    [Inject]
+    InvoiceService invoiceService { get; set; }
+    Invoice invoice = new Invoice();//object or Model
+
+    [Inject]
+    InvoiceTypeService invoiceTypeService { get; set; }
+    List<InvoiceType> invoiceType_list = new List<InvoiceType>();
 
     [Inject]
     ProductCategoryService productCategoryService { get; set; }
@@ -1067,13 +1075,17 @@
     PaymentTypesService paymentTypesService { get; set; }
     List<PaymentTypes> PaymentTypes_list = new List<PaymentTypes>();
 
-     protected override async Task OnInitializedAsync()
+    protected override async Task OnInitializedAsync()
     {
         invoiceType_list = (await invoiceTypeService.Get(null, null, null, null, 1, 1000)).ToList();
         productCategory_list = (await productCategoryService.Get(null,null, null, null, 1, 1000)).ToList();
         productSubCategory_list = (await productSubCategoryService.Get(null, null, null, null, null, 1, 1000)).ToList();
         PaymentTypes_list = (await paymentTypesService.Get(null, null, null, null, 1, 1000)).ToList();
-       
+
+    }
+    private async Task OnSave()
+    {
+        var inv = invoice;
     }
 
 }

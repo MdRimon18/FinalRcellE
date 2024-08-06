@@ -41,6 +41,7 @@ builder.Services.AddScoped<ColorService>();
 builder.Services.AddScoped<CustomerService>();
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<CompanyService>();
+builder.Services.AddScoped<InvoiceService>();
 
 
 builder.Services.AddScoped<CountryServiceV2>();
@@ -55,6 +56,8 @@ builder.Services.AddScoped<WarehouseService>();
 builder.Services.AddScoped<EmailSetupService>();
 builder.Services.AddScoped<SmsSettinsService>();
 builder.Services.AddScoped<ProductService>();
+builder.Services.AddScoped<InvoiceService>();
+builder.Services.AddScoped<CompanyService>();
 
 builder.Services.AddScoped<SupplierService>();
 builder.Services.AddScoped<LanguageService>();

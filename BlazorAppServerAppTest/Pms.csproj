@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <Content Remove="Pages\ReusableComponent\WarningAlert.razor" />
+    <Content Remove="Pages\Settings\CreateInvoice.razor" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,15 +30,21 @@
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Pages\ReusableComponent\WarningAlert.razor" />
+    <_ContentIncludedByDefault Remove="Pages\Settings\CreateInvoice.razor" />
     <_ContentIncludedByDefault Remove="Pages\Settings\EmailSetup.razor" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="Pages\ReusableComponent\WarningAlert.razor" />
+    <None Include="Pages\Inventory\CreateInvoice.razor" />
   </ItemGroup>
 
   <ItemGroup>
     <UpToDateCheckInput Remove="Pages\Settings\EmailSetup.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\Settings\CreateInvoice.razor" />
   </ItemGroup>
 
 </Project>
