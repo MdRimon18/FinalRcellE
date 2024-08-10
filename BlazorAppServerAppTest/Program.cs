@@ -42,6 +42,7 @@ builder.Services.AddScoped<CustomerService>();
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<CompanyService>();
 builder.Services.AddScoped<InvoiceService>();
+builder.Services.AddScoped<WarehouseService>();
 
 
 builder.Services.AddScoped<CountryServiceV2>();

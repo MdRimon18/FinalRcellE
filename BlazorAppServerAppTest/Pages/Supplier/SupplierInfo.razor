@@ -296,11 +296,15 @@
     List<Suppliers> suppliers = new List<Suppliers>();
 
     private bool isLoading = true;
+
     private int PageSize { get; set; } = 5; // Number of items per page
 
     int totalPages { get; set; }
+
     int currentPage = 1; // Example current page
+
     private string errorMessage;
+
     private int TotalRecord { get; set; }
 
     public string? SplrNameSearch { get; set; }
