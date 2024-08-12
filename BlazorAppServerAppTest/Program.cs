@@ -59,6 +59,8 @@ builder.Services.AddScoped<SmsSettinsService>();
 builder.Services.AddScoped<ProductService>();
 builder.Services.AddScoped<InvoiceService>();
 builder.Services.AddScoped<CompanyService>();
+builder.Services.AddScoped<BasicColumnPermissionService>();
+builder.Services.AddScoped<PageDetailsService>();
 
 builder.Services.AddScoped<SupplierService>();
 builder.Services.AddScoped<LanguageService>();
