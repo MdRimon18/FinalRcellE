@@ -28,6 +28,25 @@
                                     <SuccessAlert Message="@SuccessMessage" Show="@showSuccessAlert" />
                                     <DangerAlert Message="@DangerMessage" Show="@showDangerAlert" OnClose="HideAlert" />
 
+
+                                    <div class="col-3 mb-3 text-lg-end">
+
+                                        <label class="form-label fw-semi-bold" for="ColorIdName">Page<span class="error-star">*</span></label>
+                                    </div>
+                                    <div class="col-9 col-sm-7 mb-3">
+                                        <InputSelect @bind-Value="columPermission.PageId" class="form-control form-control-sm form-rounded" id="PageId">
+                                             <option value=''>Select Page Id</option>
+
+                                                @foreach (var item in page_list)
+                                                {
+                                                <option value="@item.PageId">@item.PageName</option>
+                                                }
+                                        
+                                        </InputSelect>
+                                        <ValidationMessage class="text-danger" For="@(() => columPermission.PageId)" />
+
+                                    </div>
+
                                     <div class="col-3 mb-3 text-lg-end">
 
                                         <label class="form-label fw-semi-bold" for="ColorIdName">Column Name<span class="error-star">*</span></label>
@@ -338,9 +357,14 @@
     private ColumPermission columPermission = new ColumPermission();
     [Inject]
     protected IJSRuntime JSRuntime { get; set; }
+
     [Inject]
     BasicColumnPermissionService _basicColumnPermissionService { get; set; }
     List<ColumPermission>column_list= new List<ColumPermission>();
+
+    [Inject]
+    PageDetailsService _pageDetailsService { get; set; }
+    List<PageDetails> page_list = new List<PageDetails>();
 
     private bool showSuccessAlert = false;
     private bool showDangerAlert = false;
@@ -365,6 +389,7 @@
     protected override async Task OnInitializedAsync()
     {
         await LoadColumn();
+        page_list = (await _pageDetailsService.Get(null,null,null, 1, 1000)).ToList();
 
     }
 
