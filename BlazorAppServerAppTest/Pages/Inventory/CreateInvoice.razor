@@ -561,30 +561,24 @@
                                     <div class="dropdown-menu border font-base start-0 mt-2 py-0 overflow-hidden w-100">
                                         <div class="scrollbar list py-3" style="max-height: 15rem;">
 
-                                            <h6 class="dropdown-header fw-medium text-uppercase px-x1 fs-11 pt-0 pb-2">Members</h6><a class="dropdown-item px-x1 py-2" href="pages/user/profile.html">
+                                            <h6 class="dropdown-header fw-medium text-uppercase px-x1 fs-11 pt-0 pb-2">Products</h6>
+                                           @foreach (var p in products)
+                                            {
+                                                  <a class="dropdown-item px-x1 py-2" @onclick="()=>OnSelectProduct(p)">
                                                 <div class="d-flex align-items-center">
                                                     <div class="avatar avatar-l status-online me-2">
                                                         <img class="rounded-circle" src="assets/img/team/1.jpg" alt="" />
 
                                                     </div>
                                                     <div class="flex-1">
-                                                        <h6 class="mb-0 title">Anna Karinina</h6>
+                                                        <h6 class="mb-0 title">@p.ProdName</h6>
                                                         <p class="fs-11 mb-0 d-flex">Technext Limited</p>
                                                     </div>
                                                 </div>
                                             </a>
-                                            <a class="dropdown-item px-x1 py-2" href="pages/user/profile.html">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="avatar avatar-l me-2">
-                                                        <img class="rounded-circle" src="assets/img/team/2.jpg" alt="" />
-
-                                                    </div>
-                                                    <div class="flex-1">
-                                                        <h6 class="mb-0 title">Antony Hopkins</h6>
-                                                        <p class="fs-11 mb-0 d-flex">Brain Trust</p>
-                                                    </div>
-                                                </div>
-                                            </a >
+                                            }
+                                          
+                                           
                                         </div>
                                         <div class="text-center mt-n3">
                                             <p class="fallback fw-semi-bold fs-8 d-none">No Result Found.</p>
@@ -654,7 +648,7 @@
 
 
                         <div class="table-responsive scrollbar mt-4">
-                            <table class="class=" table table-sm mb-0 fs-10 table-view-tickets">
+                            <table class="table table-sm mb-0 fs-10 table-view-tickets">
                                 <thead class="thdchild">
                                     <tr>
                                         <th class="form-label fw-semi-bold">
@@ -672,53 +666,57 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>
-                                            <div class="col-auto">
-                                                <div class="avatar avatar-2xl">
-                                                    <img class="rounded-circle" src="assets/img/products/1.jpg" alt="" />
+                                    @foreach (var itm in itemsList)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <div class="col-auto">
+                                                    <div class="avatar avatar-2xl">
+                                                        <img class="rounded-circle" src="assets/img/products/1.jpg" alt="" />
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <input type="text" class="form-control form-control-sm form-rounded bold-input fw-semi-bold" placeholder="Category" readonly>
-                                        </td>
-                                        <td>
-                                            <input type="text" class="form-control form-control-sm form-rounded bold-input fw-semi-bold" placeholder="Name" readonly>
-                                        </td>
-                                        <td>
-                                            <input type="number" class="form-control form-control-sm form-rounded bold-input fw-semi-bold" placeholder="Quantity" />
-                                        </td>
-                                        <td>
-                                            <input type="text" class="form-control form-control-sm form-rounded fw-semi-bold" readonly placeholder="Unit">
-                                        </td>
-                                        <td>
-                                            <input type="number" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="Rate">
-                                        </td>
-                                        <td>
-                                            <input type="number" readonly class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="V(%)">
-                                        </td>
-                                        <td>
-                                            <input type="number" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="D(%)">
-                                        </td>
-                                        <td>
-                                            <input readonly type="number" class="form-control form-control-sm form-rounded bold-input fw-semi-bold" placeholder="Amount">
-                                        </td>
-                                        <td>
-                                            <button type="button" class="btn btn-sm btn-light me-1 mb-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop">serial</button>
-                                        </td>
-                                        <td>
-                                            <button title="Info" class="btn btn-sm btn-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop-1">
-                                                <i class="fa fa-info-circle" style="font-size:18px"></i>
-                                            </button>
-                                        </td>
-                                        <td>
-                                            <button title="Delete" class="btn btn-sm btn-light">
-                                                <i class="far fa-trash-alt fa-lg text-danger"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control form-control-sm form-rounded bold-input fw-semi-bold" placeholder="Category" readonly>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control form-control-sm form-rounded bold-input fw-semi-bold" placeholder="Name" readonly>
+                                            </td>
+                                            <td>
+                                                <input type="number" class="form-control form-control-sm form-rounded bold-input fw-semi-bold" placeholder="Quantity" />
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control form-control-sm form-rounded fw-semi-bold" readonly placeholder="Unit">
+                                            </td>
+                                            <td>
+                                                <input type="number" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="Rate" value="@itm.SellingPrice">
+                                            </td>
+                                            <td>
+                                                <input type="number" readonly class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="V(%)">
+                                            </td>
+                                            <td>
+                                                <input type="number" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="D(%)">
+                                            </td>
+                                            <td>
+                                                <input readonly type="number" class="form-control form-control-sm form-rounded bold-input fw-semi-bold" placeholder="Amount">
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-light me-1 mb-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Serial</button>
+                                            </td>
+                                            <td>
+                                                <button title="Info" class="btn btn-sm btn-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop-1">
+                                                    <i class="fa fa-info-circle" style="font-size:18px"></i>
+                                                </button>
+                                            </td>
+                                            <td>
+                                                <button title="Delete" class="btn btn-sm btn-light"  @onclick="() => DeleteItem(itm)">
+                                                    <i class="far fa-trash-alt fa-lg text-danger"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    }
                                 </tbody>
+
                             </table>
                         </div >
                     </div>
@@ -1058,6 +1056,15 @@
     InvoiceService invoiceService { get; set; }
     Invoice invoice = new Invoice();//object or Model
 
+     [Inject]
+    InvoiceItemService _invoiceItemService { get; set; }
+    InvoiceItems invoiceItem = new InvoiceItems();// 
+     List<InvoiceItems> itemsList = new List<InvoiceItems>();
+
+    [Inject]
+    ProductService _productService { get; set; }
+    List<Products> products = new List<Products>();
+
     [Inject]
     InvoiceTypeService invoiceTypeService { get; set; }
     List<InvoiceType> invoiceType_list = new List<InvoiceType>();
@@ -1081,11 +1088,28 @@
         productCategory_list = (await productCategoryService.Get(null,null, null, null, 1, 1000)).ToList();
         productSubCategory_list = (await productSubCategoryService.Get(null, null, null, null, null, 1, 1000)).ToList();
         PaymentTypes_list = (await paymentTypesService.Get(null, null, null, null, 1, 1000)).ToList();
-
+        products = (await _productService.Get(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1000)).ToList();
     }
     private async Task OnSave()
     {
         var inv = invoice;
     }
+    private async Task OnSelectProduct(Products product)
+    {
+        itemsList.Add(new InvoiceItems
+        {
+            ProductId = product.ProductId,
+            Quantity = 0,
+            SellingPrice = product.SellingPrice,
+            
+            // Add other properties as necessary
+        });
 
+        // Clear the current item after adding
+        invoiceItem = new InvoiceItems();
+    }
+    private void DeleteItem(InvoiceItems item)
+    {
+        itemsList.Remove(item);
+    }
 }
