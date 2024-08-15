@@ -677,28 +677,30 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <input type="text" class="form-control form-control-sm form-rounded bold-input fw-semi-bold" placeholder="Category" readonly>
+                                                <input type="text" class="form-control form-control-sm form-rounded bold-input fw-semi-bold" placeholder="Category" readonly value="@itm.CategoryName">
                                             </td>
                                             <td>
-                                                <input type="text" class="form-control form-control-sm form-rounded bold-input fw-semi-bold" placeholder="Name" readonly>
+                                                <input type="text" class="form-control form-control-sm form-rounded bold-input fw-semi-bold" placeholder="Name" readonly value="@itm.ProductName">
                                             </td>
                                             <td>
-                                                <input type="number" class="form-control form-control-sm form-rounded bold-input fw-semi-bold" placeholder="Quantity" />
+                                                <input type="number" class="form-control form-control-sm form-rounded bold-input fw-semi-bold"
+                                                placeholder="Quantity"  @bind="itm.Quantity" @bind:event="oninput" @onchange="() => OnChangeQuantity(itm)" />
                                             </td>
                                             <td>
-                                                <input type="text" class="form-control form-control-sm form-rounded fw-semi-bold" readonly placeholder="Unit">
+                                                <input type="text" class="form-control form-control-sm form-rounded fw-semi-bold" readonly placeholder="Unit" value="@itm.Unit" >
                                             </td>
                                             <td>
                                                 <input type="number" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="Rate" value="@itm.SellingPrice">
                                             </td>
                                             <td>
-                                                <input type="number" readonly class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="V(%)">
+                                                <input type="number" readonly class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="V(%)" value="@itm.VatAmount">
                                             </td>
                                             <td>
-                                                <input type="number" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="D(%)">
+                                                <input type="number" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="D(%)" value="@itm.DiscountPercentg">
                                             </td>
                                             <td>
-                                                <input readonly type="number" class="form-control form-control-sm form-rounded bold-input fw-semi-bold" placeholder="Amount">
+                                                <input readonly type="number" class="form-control form-control-sm form-rounded bold-input fw-semi-bold"
+                                                placeholder="Amount" @bind-value="itm.TotalPrice">
                                             </td>
                                             <td>
                                                 <button type="button" class="btn btn-sm btn-light me-1 mb-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Serial</button>
@@ -1056,10 +1058,10 @@
     InvoiceService invoiceService { get; set; }
     Invoice invoice = new Invoice();//object or Model
 
-     [Inject]
+    [Inject]
     InvoiceItemService _invoiceItemService { get; set; }
     InvoiceItems invoiceItem = new InvoiceItems();// 
-     List<InvoiceItems> itemsList = new List<InvoiceItems>();
+    List<InvoiceItems> itemsList = new List<InvoiceItems>();
 
     [Inject]
     ProductService _productService { get; set; }
@@ -1098,10 +1100,16 @@
     {
         itemsList.Add(new InvoiceItems
         {
+
+            CategoryName=product.ProdCtgName,
+            ProductName=product.ProdName,
             ProductId = product.ProductId,
             Quantity = 0,
+            Unit=product.UnitName,
             SellingPrice = product.SellingPrice,
-            
+            VatAmount=product.VatAmount,
+            DiscountPercentg=product.DiscountPercentg,
+            TotalPrice=0
             // Add other properties as necessary
         });
 
@@ -1112,4 +1120,30 @@
     {
         itemsList.Remove(item);
     }
+    private void OnChangeQuantity(InvoiceItems item)
+   {
+    if (item.Quantity > 0 && item.SellingPrice > 0)
+     {
+        // Calculate the total price based on quantity and selling price
+        item.TotalPrice = item.Quantity * item.SellingPrice;
+
+        // If there are discounts or VAT, apply them as needed
+        if (item.DiscountPercentg > 0)
+        {
+            // Apply discount
+          //  var discountAmount = item.TotalPrice * (item.DiscountPercentg / 100);
+          //  item.TotalPrice -= discountAmount;
+        }
+
+        if (item.VatAmount > 0)
+        {
+            // Apply VAT
+            var vatAmount = item.TotalPrice * (item.VatAmount / 100);
+         //   item.TotalPrice += vatAmount;
+        }
+    }
+
+    // Optionally, trigger a UI refresh or other logic after updating the total price
+   }
+
 }
