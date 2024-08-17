@@ -62,12 +62,12 @@ namespace Pms.Data.Repository.Inventory
 				{
 					var parameters = new DynamicParameters();
 
-					parameters.Add("@InvoiceItemId", _invoiceItems.InvoiceItemId);
-					parameters.Add("@InvoiceId", _invoiceItems.InvoiceId);
-					parameters.Add("@ProductId", _invoiceItems.ProductId);
-					parameters.Add("@Quantity", _invoiceItems.Quantity);
-					parameters.Add("@BuyingPrice", _invoiceItems.BuyingPrice);
-					parameters.Add("@SellingPrice", _invoiceItems.SellingPrice);
+				parameters.Add("@InvoiceItemId", _invoiceItems.InvoiceItemId);
+				parameters.Add("@InvoiceId", _invoiceItems.InvoiceId);
+				parameters.Add("@ProductId", _invoiceItems.ProductId);
+				parameters.Add("@Quantity", _invoiceItems.Quantity);
+				parameters.Add("@BuyingPrice", _invoiceItems.BuyingPrice);
+				parameters.Add("@SellingPrice", _invoiceItems.SellingPrice);
 				parameters.Add("@TotalPrice", _invoiceItems.TotalPrice);
 				parameters.Add("@VatPercentg", _invoiceItems.VatPercentg);
 				parameters.Add("@VatAmount", _invoiceItems.VatAmount);
@@ -85,7 +85,7 @@ namespace Pms.Data.Repository.Inventory
 					parameters.Add("@DeletedBy", _invoiceItems.DeletedBy);
 					parameters.Add("@Status", _invoiceItems.Status);
 					parameters.Add("@SuccessOrFailId", dbType: DbType.Int32, direction: ParameterDirection.Output);
-					await _db.ExecuteAsync("Color_InsertOrUpdate_SP", parameters, commandType: CommandType.StoredProcedure);
+					await _db.ExecuteAsync("InvoiceItemsInsertOrUpdateInvoice", parameters, commandType: CommandType.StoredProcedure);
 
 					return (long)parameters.Get<int>("@SuccessOrFailId");
 				}

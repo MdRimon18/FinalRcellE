@@ -7,12 +7,44 @@
       "RelativeMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|solutionrelative:blazorappserverapptest\\pages\\inventory\\createinvoice.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|f:\\finalrcelle\\rcelle\\finalrcelle\\blazorappserverapptest\\shared\\sidenavbar.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|solutionrelative:blazorappserverapptest\\shared\\sidenavbar.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|f:\\finalrcelle\\rcelle\\finalrcelle\\blazorappserverapptest\\pages\\faq\\faq.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|solutionrelative:blazorappserverapptest\\pages\\faq\\faq.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|f:\\finalrcelle\\rcelle\\finalrcelle\\blazorappserverapptest\\data\\repository\\inventory\\invoiceitemservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|solutionrelative:blazorappserverapptest\\data\\repository\\inventory\\invoiceitemservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|f:\\finalrcelle\\rcelle\\finalrcelle\\blazorappserverapptest\\pages\\inventory\\purchaslist.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|solutionrelative:blazorappserverapptest\\pages\\inventory\\purchaslist.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|f:\\finalrcelle\\rcelle\\finalrcelle\\blazorappserverapptest\\data\\repository\\inventory\\invoiceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|solutionrelative:blazorappserverapptest\\data\\repository\\inventory\\invoiceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|f:\\finalrcelle\\rcelle\\finalrcelle\\blazorappserverapptest\\models\\entity\\settings\\invoice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|solutionrelative:blazorappserverapptest\\models\\entity\\settings\\invoice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|f:\\finalrcelle\\rcelle\\finalrcelle\\blazorappserverapptest\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|solutionrelative:blazorappserverapptest\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|f:\\finalrcelle\\rcelle\\finalrcelle\\blazorappserverapptest\\pages\\customer\\customerentry.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|solutionrelative:blazorappserverapptest\\pages\\customer\\customerentry.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|f:\\finalrcelle\\rcelle\\finalrcelle\\blazorappserverapptest\\data\\helper\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|solutionrelative:blazorappserverapptest\\data\\helper\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|f:\\finalrcelle\\rcelle\\finalrcelle\\blazorappserverapptest\\models\\entity\\settings\\products.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|solutionrelative:blazorappserverapptest\\models\\entity\\settings\\products.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|f:\\finalrcelle\\rcelle\\finalrcelle\\blazorappserverapptest\\shared\\sidenavbar.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|solutionrelative:blazorappserverapptest\\shared\\sidenavbar.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|f:\\finalrcelle\\rcelle\\finalrcelle\\blazorappserverapptest\\pages\\inventory\\stockinfu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -23,16 +55,8 @@
       "RelativeMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|solutionrelative:blazorappserverapptest\\pages\\settings\\invoicedetails.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|f:\\finalrcelle\\rcelle\\finalrcelle\\blazorappserverapptest\\models\\entity\\settings\\products.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|solutionrelative:blazorappserverapptest\\models\\entity\\settings\\products.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|f:\\finalrcelle\\rcelle\\finalrcelle\\blazorappserverapptest\\pages\\settings\\color.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|solutionrelative:blazorappserverapptest\\pages\\settings\\color.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|f:\\finalrcelle\\rcelle\\finalrcelle\\blazorappserverapptest\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|solutionrelative:blazorappserverapptest\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|f:\\finalrcelle\\rcelle\\finalrcelle\\blazorappserverapptest\\pages\\products\\productinfov2.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -45,6 +69,14 @@
     {
       "AbsoluteMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|f:\\finalrcelle\\rcelle\\finalrcelle\\blazorappserverapptest\\models\\entity\\settings\\customerreview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|solutionrelative:blazorappserverapptest\\models\\entity\\settings\\customerreview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|f:\\finalrcelle\\rcelle\\finalrcelle\\blazorappserverapptest\\models\\entity\\notificationby.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|solutionrelative:blazorappserverapptest\\models\\entity\\notificationby.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|f:\\finalrcelle\\rcelle\\finalrcelle\\blazorappserverapptest\\data\\repository\\inventory\\notificationbyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EBB1BCB7-C348-40BA-8DCE-EABA7C4C1DD2}|BlazorAppServerAppTest\\Pms.csproj|solutionrelative:blazorappserverapptest\\data\\repository\\inventory\\notificationbyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -54,11 +86,111 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FaQ.razor",
+              "DocumentMoniker": "F:\\FinalRCellE\\Rcelle\\FinalRcellE\\BlazorAppServerAppTest\\Pages\\Faq\\FaQ.razor",
+              "RelativeDocumentMoniker": "BlazorAppServerAppTest\\Pages\\Faq\\FaQ.razor",
+              "ToolTip": "F:\\FinalRCellE\\Rcelle\\FinalRcellE\\BlazorAppServerAppTest\\Pages\\Faq\\FaQ.razor",
+              "RelativeToolTip": "BlazorAppServerAppTest\\Pages\\Faq\\FaQ.razor",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAABEAAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-17T16:05:25.604Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CreateInvoice.razor",
+              "DocumentMoniker": "F:\\FinalRCellE\\Rcelle\\FinalRcellE\\BlazorAppServerAppTest\\Pages\\Inventory\\CreateInvoice.razor",
+              "RelativeDocumentMoniker": "BlazorAppServerAppTest\\Pages\\Inventory\\CreateInvoice.razor",
+              "ToolTip": "F:\\FinalRCellE\\Rcelle\\FinalRcellE\\BlazorAppServerAppTest\\Pages\\Inventory\\CreateInvoice.razor*",
+              "RelativeToolTip": "BlazorAppServerAppTest\\Pages\\Inventory\\CreateInvoice.razor*",
+              "ViewState": "AQIAAOMCAAAAAAAAAAAAAOkCAAB/AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-14T16:11:36.485Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "NotificationBy.cs",
+              "DocumentMoniker": "F:\\FinalRCellE\\Rcelle\\FinalRcellE\\BlazorAppServerAppTest\\Models\\Entity\\NotificationBy.cs",
+              "RelativeDocumentMoniker": "BlazorAppServerAppTest\\Models\\Entity\\NotificationBy.cs",
+              "ToolTip": "F:\\FinalRCellE\\Rcelle\\FinalRcellE\\BlazorAppServerAppTest\\Models\\Entity\\NotificationBy.cs",
+              "RelativeToolTip": "BlazorAppServerAppTest\\Models\\Entity\\NotificationBy.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAUAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-17T08:53:47.422Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Invoice.cs",
+              "DocumentMoniker": "F:\\FinalRCellE\\Rcelle\\FinalRcellE\\BlazorAppServerAppTest\\Models\\Entity\\Settings\\Invoice.cs",
+              "RelativeDocumentMoniker": "BlazorAppServerAppTest\\Models\\Entity\\Settings\\Invoice.cs",
+              "ToolTip": "F:\\FinalRCellE\\Rcelle\\FinalRcellE\\BlazorAppServerAppTest\\Models\\Entity\\Settings\\Invoice.cs",
+              "RelativeToolTip": "BlazorAppServerAppTest\\Models\\Entity\\Settings\\Invoice.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-17T07:52:03.046Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "F:\\FinalRCellE\\Rcelle\\FinalRcellE\\BlazorAppServerAppTest\\Program.cs",
+              "RelativeDocumentMoniker": "BlazorAppServerAppTest\\Program.cs",
+              "ToolTip": "F:\\FinalRCellE\\Rcelle\\FinalRcellE\\BlazorAppServerAppTest\\Program.cs",
+              "RelativeToolTip": "BlazorAppServerAppTest\\Program.cs",
+              "ViewState": "AQIAACQAAAAAAAAAAAAAAC4AAAAvAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-11T09:48:01.88Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "NotificationByService.cs",
+              "DocumentMoniker": "F:\\FinalRCellE\\Rcelle\\FinalRcellE\\BlazorAppServerAppTest\\Data\\Repository\\Inventory\\NotificationByService.cs",
+              "RelativeDocumentMoniker": "BlazorAppServerAppTest\\Data\\Repository\\Inventory\\NotificationByService.cs",
+              "ToolTip": "F:\\FinalRCellE\\Rcelle\\FinalRcellE\\BlazorAppServerAppTest\\Data\\Repository\\Inventory\\NotificationByService.cs",
+              "RelativeToolTip": "BlazorAppServerAppTest\\Data\\Repository\\Inventory\\NotificationByService.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAqwBMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-17T08:57:26.588Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "InvoiceItemService.cs",
+              "DocumentMoniker": "F:\\FinalRCellE\\Rcelle\\FinalRcellE\\BlazorAppServerAppTest\\Data\\Repository\\Inventory\\InvoiceItemService.cs",
+              "RelativeDocumentMoniker": "BlazorAppServerAppTest\\Data\\Repository\\Inventory\\InvoiceItemService.cs",
+              "ToolTip": "F:\\FinalRCellE\\Rcelle\\FinalRcellE\\BlazorAppServerAppTest\\Data\\Repository\\Inventory\\InvoiceItemService.cs",
+              "RelativeToolTip": "BlazorAppServerAppTest\\Data\\Repository\\Inventory\\InvoiceItemService.cs",
+              "ViewState": "AQIAADEAAAAAAAAAAAAAADkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-17T11:07:00.457Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "F:\\FinalRCellE\\Rcelle\\FinalRcellE\\BlazorAppServerAppTest\\Data\\Helper\\UserService.cs",
+              "RelativeDocumentMoniker": "BlazorAppServerAppTest\\Data\\Helper\\UserService.cs",
+              "ToolTip": "F:\\FinalRCellE\\Rcelle\\FinalRcellE\\BlazorAppServerAppTest\\Data\\Helper\\UserService.cs",
+              "RelativeToolTip": "BlazorAppServerAppTest\\Data\\Helper\\UserService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-17T07:01:44.673Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "PurchasList.razor",
               "DocumentMoniker": "F:\\FinalRCellE\\Rcelle\\FinalRcellE\\BlazorAppServerAppTest\\Pages\\Inventory\\PurchasList.razor",
               "RelativeDocumentMoniker": "BlazorAppServerAppTest\\Pages\\Inventory\\PurchasList.razor",
@@ -66,11 +198,36 @@
               "RelativeToolTip": "BlazorAppServerAppTest\\Pages\\Inventory\\PurchasList.razor",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-15T07:36:57.16Z"
+              "WhenOpened": "2024-08-15T07:36:57.16Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 9,
+              "Title": "Products.cs",
+              "DocumentMoniker": "F:\\FinalRCellE\\Rcelle\\FinalRcellE\\BlazorAppServerAppTest\\Models\\Entity\\Settings\\Products.cs",
+              "RelativeDocumentMoniker": "BlazorAppServerAppTest\\Models\\Entity\\Settings\\Products.cs",
+              "ToolTip": "F:\\FinalRCellE\\Rcelle\\FinalRcellE\\BlazorAppServerAppTest\\Models\\Entity\\Settings\\Products.cs",
+              "RelativeToolTip": "BlazorAppServerAppTest\\Models\\Entity\\Settings\\Products.cs",
+              "ViewState": "AQIAABsAAAAAAAAAAIA+wCAAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-17T03:31:42.754Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "InvoiceService.cs",
+              "DocumentMoniker": "F:\\FinalRCellE\\Rcelle\\FinalRcellE\\BlazorAppServerAppTest\\Data\\Repository\\Inventory\\InvoiceService.cs",
+              "RelativeDocumentMoniker": "BlazorAppServerAppTest\\Data\\Repository\\Inventory\\InvoiceService.cs",
+              "ToolTip": "F:\\FinalRCellE\\Rcelle\\FinalRcellE\\BlazorAppServerAppTest\\Data\\Repository\\Inventory\\InvoiceService.cs",
+              "RelativeToolTip": "BlazorAppServerAppTest\\Data\\Repository\\Inventory\\InvoiceService.cs",
+              "ViewState": "AQIAADgAAAAAAAAAAAAcwEIAAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-17T06:46:43.274Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "SideNavBar.razor",
               "DocumentMoniker": "F:\\FinalRCellE\\Rcelle\\FinalRcellE\\BlazorAppServerAppTest\\Shared\\SideNavBar.razor",
               "RelativeDocumentMoniker": "BlazorAppServerAppTest\\Shared\\SideNavBar.razor",
@@ -82,7 +239,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 12,
               "Title": "InvoiceDetails.razor",
               "DocumentMoniker": "F:\\FinalRCellE\\Rcelle\\FinalRcellE\\BlazorAppServerAppTest\\Pages\\Settings\\InvoiceDetails.razor",
               "RelativeDocumentMoniker": "BlazorAppServerAppTest\\Pages\\Settings\\InvoiceDetails.razor",
@@ -94,19 +251,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Products.cs",
-              "DocumentMoniker": "F:\\FinalRCellE\\Rcelle\\FinalRcellE\\BlazorAppServerAppTest\\Models\\Entity\\Settings\\Products.cs",
-              "RelativeDocumentMoniker": "BlazorAppServerAppTest\\Models\\Entity\\Settings\\Products.cs",
-              "ToolTip": "F:\\FinalRCellE\\Rcelle\\FinalRcellE\\BlazorAppServerAppTest\\Models\\Entity\\Settings\\Products.cs",
-              "RelativeToolTip": "BlazorAppServerAppTest\\Models\\Entity\\Settings\\Products.cs",
-              "ViewState": "AQIAABsAAAAAAAAAAAAAABsAAAAxAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-15T03:18:33.743Z"
+              "DocumentIndex": 7,
+              "Title": "CustomerEntry.razor",
+              "DocumentMoniker": "F:\\FinalRCellE\\Rcelle\\FinalRcellE\\BlazorAppServerAppTest\\Pages\\Customer\\CustomerEntry.razor",
+              "RelativeDocumentMoniker": "BlazorAppServerAppTest\\Pages\\Customer\\CustomerEntry.razor",
+              "ToolTip": "F:\\FinalRCellE\\Rcelle\\FinalRcellE\\BlazorAppServerAppTest\\Pages\\Customer\\CustomerEntry.razor",
+              "RelativeToolTip": "BlazorAppServerAppTest\\Pages\\Customer\\CustomerEntry.razor",
+              "ViewState": "AQIAAKYAAAAAAAAAAAA0wKsAAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-17T07:29:02.153Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 14,
               "Title": "ProductInfoV2.razor",
               "DocumentMoniker": "F:\\FinalRCellE\\Rcelle\\FinalRcellE\\BlazorAppServerAppTest\\Pages\\Products\\ProductInfoV2.razor",
               "RelativeDocumentMoniker": "BlazorAppServerAppTest\\Pages\\Products\\ProductInfoV2.razor",
@@ -118,7 +275,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 13,
               "Title": "Color.razor",
               "DocumentMoniker": "F:\\FinalRCellE\\Rcelle\\FinalRcellE\\BlazorAppServerAppTest\\Pages\\Settings\\Color.razor",
               "RelativeDocumentMoniker": "BlazorAppServerAppTest\\Pages\\Settings\\Color.razor",
@@ -130,7 +287,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 11,
               "Title": "StockInfu.razor",
               "DocumentMoniker": "F:\\FinalRCellE\\Rcelle\\FinalRcellE\\BlazorAppServerAppTest\\Pages\\Inventory\\StockInfu.razor",
               "RelativeDocumentMoniker": "BlazorAppServerAppTest\\Pages\\Inventory\\StockInfu.razor",
@@ -142,20 +299,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CreateInvoice.razor",
-              "DocumentMoniker": "F:\\FinalRCellE\\Rcelle\\FinalRcellE\\BlazorAppServerAppTest\\Pages\\Inventory\\CreateInvoice.razor",
-              "RelativeDocumentMoniker": "BlazorAppServerAppTest\\Pages\\Inventory\\CreateInvoice.razor",
-              "ToolTip": "F:\\FinalRCellE\\Rcelle\\FinalRcellE\\BlazorAppServerAppTest\\Pages\\Inventory\\CreateInvoice.razor*",
-              "RelativeToolTip": "BlazorAppServerAppTest\\Pages\\Inventory\\CreateInvoice.razor*",
-              "ViewState": "AQIAAKQCAAAAAAAAAIA1wK0CAABnAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-14T16:11:36.485Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 15,
               "Title": "ReviewService.cs",
               "DocumentMoniker": "F:\\FinalRCellE\\Rcelle\\FinalRcellE\\BlazorAppServerAppTest\\Data\\Repository\\Inventory\\ReviewService.cs",
               "RelativeDocumentMoniker": "BlazorAppServerAppTest\\Data\\Repository\\Inventory\\ReviewService.cs",
@@ -168,19 +312,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Program.cs",
-              "DocumentMoniker": "F:\\FinalRCellE\\Rcelle\\FinalRcellE\\BlazorAppServerAppTest\\Program.cs",
-              "RelativeDocumentMoniker": "BlazorAppServerAppTest\\Program.cs",
-              "ToolTip": "F:\\FinalRCellE\\Rcelle\\FinalRcellE\\BlazorAppServerAppTest\\Program.cs",
-              "RelativeToolTip": "BlazorAppServerAppTest\\Program.cs",
-              "ViewState": "AQIAACQAAAAAAAAAAAAAACwAAAAxAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-11T09:48:01.88Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 16,
               "Title": "CustomerReview.cs",
               "DocumentMoniker": "F:\\FinalRCellE\\Rcelle\\FinalRcellE\\BlazorAppServerAppTest\\Models\\Entity\\Settings\\CustomerReview.cs",
               "RelativeDocumentMoniker": "BlazorAppServerAppTest\\Models\\Entity\\Settings\\CustomerReview.cs",

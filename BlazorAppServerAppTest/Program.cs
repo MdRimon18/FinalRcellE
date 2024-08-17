@@ -45,6 +45,7 @@ builder.Services.AddScoped<InvoiceService>();
 builder.Services.AddScoped<InvoiceItemService>();
 
 builder.Services.AddScoped<WarehouseService>();
+builder.Services.AddScoped<NotificationByService>();
 
 
 builder.Services.AddScoped<CountryServiceV2>();

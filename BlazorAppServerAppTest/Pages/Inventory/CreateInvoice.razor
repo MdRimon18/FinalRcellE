@@ -1,4 +1,5 @@
 ﻿@page "/create_invoice"
+@using Pms.Models.Entity
 
 
 <div class="offcanvas offcanvas-end" id="offcanvasRight" tabindex="-1" aria-labelledby="offcanvasRightLabel" style="width: 55%;">
@@ -483,22 +484,22 @@
                         <div class="col-lg-3 col-md-3 col-sm-9 col-9 animated-div">
                             <div class="form-group">
                                 <label for="paymentType" class="form-label fw-semi-bold">Notification Send By</label><span class="error-star">*</span>
-                                <select required name="Mobile" class="form-control form-control-sm form-rounded fw-semi-bold">
-                                    <option value="">Mobile</option>
-                                    <option value="">Email</option>
-                                    <option value="">Both</option>
-                                    <option value="">None</option>
-                                    <!-- Options for productCategories -->
-                                </select>
+                                <InputSelect @bind-Value="invoice.NotificationById" class="form-select form-rounded form-select-sm ">
+                                    <option value="">Select Notification</option>
+                                    @foreach (var item in notificationBy_list)
+                                        {
+                                        <option value="@item.NotificationById">@item.NotificationByName</option>
+                                        }
+                                </InputSelect> 
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-9 col-9 animated-div">
                             <div class="form-group">
                                 <label class="form-label fw-semi-bold">Date</label>
-                                <input class="form-control form-control-sm form-rounded fw-semi-bold"
-                                       type="date"
-                                       name="entryDate"
-                                       placeholder="Date">
+                                <InputDate class="form-control form-control-sm form-rounded fw-semi-bold"
+                                     
+                                       name="entryDate"  @bind-Value="invoice.InvoiceDateTime" 
+                                       placeholder="Date"/>
                             </div>
                         </div>
 
@@ -659,8 +660,8 @@
                                         <th scope="col" class="form-label fw-semi-bold">Quantity<span class="error-star"><strong class="bigger-asterisk">*</strong></span></th>
                                         <th scope="col" class="form-label fw-semi-bold">Unit</th>
                                         <th scope="col" class="form-label fw-semi-bold">Rate</th>
-                                        <th scope="col" class="form-label fw-semi-bold">VAT</th>
-                                        <th scope="col" class="form-label fw-semi-bold">Discount</th>
+                                        <th scope="col" class="form-label fw-semi-bold">VAT(%)</th>
+                                        <th scope="col" class="form-label fw-semi-bold">Discount(%)</th>
                                         <th scope="col" class="form-label fw-semi-bold">Amount</th>
                                         <th scope="col" class="form-label fw-semi-bold">Action</th>
                                     </tr>
@@ -687,20 +688,20 @@
                                                 placeholder="Quantity"  @bind="itm.Quantity" @bind:event="oninput" @onchange="() => OnChangeQuantity(itm)" />
                                             </td>
                                             <td>
-                                                <input type="text" class="form-control form-control-sm form-rounded fw-semi-bold" readonly placeholder="Unit" value="@itm.Unit" >
+                                                <input type="text" class="form-control form-control-sm form-rounded fw-semi-bold" readonly placeholder="Unit" @bind="@itm.Unit" >
                                             </td>
                                             <td>
-                                                <input type="number" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="Rate" value="@itm.SellingPrice">
+                                                <input type="number" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="Rate" @bind="@itm.SellingPrice">
                                             </td>
                                             <td>
-                                                <input type="number" readonly class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="V(%)" value="@itm.VatAmount">
+                                                <input type="number" readonly class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="V(%)" @bind="@itm.VatPercentg">
                                             </td>
                                             <td>
-                                                <input type="number" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="D(%)" value="@itm.DiscountPercentg">
+                                                <input type="number" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="D(%)" @bind="@itm.DiscountPercentg">
                                             </td>
                                             <td>
                                                 <input readonly type="number" class="form-control form-control-sm form-rounded bold-input fw-semi-bold"
-                                                placeholder="Amount" @bind-value="itm.TotalPrice">
+                                                placeholder="Amount" @bind="itm.TotalPrice">
                                             </td>
                                             <td>
                                                 <button type="button" class="btn btn-sm btn-light me-1 mb-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Serial</button>
@@ -716,6 +717,105 @@
                                                 </button>
                                             </td>
                                         </tr>
+                                        <tr class="mt-0">
+                                    <td colspan="12">
+    
+                                          <div class="card-body">
+                                                <div class="accordion border rounded overflow-hidden" id="accordionFaq">
+                                                    <div class="card shadow-none rounded-bottom-0 border-bottom">
+                                                        <div class="accordion-item border-0">
+                                                            <div class="card-header p-0" id="faqAccordionHeading1">
+                                                                <button type="button" class="accordion-button btn btn-link text-decoration-none d-block w-100 py-2 px-3 collapsed border-0 text-start rounded-0 shadow-none" data-bs-toggle="collapse" data-bs-target="#collapseFaqAccordion1" aria-expanded="false" aria-controls="collapseFaqAccordion1"><span class="fas fa-caret-right accordion-icon me-3" data-fa-transform="shrink-2"></span><span class="fw-medium font-sans-serif text-900">Add a new Serial Number</span></button>
+                                                            </div>
+                                                            <div class="accordion-collapse collapse" id="collapseFaqAccordion1" aria-labelledby="faqAccordionHeading1" data-parent="#accordionFaq">
+                                                                <div class="accordion-body p-0">
+                                                                    <div class="card-body pt-2">
+                                                                         <div class="rounded-top-3 bg-body-tertiary py-3 ps-4 pe-6">
+                     
+                    
+                                                </div>
+                                                <div class="p-4 m-2">
+                                                    <div class="card shadow-none">
+                                                        <div class="card-body p-0">
+
+                                                            <div class="col-lg-3 col-md-3 col-sm-6 col-9 animated-div">
+                                                                <div class="form-group">
+                                                                    <div style="width: 13.5rem;" class="search-box" data-list='{"valueNames":["title"]}'>
+                                                                        <div class="position-relative" data-bs-toggle="search" data-bs-display="static">
+                                                                            <input class="form-control form-control-sm form-rounded search-input" type="search" placeholder="Search..." aria-label="Search" />
+                                                                            <span class="fas fa-search search-box-icon"></span>
+                                                                        </div> 
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            <div class="table-responsive scrollbar">
+                                                                <table class="table mb-0">
+                                                                    <thead class="bg-200">
+                                                                        <tr>
+                                                                            <th class="align-middle white-space-nowrap">
+                                                                                <div class="form-check mb-0">
+                                                                                    <input class="form-check-input" type="checkbox" data-bulk-select='{"body":"bulk-select-body","actions":"bulk-select-actions","replacedElement":"bulk-select-replace-element"}' />
+                                                                                </div>
+                                                                            </th>
+                                                                            <th class="text-black dark__text-white align-middle">Sales Status</th>
+                                                                            <th class="text-black dark__text-white align-middle">Serial Number</th>
+                                                                            <th class="text-black dark__text-white align-middle">Tag Supplier</th>
+                                                                            <th class="text-black dark__text-white align-middle">Supplier Name</th>
+                                                                            <th class="text-black dark__text-white align-middle">Supplier Org. Name</th>
+                                                                            <th class="text-black dark__text-white align-middle">Remarks</th> 
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody id="bulk-select-body">
+                                                                        <tr>
+                                                                            <td class="align-middle white-space-nowrap">
+                                                                                <div class="form-check mb-0">
+                                                                                    <input class="form-check-input" type="checkbox" id="checkbox-1" data-bulk-select-row="data-bulk-select-row" />
+                                                                                </div>
+                                                                            </td>
+                                                                            <td class="align-middle">
+                                                                                <select name="salesStatus" id="salesStatus" class="form-control-sm form-rounded"> 
+                                                                                    <option value="">Yes</option>
+                                                                                    <option value="">No</option>
+                                                                                    <!-- Add more options here -->
+                                                                                </select>
+                                                                            </td>
+                                                                            <td class="align-middle">
+                                                                                <input type="text" class="form-control form-control-sm form-rounded" placeholder="Serial Number">
+                                                                            </td>
+                                                                            <td class="align-middle">
+                                                                                <input type="text" class="form-control form-control-sm form-rounded" placeholder="Tag Supplier" readonly>
+                                                                            </td>
+                                                                            <td class="align-middle">
+                                                                                <input type="text" class="form-control form-control-sm form-rounded" placeholder="Supplier Name" readonly>
+                                                                            </td>
+                                                                            <td class="align-middle">
+                                                                                <input type="text" class="form-control form-control-sm form-rounded" placeholder="Supplier Org. Name" readonly>
+                                                                            </td> 
+                                                                            <td class="align-middle">
+                                                                                <input type="text" class="form-control form-control-sm form-rounded" placeholder="Remarks">
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                      
+                                                        </div >
+                                                    </div>                  
+                                                </div>
+                                                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+            
+                                                </div>
+                                            </div>
+                         
+                                    </td>
+                                </tr>
+
+                                        
                                     }
                                 </tbody>
 
@@ -788,21 +888,27 @@
                     </div >
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                      <div class="form-group">
+                        <label class="form-label fw-bolder">Total Quantity</label>
+                        <InputNumber @bind-Value="invoice.TotalQnty" type="number" class="form-control form-control-sm form-rounded fw-bold" readonly placeholder="Total Quantity" />
+                    </div>
                     <div class="form-group">
                         <label class="form-label fw-bolder">Total</label>
-                        <InputNumber @bind-Value="invoice.TotalAmount" type="number" class="form-control form-control-sm form-rounded fw-bold"  placeholder="Total Amount" />
+                        <InputNumber @bind-Value="invoice.TotalAmount" type="number" class="form-control form-control-sm form-rounded fw-bold" readonly placeholder="Total Amount" />
                     </div>
                     <div class="form-group">
                         <label class="form-label fw-bold">Vat</label>
-                        <InputNumber  @bind-Value="invoice.TotalVat" type="number" class="form-control form-control-sm form-rounded fw-bold" placeholder="Vat(%)"/>
+                        <InputNumber  @bind-Value="invoice.TotalVat" type="number" class="form-control form-control-sm form-rounded fw-bold" readonly placeholder="Vat(%)"/>
                     </div
                     <div class="form-group">
                         <label class="form-label fw-bold">Discount</label>
-                        <InputNumber @bind-Value="invoice.TotalDiscount" type="number" class="form-control form-control-sm form-rounded fw-bold" placeholder="Discount(%)"/>
+                        <InputNumber @bind-Value="invoice.TotalDiscount" type="number" class="form-control form-control-sm form-rounded fw-bold" readonly placeholder="Discount(%)"/>
                     </div>
                     <div class="form-group">
                         <label class="form-label fw-bold">Additional Discount</label>
-                        <InputNumber @bind-Value="invoice.TotalAddiDiscount" type="number" class="form-control form-control-sm form-rounded fw-bold" id="additionalDiscount" placeholder="Additional Discount"/>
+                        <InputNumber @bind-Value="invoice.TotalAddiDiscount" type="number"
+                        class="form-control form-control-sm form-rounded fw-bold" 
+                        placeholder="Additional Discount" @oninput="OnChangeAddiDiscount"/>
                     </div>
 
                     <div class="form-group">
@@ -811,12 +917,14 @@
                     </div>
                     <div class="form-group">
                         <label class="form-label fw-bolder">Receive</label>
-                        <InputNumber @bind-Value="invoice.RecieveAmount" type="number" class="form-control form-control-sm form-rounded fw-bold" placeholder="Receive"/>
-                        <input type="hidden" class="form-control form-control-sm form-rounded">
+                        <InputNumber @bind-Value="invoice.RecieveAmount" type="number" class="form-control form-control-sm form-rounded fw-bold" 
+                        placeholder="Receive" @oninput="OnChangeReceiveAmount"/>
+ 
                     </div>
                     <div class="form-group">
                         <label class="form-label fw-bolder">Current Due</label>
-                        <InputNumber @bind-Value="invoice.DueAmount" type="number" class="form-control form-control-sm form-rounded fw-bold" placeholder="Current Due"/>
+                        <InputNumber @bind-Value="invoice.DueAmount" type="number"
+                        class="form-control form-control-sm form-rounded fw-bold" placeholder="Current Due"/>
                     </div>
                 </div >
 
@@ -1055,7 +1163,7 @@
 <script src="assets/js/theme.js"></script>
 @code {
     [Inject]
-    InvoiceService invoiceService { get; set; }
+    InvoiceService _invoiceService { get; set; }
     Invoice invoice = new Invoice();//object or Model
 
     [Inject]
@@ -1066,6 +1174,10 @@
     [Inject]
     ProductService _productService { get; set; }
     List<Products> products = new List<Products>();
+
+    [Inject]
+    NotificationByService _notificationByService { get; set; }
+    List<NotificationBy> notificationBy_list = new List<NotificationBy>();
 
     [Inject]
     InvoiceTypeService invoiceTypeService { get; set; }
@@ -1084,9 +1196,19 @@
     PaymentTypesService paymentTypesService { get; set; }
     List<PaymentTypes> PaymentTypes_list = new List<PaymentTypes>();
 
+    private bool showSuccessAlert = false;
+    private bool showDangerAlert = false;
+
+    public string SuccessMessage { get; set; }
+    public string DangerMessage { get; set; }
+
+    private string errorMessage;
+
+
     protected override async Task OnInitializedAsync()
     {
         invoiceType_list = (await invoiceTypeService.Get(null, null, null, null, 1, 1000)).ToList();
+        notificationBy_list = (await _notificationByService.Get(null)).ToList();
         productCategory_list = (await productCategoryService.Get(null,null, null, null, 1, 1000)).ToList();
         productSubCategory_list = (await productSubCategoryService.Get(null, null, null, null, null, 1, 1000)).ToList();
         PaymentTypes_list = (await paymentTypesService.Get(null, null, null, null, 1, 1000)).ToList();
@@ -1094,7 +1216,54 @@
     }
     private async Task OnSave()
     {
-        var inv = invoice;
+        try
+        { 
+            invoice.BranchId = CompanyInfo.BranchId;
+            invoice.InvoiceNumber = GenerateUniqueNumber();
+            invoice.CurrencyId = CompanyInfo.CurrencyId;
+            invoice.CustomerID = 1;
+            if (invoice.InvoiceId == 0)
+            {
+
+                invoice.EntryDateTime = DateTimeHelper.CurrentDateTime();
+                invoice.EntryBy = UserInfo.UserId;
+
+
+                invoice.InvoiceId = await _invoiceService.SaveOrUpdate(invoice);
+                if (invoice.InvoiceId > 0)
+                {
+                    foreach (var item in itemsList)
+                    {
+                        item.InvoiceId = invoice.InvoiceId;
+                        await  _invoiceItemService.SaveOrUpdate(item);
+                    }
+                    showSuccessAlert = true;
+                    SuccessMessage = MessageManager.SaveSuccess;
+                    StateHasChanged(); // Notify Blazor to re-render the component
+                                       //Hide the alert after 1 seconds
+
+                    await Task.Delay(1000);
+                    showSuccessAlert = false;
+                }
+                else if (invoice.InvoiceId == -1)
+                {
+                    showDangerAlert = true;
+                    DangerMessage = $"{invoice.InvoiceNumber} {MessageManager.Exist}";
+                }
+                else
+                {
+                    showDangerAlert = true;
+                    DangerMessage = MessageManager.SaveFaild;
+                }
+            }
+             
+             
+        }
+        catch (Exception ex)
+        {
+            errorMessage = ex.Message;
+        }
+        
     }
     private async Task OnSelectProduct(Products product)
     {
@@ -1107,7 +1276,7 @@
             Quantity = 0,
             Unit=product.UnitName,
             SellingPrice = product.SellingPrice,
-            VatAmount=product.VatAmount,
+            VatPercentg=product.VatPercent,
             DiscountPercentg=product.DiscountPercentg,
             TotalPrice=0
             // Add other properties as necessary
@@ -1121,29 +1290,61 @@
         itemsList.Remove(item);
     }
     private void OnChangeQuantity(InvoiceItems item)
-   {
-    if (item.Quantity > 0 && item.SellingPrice > 0)
-     {
-        // Calculate the total price based on quantity and selling price
-        item.TotalPrice = item.Quantity * item.SellingPrice;
-
-        // If there are discounts or VAT, apply them as needed
-        if (item.DiscountPercentg > 0)
+    {
+        if (item.Quantity > 0 && item.SellingPrice > 0)
         {
-            // Apply discount
-          //  var discountAmount = item.TotalPrice * (item.DiscountPercentg / 100);
-          //  item.TotalPrice -= discountAmount;
+            // Calculate the total price based on quantity and selling price
+            item.TotalPrice = item.Quantity * item.SellingPrice;
+
+            // If there are discounts or VAT, apply them as needed
+            if (item.DiscountPercentg > 0)
+            {
+                // Apply discount
+                //  var discountAmount = item.TotalPrice * (item.DiscountPercentg / 100);
+                //  item.TotalPrice -= discountAmount;
+            }
+
+            if (item.VatAmount > 0)
+            {
+                // Apply VAT
+                var vatAmount = item.TotalPrice * (item.VatAmount / 100);
+                //   item.TotalPrice += vatAmount;
+            }
+
+            CalculateTotalInvoiceAmount();
         }
 
-        if (item.VatAmount > 0)
-        {
-            // Apply VAT
-            var vatAmount = item.TotalPrice * (item.VatAmount / 100);
-         //   item.TotalPrice += vatAmount;
-        }
+
+    }
+    private void CalculateTotalInvoiceAmount()
+    {
+        invoice.TotalQnty = itemsList.Sum(item => item.Quantity);
+        invoice.TotalAmount = itemsList.Sum(item => item.TotalPrice);
+        invoice.TotalVat = itemsList.Sum(item => item.VatPercentg);
+        invoice.TotalDiscount = itemsList.Sum(item => item.DiscountPercentg);
+        invoice.TotalPayable = (invoice.TotalAmount + invoice.TotalVat) - invoice.TotalDiscount;
+
     }
 
-    // Optionally, trigger a UI refresh or other logic after updating the total price
-   }
+    private void OnChangeAddiDiscount(ChangeEventArgs e)
+    {
+        // You can access the new value using e.Value
+        decimal.TryParse(e.Value?.ToString(), out var discount);
+        invoice.TotalAddiDiscount = discount;
+        invoice.TotalPayable = invoice.TotalAmount + invoice.TotalVat - invoice.TotalDiscount - invoice.TotalAddiDiscount;
+    }
+    private void OnChangeReceiveAmount(ChangeEventArgs e)
+    {
+        decimal.TryParse(e.Value?.ToString(), out var recieveAmount);
+        invoice.RecieveAmount = recieveAmount;
+        invoice.TotalPayable = invoice.TotalAmount + invoice.TotalVat - invoice.TotalDiscount - invoice.TotalAddiDiscount;
+      invoice.DueAmount=invoice.TotalPayable - invoice.RecieveAmount;
+    }
+    public string GenerateUniqueNumber()
+ {
+    Random random = new Random();
+    int uniqueNumber = random.Next(1000, 10000); // Generates a number between 1000 and 9999
+    return $"#{uniqueNumber}";
+ }
 
 }
