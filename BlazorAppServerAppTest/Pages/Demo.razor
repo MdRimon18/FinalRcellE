@@ -1,0 +1,23 @@
+﻿@page "/demo_page"
+ 
+<ul class="treeview" id="treeviewExample">
+    <li class="treeview-list-item">
+        <a data-bs-toggle="collapse" href="#treeviewExample-1-1" role="button" aria-expanded="false">
+            <p class="treeview-text">public</p>
+        </a>
+        <ul class="collapse treeview-list" id="treeviewExample-1-1">
+            <li class="treeview-list-item">
+                
+                <label for="organizerMultiple">Multiple</label>
+                <select class="form-select js-choice" id="organizerMultiple" multiple="multiple" size="1" name="organizerMultiple" data-options='{"removeItemButton":true,"placeholder":true}'>
+                    <option value="">Select organizer...</option>
+                    <option>Massachusetts Institute of Technology</option>
+                    <option>University of Chicago</option>
+                    <option>GSAS Open Labs At Harvard</option>
+                    <option>California Institute of Technology</option>
+                </select>
+                <!-- Nestesd Childrens-->
+            </li>
+        </ul>
+    </li>
+</ul>
