@@ -1,7 +1,6 @@
 ﻿@page "/create_invoice"
 @using Pms.Models.Entity
-
-
+ 
 <div class="offcanvas offcanvas-end" id="offcanvasRight" tabindex="-1" aria-labelledby="offcanvasRightLabel" style="width: 55%;">
     <div class="offcanvas-header">
        @*  <div class="card-header">
@@ -425,7 +424,7 @@
     </div> *@
 </div>
 
-
+ 
 <div class="card mb-3">
     <div class="card-header">
         <h5 class="mb-0" data-anchor="data-anchor">
@@ -667,6 +666,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @{
+                                        int indexx = 0;
+                                    }
                                     @foreach (var itm in itemsList)
                                     {
                                         <tr>
@@ -703,11 +705,16 @@
                                                 <input readonly type="number" class="form-control form-control-sm form-rounded bold-input fw-semi-bold"
                                                 placeholder="Amount" @bind="itm.TotalPrice">
                                             </td>
-                                            <td>
-                                                <button type="button" class="btn btn-sm btn-light me-1 mb-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Serial</button>
+                                            <td class="treeview">
+                                                <div class="treeview-list-item" style="margin-top:auto;margin-right:0">
+                                                      <a data-bs-toggle="collapse" href="#treeviewExample-1_@indexx" role="button" aria-expanded="false">
+                                                     <p class="treeview-text">Serial </p>
+                                                 </a>
+                                                </div>
+                                              
                                             </td>
                                             <td>
-                                                <button title="Info" class="btn btn-sm btn-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop-1">
+                                                <button title="Info" class="btn btn-sm a-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop-1">
                                                     <i class="fa fa-info-circle" style="font-size:18px"></i>
                                                 </button>
                                             </td>
@@ -716,106 +723,60 @@
                                                     <i class="far fa-trash-alt fa-lg text-danger"></i>
                                                 </button>
                                             </td>
+                                            
                                         </tr>
-                                        <tr class="mt-0">
-                                    <td colspan="12">
-    
-                                          <div class="card-body">
-                                                <div class="accordion border rounded overflow-hidden" id="accordionFaq">
-                                                    <div class="card shadow-none rounded-bottom-0 border-bottom">
-                                                        <div class="accordion-item border-0">
-                                                            <div class="card-header p-0" id="faqAccordionHeading1">
-                                                                <button type="button" class="accordion-button btn btn-link text-decoration-none d-block w-100 py-2 px-3 collapsed border-0 text-start rounded-0 shadow-none" data-bs-toggle="collapse" data-bs-target="#collapseFaqAccordion1" aria-expanded="false" aria-controls="collapseFaqAccordion1"><span class="fas fa-caret-right accordion-icon me-3" data-fa-transform="shrink-2"></span><span class="fw-medium font-sans-serif text-900">Add a new Serial Number</span></button>
-                                                            </div>
-                                                            <div class="accordion-collapse collapse" id="collapseFaqAccordion1" aria-labelledby="faqAccordionHeading1" data-parent="#accordionFaq">
-                                                                <div class="accordion-body p-0">
-                                                                    <div class="card-body pt-2">
-                                                                         <div class="rounded-top-3 bg-body-tertiary py-3 ps-4 pe-6">
-                     
-                    
-                                                </div>
-                                                <div class="p-4 m-2">
-                                                    <div class="card shadow-none">
-                                                        <div class="card-body p-0">
-
-                                                            <div class="col-lg-3 col-md-3 col-sm-6 col-9 animated-div">
-                                                                <div class="form-group">
-                                                                    <div style="width: 13.5rem;" class="search-box" data-list='{"valueNames":["title"]}'>
-                                                                        <div class="position-relative" data-bs-toggle="search" data-bs-display="static">
-                                                                            <input class="form-control form-control-sm form-rounded search-input" type="search" placeholder="Search..." aria-label="Search" />
-                                                                            <span class="fas fa-search search-box-icon"></span>
-                                                                        </div> 
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            
-                                                            <div class="table-responsive scrollbar">
-                                                                <table class="table mb-0">
-                                                                    <thead class="bg-200">
+                                        <tr>
+                                            <td  colspan="12">
+                                                <div class="treeview" id="treeviewExample_@indexx">
+                                                    <div class="treeview-list-item">
+                                                       
+                                                        <div class="collapse treeview-list" id="treeviewExample-1_@indexx">
+                                                            <div class="treeview-list-item">
+                                                                <div class="table-responsive scrollbar">
+                                                                <table class="table table-hover">
+                                                                    <thead>
                                                                         <tr>
-                                                                            <th class="align-middle white-space-nowrap">
-                                                                                <div class="form-check mb-0">
-                                                                                    <input class="form-check-input" type="checkbox" data-bulk-select='{"body":"bulk-select-body","actions":"bulk-select-actions","replacedElement":"bulk-select-replace-element"}' />
-                                                                                </div>
-                                                                            </th>
-                                                                            <th class="text-black dark__text-white align-middle">Sales Status</th>
-                                                                            <th class="text-black dark__text-white align-middle">Serial Number</th>
-                                                                            <th class="text-black dark__text-white align-middle">Tag Supplier</th>
-                                                                            <th class="text-black dark__text-white align-middle">Supplier Name</th>
-                                                                            <th class="text-black dark__text-white align-middle">Supplier Org. Name</th>
-                                                                            <th class="text-black dark__text-white align-middle">Remarks</th> 
+                                                                            <th class="fw-semi-bold" scope="col">Product Name</th>
+                                                                            <th scope="col">Serial No</th>
+                                                                            <th scope="col">Supplier Org </th>
+                                                                            <th scope="col">Action</th>
                                                                         </tr>
                                                                     </thead>
-                                                                    <tbody id="bulk-select-body">
-                                                                        <tr>
-                                                                            <td class="align-middle white-space-nowrap">
-                                                                                <div class="form-check mb-0">
-                                                                                    <input class="form-check-input" type="checkbox" id="checkbox-1" data-bulk-select-row="data-bulk-select-row" />
+                                                                    <tbody>
+                                                                        <tr class="hover-actions-trigger">
+                                                                            <td class="align-middle text-nowrap">
+                                                                                <div class="d-flex align-items-center">
+                                                                                    <div class="avatar avatar-xl">
+                                                                                        <img class="rounded-circle" src="../../assets/img/team/4.jpg" alt="" />
+                                                                                    </div>
+                                                                                    <div class="ms-2">Ricky Antony</div>
                                                                                 </div>
                                                                             </td>
-                                                                            <td class="align-middle">
-                                                                                <select name="salesStatus" id="salesStatus" class="form-control-sm form-rounded"> 
-                                                                                    <option value="">Yes</option>
-                                                                                    <option value="">No</option>
-                                                                                    <!-- Add more options here -->
-                                                                                </select>
+                                                                            <td class="align-middle">ricky@example.com</td>
+                                                                            <td class="align-middle text-nowrap">#33GBE2345</td>
+                                                                            <td class="w-auto">
+                                                                                <div class="btn-group btn-group hover-actions end-0 me-4">
+                                                                                    <button class="btn btn-tertiary pe-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><span class="fas fa-edit"></span></button>
+                                                                                    <button class="btn btn-tertiary ps-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><span class="fas fa-trash-alt text-danger"></span></button>
+                                                                                </div>
                                                                             </td>
-                                                                            <td class="align-middle">
-                                                                                <input type="text" class="form-control form-control-sm form-rounded" placeholder="Serial Number">
-                                                                            </td>
-                                                                            <td class="align-middle">
-                                                                                <input type="text" class="form-control form-control-sm form-rounded" placeholder="Tag Supplier" readonly>
-                                                                            </td>
-                                                                            <td class="align-middle">
-                                                                                <input type="text" class="form-control form-control-sm form-rounded" placeholder="Supplier Name" readonly>
-                                                                            </td>
-                                                                            <td class="align-middle">
-                                                                                <input type="text" class="form-control form-control-sm form-rounded" placeholder="Supplier Org. Name" readonly>
-                                                                            </td> 
-                                                                            <td class="align-middle">
-                                                                                <input type="text" class="form-control form-control-sm form-rounded" placeholder="Remarks">
-                                                                            </td>
+                                        
                                                                         </tr>
+                                     
+
                                                                     </tbody>
                                                                 </table>
                                                             </div>
-                      
-                                                        </div >
-                                                    </div>                  
-                                                </div>
-                                                                                                    </div>
-                                                                </div>
+                                                                
                                                             </div>
                                                         </div>
                                                     </div>
-            
                                                 </div>
-                                            </div>
-                         
-                                    </td>
-                                </tr>
+                                            </td>
+                                        </tr>
 
-                                        
+                                        indexx++;
+
                                     }
                                 </tbody>
 
@@ -824,67 +785,15 @@
                     </div>
                     <div class="row align-items-center mt-2">
                         <div class="col-auto d-flex">
-                            <a href="invoice_preview" class="btn btn-sm btn-light" type="button">Create Invoice</a>
+                            <a href="invoice_preview" class="btn btn-outline-success me-1 mb-1" type="button" @onclick=OnSave>Create Invoice</a>
                           
-                            <a href="shipping_nd_payment" class="btn btn-sm btn-light px-4 ms-2" type="button">Shipping</a>
+                            <a href="shipping_nd_payment" class="btn btn-outline-success me-1 mb-1" type="button">Shipping</a>
                              
-                            <button class="btn btn-sm btn-light px-4 ms-2" type="button">Refresh</button>
+                            <button class="btn btn-outline-secondary me-1 mb-1" type="button">Refresh</button>
                         </div >
                     </div >
                     <div class="row mt-4">
-                        <div class="table-responsive scrollbar">
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th class="fw-semi-bold" scope="col">Product Name</th>
-                                        <th scope="col">Serial No</th>
-                                        <th scope="col">Supplier Org </th>
-                                        <th scope="col">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="hover-actions-trigger">
-                                        <td class="align-middle text-nowrap">
-                                            <div class="d-flex align-items-center">
-                                                <div class="avatar avatar-xl">
-                                                    <img class="rounded-circle" src="../../assets/img/team/4.jpg" alt="" />
-                                                </div>
-                                                <div class="ms-2">Ricky Antony</div>
-                                            </div>
-                                        </td>
-                                        <td class="align-middle">ricky@example.com</td>
-                                        <td class="align-middle text-nowrap">#33GBE2345</td>
-                                        <td class="w-auto">
-                                            <div class="btn-group btn-group hover-actions end-0 me-4">
-                                                <button class="btn btn-tertiary pe-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><span class="fas fa-edit"></span></button>
-                                                <button class="btn btn-tertiary ps-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><span class="fas fa-trash-alt text-danger"></span></button>
-                                            </div>
-                                        </td>
-                                        
-                                    </tr>
-                                    <tr class="hover-actions-trigger">
-                                        <td class="align-middle text-nowrap">
-                                            <div class="d-flex align-items-center">
-                                                <div class="avatar avatar-xl">
-                                                    <img class="rounded-circle" src="../../assets/img/team/13.jpg" alt="" />
-                                                </div>
-                                                <div class="ms-2">Emma Watson</div>
-                                            </div>
-                                        </td>
-                                        <td class="align-middle text-nowrap">emma@example.com</td>
-                                        <td class="w-auto">
-                                        <td class="align-middle text-nowrap">#2265GFR3455</td>
-                                            <div class="btn-group btn-group hover-actions end-0 me-4">
-                                                <button class="btn btn-tertiary pe-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><span class="fas fa-edit"></span></button>
-                                                <button class="btn btn-tertiary ps-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><span class="fas fa-trash-alt text-danger"></span></button>
-                                            </div>
-                                        </td>
-                                        
-                                    </tr>
-
-                                </tbody>
-                            </table>
-                        </div>
+                        
                     </div >
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-2">
@@ -928,8 +837,7 @@
                     </div>
                 </div >
 
-                <button type="button" @onclick=OnSave class="btn btn-primary btn-sm mt-2">Save</button>
-                <button type="reset" class="btn btn-primary btn-sm mt-2">Refresh</button>
+                 
 
             </form>
         </div>
@@ -1160,7 +1068,7 @@
     </div>
 </div>
 
-<script src="assets/js/theme.js"></script>
+
 @code {
     [Inject]
     InvoiceService _invoiceService { get; set; }

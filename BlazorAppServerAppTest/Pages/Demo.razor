@@ -1,0 +1,108 @@
+﻿@page "/demo_page"
+<div class="search-box" data-list='{"valueNames":["title"]}'>
+    <form class="position-relative">
+        <input class="form-control search-input fuzzy-search"
+               type="search"
+               placeholder="Search..."
+               aria-label="Search"
+               @bind="SearchQuery"
+               @onclick="OnInputClick"
+               @oninput="OnSearchInput" />
+        <span class="fas fa-search search-box-icon"></span>
+    </form>
+
+    <div class="btn-close-falcon-container position-absolute end-0 top-50 translate-middle shadow-none"
+         style="display: @(ShowCloseIcon ? "block" : "none")">
+        <button class="btn btn-link btn-close-falcon p-0" aria-label="Close" @onclick="ClearSearch"></button>
+    </div>
+
+    <div class="dropdown-menu border font-base start-0 mt-2 py-0 overflow-hidden w-100"
+         style="display: @(ShowDropdown ? "block" : "none")">
+        <div class="scrollbar list py-3" style="max-height: 24rem;">
+            @if (FilteredItems.Any())
+            {
+                @foreach (var item in FilteredItems)
+                {
+                    <a class="dropdown-item fs-10 px-x1 py-1 hover-primary" href="#" @onclick="() => SelectItem(item)">
+                        <div class="d-flex align-items-center">
+                            <span class="fas fa-circle me-2 text-300 fs-11"></span>
+                            <div class="fw-normal title">@item</div>
+                        </div>
+                    </a>
+                }
+            }
+            else
+            {
+                <p class="fallback fw-bold fs-8">No Result Found.</p>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    private string SearchQuery { get; set; } = string.Empty;
+    private List<string> Items { get; set; } = new List<string>
+    {
+        "Massachusetts Institute of Technology",
+        "University of Chicago",
+        "GSAS Open Labs At Harvard",
+        "California Institute of Technology",
+        "Falcon v1.8.2",
+        "iPhone",
+        "Anna Karinina",
+        "Antony Hopkins",
+        "Emma Watson"
+    };
+    private List<string> FilteredItems { get; set; } = new List<string>();
+    private bool ShowDropdown { get; set; } = false;
+    private bool ShowCloseIcon { get; set; } = false;
+
+    protected override void OnInitialized()
+    {
+        FilteredItems = Items;
+    }
+
+    private void OnSearchInput(ChangeEventArgs e)
+    {
+        SearchQuery = e.Value?.ToString() ?? string.Empty;
+        FilterItems();
+        ShowCloseIcon = !string.IsNullOrEmpty(SearchQuery);
+    }
+
+    private void FilterItems()
+    {
+        if (string.IsNullOrWhiteSpace(SearchQuery))
+        {
+            FilteredItems = Items;
+            ShowDropdown = false;
+        }
+        else
+        {
+            FilteredItems = Items
+                .Where(item => item.Contains(SearchQuery, StringComparison.OrdinalIgnoreCase))
+                .ToList();
+            ShowDropdown = FilteredItems.Any();
+        }
+    }
+
+    private void SelectItem(string item)
+    {
+        SearchQuery = item;
+        ShowDropdown = false;
+        ShowCloseIcon = true;
+    }
+
+    private void ClearSearch()
+    {
+        SearchQuery = string.Empty;
+        ShowDropdown = false;
+        ShowCloseIcon = false;
+        FilteredItems = Items;
+    }
+
+    private void OnInputClick()
+    {
+        FilteredItems = Items;
+        ShowDropdown = true;
+    }
+}
