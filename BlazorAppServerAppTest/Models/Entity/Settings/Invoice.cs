@@ -6,7 +6,7 @@
         public Guid? InvoiceKey { get; set; }
         public long BranchId { get; set; }
         public string InvoiceNumber { get; set; }
-        public int CustomerID { get; set; }
+        public long CustomerID { get; set; }
         public DateTime InvoiceDateTime { get; set; }= DateTime.Now;
         public long InvoiceTypeId { get; set; }
         public long NotificationById { get; set; }
@@ -50,5 +50,7 @@
         //{
         //    TotalPayable = TotalAmount + TotalVat - TotalDiscount - TotalAddiDiscount;
         //}
+
+        
     }
 }

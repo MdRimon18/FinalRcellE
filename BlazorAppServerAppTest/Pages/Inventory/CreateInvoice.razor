@@ -460,7 +460,14 @@
                                     @*  <input  readonly name="customerMobileNo" type="text" class="form-control form-control-sm form-rounded "
                                        placeholder="customer mobile no" required aria-label="Input group example" id="inputField" aria-describedby="plusButton"> *@
                                 <div class="input-group">
-                                    <InputText  @bind-Value="invoice.InvoiceNumber" type="text" id="inputField" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="Enter Cus. Phone" aria-label="Enter value" aria-describedby="plusButton"/>
+
+                                     <SearchComponent T="Customers"
+                                                 Items="Customers_list"
+                                                 DisplayProperty="obj => obj.MobileNo"
+                                                 Placeholder="Search Cust"
+                                                 InputSize="width:13rem;"
+                                                 OnItemSelected="OnItemSelected"/>
+
                                     <div class="input-group-append">
                                         <button class="btn btn-sm btn-light" type="button" id="plusButton" data-bs-toggle="offcanvas"
                                         data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">+</button>
@@ -477,7 +484,9 @@
                         <div class="col-lg-3 col-md-3 col-sm-9 col-9 animated-div">
                             <div class="form-group">
                                 <label for="name" class="form-label fw-semi-bold">Customer Email</label>
-                                <input name="name" type="text" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="Customer Email" required>
+                                <input  type="text" class="form-control form-control-sm form-rounded fw-semi-bold"
+                                @bind-value="CustomerEmail"
+                                placeholder="Customer Email" required>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-9 col-9 animated-div">
@@ -1104,6 +1113,11 @@
     PaymentTypesService paymentTypesService { get; set; }
     List<PaymentTypes> PaymentTypes_list = new List<PaymentTypes>();
 
+     [Inject]
+    CustomerService _customerService { get; set; }
+    List<Customers> Customers_list = new List<Customers>();
+    //Customers customer=  new Customers();
+
     private bool showSuccessAlert = false;
     private bool showDangerAlert = false;
 
@@ -1112,7 +1126,7 @@
 
     private string errorMessage;
 
-
+    private string CustomerEmail; 
     protected override async Task OnInitializedAsync()
     {
         invoiceType_list = (await invoiceTypeService.Get(null, null, null, null, 1, 1000)).ToList();
@@ -1121,6 +1135,12 @@
         productSubCategory_list = (await productSubCategoryService.Get(null, null, null, null, null, 1, 1000)).ToList();
         PaymentTypes_list = (await paymentTypesService.Get(null, null, null, null, 1, 1000)).ToList();
         products = (await _productService.Get(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1000)).ToList();
+        Customers_list=(await _customerService.Get(null, null,null, null, null, null,null, 1, 1000)).ToList();
+    }
+   private void OnItemSelected(Customers customer)
+    {
+       invoice.CustomerID = customer.CustomerId;
+         CustomerEmail = customer.Email;
     }
     private async Task OnSave()
     {

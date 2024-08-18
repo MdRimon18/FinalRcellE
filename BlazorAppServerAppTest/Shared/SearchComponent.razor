@@ -1,8 +1,9 @@
 ﻿@typeparam T
-
-<div class="search-box">
-    <form class="position-relative">
+ 
+<div class="search-box" style="@InputSize">
+    <div class="position-relative">
         <input class="form-control search-input fuzzy-search"
+              
                type="search"
                placeholder="@Placeholder"
                aria-label="Search"
@@ -10,11 +11,11 @@
                @onclick="OnInputClick"
                @oninput="OnSearchInput" />
         <span class="fas fa-search search-box-icon"></span>
-    </form>
+    </div>
 
     <div class="btn-close-falcon-container position-absolute end-0 top-50 translate-middle shadow-none"
          style="display: @(ShowCloseIcon ? "block" : "none")">
-        <button class="btn btn-link btn-close-falcon p-0" aria-label="Close" @onclick="ClearSearch"></button>
+        <button type="button" class="btn btn-link btn-close-falcon p-0" aria-label="Close" @onclick="ClearSearch"></button>
     </div>
 
     <div class="dropdown-menu border font-base start-0 mt-2 py-0 overflow-hidden w-100"
@@ -24,10 +25,10 @@
             {
                 @foreach (var item in FilteredItems)
                 {
-                    <a  class="dropdown-item fs-10 px-x1 py-1 hover-primary" @onclick="() => SelectItem(item)">
+                    <a class="dropdown-item fs-10 px-x1 py-1 hover-primary" @onclick="() => SelectItem(item)" >
                         <div class="d-flex align-items-center">
                            @*  <span class="fas fa-circle me-2 text-300 fs-11"></span> *@
-                            <div class="fw-normal title">@DisplayProperty(item)</div>
+                            <div class="fw-semi-bold title" style="font-size: large;">@DisplayProperty(item)</div>
                         </div>
                     </a>
                 }
@@ -52,6 +53,8 @@
 
     [Parameter]
     public string Placeholder { get; set; } = "Search...";
+    [Parameter]
+    public string InputSize { get; set; } = "width:13rem;";
 
     private string SearchQuery { get; set; } = string.Empty;
     private List<T> FilteredItems { get; set; } = new List<T>();
