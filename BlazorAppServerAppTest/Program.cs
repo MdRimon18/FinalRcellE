@@ -42,7 +42,7 @@ builder.Services.AddScoped<CustomerService>();
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<CompanyService>();
 builder.Services.AddScoped<InvoiceService>();
-
+builder.Services.AddScoped<ProductSerialNumbersService>();
 
 builder.Services.AddScoped<CountryServiceV2>();
 builder.Services.AddScoped<ShippingByService>();

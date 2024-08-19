@@ -6,6 +6,8 @@
         public Guid? ProdSerialNmbrKey { get; set; }
         public long ProductId { get; set; }
         public string SerialNumber { get; set; }
+        public long Rate { get; set; }
+        public DateTime Date { get; set; }
         public long? TagSupplierId { get; set; }
         public string Remarks { get; set; }
         public string SerialStatus { get; set; }
@@ -16,5 +18,6 @@
         public DateTime? DeletedDate { get; set; }
         public long? DeletedBy { get; set; }
         public string Status { get; set; }
+        public int total_row { get; set; }
     }
 }
