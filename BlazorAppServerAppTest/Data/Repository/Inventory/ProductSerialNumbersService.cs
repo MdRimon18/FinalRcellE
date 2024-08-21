@@ -16,7 +16,7 @@ namespace Pms.Data.Repository.Inventory
 			_db = db.GetDbConnection();
 
 		}
-		public async Task<IEnumerable<ProductSerialNumbers>> Get(long? ProdSerialNmbrId, string? ProdSerialNmbrKey, long? ProductId, string? SerialNumber, long? TagSupplierId, string? Remarks, string? SerialStatus, int? PageNumber, int? PageSize)
+		public async Task<IEnumerable<ProductSerialNumbers>> Get(long? ProdSerialNmbrId, string? ProdSerialNmbrKey, long? ProductId, string? SerialNumber, long? Rate, DateTime? Date, long? TagSupplierId, string? Remarks, string? SerialStatus, int? PageNumber, int? PageSize)
 		{
 			try
 			{
@@ -26,7 +26,9 @@ namespace Pms.Data.Repository.Inventory
 				parameters.Add("@ProdSerialNmbrKey", ProdSerialNmbrKey);
 				parameters.Add("@ProductId", ProductId);
 				parameters.Add("@SerialNumber", SerialNumber);
-				parameters.Add("@TagSupplierId", TagSupplierId);
+                parameters.Add("@Rate", Rate);
+                parameters.Add("@Date", Date);
+                parameters.Add("@TagSupplierId", TagSupplierId);
 				parameters.Add("@Remarks", Remarks);
 				parameters.Add("@SerialStatus", SerialStatus);
 
@@ -46,14 +48,14 @@ namespace Pms.Data.Repository.Inventory
 		public async Task<ProductSerialNumbers> GetById(long ProdSerialNmbrId)
 
 		{
-			var _productSerialNumbers = await (Get(ProdSerialNmbrId, null,null,null,null,null, null, 1, 1));
+			var _productSerialNumbers = await (Get(ProdSerialNmbrId, null,null, null, null, null,null,null, null, 1, 1));
 			return _productSerialNumbers.FirstOrDefault();
 		}
 
 		public async Task<ProductSerialNumbers> GetByKey(string ProdSerialNmbrKey)
 
 		{
-			var _productSerialNumbers = await (Get(null, ProdSerialNmbrKey, null, null, null,null, null, 1, 1));
+			var _productSerialNumbers = await (Get(null, ProdSerialNmbrKey, null, null, null, null, null,null, null, 1, 1));
 			return _productSerialNumbers.FirstOrDefault();
 		}
 
@@ -68,7 +70,9 @@ namespace Pms.Data.Repository.Inventory
 				parameters.Add("@ProdSerialNmbrKey", _productSerialNumbers.ProdSerialNmbrKey);
 				parameters.Add("@ProductId", _productSerialNumbers.ProductId);
 				parameters.Add("@SerialNumber", _productSerialNumbers.SerialNumber);
-				parameters.Add("@TagSupplierId", _productSerialNumbers.TagSupplierId);
+                parameters.Add("@Rate", _productSerialNumbers.Rate);
+                parameters.Add("@Date", _productSerialNumbers.Date);
+                parameters.Add("@TagSupplierId", _productSerialNumbers.TagSupplierId);
 				parameters.Add("@Remarks", _productSerialNumbers.Remarks);
 				parameters.Add("@SerialStatus", _productSerialNumbers.SerialStatus);
 
@@ -94,7 +98,7 @@ namespace Pms.Data.Repository.Inventory
 
 		public async Task<bool> Delete(long ProdSerialNmbrId)
 		{
-			var _productSerialNumbers = await (Get(ProdSerialNmbrId, null, null, null, null, null, null, 1, 1));
+			var _productSerialNumbers = await (Get(ProdSerialNmbrId, null, null, null, null, null, null, null, null, 1, 1));
 			var deleteObj = _productSerialNumbers.FirstOrDefault();
 			long DeletedSatatus = 0;
 			if (deleteObj != null)

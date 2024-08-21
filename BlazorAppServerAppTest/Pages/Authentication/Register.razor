@@ -32,38 +32,33 @@
                             <div class="col-md-7 d-flex flex-center">
                                 <div class="p-4 p-md-5 flex-grow-1">
                                     <h3>Register</h3>
-                                    <EditForm Model="authRegister" OnValidSubmit="OnSave">
-                                        <DataAnnotationsValidator />
+                                    <form>
                                         <div class="mb-3">
                                             <label class="form-label" for="card-name">Name</label>
-                                            <InputText @bind-Value="authRegister.Name" class="form-control" type="text" autocomplete="on" id="card-name" />
-                                            <ValidationMessage For="() => authRegister.Name" class="text-danger" />
+                                            <input class="form-control" type="text" autocomplete="on" id="card-name" />
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label" for="card-email">Email address</label>
-                                            <InputText @bind-Value="authRegister.EmailAdress" class="form-control" type="email" autocomplete="on" id="card-email" />
-                                            <ValidationMessage For="() => authRegister.EmailAdress" class="text-danger" />
+                                            <input class="form-control" type="email" autocomplete="on" id="card-email" />
                                         </div>
                                         <div class="row gx-2">
                                             <div class="mb-3 col-sm-6">
                                                 <label class="form-label" for="card-password">Password</label>
-                                                <InputText @bind-Value="authRegister.Password" class="form-control" type="password" autocomplete="on" id="card-password" />
-                                                <ValidationMessage For="() => authRegister.Password" class="text-danger" />
+                                                <input class="form-control" type="password" autocomplete="on" id="card-password" />
                                             </div>
                                             <div class="mb-3 col-sm-6">
                                                 <label class="form-label" for="card-confirm-password">Confirm Password</label>
-                                                <InputText @bind-Value="authRegister.ConfirmPassword" class="form-control" type="password" autocomplete="on" id="card-confirm-password" />
-                                                <ValidationMessage For="() => authRegister.ConfirmPassword" class="text-danger" />
+                                                <input class="form-control" type="password" autocomplete="on" id="card-confirm-password" />
                                             </div>
                                         </div>
                                         <div class="form-check">
-                                            <InputCheckbox @bind-Value="authRegister.RememberMe" class="form-check-input" type="checkbox" id="card-register-checkbox" />
+                                            <input class="form-check-input" type="checkbox" id="card-register-checkbox" />
                                             <label class="form-label" for="card-register-checkbox">I accept the <a href="#!">terms </a>and <a class="white-space-nowrap" href="#!">privacy policy</a></label>
                                         </div>
                                         <div class="mb-3">
-                                            <button type="submit" class="btn btn-primary d-block w-100 mt-3">Register</button>
+                                            <button class="btn btn-primary d-block w-100 mt-3" type="submit" name="submit">Register</button>
                                         </div>
-                                    </EditForm>
+                                    </form>
                                     <div class="position-relative mt-4">
                                         <hr />
                                         <div class="divider-content-center">or register with</div>
@@ -83,12 +78,5 @@
 </main>
 
 @code {
-    private string? ErrorMessage;
-    Pms.Models.Entity.Settings.AuthRegister authRegister = new Pms.Models.Entity.Settings.AuthRegister();
 
-    private async Task OnSave()
-    {
-        var inv = authRegister;
-    }
- 
 }

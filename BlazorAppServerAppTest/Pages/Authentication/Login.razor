@@ -24,45 +24,37 @@
                                     <p class="mb-0 mt-4 mt-md-5 fs-10 fw-semi-bold text-white opacity-75">Read our <a class="text-decoration-underline text-white" href="privacy_policy">terms and conditions </a></p>
                                 </div>
                             </div>
-                           
-                         
-                              <div class="col-md-7 d-flex flex-center">
+                            <div class="col-md-7 d-flex flex-center">
                                 <div class="p-4 p-md-5 flex-grow-1">
                                     <div class="row flex-between-center">
                                         <div class="col-auto">
-                                           
                                             <h3>Account Login</h3>
                                         </div>
                                     </div>
-                                  <EditForm Model="authLogin"  OnValidSubmit="OnSave">
-                                        <DataAnnotationsValidator />
-                                    
+                                    <form>
                                         <div class="mb-3">
                                             <label class="form-label" for="card-email">Email address</label>
-                                            <InputText @bind-Value="authLogin.EmailAdress" class="form-control" id="card-email" type="email" />
-                                            <ValidationMessage For="() => authLogin.EmailAdress" class="text-danger" />
+                                            <input class="form-control" id="card-email" type="email" />
                                         </div>
                                         <div class="mb-3">
                                             <div class="d-flex justify-content-between">
                                                 <label class="form-label" for="card-password">Password</label>
                                             </div>
-                                            <InputText @bind-Value="authLogin.Password" class="form-control" id="card-password" type="password" />
-                                            <ValidationMessage For="() => authLogin.Password" class="text-danger" />
+                                            <input class="form-control" id="card-password" type="password" />
                                         </div>
                                         <div class="row flex-between-center">
                                             <div class="col-auto">
                                                 <div class="form-check mb-0">
-                                                    <InputCheckbox @bind-Value="authLogin.RememberMe" class="form-check-input" type="checkbox" id="card-checkbox" checked="checked" />
+                                                    <input class="form-check-input" type="checkbox" id="card-checkbox" checked="checked" />
                                                     <label class="form-check-label mb-0" for="card-checkbox">Remember me</label>
                                                 </div>
                                             </div>
                                             <div class="col-auto"><a class="fs-10" href="forget_password">Forgot Password?</a></div>
                                         </div>
                                         <div class="mb-3">
-                                        
-                                            <button type="submit"  class="btn btn-primary d-block w-100 mt-3">Log in</button>
-                                        </div>                                   
-                                  </EditForm>
+                                            <button class="btn btn-primary d-block w-100 mt-3" type="submit" name="submit">Log in</button>
+                                        </div>
+                                    </form>
                                     <div class="position-relative mt-4">
                                         <hr />
                                         <div class="divider-content-center">or log in with</div>
@@ -73,9 +65,7 @@
                                     </div>
                                 </div>
                             </div>
-                          
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -84,13 +74,5 @@
 </main>
 
 @code {
-
-    private string? errorMessage;
-    Models.Entity.AuthLogin authLogin = new Models.Entity.AuthLogin();
-
-    private async Task OnSave()
-    {
-        var inv = authLogin;
-    }
 
 }

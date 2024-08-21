@@ -6,8 +6,8 @@
         public Guid? InvoiceKey { get; set; }
         public long BranchId { get; set; }
         public string InvoiceNumber { get; set; }
-        public long CustomerID { get; set; }
-        public DateTime InvoiceDateTime { get; set; }= DateTime.Now;
+        public int CustomerID { get; set; }
+        public DateTime InvoiceDateTime { get; set; }
         public long InvoiceTypeId { get; set; }
         public long NotificationById { get; set; }
         public string SalesByName { get; set; }
@@ -18,15 +18,13 @@
         public long CurrencyId { get; set; }
         public long? OrderStatusId { get; set; }
         public int TotalQnty { get; set; }
-        public decimal TotalAmount { get; set; } = 0;
-        public decimal TotalVat { get; set; } = 0;
-        public decimal TotalDiscount { get; set; } = 0;
-        // Custom setter for TotalAddiDiscount
-       
-        public decimal TotalAddiDiscount { get; set; } = 0;
-        public decimal TotalPayable { get; set; } = 0;
-        public decimal RecieveAmount { get; set; } = 0;
-        public decimal DueAmount { get; set; } = 0;
+        public decimal TotalAmount { get; set; }
+        public decimal? TotalVat { get; set; }
+        public decimal? TotalDiscount { get; set; }
+        public decimal? TotalAddiDiscount { get; set; }
+        public decimal TotalPayable { get; set; }
+        public decimal RecieveAmount { get; set; }
+        public decimal? DueAmount { get; set; }
         public DateTime? DuePaymentDate { get; set; }
         public long? PromoOrCupponId { get; set; }
         public long? PolicyId { get; set; }
@@ -44,13 +42,5 @@
         public DateTime? DeletedDate { get; set; }
         public long? DeletedBy { get; set; }
         public string Status { get; set; }
-        public int total_row { get; set; }
-
-        //private void RecalculateTotalPayable()
-        //{
-        //    TotalPayable = TotalAmount + TotalVat - TotalDiscount - TotalAddiDiscount;
-        //}
-
-        
     }
 }

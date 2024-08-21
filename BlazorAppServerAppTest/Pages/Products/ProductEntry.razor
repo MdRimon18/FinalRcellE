@@ -446,17 +446,18 @@
                         
 
 
-                        <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12">
+                        <div class="col-12">
                             <label class="form-label fw-semi-bold" for="product-category">Select category:</label>
-                                <div class="form-group">
-                                <SearchComponent T="ProductCategories"
-                                                 Items="productCategory_list"
-                                                 DisplayProperty="obj => obj.ProdCtgName"
-                                                 Placeholder="Search by Product Category"
-                                                 InputSize="width:13rem;"
-                                                 OnItemSelected="OnItemSelected"/>
-                                </div>
-                            
+
+                                <InputSelect @bind-Value="product.ProdCtgId" class="form-select js-choice fw-semi-bold" id="organizerSingle2" size="1">
+
+                                    <option value=''> Select Product Category</option>
+                                @foreach (var item in productCategory_list)
+                                {
+                                    <option value=@item.ProdCtgId>@item.ProdCtgName</option>
+                                }
+                            </InputSelect>
+                            <div class="invalid-feedback">Please select one</div>
                         </div>
                         <div class="col-12">
                             <label class="form-label fw-semi-bold" for="product-subcategory">Select sub-category:</label>
@@ -600,13 +601,7 @@
     ProductService _productService { get; set; }
     Products product = new Products();
 
-    private ProductCategories SelectedProductCategorie { get; set; }
 
-    private void OnItemSelected(ProductCategories selectedItem)
-    {
-        SelectedProductCategorie = selectedItem;
-        product.ProdCtgId = selectedItem.ProdCtgId;
-    }
     protected override async Task OnInitializedAsync()
     {
         //await LoadUnits();

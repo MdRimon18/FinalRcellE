@@ -31,10 +31,10 @@ namespace Pms.Models.Entity.Settings
         public decimal BuyingPrice { get; set; } = 0;
         [Required(ErrorMessage = "Selling Price is Required")]
         public decimal SellingPrice { get; set; } = 0;
-        public decimal VatPercent { get; set; } = 0;
-        public decimal VatAmount { get; set; } = 0;
-        public decimal DiscountPercentg { get; set; } = 0;
-        public decimal DiscountAmount { get; set; } = 0;
+        public decimal? VatPercent { get; set; }
+        public decimal? VatAmount { get; set; }
+        public decimal? DiscountPercentg { get; set; }
+        public decimal? DiscountAmount { get; set; }
         public string BarCode { get; set; }
         public int? SupplirLinkId { get; set; }
         public string ImportedForm { get; set; }
@@ -68,8 +68,7 @@ namespace Pms.Models.Entity.Settings
         public DateTime? DeletedDate { get; set; }
         public long? DeletedBy { get; set; }
         public string ProdStatus { get; set; }
-        public string ProdCtgName { get; set; }
-        public string UnitName {  get; set; }
+
         [NotMapped]
         public int total_row { get; set; } = 0;
     }

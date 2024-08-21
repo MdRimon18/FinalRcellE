@@ -42,11 +42,15 @@ builder.Services.AddScoped<CustomerService>();
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<CompanyService>();
 builder.Services.AddScoped<InvoiceService>();
+<<<<<<< HEAD
+builder.Services.AddScoped<ProductSerialNumbersService>();
+=======
 builder.Services.AddScoped<InvoiceItemService>();
 
 builder.Services.AddScoped<WarehouseService>();
 builder.Services.AddScoped<NotificationByService>();
 
+>>>>>>> c3121cb7ca8d32420aa4d8ccd7e143078ea8eb62
 
 builder.Services.AddScoped<CountryServiceV2>();
 builder.Services.AddScoped<ShippingByService>();

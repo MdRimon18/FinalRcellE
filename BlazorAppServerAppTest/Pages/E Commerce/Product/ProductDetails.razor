@@ -123,35 +123,27 @@
                                     <p class="mb-0">This really is an amazing template - from the style to the font - clean layout. SO worth the money! The demo pages show off what Bootstrap 4 can impressively do. Great template!! Support response is FAST and the team is amazing - communication is important.</p>
                                 </div>
                                 <div class="col-lg-6 ps-lg-5">
-                                    <EditForm Model="@customerReview" OnValidSubmit="SaveOrUpdate">
-                                        <DataAnnotationsValidator />
-                                        <SuccessAlert Message="@SuccessMessage" Show="@showSuccessAlert" />
-                                        <DangerAlert Message="@DangerMessage" Show="@showDangerAlert" OnClose="HideAlert" />
-                                        <h5 class="mb-3">Customer Review</h5>
+                                    <form>
+                                        <h5 class="mb-3">Write your Review</h5>
                                         <div class="mb-3">
                                             <label class="form-label">Ratting: </label>
                                             <div class="d-block" data-rater='{"starSize":32,"step":0.5}'></div>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label" for="formGroupNameInput">Name:</label>
-                                            <InputText @bind-Value="@customerReview.ReviewName" class="form-control" id="formGroupNameInput" type="text" />
+                                            <input class="form-control" id="formGroupNameInput" type="text" />
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label" for="formGroupEmailInput">Email:</label>
-                                            <InputText @bind-Value="@customerReview.ReviewEmail" class="form-control" id="formGroupEmailInput" type="email" />
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label" for="formGroupNameInput">Star:</label>
-                                            <InputNumber @bind-Value="@customerReview.StarCount" class="form-control" id="formGroupNameInput" type="text" />
+                                            <input class="form-control" id="formGroupEmailInput" type="email" />
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label" for="formGrouptextareaInput">Review:</label>
-                                            <InputTextArea @bind-Value="@customerReview.ReviewDetails" class="form-control" id="formGrouptextareaInput" rows="3"></InputTextArea>
+                                            <textarea class="form-control" id="formGrouptextareaInput" rows="3"></textarea>
                                         </div>
                                         <button class="btn btn-primary" type="submit">Submit</button>
-                                    </EditForm>
+                                    </form>
                                 </div>
-                             
                             </div>
                         </div>
                     </div>
@@ -162,201 +154,5 @@
 </div>
 
 @code {
-    private CustomerReview customerReview = new CustomerReview();
-    [Inject]
-    protected IJSRuntime JSRuntime { get; set; }
-    [Inject]
-    ReviewService reviewService { get; set; }
-    List<CustomerReview> review_list = new List<CustomerReview>();
-
-    private bool showSuccessAlert = false;
-    private bool showDangerAlert = false;
-
-    public string SuccessMessage { get; set; }
-    public string DangerMessage { get; set; }
-
-    private string errorMessage;
-
-    private bool isLoading = true;
-    private int PageSize { get; set; } = 5; // Number of items per page
-
-    int totalPages { get; set; }
-    int currentPage = 1; // Example current page
-
-    private int TotalRecord { get; set; }
-
-    public string? ReviewEmailSearch { get; set; }
-
-
-
-    protected override async Task OnInitializedAsync()
-    {
-        await Loadreview();
-
-    }
-
-    private async Task Loadreview()
-    {
-        try
-        {
-            if (ReviewEmailSearch == "") { ReviewEmailSearch = null; }
-            review_list = (await reviewService.Get(null, null, ReviewEmailSearch, currentPage, PageSize)).ToList();
-            if (review_list.Count > 0)
-            {
-                TotalRecord = review_list[0].total_row;
-                //  totalPages = TotalRecord / PageSize;
-                totalPages = (int)Math.Ceiling((double)TotalRecord / PageSize);
-            }
-            else
-            {
-                TotalRecord = 0;
-                totalPages = 0;
-            }
-
-        }
-        catch (Exception ex)
-        {
-            errorMessage = ex.Message;
-        }
-        finally
-        {
-            isLoading = false;
-            StateHasChanged(); // Ensure UI reflects changes
-        }
-    }
-
-    private async Task SaveOrUpdate()
-    {
-        try
-        {
-            if (customerReview.ReviewId == 0)
-            {
-                customerReview.EntryDateTime = DateTimeHelper.CurrentDateTime();
-                customerReview.EntryBy = UserInfo.UserId;
-    
-
-                customerReview.ReviewId = await reviewService.SaveOrUpdate(customerReview);
-                if (customerReview.ReviewId > 0)
-                {
-                    showSuccessAlert = true;
-                    SuccessMessage = MessageManager.SaveSuccess;
-                    StateHasChanged(); // Notify Blazor to re-render the component
-                                       //Hide the alert after 1 seconds
-
-                    await Task.Delay(1000);
-                    showSuccessAlert = false;
-                }
-                else if (customerReview.ReviewId == -1)
-                {
-                    showDangerAlert = true;
-                    DangerMessage = $"{customerReview.ReviewName} {MessageManager.Exist}";
-                }
-                else
-                {
-                    showDangerAlert = true;
-                    DangerMessage = MessageManager.SaveFaild;
-                }
-            }
-            else
-            {
-
-                customerReview.LastModifyDate = DateTimeHelper.CurrentDateTime();
-                customerReview.LastModifyBy = UserInfo.UserId;
-                customerReview.ReviewId = await reviewService.SaveOrUpdate(customerReview);
-                if (customerReview.ReviewId > 0)
-                {
-                    showSuccessAlert = true;
-                    SuccessMessage = MessageManager.UpdateSuccess;
-                    StateHasChanged(); // Notify Blazor to re-render the component
-                                       //Hide the alert after 1 seconds
-
-                    await Task.Delay(1000);
-                    showSuccessAlert = false;
-                }
-                else
-                {
-                    showDangerAlert = true;
-                    DangerMessage = MessageManager.UpdateFaild;
-                }
-            }
-            // Clear the form after save/update
-            await Loadreview(); // Reload orders after save/update
-            customerReview = new Pms.Models.Entity.Settings.CustomerReview();
-        }
-        catch (Exception ex)
-        {
-            errorMessage = ex.Message;
-        }
-    }
-
-
-
-
-    private async void EditLoadData(Pms.Models.Entity.Settings.CustomerReview lnge)
-    {
-        customerReview = lnge;
-    }
-
-    private async Task DeleteItem(long ColorId)
-    {
-        bool confirmed = await JSRuntime.InvokeAsync<bool>("showDeleteConfirmation");
-        if (confirmed)
-        {
-            try
-            {
-                bool result = await reviewService.Delete(ColorId);
-                if (result)
-                {
-                    await JSRuntime.InvokeVoidAsync("showSuccessMessage");
-                    await Loadreview();
-                }
-                else
-                {
-                    errorMessage = $"{MessageManager.DeleteFaild} {ColorId}.";
-                }
-            }
-            catch (Exception ex)
-            {
-                errorMessage = ex.Message;
-            }
-        }
-        else
-        {
-
-        }
-    }
-
-
-    private void onSearch(string ColorId)
-    {
-        /// OrderList = OrderList.Where(w => w.orderNo == OrderId).ToList();
-    }
-
-    private Task HideAlert()
-    {
-        showDangerAlert = false;
-        return Task.CompletedTask;
-    }
-    private async void OnClickAddBtn()
-    {
-        customerReview = new Pms.Models.Entity.Settings.CustomerReview();
-    }
-    private async void OnRefresh()
-    {
-        ReviewEmailSearch = null;
-        await Loadreview();
-    }
-    private async void ChangePage(int pageNumber)
-    {
-        currentPage = pageNumber;
-        await Loadreview();
-    }
-
-    void HandlePageSizeChanged(int newSize)
-    {
-        PageSize = newSize;
-        ChangePage(1);
-
-    }
 
 }
