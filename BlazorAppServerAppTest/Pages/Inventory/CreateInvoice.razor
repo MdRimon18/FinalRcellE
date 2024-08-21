@@ -723,7 +723,7 @@
                                               
                                             </td>
                                             <td>
-                                                <button title="Info" class="btn btn-sm a-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop-1">
+                                                <button title="Info" class="btn btn-sm a-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                                     <i class="fa fa-info-circle" style="font-size:18px"></i>
                                                 </button>
                                             </td>
@@ -741,40 +741,72 @@
                                                        
                                                         <div class="collapse treeview-list" id="treeviewExample-1_@indexx">
                                                             <div class="treeview-list-item">
-                                                                <div class="table-responsive scrollbar">
-                                                                <table class="table table-hover">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th class="fw-semi-bold" scope="col">Product Name</th>
-                                                                            <th scope="col">Serial No</th>
-                                                                            <th scope="col">Supplier Org </th>
-                                                                            <th scope="col">Action</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        <tr class="hover-actions-trigger">
-                                                                            <td class="align-middle text-nowrap">
-                                                                                <div class="d-flex align-items-center">
-                                                                                    <div class="avatar avatar-xl">
-                                                                                        <img class="rounded-circle" src="../../assets/img/team/4.jpg" alt="" />
-                                                                                    </div>
-                                                                                    <div class="ms-2">Ricky Antony</div>
-                                                                                </div>
-                                                                            </td>
-                                                                            <td class="align-middle">ricky@example.com</td>
-                                                                            <td class="align-middle text-nowrap">#33GBE2345</td>
-                                                                            <td class="w-auto">
-                                                                                <div class="btn-group btn-group hover-actions end-0 me-4">
-                                                                                    <button class="btn btn-tertiary pe-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><span class="fas fa-edit"></span></button>
-                                                                                    <button class="btn btn-tertiary ps-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><span class="fas fa-trash-alt text-danger"></span></button>
-                                                                                </div>
-                                                                            </td>
-                                        
-                                                                        </tr>
-                                     
+                                                                <div class="table-responsive scrollbar row">
+                                                                <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8">
+                                                                        <table class="table table-hover">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th class="fw-semi-bold" scope="col">Product Name</th>
+                                                                                    <th scope="col">Serial No</th>
+                                                                                    <th scope="col">Supplier Org </th>
+                                                                                    <th scope="col">Action</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                <tr class="hover-actions-trigger">
+                                                                                    <td class="align-middle text-nowrap">
+                                                                                        <div class="d-flex align-items-center">
+                                                                                            <div class="avatar avatar-xl">
+                                                                                                <img class="rounded-circle" src="../../assets/img/team/4.jpg" alt="" />
+                                                                                            </div>
+                                                                                            <div class="ms-2">Ricky Antony</div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td class="align-middle">ricky@example.com</td>
+                                                                                    <td class="align-middle text-nowrap">#33GBE2345</td>
+                                                                                    <td class="w-auto">
+                                                                                        <div class="btn-group btn-group hover-actions end-0 me-4">
+                                                                                            <button class="btn btn-tertiary pe-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><span class="fas fa-edit"></span></button>
+                                                                                            <button class="btn btn-tertiary ps-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><span class="fas fa-trash-alt text-danger"></span></button>
+                                                                                        </div>
+                                                                                    </td>
 
-                                                                    </tbody>
-                                                                </table>
+                                                                                </tr>
+
+                                                                                <tr class="hover-actions-trigger">
+                                                                                    <td class="align-middle text-nowrap">
+                                                                                        <div class="d-flex align-items-center">
+                                                                                            <div class="avatar avatar-xl">
+                                                                                                <img class="rounded-circle" src="../../assets/img/team/4.jpg" alt="" />
+                                                                                            </div>
+                                                                                            <div class="ms-2">Ricky Antony</div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td class="align-middle">ricky@example.com</td>
+                                                                                    <td class="align-middle text-nowrap">#33GBE2345</td>
+                                                                                    <td class="w-auto">
+                                                                                        <div class="btn-group btn-group hover-actions end-0 me-4">
+                                                                                            <button class="btn btn-tertiary pe-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><span class="fas fa-edit"></span></button>
+                                                                                            <button class="btn btn-tertiary ps-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><span class="fas fa-trash-alt text-danger"></span></button>
+                                                                                        </div>
+                                                                                    </td>
+
+                                                                                </tr>
+
+                                                                            </tbody>
+                                                                        </table>
+                                                                     </div>
+                                                                    <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                                                                        <label for="chooseSerialNumber" class="form-label fw-semi-bold">Add @itm.ProductName Serial Number</label>
+                                                                        <SearchComponent T="Customers"
+                                                                                         Items="Customers_list"
+                                                                                         DisplayProperty="obj => obj.MobileNo"
+                                                                                         Placeholder="Search Serial"
+                                                                                         InputSize="width:13rem;"
+                                                                                         OnItemSelected="OnItemSelected" />
+                                                                    </div>
+                                                             
+                                                            
                                                             </div>
                                                                 
                                                             </div>
@@ -782,6 +814,7 @@
                                                     </div>
                                                 </div>
                                             </td>
+                                           
                                         </tr>
 
                                         indexx++;
@@ -817,7 +850,7 @@
                     <div class="form-group">
                         <label class="form-label fw-bold">Vat</label>
                         <InputNumber  @bind-Value="invoice.TotalVat" type="number" class="form-control form-control-sm form-rounded fw-bold" readonly placeholder="Vat(%)"/>
-                    </div
+                    </div>
                     <div class="form-group">
                         <label class="form-label fw-bold">Discount</label>
                         <InputNumber @bind-Value="invoice.TotalDiscount" type="number" class="form-control form-control-sm form-rounded fw-bold" readonly placeholder="Discount(%)"/>
@@ -887,195 +920,54 @@
                 <button class="btn-close btn btn-sm btn-circle d-flex flex-center transition-base" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body p-0">
-                <div class="rounded-top-3 bg-body-tertiary py-3 ps-4 pe-6">
-                    <h4 class="mb-1" id="staticBackdropLabel">Add a new Serial Number</h4>
-                    <p class="fs-11 mb-0">Added by <a class="link-600 fw-bold" href="#!">Antony</a></p>
-                </div>
-                <div class="p-4 m-2">
-                    <div class="card shadow-none">
-                        <div class="card-body p-0">
-                            <div class="col-lg-3 col-md-3 col-sm-6 col-9 animated-div">
-                                <div class="form-group">
-                                    <div style="width: 13.5rem;" class="search-box" data-list='{"valueNames":["title"]}'>
-                                        <div class="position-relative" data-bs-toggle="search" data-bs-display="static">
-                                            <input class="form-control form-control-sm form-rounded search-input" type="search" placeholder="Search..." aria-label="Search" />
-                                            <span class="fas fa-search search-box-icon"></span>
+                <div class="card">
+                    <div class="card-header bg-body-tertiary">
+                        <h5 class="mb-0" data-anchor="data-anchor">Product details</h5>
+                    </div>
+                    
+                            <div class="row">
+                        <div  class="col-lg-4">
 
+                            <div class="col">
+                                            <h3 class="text-primary mt-4 mt-sm-0">Item</h3>
+                                            <p class="fs-10 bold-text ">Vat Amount:</p>
+                                            <p class="fs-10 bold-text ">Discount Amount:</p>
+                                            <p class="fs-10 bold-text ">Date:</p>
+                                            <p class="fs-10 bold-text ">Warranty:</p>
+                                            <p class="fs-10 bold-text ">Link to Supplier:</p>
+                                            <p class="fs-10 bold-text ">Remarks:</p>
+                                            <p class="fs-10 bold-text ">Descriptions:</p>
+                                            <p class="fs-10 bold-text ">Imported From:</p>
+                                            <p class="fs-10 bold-text ">Category : </p>
+                                          
                                         </div>
-                                        <div class="btn-close-falcon-container position-absolute end-0 top-50 translate-middle shadow-none" data-bs-dismiss="search">
-                                            <button class="btn btn-link btn-close-falcon p-0" aria-label="Close"></button>
-                                        </div>
-                                        <div class="dropdown-menu border font-base start-0 mt-2 py-0 overflow-hidden w-100">
-                                            <div class="scrollbar list py-3" style="max-height: 15rem;">
-
-                                                <h6 class="dropdown-header fw-medium text-uppercase px-x1 fs-11 pt-0 pb-2">Members</h6><a class="dropdown-item px-x1 py-2" href="pages/user/profile.html">
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="avatar avatar-l status-online me-2">
-                                                            <img class="rounded-circle" src="assets/img/team/1.jpg" alt="" />
-
-                                                        </div>
-                                                        <div class="flex-1">
-                                                            <h6 class="mb-0 title">Anna Karinina</h6>
-                                                            <p class="fs-11 mb-0 d-flex">Technext Limited</p>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                                <a class="dropdown-item px-x1 py-2" href="pages/user/profile.html">
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="avatar avatar-l me-2">
-                                                            <img class="rounded-circle" src="assets/img/team/2.jpg" alt="" />
-
-                                                        </div>
-                                                        <div class="flex-1">
-                                                            <h6 class="mb-0 title">Antony Hopkins</h6>
-                                                            <p class="fs-11 mb-0 d-flex">Brain Trust</p>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="text-center mt-n3">
-                                                <p class="fallback fw-bold fs-8 d-none">No Result Found.</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                        @* <div class="col-sm-auto"><img class="timeline-item-media rounded" src="../../assets/img/gallery/2000.jpg" width="188" height="250" alt="" /></div> *@
+                                   
                                 </div>
-                            </div>
-                            <div class="d-flex align-items-center justify-content-end my-3">
-                                <div id="bulk-select-replace-element">
-                                    <button class="btn btn-falcon-success btn-sm" type="button"><span class="fas fa-plus" data-fa-transform="shrink-3 down-2"></span><span class="ms-1">New</span></button>
+                               <div class="col-lg-4">
+                            <p class="fs-10 bold-text ">Sub Category:</p>
+                            <p class="fs-10 bold-text ">Name/ Model:</p>
+                            <p class="fs-10 bold-text ">Buying Price:</p>
+                            <p class="fs-10 bold-text ">Selling Price:</p>
+                            <p class="fs-10 bold-text ">Unit Type:</p>
+                            <p class="fs-10 bold-text ">Opening Quantity:</p>
+                            <p class="fs-10 bold-text ">Alert Quantity:</p>
+                            <p class="fs-10 bold-text ">Vat (in %):</p>
+                            <p class="fs-10 bold-text ">Discount(%):</p>
+                        </div>
+                                <div class="col-md-4">
+                                    <div class=""><img class="" src="../../assets/img/gallery/2000.jpg" width="200" height="200" alt="" /></div>
                                 </div>
-                                <div class="d-none ms-3" id="bulk-select-actions">
-                                    <div class="d-flex">
-                                        <select class="form-select form-select-sm" aria-label="Bulk actions">
-                                            <option selected="selected">Bulk actions</option>
-                                            <option value="Delete">Delete</option>
-                                            <option value="Archive">Archive</option>
-                                        </select>
-                                        <button class="btn btn-falcon-danger btn-sm ms-2" type="button">Apply</button>
-                                    </div>
-                                </div >
-                            </div>
-                            <div class="table-responsive scrollbar">
-                                <table class="table mb-0">
-                                    <thead class="bg-200">
-                                        <tr>
-                                            <th class="align-middle white-space-nowrap">
-                                                <div class="form-check mb-0">
-                                                    <input class="form-check-input" type="checkbox" data-bulk-select='{"body":"bulk-select-body","actions":"bulk-select-actions","replacedElement":"bulk-select-replace-element"}' />
-                                                </div>
-                                            </th>
-                                            <th class="text-black dark__text-white align-middle">Sales Status</th>
-                                            <th class="text-black dark__text-white align-middle">Serial Number</th>
-                                            <th class="text-black dark__text-white align-middle">Tag Supplier</th>
-                                            <th class="text-black dark__text-white align-middle">Supplier Name</th>
-                                            <th class="text-black dark__text-white align-middle">Supplier Org. Name</th>
-                                            <th class="text-black dark__text-white align-middle">Remarks</th> 
-                                        </tr>
-                                    </thead>
-                                    <tbody id="bulk-select-body">
-                                        <tr>
-                                            <td class="align-middle white-space-nowrap">
-                                                <div class="form-check mb-0">
-                                                    <input class="form-check-input" type="checkbox" id="checkbox-1" data-bulk-select-row="data-bulk-select-row" />
-                                                </div>
-                                            </td>
-                                            <td class="align-middle">
-                                                <select name="salesStatus" id="salesStatus" class="form-control-sm form-rounded"> 
-                                                    <option value="">Yes</option>
-                                                    <option value="">No</option>
-                                                    <!-- Add more options here -->
-                                                </select>
-                                            </td>
-                                            <td class="align-middle">
-                                                <input type="text" class="form-control form-control-sm form-rounded" placeholder="Serial Number">
-                                            </td>
-                                            <td class="align-middle">
-                                                <input type="text" class="form-control form-control-sm form-rounded" placeholder="Tag Supplier" readonly>
-                                            </td>
-                                            <td class="align-middle">
-                                                <input type="text" class="form-control form-control-sm form-rounded" placeholder="Supplier Name" readonly>
-                                            </td>
-                                            <td class="align-middle">
-                                                <input type="text" class="form-control form-control-sm form-rounded" placeholder="Supplier Org. Name" readonly>
-                                            </td> 
-                                            <td class="align-middle">
-                                                <input type="text" class="form-control form-control-sm form-rounded" placeholder="Remarks">
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div >
-                    </div>                  
+                    </div>
+                            
+                       
                 </div>
             </div>
         </div>
     </div>
 </div >
 
-<div class="modal fade" id="staticBackdrop-1" data-bs-keyboard="false" data-bs-backdrop="static" tabindex="-1" aria-labelledby="staticBackdropLabel-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg mt-6" role="document">
-        <div class="modal-content border-0">
-            <div class="position-absolute top-0 end-0 mt-3 me-3 z-1">
-                <button class="btn-close btn btn-sm btn-circle d-flex flex-center transition-base" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body p-0">
-                <div class="p-2" >
-                    <div class="card">
-                        <div class="card-header bg-body-tertiary">
-                            <h5 class="mb-0" data-anchor="data-anchor">Product details</h5>
-                        </div>
-                        <div class="card-body px-sm-4 px-md-8 px-lg-6 px-xxl-8">
-                            <div class="timeline-zigzag">
-                                <div class="col-sm-auto"><img class="timeline-item-media rounded" src="../../assets/img/gallery/2000.jpg" width="300" height="370" alt="" /></div>
-                                <div class="row timeline-item timeline-item-end">
-                                    <div class="col-lg-6 timeline-item-content">
-                                        <span class="bullet"></span>
-                                        <div class="row g-0 mt-n4">
-                                            <div class="col timeline-item-text">
-                                                <h3 class="text-primary mt-4 mt-sm-0">Item</h3>
-                                                <p class="fs-10 bold-text ">Vat Amount:</p>
-                                                <p class="fs-10 bold-text ">Discount Amount:</p>
-                                                <p class="fs-10 bold-text ">Date:</p>
-                                                <p class="fs-10 bold-text ">Warranty:</p>
-                                                <p class="fs-10 bold-text ">Link to Supplier:</p>
-                                                <p class="fs-10 bold-text ">Remarks:</p>
-                                                <p class="fs-10 bold-text ">Descriptions:</p>
-                                                <p class="fs-10 bold-text ">Imported From:</p>
-                                            </div>
-                                            @* <div class="col-sm-auto"><img class="timeline-item-media rounded" src="../../assets/img/gallery/2000.jpg" width="188" height="250" alt="" /></div> *@
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row timeline-item timeline-item-start">
-                                    <div class="col-lg-6 timeline-item-content">
-                                        <span class="bullet"></span>
-                                        <div class="row g-0 mt-n4">
-                                            <div class="col timeline-item-text">
-                                                <h3 class="text-primary mt-4 mt-sm-0">Item Name</h3>
-                                                <p class="fs-10 bold-text ">Category : </p>
-                                                <p class="fs-10 bold-text ">Sub Category:</p>
-                                                <p class="fs-10 bold-text ">Name/ Model:</p>
-                                                <p class="fs-10 bold-text ">Buying Price:</p>
-                                                <p class="fs-10 bold-text ">Selling Price:</p>
-                                                <p class="fs-10 bold-text ">Unit Type:</p>
-                                                <p class="fs-10 bold-text ">Opening Quantity:</p>
-                                                <p class="fs-10 bold-text ">Alert Quantity:</p>
-                                                <p class="fs-10 bold-text ">Vat (in %):</p>
-                                                <p class="fs-10 bold-text ">Discount(%):</p>
-                                            </div>
-                                            @* <div class="col-sm-auto"><img class="timeline-item-media rounded" src="../../assets/img/gallery/2001.jpg" width="188" height="250" alt="" /></div> *@
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div >
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+ 
 
 
 @code {

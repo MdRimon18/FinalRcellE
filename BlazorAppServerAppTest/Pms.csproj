@@ -11,6 +11,7 @@
     <Content Remove="Pages\Products\WarehouseEntry.razor" />
     <Content Remove="Pages\ReusableComponent\WarningAlert.razor" />
     <Content Remove="Pages\Settings\CreateInvoice.razor" />
+    <Content Remove="Pages\Settings\CustomerDueDetails.razor" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,6 +36,7 @@
     <_ContentIncludedByDefault Remove="Pages\Products\WarehouseEntry.razor" />
     <_ContentIncludedByDefault Remove="Pages\ReusableComponent\WarningAlert.razor" />
     <_ContentIncludedByDefault Remove="Pages\Settings\CreateInvoice.razor" />
+    <_ContentIncludedByDefault Remove="Pages\Settings\CustomerDueDetails.razor" />
     <_ContentIncludedByDefault Remove="Pages\Settings\EmailSetup.razor" />
   </ItemGroup>
 
@@ -43,6 +45,7 @@
     <None Include="Pages\Products\WarehouseEntry.razor" />
     <None Include="Pages\ReusableComponent\WarningAlert.razor" />
     <None Include="Pages\Inventory\CreateInvoice.razor" />
+    <None Include="Pages\Settings\CustomerDueDetails.razor" />
   </ItemGroup>
 
   <ItemGroup>
@@ -59,6 +62,10 @@
 
   <ItemGroup>
     <UpToDateCheckInput Remove="Pages\Inventory\Demo.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\Settings\CustomerDueDetails.razor" />
   </ItemGroup>
 
 </Project>

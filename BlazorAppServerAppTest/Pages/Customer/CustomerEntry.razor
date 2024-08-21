@@ -26,8 +26,8 @@
                                     <div class="row">
                                          <div class="col-md-6">
                                              <div class="col-sm-10">
-                                                     <div class="form-group">
-                                                <label for="name" class="form-label fw-semi-bold">Enter Name<span class="error-star">*</span></label>
+                                                 <div class="form-group">
+                                                  <label for="name" class="form-label fw-semi-bold">Enter Name<span class="error-star">*</span></label>
                                                       <InputText @bind-Value="customer.CustomerName" type="text" class="form-control form-control-sm form-rounded" placeholder="Enter Name"  />
 
                                                     <ValidationMessage class="text-left invalid-message-color" For="@(() => customer.CustomerName)" />
@@ -130,7 +130,7 @@
                                       </div>
                                    
                                         </div>
-                                <button class="btn btn-primary btn-sm mt-2" type="submit">@SubmitButtonText</button>
+                                 <button class="btn btn-primary btn-sm mt-2" type="submit">@SubmitButtonText</button>
                                         <button type="reset" class="btn btn-primary btn-sm mt-2">Refresh</button> 
                                     </div>
                            </EditForm>   

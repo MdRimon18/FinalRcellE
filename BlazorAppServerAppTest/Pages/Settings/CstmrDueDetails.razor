@@ -1,4 +1,4 @@
-﻿@page "/invoice_details"
+﻿@page "/customer_due"
 
 <div class="card" id="ticketsTable">
     <div class="card-header border-bottom border-200 px-0">
@@ -21,7 +21,7 @@
             <div class="row flex-between-center gy-2 px-x1">
                 <div class="col-auto pe-0">
                     <h5 class="mb-0">
-                        Invoice Details
+                      Customer Due Details
                     </h5>
                 </div>
             </div>
@@ -98,13 +98,13 @@
                             <thead class="bg-body-tertiary">
                                 <tr>
                                     <th class="text-800 sort align-middle ps-4" data-sort="action">Action</th>
-                                    <th class="text-800 sort align-middle ps-2" data-sort="name">Invoice No</th>             
+                                    <th class="text-800 sort align-middle ps-2" data-sort="name">Invoice No</th>
                                     <th class="text-800 sort align-middle ps-2" data-sort="gmail">Client Name</th>
                                     <th class="text-800 sort align-middle ps-2" data-sort="statename">Total Ammount</th>
                                     <th class="text-800 sort align-middle ps-2" data-sort="occupation">Paid Ammount</th>
                                     <th class="text-800 sort align-middle ps-2" data-sort="address">Due Ammount</th>
                                     <th class="text-800 sort align-middle ps-2" data-sort="mobile">Date</th>
-                                   
+
                                 </tr>
                             </thead>
                             <tbody class="list" id="table-ticket-body">
@@ -118,26 +118,24 @@
                                                 <a @onclick="()=>DeleteItem(item.InvoiceId)" class="btn btn-falcon-default btn-sm ">
                                                     <i class="fa fa-trash text-danger" aria-hidden="true"></i>
                                                 </a>
-                                                <a class="btn btn-falcon-default btn-sm" href="create_invoice/@item.InvoiceKey"><span class="fas fa-external-link-alt" data-fa-transform="shrink-3"></span><span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1"></span></a>
-                                                <a class="btn btn-falcon-default btn-sm" href="customer_history_details">H.</a>
-                                               
+                                                <a class="btn btn-falcon-default btn-sm" href="customer_payment">c.</a>
 
                                             </div>
                                         </td>
                                         <td class="align-middle client white-space-nowrap pe-3 pe-xxl-4 ps-2">
                                             <div class="d-flex align-items-center gap-2 position-relative">
-                                               @*  <div class="avatar avatar-xl avatar-xl">
-                                                    @if (item.CustImgLink is not null)
-                                                    {
-                                                        <img class="rounded-circle" src="@item.CustImgLink" alt="" />
-                                                    }
-                                                    else
-                                                    {
-                                                        <img src="/assets/commonimage/no-image.png" />
-                                                    }
+                                                @*  <div class="avatar avatar-xl avatar-xl">
+                                        @if (item.CustImgLink is not null)
+                                        {
+                                        <img class="rounded-circle" src="@item.CustImgLink" alt="" />
+                                        }
+                                        else
+                                        {
+                                        <img src="/assets/commonimage/no-image.png" />
+                                        }
 
 
-                                                </div> *@
+                                        </div> *@
                                                 <h6 class="mb-0">@item.InvoiceNumber</h6>
                                             </div>
                                         </td>
@@ -146,7 +144,7 @@
                                         <td class="align-middle subject py-2 pe-4">@item.TotalPayable</td>
                                         <td class="align-middle subject py-2 pe-4">@item.DueAmount</td>
                                         <td class="align-middle subject py-2 pe-4">@item.InvoiceDateTime</td>
-                                        
+
                                     </tr>
                                 }
                             </tbody>
@@ -182,13 +180,13 @@
                     </div>
 
                 </div>
-             
+
             </div>
         }
 
-        
+
     </div>
-        
+
 
 </div>
 
@@ -218,7 +216,7 @@
     [Inject]
     InvoiceService _invoiceService { get; set; }
     List<Invoice> invoiceList = new List<Invoice>();
-   
+
 
     private bool isLoading = true;
 
@@ -320,5 +318,3 @@
         }
     }
 }
-
-
