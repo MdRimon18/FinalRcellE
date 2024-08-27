@@ -1,0 +1,442 @@
+﻿@page "/product_serialnumbers"
+
+<main class="main" id="top">
+    <div class="container" data-layout="container">
+        <div class="content">
+            <div class="row g-0">
+                <div class="col-lg-8 pe-lg-2">
+                    <div class="card mb-3 mb-lg-0">
+                        <div class="card-body">
+                            <div class="kanban-column-header">
+                                <h5 class="fs-9 mb-0">Product Serial List<span class="text-500">(8)</span></h5>
+                                <div class="dropdown font-sans-serif btn-reveal-trigger">
+                                    <button class="btn btn-sm btn-reveal py-0 px-2" type="button" id="kanbanColumn0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fas fa-ellipsis-h"></span></button>
+                                    <div class="dropdown-menu dropdown-menu-end py-0" aria-labelledby="kanbanColumn0">
+                                        <a class="dropdown-item" href="#!">Add Card</a><a class="dropdown-item" href="#!">Edit</a><a class="dropdown-item" href="#!">Copy link</a>
+                                        <div class="dropdown-divider"></div><a class="dropdown-item text-danger" href="#!">Remove</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="kanban-items-container scrollbar">
+                                <div class="kanban-item">
+                                    <div class="col-lg-3 col-md-3 col-sm-12 col-12 animated-div">
+                                        <div class="form-group">
+                                            <div class="input-group input-search-width">
+                                                <input class="form-control form-control-sm shadow-none form-rounded" type="search" placeholder="Search by ProductSerialNumber" aria-label="search" @bind="ProdSerialNmbr" />
+                                                <button class="btn btn-sm btn-outline-secondary border-300 hover-border-secondary form-rounded" @onclick="()=>LoadproductSerialNumber()"><span class="fa fa-search fs-10"></span></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-content" id="ticketViewContent">
+
+                                    @if (isLoading)
+                                    {
+                                        <p>Loading...</p>
+                                    }
+                                    else if (errorMessage != null)
+                                    {
+                                        <p>An error occurred: @errorMessage</p>
+                                    }
+                                    else
+                                    {
+                                        <div class="kanban-item">
+                                            <div id="tableExample" data-list='{"valueNames":["Serialnumber","rate","w-auto","date","Tagsupplier","Suppliername","Supplierorg.name","remarks","Salesstatus"],"page":5,"pagination":true}'>
+                                                <div class="table-responsive scrollbar">
+                                                    <table class="table table-hover table-bordered table-striped fs-10 mb-0">
+                                                        <thead class="bg-200">
+                                                            <tr>
+                                                                <th class="text-800 sort align-middle ps-4" data-sort="client">Action</th>
+                                                                <th class="text-900 sort" data-sort="Serialnumber">Serial Number</th>
+                                                                <th class="text-900 sort" data-sort="rate">Rate</th>
+                                                                @* <th class="text-900 sort" data-sort="w-auto"></th> *@
+                                                                <th class="text-900 sort" data-sort="date">Date</th>
+                                                                <th class="text-900 sort" data-sort="Tagsupplier">Tag Supplier</th>
+                                                                <th class="text-900 sort" data-sort="Suppliername">Supplier Name</th>
+                                                                <th class="text-900 sort" data-sort="Supplierorg.name">Supplier Org. Name</th>
+                                                                <th class="text-900 sort" data-sort="remarks">Remarks</th>
+                                                                <th class="text-900 sort" data-sort="Salesstatus">Sales Status</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody class="list" id="table-ticket-body">
+                                                            @foreach (var item in ProductSerialNumber_list)
+                                                            {
+                                                                <tr>
+                                                                    <td class="align-middle fs-9 py-3">
+                                                                        <div class="form-check mb-0">
+
+                                                                            <a @onclick="()=>EditLoadData(item)" class="btn btn-falcon-default btn-sm " data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><span class="fas fa-external-link-alt" data-fa-transform="shrink-3"></span><span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1"></span></a>
+                                                                            <a @onclick="()=>DeleteItem(item.ProdSerialNmbrId)" class="btn btn-falcon-default btn-sm ">
+                                                                                <i class="fa fa-trash text-danger" aria-hidden="true"></i>
+                                                                            </a>
+
+                                                                        </div>
+
+                                                                    </td> 
+
+                                                                    <td class="align-middle fs-9 py-3">
+                                                                        <div class="d-flex align-items-center gap-2 position-relative">
+                                                                            @item.ProdSerialNmbrId
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="align-middle fs-9 py-3">
+                                                                        <div class="d-flex align-items-center gap-2 position-relative">
+                                                                            @item.Rate
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="align-middle fs-9 py-3">
+                                                                        <div class="d-flex align-items-center gap-2 position-relative">
+                                                                            @item.Date
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="align-middle fs-9 py-3">
+                                                                        <div class="d-flex align-items-center gap-2 position-relative">
+                                                                            @item.TagSupplierId
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="align-middle fs-9 py-3">
+                                                                        <div class="d-flex align-items-center gap-2 position-relative">
+                                                                            @item.SupplierName
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="align-middle fs-9 py-3">
+                                                                        <div class="d-flex align-items-center gap-2 position-relative">
+                                                                            @item.SupplierOrgName
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="align-middle fs-9 py-3">
+                                                                        <div class="d-flex align-items-center gap-2 position-relative">
+                                                                            @item.Remarks
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="align-middle fs-9 py-3">
+                                                                        <div class="d-flex align-items-center gap-2 position-relative">
+                                                                            @item.SerialStatus
+                                                                        </div>
+                                                                    </td>
+
+                                                                </tr>
+                                                            }
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="text-center d-none" id="tickets-table-fallback">
+                                                        <p class="fw-bold fs-8 mt-3">No ticket found</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <div class="row">
+                                                <div class="pagination d-none"></div>
+                                                <div class="col-md-8">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <span class="d-none d-sm-inline-block me-2 fs-10">page @currentPage of @totalPages, Total Record @TotalRecord </span>
+
+                                                        </div>
+                                                        <div class="col-md-2">
+
+                                                            <PageSizeSelection SelectedPageSize="@PageSize" SelectedPageSizeChanged="HandlePageSizeChanged" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="col-auto d-flex justify-content-end">
+
+                                                        <PaginationV2 TotalPages="totalPages" CurrentPage="currentPage" OnPageChange="ChangePage" />
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 ps-lg-2">
+                    <div class="card mb-3 mb-lg-0">
+                        <div class="card-body">
+                            <div class="kanban-column-header">
+                                <h5 class="fs-9 mb-0">Product Add Serial</h5>
+                                <div class="dropdown font-sans-serif btn-reveal-trigger">
+                                    <button class="btn btn-sm btn-reveal py-0 px-2" type="button" id="kanbanColumn1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fas fa-ellipsis-h"></span></button>
+                                    <div class="dropdown-menu dropdown-menu-end py-0" aria-labelledby="kanbanColumn1">
+                                        <a class="dropdown-item" href="#!">Add Card</a><a class="dropdown-item" href="#!">Edit</a><a class="dropdown-item" href="#!">Copy link</a>
+                                        <div class="dropdown-divider"></div><a class="dropdown-item text-danger" href="#!">Remove</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="kanban-items-container scrollbar">
+                                <div class="kanban-item">
+                                    <EditForm Model="@productSerialNumbers" OnValidSubmit="SaveOrUpdate">
+                                        <DataAnnotationsValidator />
+
+                                        <SuccessAlert Message="@SuccessMessage" Show="@showSuccessAlert" />
+                                        <DangerAlert Message="@DangerMessage" Show="@showDangerAlert" OnClose="HideAlert" />
+                                        <div class="mb-1">
+
+                                            <label class="form-label fw-semi-bold" for="Serialnumber">Serial Number<span class="error-star">*</span></label>
+                                            <InputText @bind-Value="@productSerialNumbers.SerialNumber" class="form-control form-control-sm  form-rounded " />
+                                           
+                                        </div>
+                                         
+                                        <div class="mb-1">
+                                            <label for="rate">Rate</label>
+                                            <InputNumber @bind-Value="@productSerialNumbers.Rate" class="form-control form-control-sm  form-rounded" type="text" placeholder="Enter Rate" aria-label="default input Rate"/>
+                                        </div>
+                                        @* <div class="mb-1">
+                                            <label for="datepicker">Date</label>
+                                            <InputDate @bind-Value="@productSerialNumbers.Date" class="form-control datetimepicker form-rounded" id="datepicker" placeholder="dd/mm/yy" />
+                                        </div> *@
+                                        <div class="mb-1">
+                                            <label for="datepicker">Date</label>
+                                            <InputDate @bind-Value="@productSerialNumbers.Date" class="form-control form-control-sm  form-rounded" />
+                                           
+                                        </div>
+                                        <div class="mb-1">
+                                            <label for="Tagsupplier">Tag Supplier</label>
+                                            <InputNumber @bind-Value="@productSerialNumbers.TagSupplierId"class="form-control form-control-sm  form-rounded" type="number" placeholder="Enter tag supplier" aria-label="default input Tag Supplier"/>
+                                        </div>
+                                        <div class="mb-1">
+                                            <label for="Suppliername">Supplier Name</label>
+                                            <InputText @bind-Value="@productSerialNumbers.SupplierName"class="form-control form-control-sm  form-rounded" type="text" placeholder="Enter supplier name" aria-label="default input Supplier Name" />
+                                        </div>
+                                        <div class="mb-1">
+                                            <label for="Supplierorg.name">Supplier Org. Name</label>
+                                            <InputText @bind-Value="@productSerialNumbers.SupplierOrgName"class="form-control form-control-sm  form-rounded" type="text" placeholder="Enter Supplier Org. Name" aria-label="default input Supplier Org. Name" />
+                                        </div>
+                                        <div class="mb-1">
+                                            <label for="remarks">Remarks</label>
+                                            <InputText @bind-Value="@productSerialNumbers.Remarks"class="form-control form-control-sm  form-rounded" type="text" placeholder="Enter Remarks" aria-label="default input Remarks" />
+                                        </div>
+                                        <div class="mb-1">
+                                            <label for="Salesstatus">Sales Status</label>
+                                            <InputSelect  @bind-Value="@productSerialNumbers.SerialStatus"class="form-select form-rounded">
+                                                <option value="">Select Sales Status</option>
+                                                <option value="Yes">Yes</option>
+                                                <option value="No">No</option>
+                                            </InputSelect>
+                                        </div>
+                                        <div class="col-9 col-sm-7 offset-0">
+                                            @if (productSerialNumbers.ProdSerialNmbrId > 0)
+                                            {
+                                                <button class="btn btn-sm btn-primary" type="submit">Update</button>
+                                            }
+                                            else
+                                            {
+                                                <button class="btn btn-sm btn-primary" type="submit">Save</button>
+                                            }
+
+                                        </div>
+                                    </EditForm>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+@code {
+    private ProductSerialNumbers productSerialNumbers = new ProductSerialNumbers();
+    [Inject]
+    protected IJSRuntime JSRuntime { get; set; }
+    [Inject]
+    ProductSerialNumbersService _productSerialNumbersService { get; set; }
+    List<ProductSerialNumbers> ProductSerialNumber_list = new List<ProductSerialNumbers>();
+
+
+    private bool showSuccessAlert = false;
+    private bool showDangerAlert = false;
+
+    public string SuccessMessage { get; set; }
+    public string DangerMessage { get; set; }
+
+    private string errorMessage;
+
+    private bool isLoading = true;
+    private int PageSize { get; set; } = 5; // Number of items per page
+
+    int totalPages { get; set; }
+    int currentPage = 1; // Example current page
+
+    private int TotalRecord { get; set; }
+
+    public string? ProdSerialNmbr { get; set; }
+
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadproductSerialNumber();
+
+    }
+
+    private async Task LoadproductSerialNumber()
+    {
+        try
+        {
+            if (ProdSerialNmbr == "") { ProdSerialNmbr = null; }
+            ProductSerialNumber_list = (await _productSerialNumbersService.Get(null, null, null, ProdSerialNmbr, null,null,null, null, null, null, null, currentPage, PageSize)).ToList();
+            if (ProductSerialNumber_list.Count > 0)
+            {
+                TotalRecord = ProductSerialNumber_list[0].total_row;
+                //  totalPages = TotalRecord / PageSize;
+                totalPages = (int)Math.Ceiling((double)TotalRecord / PageSize);
+            }
+            else
+            {
+                TotalRecord = 0;
+                totalPages = 0;
+            }
+
+        }
+        catch (Exception ex)
+        {
+            errorMessage = ex.Message;
+        }
+        finally
+        {
+            isLoading = false;
+            StateHasChanged(); // Ensure UI reflects changes
+        }
+    }
+
+    private async Task SaveOrUpdate()
+    {
+        try
+        {
+            if (productSerialNumbers.ProdSerialNmbrId == 0)
+            {
+                productSerialNumbers.EntryDateTime = DateTimeHelper.CurrentDateTime();
+                productSerialNumbers.EntryBy = UserInfo.UserId;
+                // productSerialNumbers.LanguageId = 1;
+
+                productSerialNumbers.ProdSerialNmbrId = await _productSerialNumbersService.SaveOrUpdate(productSerialNumbers);
+                if (productSerialNumbers.ProdSerialNmbrId > 0)
+                {
+                    showSuccessAlert = true;
+                    SuccessMessage = MessageManager.SaveSuccess;
+                    StateHasChanged(); // Notify Blazor to re-render the component
+                                       //Hide the alert after 1 seconds
+
+                    await Task.Delay(1000);
+                    showSuccessAlert = false;
+                }
+                else if (productSerialNumbers.ProdSerialNmbrId == -1)
+                {
+                    showDangerAlert = true;
+                    DangerMessage = $"{productSerialNumbers.SerialNumber} {MessageManager.Exist}";
+                }
+                else
+                {
+                    showDangerAlert = true;
+                    DangerMessage = MessageManager.SaveFaild;
+                }
+            }
+            else
+            {
+
+                productSerialNumbers.LastModifyDate = DateTimeHelper.CurrentDateTime();
+                productSerialNumbers.LastModifyBy = UserInfo.UserId;
+                productSerialNumbers.ProdSerialNmbrId = await _productSerialNumbersService.SaveOrUpdate(productSerialNumbers);
+                if (productSerialNumbers.ProdSerialNmbrId > 0)
+                {
+                    showSuccessAlert = true;
+                    SuccessMessage = MessageManager.UpdateSuccess;
+                    StateHasChanged(); // Notify Blazor to re-render the component
+                                       //Hide the alert after 1 seconds
+
+                    await Task.Delay(1000);
+                    showSuccessAlert = false;
+                }
+                else
+                {
+                    showDangerAlert = true;
+                    DangerMessage = MessageManager.UpdateFaild;
+                }
+            }
+            // Clear the form after save/update
+            await LoadproductSerialNumber(); // Reload orders after save/update
+            productSerialNumbers = new Pms.Models.Entity.Settings.ProductSerialNumbers();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = ex.Message;
+        }
+    }
+
+    private async void EditLoadData(Pms.Models.Entity.Settings.ProductSerialNumbers lnge)
+    {
+        productSerialNumbers = lnge;
+    }
+
+    private async Task DeleteItem(long ProdSerialNmbrId)
+    {
+        bool confirmed = await JSRuntime.InvokeAsync<bool>("showDeleteConfirmation");
+        if (confirmed)
+        {
+            try
+            {
+                bool result = await _productSerialNumbersService.Delete(ProdSerialNmbrId);
+                if (result)
+                {
+                    await JSRuntime.InvokeVoidAsync("showSuccessMessage");
+                    await LoadproductSerialNumber();
+                }
+                else
+                {
+                    errorMessage = $"{MessageManager.DeleteFaild} {ProdSerialNmbrId}.";
+                }
+            }
+            catch (Exception ex)
+            {
+                errorMessage = ex.Message;
+            }
+        }
+        else
+        {
+
+        }
+    }
+
+
+    private void onSearch(string ProdSerialNmbrId)
+    {
+        /// OrderList = OrderList.Where(w => w.orderNo == OrderId).ToList();
+    }
+
+    private Task HideAlert()
+    {
+        showDangerAlert = false;
+        return Task.CompletedTask;
+    }
+    private async void OnClickAddBtn()
+    {
+        productSerialNumbers = new Pms.Models.Entity.Settings.ProductSerialNumbers();
+    }
+    private async void OnRefresh()
+    {
+        ProdSerialNmbr = null;
+        await LoadproductSerialNumber();
+    }
+    private async void ChangePage(int pageNumber)
+    {
+        currentPage = pageNumber;
+        await LoadproductSerialNumber();
+    }
+
+    void HandlePageSizeChanged(int newSize)
+    {
+        PageSize = newSize;
+        ChangePage(1);
+
+    }
+}
+

@@ -1,0 +1,35 @@
+﻿@page "/edittask/{taskId:int}"
+@using Pms.Data;
+
+<h3>Edit Task</h3>
+
+<div class="form-group">
+    <label for="title">Title</label>
+    <input id="title" class="form-control" @bind="editedTask.Title" />
+</div>
+<div class="form-check">
+    <input id="isCompleted" class="form-check-input" type="checkbox" @bind="editedTask.IsCompleted" />
+    <label for="isCompleted" class="form-check-label">Completed</label>
+</div>
+
+<button class="btn btn-primary" @onclick="SaveTask">Save</button>
+
+@code {
+    TaskModel editedTask = new TaskModel();
+
+    [Parameter]
+    public int taskId { get; set; }
+
+    [Inject]
+    TaskService taskService { get; set; }
+
+    protected override void OnInitialized()
+    {
+        editedTask = taskService.GetTasks().FirstOrDefault(t => t.Id == taskId);
+    }
+
+    private void SaveTask()
+    {
+        taskService.UpdateTask(editedTask);
+    }
+}
