@@ -1,0 +1,77 @@
+﻿@page "/customer_payment"
+
+<!-- Button to trigger modal -->
+<button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    Launch Payment Details Modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-keyboard="false" data-bs-backdrop="static" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content border-0 rounded-3 shadow-lg">
+            <div class="modal-header border-0">
+                <h5 class="modal-title" id="staticBackdropLabel">Payment Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <EditForm Model="customerPayment" OnValidSubmit="HandleValidSubmit">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-4 mb-2">
+                                    <div class="form-group">
+                                        <label for="BranchId" class="form-label">Branch ID</label>
+                                        <InputNumber id="BranchId" class="form-control form-control-sm form-rounded" @bind-Value="customerPayment.BranchId" />
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="form-group">
+                                        <label for="InvoiceId" class="form-label">Invoice ID</label>
+                                        <InputNumber id="InvoiceId" class="form-control form-control-sm form-rounded" @bind-Value="customerPayment.InvoiceId" />
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="form-group">
+                                        <label for="CustomerId" class="form-label">Customer ID</label>
+                                        <InputNumber id="CustomerId" class="form-control form-control-sm form-rounded" @bind-Value="customerPayment.CustomerId" />
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="form-group">
+                                        <label for="PaidAmount" class="form-label">Paid Amount</label>
+                                        <InputNumber id="PaidAmount" class="form-control form-control-sm form-rounded" @bind-Value="customerPayment.PaidAmount" />
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="form-group">
+                                        <label for="PaymentDate" class="form-label">Payment Date</label>
+                                        <InputDate id="PaymentDate" class="form-control form-control-sm form-rounded" @bind-Value="customerPayment.PaymentDate" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </EditForm>
+            </div>
+            <div class="modal-footer border-0">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" @onclick="HandleValidSubmit">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private CustomerPaymentDtls customerPayment = new CustomerPaymentDtls
+        {
+            PaymentDate = DateTime.Now
+        };
+
+    private async Task HandleValidSubmit()
+    {
+        // Handle saving data here
+        Console.WriteLine("Data Submitted");
+        // Optionally close the modal if needed
+        // await JSRuntime.InvokeVoidAsync("hideModal", "#staticBackdrop");
+    }
+}
