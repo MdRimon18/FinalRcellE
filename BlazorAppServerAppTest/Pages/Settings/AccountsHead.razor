@@ -187,7 +187,6 @@
 
                                                 @item.AccType
 
-
                                             </div>
                                         </td>
 
@@ -323,7 +322,7 @@
         try
         {
             if (AccHeadNameSearch == "") { AccHeadNameSearch = null; }
-            accHead_list = (await accHeadService.Get(null, null, AccHeadNameSearch, currentPage, PageSize)).ToList();
+            accHead_list = (await accHeadService.Get(null, null, AccHeadNameSearch,null, currentPage, PageSize)).ToList();
             accTypes = await _accTypeServivce.Get(CompanyInfo.LanguageId);
             if (accHead_list.Count > 0)
             {

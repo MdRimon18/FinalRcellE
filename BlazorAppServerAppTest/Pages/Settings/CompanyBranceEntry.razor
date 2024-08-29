@@ -1,15 +1,27 @@
 ﻿@page "/companybrancentry/{key:guid?}"
 
 @inject IJSRuntime JS
-@inject NavigationManager Navigation 
-
+@inject NavigationManager Navigation
+<button class="btn btn-primary" id="liveToastBtn" type="button">Show live toast</button>
+ 
+<div class="position-fixed top-0 end-0" style="z-index: -5">
+    <div class="toast fade" id="liveToast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header bg-primary text-white">
+            <strong class="me-auto">Bootstrap</strong><small>11 mins ago</small>
+            <div data-bs-theme="dark">
+                <button class="btn-close" type="button" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+        <div class="toast-body">Hello, world! This is a toast message.</div>
+    </div>
+</div>
 <div class="card mb-3">
     <div class="card-header">
         <h5 class="mb-0" data-anchor="data-anchor">
             <a class="btn btn-falcon-default btn-sm" @onclick="BackTo"><i class="fas fa-arrow-left"></i></a>
             Company Branch Entry
         </h5>
-
+       
     </div>
     <EditForm Model="@companyBranch" OnValidSubmit="SaveOrUpdate">
         <DataAnnotationsValidator />
@@ -22,8 +34,15 @@
                     <div class="col-sm-10 col-md-10 ">
                         <div class="form-group">
                             <label for="companyBranceEntry" class="form-label fw-semi-bold">Company Name<span class="error-star">*</span></label>
-                            <InputText type="text" @bind-Value="companyBranch.BranchName" class="form-control form-control-sm form-rounded " placeholder="Enter Company Name" />
-                            <ValidationMessage class="text-left invalid-message-color" For="@(() =>companyBranch.BranchName)" />
+                          
+                            <InputSelect @bind-Value="companyBranch.CompanyId" class="form-select form-rounded form-select-sm ">
+                                <option value="">Select company name</option>
+                                @foreach (var item in company_list)
+                                {
+                                    <option value="@item.CompanyId">@item.CompanyName</option>
+                                }
+                            </InputSelect>
+                            <ValidationMessage class="text-left invalid-message-color" For="@(() =>companyBranch.CompanyId)" />
 
                         </div>
                     </div>
@@ -184,6 +203,9 @@
     CompanyBranceService _companyBranceService { get; set; }
     CompanyBranch companyBranch = new CompanyBranch();//object or Model
 
+    [Inject]
+    CompanyService _companyService { get; set; }
+    List<Company> company_list = new List<Company>();
 
     [Inject]
     FileUploadService fileUploadService { get; set; }
@@ -208,7 +230,7 @@
 
         imageData = defaultImage;
 
-        // // country_list = (await countryServiceV2.Get(null, null, null, null, null, null, null, null, null, null, 1, 1000)).ToList();
+        company_list = (await _companyService.Get(null, null, null, null, null, null, null, 1, 1000)).ToList();
         // businessTypes_list = (await businessTypesService.Get(null, null, null, null, GlobalPageConfig.PageNumber, GlobalPageConfig.PageSize)).ToList();
         // biling_list = (await billingPlanService.Get(null, null, null, null, GlobalPageConfig.PageNumber, GlobalPageConfig.PageSize)).ToList();
         // country_list = (await countryServiceV2.Get(null, null, null, null, null, null, null, null, null, null, GlobalPageConfig.PageNumber, GlobalPageConfig.PageSize)).ToList();
@@ -271,7 +293,7 @@
             {
                 companyBranch.BranchImgLink = await fileUploadService.UploadFileAsync(selectedImageFile, "assets/CompanyBranchLogo");
             }
-            companyBranch.CompanyId = CompanyInfo.CompanyId;
+         
             // companyBranch.OwnerOrUserId = UserInfo.UserId;
 
             if (companyBranch.BranchId == 0)

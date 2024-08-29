@@ -17,7 +17,7 @@ namespace Pms.Data.Repository.Inventory
 
 		}
 		public async Task<IEnumerable<ProductSpecifications>> Get(long? ProdSpcfctnId, string? ProdSpcfctnKey, long? ProductId,string? SpecificationName,string? SpecificationDtls, int? PageNumber, int? PageSize)
-		{
+        {
 			try
 			{
 				var parameters = new DynamicParameters();

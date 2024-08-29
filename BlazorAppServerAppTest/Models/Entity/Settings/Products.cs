@@ -10,27 +10,28 @@ namespace Pms.Models.Entity.Settings
         public long ProductId { get; set; }
         public Guid? ProductKey { get; set; }
         public long ProdCtgId { get; set; }
-        public long? ProdSubCtgId { get; set; }
-        [Required(ErrorMessage = "Unit Type is Required")]
-        public long UnitId { get; set; }
+        public long? ProdSubCtgId { get; set; } = 0;
+        [Required(ErrorMessage = "Unit type is required")]
+        public long? UnitId { get; set; }=null;
         public decimal FinalPrice { get; set; }
         public decimal? PreviousPrice { get; set; }
         public long CurrencyId { get; set; }
         public string TagWord { get; set; }
-        [Required(ErrorMessage = "Product Name is Required")]
+        [Required(ErrorMessage = "Product name is required")]
         [StringLength(100, ErrorMessage = "Product Name cannot exceed 100 characters")]
         public string ProdName { get; set; }
         public string ManufacturarName { get; set; }
         public string SerialNmbrOrUPC { get; set; }
         public string Sku { get; set; }
-
-        [Required(ErrorMessage = "Opening Quantity is Required")]
-        public int OpeningQnty { get; set; } = 0;
+        [Required(ErrorMessage = "Opening quantity is required")]
+        public int? OpeningQnty { get; set; } = null;
         public int? AlertQnty { get; set; } = 0;
-        [Required(ErrorMessage = "Buying Price is Required")]
-        public decimal BuyingPrice { get; set; } = 0;
-        [Required(ErrorMessage = "Selling Price is Required")]
-        public decimal SellingPrice { get; set; } = 0;
+        [Required(ErrorMessage = "Buying price is required")]
+        [Range(0.01, double.MaxValue, ErrorMessage = "Buying price must be greater than zero")]
+        public decimal BuyingPrice { get; set; }
+        [Required(ErrorMessage = "Selling price is required")]
+        [Range(0.01, double.MaxValue, ErrorMessage = "Selling price must be greater than zero")]
+        public decimal SellingPrice { get; set; }
         public decimal VatPercent { get; set; } = 0;
         public decimal VatAmount { get; set; } = 0;
         public decimal DiscountPercentg { get; set; } = 0;
@@ -44,8 +45,8 @@ namespace Pms.Models.Entity.Settings
         public string WarrentyPolicy { get; set; }
         public int? ColorId { get; set; }
         public int? SizeId { get; set; }
-       
-        public int? ShippingById { get; set; }
+        [Required(ErrorMessage = "Shipping Name is required")]
+        public int? ShippingById { get; set; }=null;
         public int? ShippingDays { get; set; }
         public string ShippingDetails { get; set; }
         public int? OriginCountryId { get; set; }
@@ -69,8 +70,9 @@ namespace Pms.Models.Entity.Settings
         public long? DeletedBy { get; set; }
         public string ProdStatus { get; set; }
         public string ProdCtgName { get; set; }
+        public string ProdSubCtgName { get; set; }
         public string UnitName {  get; set; }
-        [NotMapped]
+        [NotMapped] 
         public int total_row { get; set; } = 0;
     }
 }

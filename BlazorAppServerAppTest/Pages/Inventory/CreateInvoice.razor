@@ -425,7 +425,7 @@
 </div>
 
  
-<div class="card mb-3">
+    <div class="card mb-3">
     <div class="card-header">
         <h5 class="mb-0" data-anchor="data-anchor">
             <i class="fas fa-arrow-left"></i>
@@ -434,9 +434,12 @@
     </div>
     <div class="card-body bg-body-tertiary">
         <div class="tab-content">
-            <form class="row g-3">
+            <div class="row g-3">
                 <div class="col-lg-10 col-md-10 col-sm-10 col-10">
-                    <div class="row g-3">
+                    <EditForm Model="@invoice" OnValidSubmit="SaveOrUpdate">
+                        <DataAnnotationsValidator />
+                       
+                      <div class="row g-3">
                         <div class="col-lg-3 col-md-3 col-sm-9 col-9 animated-div">
                             <div class="form-group">
                                 <label for="InvoiceType" class="form-label fw-semi-bold">Invoice Type</label><span class="error-star">*</span>
@@ -447,10 +450,8 @@
                                         <option value="@item.InvoiceTypeId">@item.InvoiceTypeName</option>
                                         }
                                 </InputSelect>
-
-                              
-                                
-                               
+                             
+                                <ValidationMessage class="text-danger" For="@(() => invoice.InvoiceTypeId)" />
                             </div>
                         </div>
 
@@ -475,7 +476,7 @@
                                         data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">+</button>
                                     </div>
                                 </div>
-                                       
+                                    <ValidationMessage class="text-danger" For="@(() => invoice.InvoiceNumber)" />
                                     @* <input type="text" id="inputField" class="form-control" placeholder="Enter value" aria-label="Enter value" > *@
                                    
                                 
@@ -488,8 +489,9 @@
                                 <label for="name" class="form-label fw-semi-bold">Customer Email</label>
                                 <input  type="text" class="form-control form-control-sm form-rounded fw-semi-bold"
                                 @bind-value="CustomerEmail"
-                                placeholder="Customer Email" required>
+                                placeholder="Customer Email">
                             </div>
+                               
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-9 col-9 animated-div">
                             <div class="form-group">
@@ -502,6 +504,7 @@
                                         }
                                 </InputSelect> 
                             </div>
+                                <ValidationMessage class="text-danger" For="@(() => invoice.NotificationById)" />
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-9 col-9 animated-div">
                             <div class="form-group">
@@ -531,6 +534,7 @@
                                     }
                                 </InputSelect>
                             </div>
+                                <ValidationMessage class="text-danger" For="@(() => invoice.PaymentTypeId)" />
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-9 col-9 animated-div">
                             <div class="form-group">
@@ -547,7 +551,7 @@
                         
                         <div class="col-lg-3 col-md-3 col-sm-9 col-9 animated-div">
                             <div class="form-group">
-                                <label for="categorySelect" class="form-label fw-semi-bold">Sub Category</label><span class="error-star">*</span>
+                                <label for="categorySelect" class="form-label fw-semi-bold">Sub Category</label>
                                 <select class="form-select form-rounded form-select-sm ">
                                     <option value=""> Select Sub Category</option>
                                     @foreach (var item in productSubCategory_list)
@@ -555,6 +559,7 @@
                                         <option value="@item.ProdSubCtgId">@item.ProdSubCtgName</option>
                                     }
                                 </select>
+                                  
                             </div>
                         </div >
                        
@@ -653,11 +658,11 @@
                                 </div >
                             </div>
                         </div >
-
+                   
                     </div >
-                    <div class="row">
+                        
 
-
+                      <div class="row">
                         <div class="table-responsive scrollbar mt-4">
                             <table class="table table-sm mb-0 fs-10 table-view-tickets">
                                 <thead class="thdchild">
@@ -827,18 +832,20 @@
                             </table>
                         </div >
                     </div>
-                    <div class="row align-items-center mt-2">
+                      <div class="row align-items-center mt-2">
                         <div class="col-auto d-flex">
-                            <a href="invoice_preview" class="btn btn-outline-success me-1 mb-1" type="button" @onclick=OnSave>Create Invoice</a>
+                            <button class="btn btn-outline-success me-1 mb-1" type="submit">Create Invoice</button>
                           
                             <a href="shipping_nd_payment" class="btn btn-outline-success me-1 mb-1" type="button">Shipping</a>
                              
                             <button class="btn btn-outline-secondary me-1 mb-1" type="button">Refresh</button>
                         </div >
-                    </div >
+                    </div >                
+                    </EditForm>
                     <div class="row mt-4">
                         
                     </div >
+
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-2">
                       <div class="form-group">
@@ -883,7 +890,7 @@
 
                  
 
-            </form>
+            </div>
         </div>
 
         <div class="border-bottom border-dashed my-5"></div>
@@ -1036,7 +1043,7 @@
        invoice.CustomerID = customer.CustomerId;
          CustomerEmail = customer.Email;
     }
-    private async Task OnSave()
+    private async Task SaveOrUpdate()
     {
         try
         { 

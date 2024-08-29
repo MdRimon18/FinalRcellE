@@ -1,7 +1,4 @@
 ﻿@page "/product_entry/{key:guid?}"
-
-
-
 @* <script>
     alert(1)
 </script> *@
@@ -59,7 +56,7 @@
                             <div class="form-group">
                                 <label for="quantity" class="form-label fw-semi-bold">Opening Quantity</label><span class="error-star">*</span>
                                     <InputNumber  class="form-control form-control-sm form-rounded fw-semi-bold" @bind-Value="product.OpeningQnty" placeholder="Opening Quantity"/>
-                                    <ValidationMessage class="text-left" For="@(() => product.OpeningQnty)" />
+                                    <ValidationMessage class="text-left invalid-message-color" For="@(() => product.OpeningQnty)" />
                             </div>
                         </div>  
 
@@ -77,14 +74,14 @@
                             <div class="form-group">
                                 <label for="productBuyingPrice" class="form-label fw-semi-bold">Buying Price</label><span class="error-star">*</span>
                                     <InputNumber  class="form-control form-control-sm form-rounded fw-semi-bold" @bind-Value="product.BuyingPrice" placeholder="Buying Price"  />
-                                    <ValidationMessage class="text-left " For="@(() =>product.BuyingPrice)" />
+                                    <ValidationMessage class="text-left invalid-message-color " For="@(() =>product.BuyingPrice)" />
                             </div>
                         </div>
                             <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
                                 <div class="form-group">
                                     <label for="cost" class="form-label fw-semi-bold">Selling Price</label><span class="error-star">*</span>
                                     <InputNumber  class="form-control form-control-sm form-rounded fw-semi-bold " @bind-Value="product.SellingPrice" placeholder="Selling Price"  />
-                                    <ValidationMessage class="text-left " For="@(() => product.SellingPrice)"/>
+                                    <ValidationMessage class="text-left invalid-message-color" For="@(() => product.SellingPrice)" />
                                 </div>
                             </div>
 
@@ -229,7 +226,7 @@
                         </div>
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
                             <div class="form-group">
-                                <label class="form-label fw-semi-bold">Shipping</label><span class="error-star">*</span>
+                                <label class="form-label fw-semi-bold">Shipping Name</label><span class="error-star">*</span>
                                     <InputSelect @bind-Value="product.ShippingById"  class="form-control form-control-sm form-rounded fw-semi-bold ">
                                         <option value=''>Select Shipping Name</option> 
                                         @foreach (var item in shippingBy_list)
@@ -237,7 +234,7 @@
                                             <option value=@item.ShippingById>@item.ShippingByName</option>
                                         }
                                     </InputSelect>
-                                    <ValidationMessage class="text-left " For="@(() => product.ShippingById)" />
+                                    <ValidationMessage class="text-left invalid-message-color" For="@(() => product.ShippingById)" />
                             </div>
                         </div>
                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
@@ -305,7 +302,7 @@
                     </div>
                         <div class="row">
                             <div class="d-grid gap-2 d-md-block mt-4">
-                                <button type="button" @onclick="SaveOrUpdate" class="btn btn-sm btn-light">@SubmitButtonText</button>
+                                <button type="submit" @onclick="SaveOrUpdate" class="btn btn-sm btn-light">@SubmitButtonText</button>
                                 <button type="reset" class="btn btn-sm btn-light">Refresh</button>
                                 <button class="btn btn-sm btn-danger">Delete</button>
                             </div>
@@ -384,55 +381,51 @@
                 </div>
             </div>
         </div>
-        
-        <div class="card mb-3 mb-lg-0">
-            <div class="card-header bg-body-tertiary">
-                <h6 class="mb-0">Specifications</h6>
+
+            <div class="card mb-3 mb-lg-0">
+                <div class="card-header bg-body-tertiary">
+                    <h6 class="mb-0">Specifications</h6>
+                </div>
+                <div class="card-body">
+                    @if (specification_list.Count > 0)
+                    {
+                        foreach (var spec in specification_list)
+                        {
+                            <div class="row gx-2 flex-between-center mb-3">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0 text-600">@spec.SpecificationName</h6>
+                                </div>
+                                <div class="col-sm-9">
+                                    <div class="d-flex flex-between-center">
+                                        <h6 class="mb-0 text-700">@spec.SpecificationDtls</h6>
+                                        <a class="btn btn-sm btn-link text-danger" @onclick="() => DeleteItem(spec.ProdSpcfctnId)">
+                                            <span class="fs-10 fas fa-trash-alt"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                  @*   else
+                    {
+                        
+                    }
+ *@
+                   <div class="row gy-3 gx-2">
+                          <div class="col-sm-3">
+                             <InputText @bind-Value="productSpecifications.SpecificationName"  class="form-control form-control-sm form-label fw-semi-bold"  id="Name" type="text" placeholder="Specification Name" />
+                          </div>
+                          <div class="col-sm-9">
+                              <div class="d-flex gap-2 flex-between-center">
+                                <InputText @bind-Value="productSpecifications.SpecificationDtls"class="form-control form-control-sm form-label fw-semi-bold" id="Details" type="text" placeholder="Specification Details" />
+                                  <button type="button" class="btn btn-sm btn-falcon-default" @onclick="Savespecification">Add</button>
+                              </div>
+                          </div>
+       
+                   </div>
+                   
             </div>
-            <div class="card-body">
-                <div class="row gx-2 flex-between-center mb-3">
-                    <div class="col-sm-3">
-                        <h6 class="mb-0 text-600">Processor</h6>
-                    </div>
-                    <div class="col-sm-9">
-                        <div class="d-flex flex-between-center">
-                            <h6 class="mb-0 text-700">2.3GHz quad-core Intel Core i5</h6><a class="btn btn-sm btn-link text-danger" href="#!" data-bs-toggle="tooltip" data-bs-placement="top" title="Remove"><span class="fs-10 fas fa-trash-alt"></span></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="row gx-2 flex-between-center mb-3">
-                    <div class="col-sm-3">
-                        <h6 class="mb-0 text-600">Memory</h6>
-                    </div>
-                    <div class="col-sm-9">
-                        <div class="d-flex flex-between-center">
-                            <h6 class="mb-0 text-700">8GB of 2133MHz LPDDR3 onboard memory</h6><a class="btn btn-sm btn-link text-danger" href="#!" data-bs-toggle="tooltip" data-bs-placement="top" title="Remove"><span class="fs-10 fas fa-trash-alt"></span></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="row gx-2 flex-between-center mb-3">
-                    <div class="col-sm-3">
-                        <h6 class="mb-0 text-600">Brand name</h6>
-                    </div>
-                    <div class="col-sm-9">
-                        <div class="d-flex flex-between-center">
-                            <h6 class="mb-0 text-700">Apple</h6><a class="btn btn-sm btn-link text-danger" href="#!" data-bs-toggle="tooltip" data-bs-placement="top" title="Remove"><span class="fs-10 fas fa-trash-alt"></span></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="row gy-3 gx-2">
-                    <div class="col-sm-3">
-                            <input class="form-control form-control-sm form-label fw-semi-bold" id="specification-label" type="text" placeholder="Label" />
-                    </div>
-                    <div class="col-sm-9">
-                        <div class="d-flex gap-2 flex-between-center">
-                                <input class="form-control form-control-sm form-label fw-semi-bold" id="specification-property" type="text" placeholder="Property" />
-                            <button class="btn btn-sm btn-falcon-default">Add</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+       </div>                        
         
     </div> 
     
@@ -479,7 +472,7 @@
                                              <option value=@item.UnitId>@item.UnitName</option>
                                            }
                                 </InputSelect>
-                                    <ValidationMessage class="text-left " For="@(() => product.UnitId)" />
+                                    <ValidationMessage class="text-left invalid-message-color" For="@(() => product.UnitId)" />
                             </div>
                         </div>
                         <div class="col-12">
@@ -600,7 +593,13 @@
     ProductService _productService { get; set; }
     Products product = new Products();
 
+    [Inject]
+    ProductSpecificationService _productSpecificationService { get; set; }
+    List<ProductSpecifications> specification_list = new List<ProductSpecifications>();
+
     private ProductCategories SelectedProductCategorie { get; set; }
+
+    ProductSpecifications productSpecifications = new ProductSpecifications();
 
     private void OnItemSelected(ProductCategories selectedItem)
     {
@@ -608,8 +607,10 @@
         product.ProdCtgId = selectedItem.ProdCtgId;
     }
     protected override async Task OnInitializedAsync()
+
     {
         //await LoadUnits();
+        await LoadSpecification();
 
         supplier_list = (await supplierService.Get(null, null, null, null, null, null, 1, 1000)).ToList();
         unit_list = (await unitService.Get(null, null, null, null, 1, 1000)).ToList();
@@ -645,6 +646,7 @@
 
         }
     }
+
     private bool showSuccessAlert = false;
     private bool showDangerAlert = false;
 
@@ -652,6 +654,18 @@
     public string DangerMessage { get; set; }
 
     private string errorMessage;
+
+    private bool isLoading = true;
+    private int PageSize { get; set; } = 5; // Number of items per page
+
+    int totalPages { get; set; }
+    int currentPage = 1; // Example current page
+
+    private int TotalRecord { get; set; }
+
+
+    public string? specificationNameSearch { get; set; }
+
 
     private Task HideAlert()
     {
@@ -727,5 +741,99 @@
         }
       
     }
+
+   
+    private async Task LoadSpecification()
+    {
+        try
+        {
+            if (specificationNameSearch == "") { specificationNameSearch = null; }
+
+            specification_list = (await _productSpecificationService.Get(null, null, null, specificationNameSearch, null, currentPage, PageSize)).ToList();
+
+            if (specification_list.Count > 0)
+            {
+                TotalRecord = specification_list[0].total_row;
+                //  totalPages = TotalRecord / PageSize;
+                totalPages = (int)Math.Ceiling((double)TotalRecord / PageSize);
+            }
+            else
+            {
+                TotalRecord = 0;
+                totalPages = 0;
+            }
+
+        }
+        catch (Exception ex)
+        {
+            errorMessage = ex.Message;
+        }
+        finally
+        {
+            isLoading = false;
+          await  LoadSpecification(); // Ensure UI reflects changes
+         }
+    }
+
+    private async Task Savespecification()
+    {
+        try
+        {
+            if (productSpecifications.ProdSpcfctnId == 0)
+            {
+                productSpecifications.EntryDateTime = DateTimeHelper.CurrentDateTime();
+                productSpecifications.EntryBy = UserInfo.UserId;
+                productSpecifications.ProductId = 1;
+
+                productSpecifications.ProdSpcfctnId = await _productSpecificationService.SaveOrUpdate(productSpecifications);
+                if (productSpecifications.ProdSpcfctnId > 0)
+                {
+                    showSuccessAlert = true;
+                    SuccessMessage = MessageManager.SaveSuccess;
+                    await LoadSpecification(); // Reload orders after save/update
+                    await Task.Delay(1000);
+                    showSuccessAlert = false;
+                }
+                else if (productSpecifications.ProdSpcfctnId == -1)
+                {
+                    showDangerAlert = true;
+                    DangerMessage = $"{productSpecifications.SpecificationName} {MessageManager.Exist}";
+                }
+                else
+                {
+                    showDangerAlert = true;
+                    DangerMessage = MessageManager.SaveFaild;
+                }
+            }
+           
+        
+           productSpecifications = new Pms.Models.Entity.Settings.ProductSpecifications();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = ex.Message;
+        }
+    }
+    private async Task DeleteItem(long ProdSpcfctnId)
+    {
+        
+        try
+        {
+            bool result = await _productSpecificationService.Delete(ProdSpcfctnId);
+            if (result)
+            {
+                await LoadSpecification();
+            }
+            else
+            {
+                errorMessage = $"Failed to delete item with ID {ProdSpcfctnId}.";
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = ex.Message;
+        }
+    }
+   
 
 }

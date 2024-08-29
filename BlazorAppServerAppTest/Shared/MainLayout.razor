@@ -1,9 +1,12 @@
 ﻿@inherits LayoutComponentBase
+
+
 @if (IsAuthenticateUser)
 {
     <SideNavBar />
     <div class="content">
         <NavHeader />
+      
         @Body
 
         <footer class="footer">

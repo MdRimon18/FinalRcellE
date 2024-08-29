@@ -14,5 +14,6 @@
         public DateTime? DeletedDate { get; set; }
         public long? DeletedBy { get; set; }
         public string Status { get; set; }
+        public int total_row { get; set; }
     }
 }

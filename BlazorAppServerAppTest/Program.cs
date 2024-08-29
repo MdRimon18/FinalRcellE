@@ -43,6 +43,8 @@ builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<CompanyService>();
 builder.Services.AddScoped<InvoiceService>();
 builder.Services.AddScoped<InvoiceItemService>();
+builder.Services.AddScoped<ProductSpecificationService>();
+
 
 builder.Services.AddScoped<WarehouseService>();
 builder.Services.AddScoped<NotificationByService>();
@@ -85,6 +87,8 @@ builder.Services.AddScoped<AccTypeServivce>();
 builder.Services.AddSingleton<TaskRepository>();
 
 builder.Services.AddSingleton<FileUploadService>();
+// Program.cs
+builder.Services.AddSingleton<ToastService>();
 
 var app = builder.Build();
 

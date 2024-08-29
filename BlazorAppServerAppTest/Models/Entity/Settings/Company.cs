@@ -43,6 +43,9 @@ namespace Pms.Models.Entity.Settings
         public DateTime? DeletedDate { get; set; }
         public long? DeletedBy { get; set; }
         public string Status { get; set; }
+        public string CountryName { get; set; }
+        public string CurrencyName { get; set; }
+        public string BusinessTypeName { get; set; }
         [NotMapped]
         public int total_row { get; set; } = 0;
 

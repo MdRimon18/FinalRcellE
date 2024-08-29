@@ -2,6 +2,7 @@
 @using Pms.Data.Repository
 
 
+      
 
 <!-- Right Offcanvas-->
 @* <button class="btn btn-primary mb-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Right Offcanvas</button> *@
@@ -10,7 +11,7 @@
         @*   <h5 id="offcanvasRightLabel">Offcanvas right</h5> *@
         <div class="card-header">
             <h5 class="mb-0">Colors</h5>
-
+            <Toast ToastService="toastService" />
 
         </div>
         <button class="btn-close text-reset" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -28,9 +29,7 @@
                                 <EditForm Model="@colors" OnValidSubmit="SaveOrUpdate">
                                     <DataAnnotationsValidator />
                                     <div class="row">
-                                        <SuccessAlert Message="@SuccessMessage" Show="@showSuccessAlert" />
-                                        <DangerAlert Message="@DangerMessage" Show="@showDangerAlert" OnClose="HideAlert" />
-
+                                         
                                         <div class="col-3 mb-3 text-lg-end">
 
                                         <label class="form-label fw-semi-bold" for="ColorIdName">Color Name<span class="error-star">*</span></label>
@@ -250,13 +249,7 @@
     [Inject]
     ColorService colorService { get; set; }
     List<Colors> color_list = new List<Colors>();
-
-    private bool showSuccessAlert = false;
-    private bool showDangerAlert = false;
-
-    public string SuccessMessage { get; set; }
-    public string DangerMessage { get; set; }
-
+ 
     private string errorMessage;
 
     private bool isLoading = true;
@@ -316,49 +309,33 @@
                 colors.EntryDateTime = DateTimeHelper.CurrentDateTime();
                 colors.EntryBy = UserInfo.UserId;
                 colors.LanguageId = 1;
-
                 colors.ColorId = await colorService.SaveOrUpdate(colors);
                 if (colors.ColorId > 0)
                 {
-                    showSuccessAlert = true;
-                    SuccessMessage = MessageManager.SaveSuccess;
-                    StateHasChanged(); // Notify Blazor to re-render the component
-                                       //Hide the alert after 1 seconds
-
-                    await Task.Delay(1000);
-                    showSuccessAlert = false;
+                    toastService.ShowToast(MessageManager.SaveSuccess, ToastLevel.Success);
                 }
                 else if (colors.ColorId == -1)
                 {
-                    showDangerAlert = true;
-                    DangerMessage = $"{colors.ColorIdName} {MessageManager.Exist}";
+                    toastService.ShowToast($"{colors.ColorIdName} " + MessageManager.Exist, ToastLevel.Warning);
                 }
                 else
                 {
-                    showDangerAlert = true;
-                    DangerMessage = MessageManager.SaveFaild;
+                  toastService.ShowToast(MessageManager.SaveFaild, ToastLevel.Error);
+                  
                 }
             }
             else
             {
-
                 colors.LastModifyDate = DateTimeHelper.CurrentDateTime();
                 colors.LastModifyBy = UserInfo.UserId;
                 colors.ColorId = await colorService.SaveOrUpdate(colors);
                 if (colors.ColorId > 0)
                 {
-                    showSuccessAlert = true;
-                    SuccessMessage = MessageManager.UpdateSuccess;
-                    StateHasChanged(); // Notify Blazor to re-render the component
-                                       //Hide the alert after 1 seconds
-
-                    await Task.Delay(1000);
-                    showSuccessAlert = false;
+                 toastService.ShowToast(MessageManager.UpdateSuccess, ToastLevel.Success);
                 }
                 else
                 {
-                    showDangerAlert = true;
-                    DangerMessage = MessageManager.UpdateFaild;
+                   toastService.ShowToast(MessageManager.UpdateFaild, ToastLevel.Success); 
                 }
             }
             // Clear the form after save/update
@@ -370,9 +347,7 @@
             errorMessage = ex.Message;
         }
     }
-
-
-
+     
 
     private async void EditLoadData(Pms.Models.Entity.Settings.Colors lnge)
     {
@@ -413,12 +388,7 @@
     {
         /// OrderList = OrderList.Where(w => w.orderNo == OrderId).ToList();
     }
-
-    private Task HideAlert()
-    {
-        showDangerAlert = false;
-        return Task.CompletedTask;
-    }
+     
     private async void OnClickAddBtn()
     {
         colors = new Pms.Models.Entity.Settings.Colors();

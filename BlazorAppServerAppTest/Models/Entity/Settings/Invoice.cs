@@ -1,18 +1,27 @@
-﻿namespace Pms.Models.Entity.Settings
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+namespace Pms.Models.Entity.Settings
 {
     public class Invoice
     {
         public long InvoiceId { get; set; }
         public Guid? InvoiceKey { get; set; }
         public long BranchId { get; set; }
+        [Required(ErrorMessage = "Invoice Number is required")]
         public string InvoiceNumber { get; set; }
         public long CustomerID { get; set; }
         public DateTime InvoiceDateTime { get; set; }= DateTime.Now;
-        public long InvoiceTypeId { get; set; }
-        public long NotificationById { get; set; }
+
+        [Required(ErrorMessage = "Invoice Type is required")]
+      
+        public long? InvoiceTypeId { get; set; } =null;
+        [Required(ErrorMessage = "Notification is required")]
+        public long? NotificationById { get; set; } = null; 
         public string SalesByName { get; set; }
         public string Notes { get; set; }
-        public long PaymentTypeId { get; set; }
+
+        [Required(ErrorMessage = "PaymentType is required")]
+        public long? PaymentTypeId { get; set; }=null;
         public string PaymentReference { get; set; }
         public long? ShippingMethodId { get; set; }
         public long CurrencyId { get; set; }

@@ -17,7 +17,7 @@ namespace Pms.Data.Repository.Inventory
                 _db = db.GetDbConnection();
 
             }
-            public async Task<IEnumerable<AccHead>> Get(long? AccHeadId, string? AccHeadKey, string? AccHeadName, int? pagenumber, int? pageSize)
+            public async Task<IEnumerable<AccHead>> Get(long? AccHeadId, string? AccHeadKey, string? AccHeadName, string AccType, int? pagenumber, int? pageSize)
             {
                 try
                 {
@@ -25,8 +25,8 @@ namespace Pms.Data.Repository.Inventory
 
                     parameters.Add("@AccHeadId", AccHeadId);
                     parameters.Add("@AccHeadKey", AccHeadKey);
-                
                     parameters.Add("@AccHeadName", AccHeadName);
+                    parameters.Add("@AccType", AccType);
                     parameters.Add("@page_number", pagenumber);
                     parameters.Add("@page_size", pageSize);
 
@@ -43,14 +43,14 @@ namespace Pms.Data.Repository.Inventory
             public async Task<AccHead> GetById(long AccHeadId)
 
             {
-                var accHead = await (Get(AccHeadId, null, null, 1, 1));
+                var accHead = await (Get(AccHeadId, null,null, null, 1, 1));
                 return accHead.FirstOrDefault();
             }
 
             public async Task<AccHead> GetByKey(string AccHeadKey)
 
             {
-                var accHead = await (Get(null, AccHeadKey, null, 1, 1));
+                var accHead = await (Get(null, AccHeadKey,null, null, 1, 1));
                 return accHead.FirstOrDefault();
             }
 
@@ -105,7 +105,7 @@ namespace Pms.Data.Repository.Inventory
 
             public async Task<bool> Delete(long AccHeadId)
             {
-                var accHead = await (Get(AccHeadId, null, null, 1, 1));
+                var accHead = await (Get(AccHeadId, null,null, null, 1, 1));
                 var deleteObj = accHead.FirstOrDefault();
                 bool isDeleted = false;
                 if (deleteObj != null)

@@ -12,7 +12,7 @@ namespace Pms.Models.Entity.Settings
         [StringLength(100, ErrorMessage = "AccHead Name must not exceed 100 characters")]
         public string AccHeadName { get; set; }
         [Required(ErrorMessage = "Account Type is required")]
-        public string AccType{ get; set; }
+        public string AccType { get; set; }
         public DateTime? EntryDateTime { get; set; }
         public long? EntryBy { get; set; }
         public DateTime? LastModifyDate { get; set; }
