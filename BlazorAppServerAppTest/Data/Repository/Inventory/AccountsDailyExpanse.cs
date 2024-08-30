@@ -16,5 +16,6 @@
         public long? DeletedBy { get; set; } = null;
         public string Status { get; set; } = null;
         public int SuccessOrFailId { get; set; }
+        public int total_row { get; set; }
     }
 }

@@ -79,6 +79,8 @@ builder.Services.AddScoped<ProductSizeService>();
 builder.Services.AddScoped<CompanyBranceService>();
 builder.Services.AddScoped<CustomerPaymentDtlsService>();
 builder.Services.AddScoped<ProductSerialNumbersService>();
+builder.Services.AddScoped<AccountsDailyExpanseService>();
+
 
 builder.Services.AddScoped<PaymentTypesService>();
 builder.Services.AddScoped<BillingPlanService>();

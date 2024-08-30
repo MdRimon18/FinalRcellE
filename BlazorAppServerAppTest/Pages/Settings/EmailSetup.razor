@@ -375,7 +375,7 @@
         try
         {
             if (EmailSetupEmailSearch == "") { EmailSetupEmailSearch = null; }
-            email_list = (await emailSetupService.Get(null, null, EmailSetupEmailSearch, null,null,null, null, null, null, currentPage, PageSize)).ToList();
+            email_list = (await emailSetupService.Get(null, null, EmailSetupEmailSearch, null,null, null, null, null, currentPage, PageSize)).ToList();
             if (email_list.Count > 0)
             {
                 TotalRecord = email_list[0].total_row;

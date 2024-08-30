@@ -16,7 +16,7 @@ namespace Pms.Data.Repository.Inventory
             _db = db.GetDbConnection();
 
         }
-        public async Task<IEnumerable<EmailSetup>> Get(int? EmailSetupId, string? EmailSetupkey, string FromEmail, string FromName, string UserName, string Password, string BaseUrl, string ApiKey, long? PortNumber, int? PageNumber, int? PageSize)
+        public async Task<IEnumerable<EmailSetup>> Get(int? EmailSetupId, string? EmailSetupkey, string FromEmail, string FromName, string UserName, string Password, string BaseUrl, long? PortNumber, int? PageNumber, int? PageSize)
         {
             try
             {
@@ -29,7 +29,7 @@ namespace Pms.Data.Repository.Inventory
                 parameters.Add("@UserName", UserName);
                 parameters.Add("@Password", Password);
                 parameters.Add("@BaseUrl", BaseUrl);
-                parameters.Add("@ApiKey", ApiKey);
+              
 
                 parameters.Add("@PortNumber", PortNumber);
                 parameters.Add("@PageNumber", PageNumber);
@@ -48,14 +48,14 @@ namespace Pms.Data.Repository.Inventory
         public async Task<EmailSetup> GetById(int EmailSetupId)
 
         {
-            var emailSetup = await (Get(EmailSetupId, null, null, null,null,null, null, null,null, 1, 1));
+            var emailSetup = await (Get(EmailSetupId, null, null, null,null,null, null,null, 1, 1));
             return emailSetup.FirstOrDefault();
         }
 
         public async Task<EmailSetup> GetByKey(string EmailSetupkey)
 
         {
-            var emailSetup = await (Get(null, EmailSetupkey, null, null, null,null,null, null, null, 1, 1));
+            var emailSetup = await (Get(null, EmailSetupkey, null, null, null,null, null, null, 1, 1));
             return emailSetup.FirstOrDefault();
         }
 
@@ -69,17 +69,14 @@ namespace Pms.Data.Repository.Inventory
                 parameters.Add("@EmailSetupId", emailSetup.EmailSetupId);
                 parameters.Add("@EmailSetupkey",emailSetup.EmailSetupkey);
                 parameters.Add("@BranchId", emailSetup.BranchId);
-
                 parameters.Add("@FromEmail", emailSetup.FromEmail);
                 parameters.Add("@FromName", emailSetup.FromName);
                 parameters.Add("@UserName", emailSetup.UserName);
-
                 parameters.Add("@Password", emailSetup.Password);
                 parameters.Add("@BaseUrl", emailSetup.BaseUrl);
                 parameters.Add("@ApiKey", emailSetup.ApiKey);
                 parameters.Add("@PortNumber", emailSetup.PortNumber);
                 parameters.Add("@IsDefault", emailSetup.IsDefault);
-
                 parameters.Add("@EntryDateTime", emailSetup.EntryDateTime);
                 parameters.Add("@EntryBy", emailSetup.EntryBy);
                 parameters.Add("@LastModifyDate", emailSetup.LastModifyDate);
@@ -102,7 +99,7 @@ namespace Pms.Data.Repository.Inventory
 
         public async Task<bool> Delete(int EmailSetupId)
         {
-            var emailSetup = await (Get(EmailSetupId,null,null,null,null,null,null, null, null, 1, 1));
+            var emailSetup = await (Get(EmailSetupId,null,null,null,null,null,null,null, 1, 1));
             var deleteObj = emailSetup.FirstOrDefault();
             long DeletedSatatus = 0;
             if (deleteObj != null)
