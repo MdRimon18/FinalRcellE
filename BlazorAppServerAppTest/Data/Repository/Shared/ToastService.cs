@@ -5,19 +5,24 @@
     Warning,
     Error
 }
-
 public class ToastService
 {
-    public event Action<string, ToastLevel> OnShow;
-    public event Action OnHide;
+    public event Func<string, ToastLevel, Task> OnShow;
+    public event Func<Task> OnHide;
 
-    public void ShowToast(string message, ToastLevel level)
+    public async Task ShowToast(string message, ToastLevel level)
     {
-        OnShow?.Invoke(message, level);
+        if (OnShow != null)
+        {
+            await OnShow.Invoke(message, level);
+        }
     }
 
-    public void HideToast()
+    public async Task HideToast()
     {
-        OnHide?.Invoke();
+        if (OnHide != null)
+        {
+            await OnHide.Invoke();
+        }
     }
 }

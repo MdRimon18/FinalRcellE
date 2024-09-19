@@ -27,8 +27,7 @@ namespace Pms.Data.Repository.Inventory
                 parameters.Add("@CompanyName", CompanyName);
                 parameters.Add("@CompMobileNo", CompMobileNo);
                 parameters.Add("@CompanyEmail", CompanyEmail);
-                parameters.Add("@SearchValue", SearchValue);
-                
+                parameters.Add("@SearchValue", SearchValue);                
                 parameters.Add("@CountryId", CountryId);
                 parameters.Add("@PageNumber", PageNumber);
                 parameters.Add("@PageSize", PageSize);
@@ -88,6 +87,8 @@ namespace Pms.Data.Repository.Inventory
                 parameters.Add("@DeletedDate", company.DeletedDate);
                 parameters.Add("@DeletedBy", company.DeletedBy);
                 parameters.Add("@Status", company.Status);
+                parameters.Add("@MobileCode", company.MobileCode);
+                parameters.Add("@TimeSpent", company.TimeSpent);
                 parameters.Add("@SuccessOrFailId", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 await _db.ExecuteAsync("Companies_InsertOrUpdate_SP", parameters, commandType: CommandType.StoredProcedure);
 

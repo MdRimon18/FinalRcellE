@@ -17,7 +17,7 @@ namespace Pms.Data.Repository.Inventory
             _db = db.GetDbConnection();
 
         }
-        public async Task<IEnumerable<SmsSettings>> Get(long? SmsSttngId, string SmsSttngKey, string Title, string SenderName, string SmsCode, string UserName, int? PageNumber, int? PageSize)
+        public async Task<IEnumerable<SmsSettings>> Get(long? SmsSttngId, string? SmsSttngKey, string ?Title, string? SenderName, string? SmsCode, string? UserName, int? PageNumber, int? PageSize)
         {
             try
             {

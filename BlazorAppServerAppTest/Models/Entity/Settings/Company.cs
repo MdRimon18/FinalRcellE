@@ -36,6 +36,8 @@ namespace Pms.Models.Entity.Settings
         public string? StartToEndTime { get; set; }
         public string? CompanyLogoImgLink { get; set; }
         public bool IsHasBranch { get; set; }
+        public string MobileCode { get; set; }
+        public string TimeSpent { get; set; }
         public DateTime? EntryDateTime { get; set; }
         public long? EntryBy { get; set; }
         public DateTime? LastModifyDate { get; set; }

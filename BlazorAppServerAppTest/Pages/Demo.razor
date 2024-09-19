@@ -1,12 +1,37 @@
 ﻿ <!-- Example.razor -->
 @page "/toast"
+@inherits LayoutComponentBase
 
+<h3>Image Gallery</h3>
+
+<div class="image-gallery">
+    @foreach (var image in images)
+    {
+        <div class="image-item">
+            <img src="@image.ImageUrl" alt="@image.ImageName" class="img-thumbnail" />
+            <p>@image.ImageName</p>
+        </div>
+    }
+</div>
 
  
  
 @code {
-     
-     
-    
-    
+    public class ImageModel
+    {
+        public string ImageUrl { get; set; }
+        public string ImageName { get; set; }
+    }
+    private List<ImageModel> images;
+
+    protected override void OnInitialized()
+    {
+        images = new List<ImageModel>
+        {
+            new ImageModel { ImageUrl = "assets/img/sample1.png", ImageName = "Sample Image 1" },
+            new ImageModel { ImageUrl = "assets/img/sample2.png", ImageName = "Sample Image 2" },
+            new ImageModel { ImageUrl = "assets/img/sample3.png", ImageName = "Sample Image 3" }
+        };
+    }
+             
 }

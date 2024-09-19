@@ -25,7 +25,6 @@ namespace Pms.Data.Repository.Inventory
 				parameters.Add("@LocationId", LocationId);
 				parameters.Add("@LocationKey", LocationKey);
 				parameters.Add("@LocationName", LocationName);
-			
 				parameters.Add("@PageNumber", PageNumber);
 				parameters.Add("@PageSize", PageSize);
 
@@ -63,7 +62,6 @@ namespace Pms.Data.Repository.Inventory
 				parameters.Add("@LocationId", _locations.LocationId);
 				parameters.Add("@LocationKey", _locations.LocationKey);
 				parameters.Add("@LocationName", _locations.LocationName);
-		
 				parameters.Add("@EntryDateTime", _locations.EntryDateTime);
 				parameters.Add("@EntryBy", _locations.EntryBy);
 				parameters.Add("@LastModifyDate", _locations.LastModifyDate);

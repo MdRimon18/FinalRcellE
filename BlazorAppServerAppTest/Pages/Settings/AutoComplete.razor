@@ -1,0 +1,97 @@
+﻿@page "/autocomplete"
+
+@using Microsoft.AspNetCore.Components.Web
+@using System.Linq
+
+<input type="text" @bind="searchTerm" @oninput="OnInput" class="form-control" placeholder="Search for a language" />
+<ul class="list-group" style="position: absolute; z-index: 100; width: 100%;" @ref="resultsContainer">
+    @if (filteredLanguages.Any())
+    {
+        @foreach (var lang in filteredLanguages)
+        {
+            <li class="list-group-item list-group-item-action" @onclick="() => SelectLanguage(lang)">
+                @lang.Name (@lang.Code) - @lang.LanguageType
+            </li>
+        }
+    }
+    else
+    {
+        <li class="list-group-item">No results found</li>
+    }
+</ul>
+
+<h3>Selected Languages</h3>
+<ul>
+    @foreach (var lang in selectedLanguages)
+    {
+        <li>@lang.Name (@lang.Code) - @lang.LanguageType</li>
+    }
+</ul>
+
+@code {
+    private string searchTerm;
+
+    private List<Language> filteredLanguages = new List<Language>();
+
+    private List<Language> selectedLanguages = new List<Language>();
+
+    private ElementReference resultsContainer;
+
+    private List<Language> languages = new List<Language>
+    {
+        new Language { Name = "English", Code = "EN", LanguageType = "Primary" },
+        new Language { Name = "Spanish", Code = "ES", LanguageType = "Secondary" },
+        new Language { Name = "French", Code = "FR", LanguageType = "Secondary" }
+    };
+   
+
+
+    private List<Language> allLanguages;
+
+    protected override void OnInitialized()
+    {
+        allLanguages = languages;
+    }
+
+    private void OnInput(ChangeEventArgs e)
+    {
+        searchTerm = e.Value.ToString();
+
+        filteredLanguages = allLanguages
+
+            .Where(l => l.Name.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
+            .ToList();
+    }
+
+    private void SelectLanguage(Language lang)
+    {
+        // Check if the selected language is already in the selected list
+        if (selectedLanguages.Any(l => l.Name == lang.Name && l.LanguageType == lang.LanguageType))
+        {
+            return;
+        }
+
+        // Allow selection of primary or secondary languages
+        if (lang.LanguageType == "Primary")
+        {
+            // Allow primary languages to be selected
+            selectedLanguages.Add(lang);
+        }
+        else
+        {
+            // Allow secondary languages to be selected
+            selectedLanguages.Add(lang);
+        }
+
+        // Clear the search term and hide results
+        searchTerm = string.Empty;
+        filteredLanguages.Clear();
+    }
+    public class Language
+{
+    public string Name { get; set; }
+    public string Code { get; set; }
+    public string LanguageType { get; set; }
+}
+}
+

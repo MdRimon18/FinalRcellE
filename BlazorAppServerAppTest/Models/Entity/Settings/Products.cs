@@ -62,6 +62,9 @@ namespace Pms.Models.Entity.Settings
         public string RackNumber { get; set; }
         public string BatchNumber { get; set; }
         public long? PolicyId { get; set; }
+        public string? ProductCode { get; set; }
+        public string? ProductHieght { get; set; }
+        public long? BrandId { get; set; }
         public DateTime? EntryDateTime { get; set; }
         public long? EntryBy { get; set; }
         public DateTime? LastModifyDate { get; set; }

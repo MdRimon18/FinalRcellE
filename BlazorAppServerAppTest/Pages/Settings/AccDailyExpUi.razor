@@ -1,4 +1,6 @@
 ﻿@page "/daily_expui"
+@using Pms.Data.Repository.Accounts
+@using Pms.Models.Entity.Accounts
 
 <div class="card" id="ticketsTable">
     <div class="card-header border-bottom border-200 px-0">
@@ -111,8 +113,7 @@
                                                 <a @onclick="()=>DeleteItem(item.AccDailyExpanseId)" class="btn btn-falcon-default btn-sm ">
                                                     <i class="fa fa-trash text-danger" aria-hidden="true"></i>
                                                 </a>
-
-                                                <a class="btn btn-falcon-default btn-sm" href="add_user/@item.AccDailyExpanseKey"><span class="fas fa-external-link-alt" data-fa-transform="shrink-3"></span><span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1"></span></a>
+                                                <a class="btn btn-falcon-default btn-sm" href="accdaily_expense/@item.AccDailyExpanseKey"><span class="fas fa-external-link-alt" data-fa-transform="shrink-3"></span><span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1"></span></a>
                                             </div>
                                         </td>
                                         <td class="align-middle client white-space-nowrap pe-3 pe-xxl-4 ps-2">
@@ -237,7 +238,7 @@
 </div>
 
 @code {
-    private AccountsDailyExpanse accountsDailyExpanse = new AccountsDailyExpanse();
+    private AccountsDailyExpanse acDailyexp = new AccountsDailyExpanse();
 
     [Inject]
     AccountsDailyExpanseService accountsDailyExpanseService { get; set; }
@@ -254,6 +255,7 @@
     private int PageSize { get; set; } = 5; // Number of items per page
 
     int totalPages { get; set; }
+
     int currentPage = 1; // Example current page
 
     private int TotalRecord { get; set; }
@@ -271,34 +273,36 @@
 
     private async Task LoadDailyExp()
     {
-        try
-        {
+        
+            try
+            {
             // if (AccTypeIdNameSearch == "") { AccTypeIdNameSearch = null; }
 
-            AccDaily_list = (await accountsDailyExpanseService.Get(null, null, AccTypeIdNameSearch, null, currentPage, PageSize)).ToList();
+            AccDaily_list = (await accountsDailyExpanseService.Get(null, null, AccTypeIdNameSearch, currentPage, PageSize)).ToList();
 
             if (AccDaily_list.Count > 0)
-            {
+                {
                 TotalRecord = AccDaily_list[0].total_row;
-                //  totalPages = TotalRecord / PageSize;
-                totalPages = (int)Math.Ceiling((double)TotalRecord / PageSize);
-            }
-            else
-            {
-                TotalRecord = 0;
-                totalPages = 0;
-            }
+                    //  totalPages = TotalRecord / PageSize;
+                    totalPages = (int)Math.Ceiling((double)TotalRecord / PageSize);
+                }
+                else
+                {
+                    TotalRecord = 0;
+                    totalPages = 0;
+                }
 
-        }
-        catch (Exception ex)
-        {
-            errorMessage = ex.Message;
-        }
-        finally
-        {
-            // isLoading = false;
-            StateHasChanged(); // Ensure UI reflects changes
-        }
+            }
+            catch (Exception ex)
+            {
+                errorMessage = ex.Message;
+            }
+            finally
+            {
+                isLoading = false;
+                StateHasChanged();  // Ensure UI reflects changes
+            }
+                
     }
     private async Task DeleteItem(long AccDailyExpanseId)
     {
@@ -330,7 +334,7 @@
     }
     private async void EditLoadData(AccountsDailyExpanse lnge)
     {
-        accountsDailyExpanse = lnge;
+        acDailyexp = lnge;
     }
     private void NavigateToCreatePage()
     {
