@@ -1,11 +1,12 @@
 ﻿using Dapper;
 using Pms.Data.DbContex;
 using Pms.Helper;
+using Pms.Models.Entity.Accounts;
 using Pms.Models.Entity.Settings;
 using System.Data;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace Pms.Data.Repository.Inventory
+namespace Pms.Data.Repository.Accounts
 {
     public class AccountsDailyExpanseService
     {
@@ -17,7 +18,7 @@ namespace Pms.Data.Repository.Inventory
             _db = db.GetDbConnection();
 
         }
-        public async Task<IEnumerable<AccountsDailyExpanse>> Get(long? AccDailyExpanseId, string? AccDailyExpanseKey, int? AccHeadId, DateTime? Date,int? PageNumber, int? PageSize)
+        public async Task<IEnumerable<AccountsDailyExpanse>> Get(long? AccDailyExpanseId, string? AccDailyExpanseKey, int? AccHeadId,int? PageNumber, int? PageSize)
         {
             try
             {
@@ -25,12 +26,11 @@ namespace Pms.Data.Repository.Inventory
 
                 parameters.Add("@AccDailyExpanseId", AccDailyExpanseId);
                 parameters.Add("@AccDailyExpanseKey", AccDailyExpanseKey);
-                parameters.Add("@AccHeadId", AccHeadId);
-                parameters.Add("@Date",Date);
+                parameters.Add("@AccHeadId", AccHeadId);          
                 parameters.Add("@PageNumber", PageNumber);
                 parameters.Add("@PageSize", PageSize);
 
-                return await _db.QueryAsync<AccountsDailyExpanse>("AccountsDailyExpanse_get_sp", parameters, commandType: CommandType.StoredProcedure);
+                return await _db.QueryAsync<AccountsDailyExpanse>("AccountsDailyExpanse_Get_SP", parameters, commandType: CommandType.StoredProcedure);
 
             }
             catch (Exception ex)
@@ -43,14 +43,14 @@ namespace Pms.Data.Repository.Inventory
         public async Task<AccountsDailyExpanse> GetById(long AccDailyExpanseId)
 
         {
-            var accountsDailyExpanse = await (Get(AccDailyExpanseId, null, null, null, 1, 1));
+            var accountsDailyExpanse = await Get(AccDailyExpanseId, null, null, 1, 1);
             return accountsDailyExpanse.FirstOrDefault();
         }
 
         public async Task<AccountsDailyExpanse> GetByKey(string AccDailyExpanseKey)
 
         {
-            var accountsDailyExpanse = await (Get(null, AccDailyExpanseKey, null, null, 1, 1));
+            var accountsDailyExpanse = await Get(null, AccDailyExpanseKey,null, 1, 1);
             return accountsDailyExpanse.FirstOrDefault();
         }
 
@@ -77,7 +77,7 @@ namespace Pms.Data.Repository.Inventory
                 parameters.Add("@SuccessOrFailId", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 await _db.ExecuteAsync("AccountsDailyExpanse_InsertOrUpdate_SP", parameters, commandType: CommandType.StoredProcedure);
 
-                return (long)parameters.Get<int>("@SuccessOrFailId");
+                return parameters.Get<int>("@SuccessOrFailId");
             }
             catch (Exception ex)
             {
@@ -89,7 +89,7 @@ namespace Pms.Data.Repository.Inventory
 
         public async Task<bool> Delete(long AccDailyExpanseId)
         {
-            var accountsDailyExpanse = await (Get(AccDailyExpanseId, null, null, null, 1, 1));
+            var accountsDailyExpanse = await Get(AccDailyExpanseId,null,null, 1, 1);
             var deleteObj = accountsDailyExpanse.FirstOrDefault();
             long DeletedSatatus = 0;
             if (deleteObj != null)

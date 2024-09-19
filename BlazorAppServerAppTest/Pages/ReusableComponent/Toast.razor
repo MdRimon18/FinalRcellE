@@ -1,38 +1,22 @@
 ﻿@inject IJSRuntime JSRuntime
 @implements IDisposable
 
-<div aria-live="polite" aria-atomic="true" class="position-fixed top-4 end-0 p-3" style="z-index: 11">
-    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" @ref="toastRef">
-        <div class="toast-header @toastClass">
-            <strong class="me-auto">@toastMessage</strong>
-            <button type="button" class="btn-close" @onclick="HideToast"></button>
+@if (!string.IsNullOrEmpty(toastMessage))
+{
+    <div aria-live="polite" aria-atomic="true" class="position-fixed top-1 end-0 p-3" style="z-index: 11">
+        <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header @toastClass">
+                <strong class="me-auto">@toastMessage</strong>
+                <button type="button" class="btn-close" @onclick="HideToast"></button>
+            </div>
         </div>
-       @*  <div class="toast-body">
-            @toastMessage
-        </div> *@
     </div>
-</div>
+}
 
-<script>
-    // site.js
-    window.showBootstrapToast = (element) => {
-        var toastElement = new bootstrap.Toast(element, { autohide: true, delay: 2000 });
-        toastElement.show();
-    };
-
-    window.hideBootstrapToast = (toastRef) => {
-        const toast = bootstrap.Toast.getInstance(toastRef);
-        if (toast) {
-            toast.hide();
-        }
-    };
-</script>
 @code {
-    private ElementReference toastRef;
     private string toastClass;
-    private string toastHeading;
     private string toastMessage;
-
+    private bool isVisible;
     [Parameter]
     public ToastService ToastService { get; set; }
 
@@ -45,41 +29,32 @@
         }
     }
 
-    private async void ShowToast(string message, ToastLevel level)
+    private async Task ShowToast(string message, ToastLevel level)
     {
         toastMessage = message;
         toastClass = GetToastClass(level);
-        toastHeading = GetToastHeading(level);
-        StateHasChanged();
+        isVisible = true;
+        await InvokeAsync(StateHasChanged);
 
-        // Show the toast using JavaScript interop
-        await JSRuntime.InvokeVoidAsync("showBootstrapToast", toastRef);
+        // Automatically hide after a delay
+        await Task.Delay(2000);
+        await HideToast();
     }
 
-    private async void HideToast()
+    private async Task HideToast()
     {
-        // Hide the toast using JavaScript interop
-        await JSRuntime.InvokeVoidAsync("hideBootstrapToast", toastRef);
+        isVisible = false;
         toastMessage = string.Empty;
-        StateHasChanged();
+        await InvokeAsync(StateHasChanged);
     }
 
     private string GetToastClass(ToastLevel level) => level switch
     {
-        ToastLevel.Info => "text-bg-info",
-        ToastLevel.Success => "text-bg-success",
-        ToastLevel.Warning => "text-bg-warning",
-        ToastLevel.Error => "text-bg-danger",
-        _ => "text-bg-info"
-    };
-
-    private string GetToastHeading(ToastLevel level) => level switch
-    {
-        ToastLevel.Info => "Info",
-        ToastLevel.Success => "Success",
-        ToastLevel.Warning => "Warning",
-        ToastLevel.Error => "Error",
-        _ => "Info"
+        ToastLevel.Info => "bg-info",
+        ToastLevel.Success => "bg-success",
+        ToastLevel.Warning => "bg-warning",
+        ToastLevel.Error => "bg-danger",
+        _ => "bg-info"
     };
 
     public void Dispose()

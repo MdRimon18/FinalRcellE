@@ -2,7 +2,7 @@
 using System.Data;
 using Pms.Data.DbContex;
 using Pms.Models.Entity.Settings;
-namespace Pms.Data.Repository.Inventory
+namespace Pms.Data.Repository.Accounts
 {
     public class AccTypeServivce
     {
@@ -21,7 +21,7 @@ namespace Pms.Data.Repository.Inventory
                 var parameters = new DynamicParameters();
 
                 parameters.Add("@LanguageId", LanguageId);
-               
+
 
                 return await _db.QueryAsync<AccType>("AccountType_Get_SP", parameters, commandType: CommandType.StoredProcedure);
 

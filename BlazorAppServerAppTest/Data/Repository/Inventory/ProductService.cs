@@ -110,7 +110,6 @@ namespace Pms.Data.Repository.Inventory
 				parameters.Add("@ShippingById", _products.ShippingById);
 				parameters.Add("@ShippingDays", _products.ShippingDays);
 				parameters.Add("@ShippingDetails", _products.ShippingDetails);
-
 				parameters.Add("@OriginCountryId", _products.OriginCountryId);
 				parameters.Add("@Rating", _products.Rating);
 				parameters.Add("@ProdStatusId", _products.ProdStatusId);
@@ -124,8 +123,10 @@ namespace Pms.Data.Repository.Inventory
 				parameters.Add("@RackNumber", _products.RackNumber);
 				parameters.Add("@BatchNumber", _products.BatchNumber);
 				parameters.Add("@PolicyId", _products.PolicyId);
-				
-				parameters.Add("@EntryDateTime", _products.EntryDateTime);
+                parameters.Add("@ProductCode", _products.ProductCode);
+                parameters.Add("@ProductHieght", _products.ProductHieght);
+                parameters.Add("@BrandId", _products.BrandId);
+                parameters.Add("@EntryDateTime", _products.EntryDateTime);
 				parameters.Add("@EntryBy", _products.EntryBy);
 				parameters.Add("@LastModifyDate", _products.LastModifyDate);
 				parameters.Add("@LastModifyBy", _products.LastModifyBy);
