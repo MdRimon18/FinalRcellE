@@ -121,9 +121,7 @@
     LocationService locationService { get; set; }
     List<Locations> Location_list = new List<Locations>();
 
-    [Inject]
-    FileUploadService fileUploadService { get; set; }
-
+    
     private IBrowserFile selectedImageFile;
     private bool showSuccessAlert = false;
     private bool showDangerAlert = false;

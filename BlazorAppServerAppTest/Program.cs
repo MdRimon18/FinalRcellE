@@ -80,6 +80,8 @@ builder.Services.AddScoped<PaymentTypesService>();
 builder.Services.AddScoped<BillingPlanService>();
 builder.Services.AddScoped<AccTypeServivce>();
 builder.Services.AddScoped<BrandService>();
+builder.Services.AddScoped<BodyPartService>();
+builder.Services.AddScoped<ProductMediaService>();
 //builder.Services.AddSingleton<ProductRepositoyWithSp>();
 builder.Services.AddSingleton<TaskRepository>();
 builder.Services.AddSingleton<FileUploadService>();

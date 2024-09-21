@@ -1,8 +1,9 @@
 ﻿
 using Dapper;
-using Domain.Model.Entity.Settings;
+ 
 using Pms.Domain.DbContex;
 using Pms.Helper;
+using Pms.Models.Entity.Settings;
 using System.Data;
 using System.Data.Common;
 using DbConnection = Pms.Domain.DbContex.DbConnection;

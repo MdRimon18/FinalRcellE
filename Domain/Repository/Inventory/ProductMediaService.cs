@@ -7,12 +7,12 @@ using System.Data;
 
 namespace Pms.Data.Repository.Inventory
 {
-    public class ProductImageService
+    public class ProductMediaService
     {
         private readonly IDbConnection _db;
 
 
-        public ProductImageService(DbConnection db)
+        public ProductMediaService(DbConnection db)
         {
             _db = db.GetDbConnection();
 
@@ -64,7 +64,8 @@ namespace Pms.Data.Repository.Inventory
                 parameters.Add("@ProductMediaKey", productImage.ProductMediaKey);
                 parameters.Add("@ProductId", productImage.ProductId);
                 parameters.Add("@ImageUrl", productImage.ImageUrl);
-                parameters.Add("@Position", productImage.Position);          
+                parameters.Add("@Position", productImage.Position);
+                parameters.Add("@BodyPartName", productImage.BodyPartName);
                 parameters.Add("@SuccessOrFailId", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 await _db.ExecuteAsync("ProductMedia_InsertOrUpdate_SP", parameters, commandType: CommandType.StoredProcedure);
 

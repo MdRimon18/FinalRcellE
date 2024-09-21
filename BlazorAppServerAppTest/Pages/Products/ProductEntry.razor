@@ -1,4 +1,9 @@
 ﻿@page "/product_entry/{key:guid?}"
+ 
+
+ 
+@inject BodyPartService bodyPartService;
+@inject ProductMediaService  productMediaService; 
 @* <script>
     alert(1)
 </script> *@
@@ -416,40 +421,84 @@
 
                         </div>
                         <div class="tab-pane fade" id="tab_image" role="tabpanel" aria-labelledby="image_tab">
-                            <div class="card mb-3">
-                                <div class="card-header bg-body-tertiary">
-                                    <h6 class="mb-0  fw-semi-bold">Add images</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="dropzone dropzone-multiple p-0" id="dropzoneMultipleFileUpload" data-dropzone="data-dropzone" action="#!" data-options='{"acceptedFiles":"image/*"}'>
-                                        <div class="fallback">
-                                            <input name="file" type="file" multiple="multiple" />
-                                        </div>
+                        <div class="card mb-3 mb-lg-0">
+                            <div class="card-header bg-body-tertiary">
+                                <h6 class="mb-0">Images</h6>
+                            </div>
+                            <div class="card-body">
+                                @if (productImages.Count() > 0)
+                                {
+                                    foreach (var img in productImages)
+                                    {
+                                        <div class="row gx-2 flex-between-center mb-3">
+                                            <div class="col-sm-3">
+                                                <div class="avatar avatar-xl avatar-xl">
+                                                    @if (img.ImageUrl is not null)
+                                                    {
+                                                        <img class="rounded-circle" src="@img.ImageUrl" alt="" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <img src="/assets/commonimage/no-image.png" />
+                                                    }
 
-                                        <div class="dz-message" data-dz-message="data-dz-message"> <img class="me-2" src="../../../assets/img/icons/cloud-upload.svg" width="25" alt="" /><span class="d-none d-lg-inline">Drag your image here<br />or, </span><span class="btn btn-link p-0 fs-10">Browse</span></div>
-                                        <div class="dz-preview dz-preview-multiple m-0 d-flex flex-column">
-                                            <div class="d-flex media align-items-center mb-3 pb-3 border-bottom btn-reveal-trigger">
-                                                <img class="dz-image" src="../../../assets/img/icons/cloud-upload.svg" alt="..." data-dz-thumbnail="data-dz-thumbnail" />
-                                                <div class="flex-1 d-flex flex-between-center">
-                                                    <div>
-                                                        <h6 data-dz-name="data-dz-name"></h6>
-                                                        <div class="d-flex align-items-center">
-                                                            <p class="mb-0 fs-10 text-400 lh-1" data-dz-size="data-dz-size"></p>
-                                                            <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress=""></span></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="dropdown font-sans-serif">
-                                                        <button class="btn btn-link text-600 btn-sm dropdown-toggle btn-reveal dropdown-caret-none" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fas fa-ellipsis-h"></span></button>
-                                                        <div class="dropdown-menu dropdown-menu-end border py-2"><a class="dropdown-item" href="#!" data-dz-remove="data-dz-remove">Remove File</a></div>
-                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <div class="d-flex flex-between-center">
+                                                    <h6 class="mb-0 text-700">@img.BodyPartName</h6>
+                                                    <a class="btn btn-sm btn-link text-danger" @onclick="() => DeleteItem(img.ProductMediaId)">
+                                                        <span class="fs-10 fas fa-trash-alt"></span>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row">
+                                    }
+                                }
+                                @*   else
+                                {
+
+                                }
+                                *@
+                                <div class="row gy-3 gx-2">
+                                    <div class="col-sm-4">
+                                        <InputFile class="file-input form-control form-control-sm form-rounded" OnChange="HandleSelected" id="fileInput" />
+                                        <div class="image-uploader">
+                                            <div class="image-preview">
+                                                <img src="@imageData"
+                                                     alt="Selected Image" style="width: 100px;height: 100px;" />
+                                                @if (imageData != defaultImage)
+                                                {
+                                                    <button type="button" class="remove-button" @onclick="RemoveImage">X</button>
+                                                }
+                                            </div>
+
+                                        
+                                        </div>
+                                    
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <InputSelect @bind-Value="productImage.BodyPartName" class="form-control form-control-sm form-rounded fw-semi-bold">
+                                            <option value=''>Select Body Part</option>
+                                            @foreach (var item in bodyParts)
+                                            {
+                                                <option value=@item.BodyPartName>@item.BodyPartName</option>
+                                            }
+
+                                        </InputSelect>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="d-flex gap-2 flex-between-center">
+                                            <InputNumber @bind-Value="productImage.Position" class="form-control form-control-sm form-label fw-semi-bold" id="Details" type="text" placeholder="Position" />
+                                            <button type="button" class="btn btn-sm btn-falcon-default" @onclick="SavesProductImage">Add</button>
                                         </div>
                                     </div>
+
                                 </div>
+
                             </div>
+                        </div>
                         </div>
                         <div class="tab-pane fade" id="tab_product_specification" role="tabpanel" aria-labelledby="product_specification_tab">
 
@@ -610,7 +659,11 @@
 </div>
 </EditForm>
 
-
+<script>
+    window.resetFileInput = function (id) {
+        document.getElementById(id).value = '';
+    }
+</script>
 
 <script src="vendors/tinymce/tinymce.min.js"></script>
 <script src="assets/js/flatpickr.js"></script>
@@ -692,7 +745,36 @@
     ProductSpecifications productSpecifications = new ProductSpecifications();
 
     // ProductSKU sku= new ProductSKU();
+    //  IEnumerable<BodyPart> bodyParts=new 
 
+
+    IEnumerable<BodyPart> bodyParts = new List<BodyPart>();
+
+    private string defaultImage = "/assets/img/icons/profile_icon.jpg"; // Path to your default image
+    private string? imageData;
+    private bool showSuccessAlert = false;
+    private bool showDangerAlert = false;
+
+    public string SuccessMessage { get; set; }
+    public string DangerMessage { get; set; }
+
+    private string errorMessage;
+
+    private bool isLoading = true;
+    private int PageSize { get; set; } = 5; // Number of items per page
+
+    int totalPages { get; set; }
+    int currentPage = 1; // Example current page
+
+    private int TotalRecord { get; set; }
+
+
+    public string? specificationNameSearch { get; set; }
+
+    private IBrowserFile selectedImageFile;
+
+    ProductImage productImage = new ProductImage();
+    List<ProductImage> productImages = new List<ProductImage>();
     private void OnItemSelected(ProductCategories selectedItem)
     {
         SelectedProductCategorie = selectedItem;
@@ -719,6 +801,8 @@
         productCategory_list = (await productCategoryService.Get(null, null, null, null, 1, 1000)).ToList();
         productSize_list = (await _ProductSizeService.Get(null, null, null, null, 1, 1000)).ToList();
         warehouse_list = (await _warehouseService.Get(null, null, null, null, null, null, null, null,null, 1, 1000)).ToList();
+        bodyParts=await  bodyPartService.GetBodyPartsAsync();
+        await LoadProductImages();
         if (IsEditMode)
         {
             if (key.HasValue)
@@ -744,24 +828,6 @@
 
     }
 
-    private bool showSuccessAlert = false;
-    private bool showDangerAlert = false;
-
-    public string SuccessMessage { get; set; }
-    public string DangerMessage { get; set; }
-
-    private string errorMessage;
-
-    private bool isLoading = true;
-    private int PageSize { get; set; } = 5; // Number of items per page
-
-    int totalPages { get; set; }
-    int currentPage = 1; // Example current page
-
-    private int TotalRecord { get; set; }
-
-
-    public string? specificationNameSearch { get; set; }
 
 
     private Task HideAlert()
@@ -836,10 +902,10 @@
                 errorMessage = ex.Message;
             }
         }
-      
+
     }
 
-   
+
     private async Task LoadSpecification()
     {
         try
@@ -848,17 +914,17 @@
 
             specification_list = (await _productSpecificationService.Get(null, null, null, specificationNameSearch, null, currentPage, PageSize)).ToList();
 
-            if (specification_list.Count > 0)
-            {
-                TotalRecord = specification_list[0].total_row;
-                //  totalPages = TotalRecord / PageSize;
-                totalPages = (int)Math.Ceiling((double)TotalRecord / PageSize);
-            }
-            else
-            {
-                TotalRecord = 0;
-                totalPages = 0;
-            }
+            // if (specification_list.Count > 0)
+            // {
+            //     TotalRecord = specification_list[0].total_row;
+            //     //  totalPages = TotalRecord / PageSize;
+            //     totalPages = (int)Math.Ceiling((double)TotalRecord / PageSize);
+            // }
+            // else
+            // {
+            //     TotalRecord = 0;
+            //     totalPages = 0;
+            // }
 
         }
         catch (Exception ex)
@@ -868,10 +934,27 @@
         finally
         {
             isLoading = false;
-       
-         }
+
+        }
     }
 
+    private async Task LoadProductImages()
+    {
+        try
+        {
+
+
+            productImages =(List<ProductImage>)await productMediaService.Get(null, null, 1,null);
+
+
+
+        }
+        catch (Exception ex)
+        {
+            errorMessage = ex.Message;
+        }
+
+    }
     private async Task Savespecification()
     {
         try
@@ -902,9 +985,9 @@
                     DangerMessage = MessageManager.SaveFaild;
                 }
             }
-           
-        
-           productSpecifications = new Pms.Models.Entity.Settings.ProductSpecifications();
+
+
+            productSpecifications = new Pms.Models.Entity.Settings.ProductSpecifications();
         }
         catch (Exception ex)
         {
@@ -913,7 +996,7 @@
     }
     private async Task DeleteItem(long ProdSpcfctnId)
     {
-        
+
         try
         {
             bool result = await _productSpecificationService.Delete(ProdSpcfctnId);
@@ -931,7 +1014,66 @@
             errorMessage = ex.Message;
         }
     }
-                    
+    private async Task HandleSelected(InputFileChangeEventArgs e)
+    {
+        var file = e.File;
+        selectedImageFile = e.File;
+        if (file != null)
+        {
+            using (var stream = new MemoryStream())
+            {
+                await file.OpenReadStream().CopyToAsync(stream);
+                imageData = $"data:image/png;base64,{Convert.ToBase64String(stream.ToArray())}";
+            }
+        }
+    }
+
+    private async Task RemoveImage()
+    {
+        imageData = defaultImage;
+        await js.InvokeVoidAsync("resetFileInput", "fileInput");
+    }
+    private async Task SavesProductImage()
+    {
+        try
+        {
+            if (productImage.ProductMediaId == 0)
+            {
+                if (selectedImageFile is not null)
+                {
+                    productImage.ImageUrl = await fileUploadService.UploadFileAsync(selectedImageFile, "assets/ProductImages");
+                }
+                productImage.ProductId = 1;
+                productImage.ProductMediaId = await productMediaService.SaveOrUpdate(productImage);
+                if (productImage.ProductMediaId > 0)
+                {
+                    productImages.Add(productImage);
+                    productImage = new ProductImage();
+                    await  toastService.ShowToast(MessageManager.SaveSuccess, ToastLevel.Success);
+
+                }
+                else if (productSpecifications.ProdSpcfctnId == -1)
+                {
+                   
+                    showDangerAlert = true;
+                    DangerMessage = $"{productSpecifications.SpecificationName} {MessageManager.Exist}";
+                    await toastService.ShowToast(DangerMessage, ToastLevel.Error);
+                }
+                else
+                {
+                    await toastService.ShowToast( MessageManager.SaveFaild, ToastLevel.Error);
+               
+                }
+            }
+
+
+            productSpecifications = new Pms.Models.Entity.Settings.ProductSpecifications();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = ex.Message;
+        }
+    }
     // public string? SkuSearch { get; set; }   
 
     // private async Task LoadSku()
@@ -1000,6 +1142,5 @@
 
     // }
    
-   
-
+    
 }

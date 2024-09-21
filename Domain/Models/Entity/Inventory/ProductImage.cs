@@ -11,5 +11,6 @@
         public string ImageUrl { get; set; }  
 
         public int Position { get; set; }
+        public string BodyPartName { get; set; }
     }
 }
