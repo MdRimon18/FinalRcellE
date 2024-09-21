@@ -65,4 +65,8 @@
     <Folder Include="Pages\Accounts\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj" />
+  </ItemGroup>
+
 </Project>

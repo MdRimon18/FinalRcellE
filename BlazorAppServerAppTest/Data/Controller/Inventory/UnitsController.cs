@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Pms.Data.DbContex;
+
 using Pms.Data.Repository.Inventory;
+using Pms.Domain.DbContex;
 using System.Data;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860

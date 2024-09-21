@@ -2,12 +2,12 @@ using Pms.Data;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.EntityFrameworkCore;
-using Pms.Data.DbContex;
 using Pms.Data.Repository;
 using BlazorAppServerAppTest.Models;
 using Pms.Data.Repository.Inventory;
 using Pms.Data.Repository.Shared;
 using Pms.Data.Repository.Accounts;
+using Pms.Domain.DbContex;
 
 var builder = WebApplication.CreateBuilder(args);
   builder.Services.AddControllersWithViews();
