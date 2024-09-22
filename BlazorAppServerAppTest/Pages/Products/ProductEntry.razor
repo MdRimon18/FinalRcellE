@@ -21,11 +21,10 @@
 
 
 
-<EditForm Model="@product" OnInvalidSubmit="SaveOrUpdate">
+<EditForm Model="@product" OnValidSubmit="SaveOrUpdate">
     <DataAnnotationsValidator />
     
-        <SuccessAlert Message="@SuccessMessage" Show="@showSuccessAlert" />
-        <DangerAlert Message="@DangerMessage" Show="@showDangerAlert" OnClose="HideAlert" />
+         
 
    <div class="row g-0">
     <div class="col-lg-9 pe-lg-2">
@@ -169,7 +168,7 @@
                             <div class="row">
                                 <div class="d-grid gap-2 d-md-block mt-4">
                                     <button type="submit" @onclick="SaveOrUpdate" class="btn btn-sm btn-light">@SubmitButtonText</button>
-                                    <button type="reset" class="btn btn-sm btn-light">Refresh</button>
+                                    <button type="button" @onclick="OnRefresh" class="btn btn-sm btn-light">Refresh</button>
                                     <button class="btn btn-sm btn-danger">Delete</button>
                                 </div>
                             </div>
@@ -409,8 +408,8 @@
                                         </div>
                                         <div class="row">
                                             <div class="d-grid gap-2 d-md-block mt-4">
-                                                <button type="submit" @onclick="SaveOrUpdate" class="btn btn-sm btn-light">@SubmitButtonText</button>
-                                                <button type="reset" class="btn btn-sm btn-light">Refresh</button>
+                                            <button type="submit" @onclick="SaveOrUpdate" class="btn btn-sm btn-light">@SubmitButtonText</button>
+                                            <button type="button" @onclick="OnRefresh" class="btn btn-sm btn-light">Refresh</button>
                                                 <button class="btn btn-sm btn-danger">Delete</button>
                                             </div>
                                         </div>
@@ -674,7 +673,7 @@
     [Parameter]
     public Guid? key { get; set; }
     private bool IsEditMode => key.HasValue;
-    private string SubmitButtonText => IsEditMode ? "Update" : "Create";
+    private string SubmitButtonText => product.ProductId>0 ? "Update" : "Create";
 
     [Inject]
     UnitService unitService { get; set; }
@@ -853,23 +852,21 @@
                     product.ProductId = await _productService.SaveOrUpdate(product);
                     if (product.ProductId > 0)
                     {
-                        showSuccessAlert = true;
-                        SuccessMessage = MessageManager.SaveSuccess;
-                        StateHasChanged(); // Notify Blazor to re-render the component
-                                           //Hide the alert after 1 seconds
 
-                        await Task.Delay(1000);
-                        showSuccessAlert = false;
+                        await toastService.ShowToast(MessageManager.SaveSuccess, ToastLevel.Success);
                     }
                     else if (product.ProductId == -1)
                     {
-                        showDangerAlert = true;
+                        product.ProductId = 0;
                         DangerMessage = $"{product.ProdName} {MessageManager.Exist}";
+                        await toastService.ShowToast(DangerMessage, ToastLevel.Error);
                     }
                     else
                     {
-                        showDangerAlert = true;
-                        DangerMessage = MessageManager.SaveFaild;
+                        product.ProductId = 0;
+
+                        await toastService.ShowToast(MessageManager.SaveFaild, ToastLevel.Error);
+
                     }
                 }
                 else
@@ -880,18 +877,15 @@
                     product.ProductId = await _productService.SaveOrUpdate(product);
                     if (product.ProductId > 0)
                     {
-                        showSuccessAlert = true;
-                        SuccessMessage = MessageManager.UpdateSuccess;
-                        StateHasChanged(); // Notify Blazor to re-render the component
-                                           //Hide the alert after 1 seconds
-
-                        await Task.Delay(1000);
-                        showSuccessAlert = false;
+                        await toastService.ShowToast(MessageManager.UpdateSuccess, ToastLevel.Success);
+                       
+                        
                     }
                     else
                     {
-                        showDangerAlert = true;
-                        DangerMessage = MessageManager.UpdateFaild;
+                        await toastService.ShowToast(MessageManager.UpdateFaild, ToastLevel.Error);
+
+                       
                     }
                 }
 
@@ -1054,7 +1048,7 @@
                 }
                 else if (productSpecifications.ProdSpcfctnId == -1)
                 {
-                   
+
                     showDangerAlert = true;
                     DangerMessage = $"{productSpecifications.SpecificationName} {MessageManager.Exist}";
                     await toastService.ShowToast(DangerMessage, ToastLevel.Error);
@@ -1062,7 +1056,7 @@
                 else
                 {
                     await toastService.ShowToast( MessageManager.SaveFaild, ToastLevel.Error);
-               
+
                 }
             }
 
@@ -1073,6 +1067,10 @@
         {
             errorMessage = ex.Message;
         }
+    }
+    private async Task OnRefresh()
+    {
+        product = new Products();
     }
     // public string? SkuSearch { get; set; }   
 

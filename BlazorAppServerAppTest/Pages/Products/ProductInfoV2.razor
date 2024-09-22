@@ -401,6 +401,7 @@
                 else
                 {
                     errorMessage = $"{MessageManager.DeleteFaild} {ProductId}.";
+                   await  toastService.ShowToast(errorMessage, ToastLevel.Error);
                 }
             }
             catch (Exception ex)
