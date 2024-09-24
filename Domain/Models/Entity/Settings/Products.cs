@@ -9,7 +9,8 @@ namespace Pms.Models.Entity.Settings
     {
         public long ProductId { get; set; }
         public Guid? ProductKey { get; set; }
-        public long ProdCtgId { get; set; }
+        [Required(ErrorMessage = "Product Category is required")]
+        public long? ProdCtgId { get; set; }
         public long? ProdSubCtgId { get; set; } = 0;
         [Required(ErrorMessage = "Unit type is required")]
         public long? UnitId { get; set; }=null;
@@ -62,6 +63,7 @@ namespace Pms.Models.Entity.Settings
         public string RackNumber { get; set; }
         public string BatchNumber { get; set; }
         public long? PolicyId { get; set; }
+        [Required(ErrorMessage = "Product Code is required")]
         public string? ProductCode { get; set; }
         public string? ProductHieght { get; set; }
         public long? BrandId { get; set; }

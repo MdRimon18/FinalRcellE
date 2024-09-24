@@ -50,15 +50,16 @@
 
                                 <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
                                     <div class="form-group">
-                                        <label for="ProdName" class="form-label fw-semi-bold fw-semi-bold">Name/Model</label> <span class="error-star">*</span>
+                                        <label for="ProdName" class="form-label fw-semi-bold fw-semi-bold">Name/Model</label><span class="error-star">*</span>
                                         <InputText @bind-Value="product.ProdName" type="text" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="Name/Model" />
-                                        <ValidationMessage class="text-left invalid-message-color" For="@(() => product.ProdName)" />
+                                        <ValidationMessage class="text-left invalid-message-color" For="@(() => product.ProdName)"/>
                                     </div>
                                 </div>
                                 <div class="col-sm-3 col-md-3 col-lg-3 col-12">
                                     <div class="form-group">
-                                    <label for="ProductCode" class="form-label fw-semi-bold">Product Code</label>
-                                    <InputText @bind-Value="product.ProductCode" type="text" class=" form-control form-control-sm form-rounded fw-semi-bold" placeholder="Product Code" />
+                                    <label for="ProductCode" class="form-label fw-semi-bold">Product Code</label><span class="error-star">*</span>
+                                    <InputText @bind-Value="product.ProductCode" type="text" class=" form-control form-control-sm form-rounded fw-semi-bold" placeholder="Product Code"/>
+                                    <ValidationMessage class="text-left invalid-message-color" For="@(() =>product.ProductCode)" />
                                     </div>
                                 </div>
                                 <div class="col-sm-3 col-md-3 col-lg-3 col-12">
@@ -430,8 +431,8 @@
                                     foreach (var img in productImages)
                                     {
                                         <div class="row gx-2 flex-between-center mb-3">
-                                            <div class="col-sm-3">
-                                                <div class="avatar avatar-xl avatar-xl">
+                                            <div class="col-auto">
+                                                <div class="avatar avatar-3xl">
                                                     @if (img.ImageUrl is not null)
                                                     {
                                                         <img class="rounded-circle" src="@img.ImageUrl" alt="" />
@@ -440,8 +441,6 @@
                                                     {
                                                         <img src="/assets/commonimage/no-image.png" />
                                                     }
-
-
                                                 </div>
                                             </div>
                                             <div class="col-sm-9">
@@ -557,12 +556,9 @@
              
             <div class="card">
                 <div class="card-body">
-                    <div class="row gx-2">
-                        
-
-
+                    <div class="row gx-2">                        
                         <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12">
-                            <label class="form-label fw-semi-bold" for="product-category">Select category:</label>
+                                <label class="form-label fw-semi-bold" for="product-category">Select category:</label><span class="error-star">*</span>
                                 <div class="form-group">
                                 <SearchComponent T="ProductCategories"
                                                  Items="productCategory_list"
@@ -571,6 +567,7 @@
                                                  InputSize="width:13rem;"
                                                  OnItemSelected="OnItemSelected"/>
                                 </div>
+                                <ValidationMessage class="text-left invalid-message-color" For="@(() => product.ProdCtgId)" />
                             
                         </div>
                         <div class="col-12">
@@ -827,8 +824,6 @@
 
     }
 
-
-
     private Task HideAlert()
     {
         showDangerAlert = false;
@@ -936,11 +931,7 @@
     {
         try
         {
-
-
             productImages =(List<ProductImage>)await productMediaService.Get(null, null, 1,null);
-
-
 
         }
         catch (Exception ex)
@@ -1001,6 +992,26 @@
             else
             {
                 errorMessage = $"Failed to delete item with ID {ProdSpcfctnId}.";
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = ex.Message;
+        }
+    }
+    private async Task DeleteImage(long ProductMediaId)
+    {
+
+        try
+        {
+            bool result = await productMediaService.Delete(ProductMediaId);
+            if (result)
+            {
+                await LoadSpecification();
+            }
+            else
+            {
+                errorMessage = $"Failed to delete item with ID {ProductMediaId}.";
             }
         }
         catch (Exception ex)
