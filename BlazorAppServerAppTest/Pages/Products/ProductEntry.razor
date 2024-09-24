@@ -411,7 +411,7 @@
                                             <div class="d-grid gap-2 d-md-block mt-4">
                                             <button type="submit" @onclick="SaveOrUpdate" class="btn btn-sm btn-light">@SubmitButtonText</button>
                                             <button type="button" @onclick="OnRefresh" class="btn btn-sm btn-light">Refresh</button>
-                                                <button class="btn btn-sm btn-danger">Delete</button>
+                                            <button class="btn btn-sm btn-danger">Delete</button>
                                             </div>
                                         </div>
                                     </div>
@@ -446,7 +446,7 @@
                                             <div class="col-sm-9">
                                                 <div class="d-flex flex-between-center">
                                                     <h6 class="mb-0 text-700">@img.BodyPartName</h6>
-                                                    <a class="btn btn-sm btn-link text-danger" @onclick="() => DeleteItem(img.ProductMediaId)">
+                                                    <a class="btn btn-sm btn-link text-danger" @onclick="() => DeleteImagesItem(img.ProductMediaId)">
                                                         <span class="fs-10 fas fa-trash-alt"></span>
                                                     </a>
                                                 </div>
@@ -873,14 +873,14 @@
                     if (product.ProductId > 0)
                     {
                         await toastService.ShowToast(MessageManager.UpdateSuccess, ToastLevel.Success);
-                       
-                        
+
+
                     }
                     else
                     {
                         await toastService.ShowToast(MessageManager.UpdateFaild, ToastLevel.Error);
 
-                       
+
                     }
                 }
 
@@ -1073,6 +1073,27 @@
 
 
             productSpecifications = new Pms.Models.Entity.Settings.ProductSpecifications();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = ex.Message;
+        }
+    }
+    private async Task DeleteImagesItem(long prodMediaId)
+    {
+
+        try
+        {
+            bool result = await productMediaService.DeleteImageItem(prodMediaId);
+            if (result)
+            {
+                productImages.RemoveAll(item => item.ProductMediaId == prodMediaId);
+            }
+            else
+            {
+                errorMessage = $"Failed to delete item with ID {prodMediaId}.";
+                await toastService.ShowToast(errorMessage, ToastLevel.Error);
+            }
         }
         catch (Exception ex)
         {

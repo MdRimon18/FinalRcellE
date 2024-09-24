@@ -90,5 +90,37 @@ namespace Pms.Data.Repository.Inventory
             }
             return DeletedSatatus > 0;
         }
+        public async Task<bool> DeleteImageItem(long productMediaId)
+        {
+            try
+            {
+                // Retrieve the product image by its ID
+                var productImage = await GetById(productMediaId);
+                if (productImage == null)
+                {
+                    // Return false if the image doesn't exist
+                    return false;
+                }
+
+                // Define the delete query
+                string query = "DELETE FROM [invnt].[ProductMedia] WHERE ProductMediaId = @ProductMediaId";
+                var parameters = new { ProductMediaId = productMediaId };
+
+                // Execute the query and get the number of affected rows
+                int rowsAffected = await _db.ExecuteAsync(query, parameters);
+
+                // Return true if the deletion was successful
+                return rowsAffected > 0;
+            }
+            catch (Exception ex)
+            {
+                // Log or handle the exception (e.g., log the error details)
+                Console.WriteLine($"Error occurred while deleting image item: {ex.Message}");
+
+                // Return false in case of failure
+                return false;
+            }
+        }
+
     }
 }
