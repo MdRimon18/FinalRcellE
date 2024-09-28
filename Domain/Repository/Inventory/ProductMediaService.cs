@@ -85,10 +85,9 @@ namespace Pms.Data.Repository.Inventory
             var deleteObj = productImage.FirstOrDefault();
             long DeletedSatatus = 0;
             if (deleteObj != null)
-            {               
+            {                
                 DeletedSatatus = await SaveOrUpdate(deleteObj);
             }
-
             return DeletedSatatus > 0;
         }
         public async Task<bool> DeleteImageItem(long productMediaId)
