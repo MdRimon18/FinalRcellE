@@ -167,9 +167,9 @@
                             </div>
                             <div class="row">
                                 <div class="d-grid gap-2 d-md-block mt-4">
-                                    <button type="submit" @onclick="SaveOrUpdate" class="btn btn-sm btn-light">@SubmitButtonText</button>
-                                    <button type="button" @onclick="OnRefresh" class="btn btn-sm btn-light">Refresh</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
+                                <button type="submit" @onclick="SaveOrUpdate" class="btn btn-outline-primary btn-sm">@SubmitButtonText</button>
+                                <button type="button" @onclick="OnRefresh" class="btn btn-outline-primary btn-sm">Refresh</button>
+                                <button class="btn btn-outline-danger btn-sm">Delete</button>
                                 </div>
                             </div>
 
@@ -391,7 +391,8 @@
                                         <div class="col-12 mb-3">
                                             <label class="form-label fw-semi-bold" for="product-description">Product description:</label>
                                             <div class="create-product-description-textarea">
-                                                <InputTextArea class="tinymce d-none" data-tinymce="data-tinymce" @bind-Value="product.ProdDescription"></InputTextArea>
+                                            <InputTextArea id="tinymce-editor" class="tinymce d-none" data-tinymce="data-tinymce" @bind-Value="product.ProdDescription"></InputTextArea>
+
                                             </div>
                                         </div>
                                         <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
@@ -406,13 +407,19 @@
                                                  <InputDate class="form-control form-control-sm form-rounded fw-semi-bold"@bind-Value="product.ReleaseDate"placeholder="Date"/> 
                                             </div>
                                         </div>
+                                        @if(product.ProductId>0){
                                         <div class="row">
+
                                             <div class="d-grid gap-2 d-md-block mt-4">
-                                            <button type="submit" @onclick="SaveOrUpdate" class="btn btn-sm btn-light">@SubmitButtonText</button>
-                                            <button type="button" @onclick="OnRefresh" class="btn btn-sm btn-light">Refresh</button>
-                                            <button class="btn btn-sm btn-danger">Delete</button>
+                                                <button type="submit" @onclick="SaveOrUpdate" class="btn btn-outline-primary btn-sm">@SubmitButtonText</button>
+                                                <button type="button" @onclick="OnRefresh" class="btn btn-outline-primary btn-sm">Refresh</button>
+                                                <button class="btn btn-outline-danger btn-sm">Delete</button>
+
                                             </div>
+                                        
+                                       
                                         </div>
+                                    }
                                     </div>
 
                                 </div>
@@ -431,7 +438,7 @@
                                     {
                                         <div class="row gx-2 flex-between-center mb-3">
                                             <div class="col-sm-3">
-                                                <div class="avatar avatar-xl avatar-xl">
+                                                <div class="avatar avatar-4xl">
                                                     @if (img.ImageUrl is not null)
                                                     {
                                                         <img class="rounded-circle" src="@img.ImageUrl" alt="" />
@@ -440,13 +447,22 @@
                                                     {
                                                         <img src="/assets/commonimage/no-image.png" />
                                                     }
-
-
                                                 </div>
+                                                @* <div class="avatar avatar-xl avatar-xl">
+                                                   
+
+
+                                                </div> *@
                                             </div>
-                                            <div class="col-sm-9">
+                                            <div class="col-sm-4">
                                                 <div class="d-flex flex-between-center">
                                                     <h6 class="mb-0 text-700">@img.BodyPartName</h6>
+                                                     
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="d-flex flex-between-center">
+                                                    <h6 class="mb-0 text-700">@img.Position</h6>
                                                     <a class="btn btn-sm btn-link text-danger" @onclick="() => DeleteImagesItem(img.ProductMediaId)">
                                                         <span class="fs-10 fas fa-trash-alt"></span>
                                                     </a>
@@ -490,7 +506,7 @@
                                     <div class="col-sm-4">
                                         <div class="d-flex gap-2 flex-between-center">
                                             <InputNumber @bind-Value="productImage.Position" class="form-control form-control-sm form-label fw-semi-bold" id="Details" type="text" placeholder="Position" />
-                                            <button type="button" class="btn btn-sm btn-falcon-default" @onclick="SavesProductImage">Add</button>
+                                            <button type="button" class="btn btn-outline-primary btn-sm" @onclick="SavesProductImage">Add</button>
                                         </div>
                                     </div>
 
@@ -537,7 +553,7 @@
                                         <div class="col-sm-9">
                                             <div class="d-flex gap-2 flex-between-center">
                                                 <InputText @bind-Value="productSpecifications.SpecificationDtls" class="form-control form-control-sm form-label fw-semi-bold" id="Details" type="text" placeholder="Specification Details" />
-                                                <button type="button" class="btn btn-sm btn-falcon-default" @onclick="Savespecification">Add</button>
+                                            <button type="button" class="btn btn-outline-primary btn-sm" @onclick="Savespecification">Add</button>
                                             </div>
                                         </div>
 
@@ -662,8 +678,27 @@
     window.resetFileInput = function (id) {
         document.getElementById(id).value = '';
     }
-</script>
 
+
+</script>
+<script>
+    window.tinymceBlazor = {
+        init: function (selector, dotNetHelper) {
+            console.log("Initializing TinyMCE on: ", selector); // Debugging line
+            tinymce.init({
+                selector: selector,
+                setup: function (editor) {
+                    editor.on('change', function () {
+                        console.log("TinyMCE content changed"); // Debugging line
+                        dotNetHelper.invokeMethodAsync('UpdateProdDescription', editor.getContent());
+                    });
+                }
+            });
+        }
+    };
+
+</script>
+ 
 <script src="vendors/tinymce/tinymce.min.js"></script>
 <script src="assets/js/flatpickr.js"></script>
 
@@ -774,6 +809,9 @@
 
     ProductImage productImage = new ProductImage();
     List<ProductImage> productImages = new List<ProductImage>();
+
+      private DotNetObjectReference<ProductEntry>? dotNetRef;
+
     private void OnItemSelected(ProductCategories selectedItem)
     {
         SelectedProductCategorie = selectedItem;
@@ -793,7 +831,7 @@
         shippingBy_list = (await shippingByService.Get(null, null, null, null, 1, 1000)).ToList();
         color_list = (await colorService.Get(null, null, null, null, 1, 1000)).ToList();
         country_list = (await countryServiceV2.Get(null, null, null, null, null, null, null, null, null, null, 1, 1000)).ToList();
-        statusSetting_list = (await _statusSettingService.Get(null, null, null, null, null, null, 1, 1000)).ToList();
+        statusSetting_list = (await _statusSettingService.Get(null, null, null, null, "Product", null, 1, 1000)).ToList();
         importStatusSetting_list = (await _statusSettingService.Get(null, null, null, null, null, null, 1, 1000)).ToList();
         productSubCategory_list = (await _productSubCategoryService.Get(null, null, null, null, null, 1, 1000)).ToList();
         brand_list = (await _brandService.Get( null, null, null, 1, 1000)).ToList();
@@ -826,8 +864,18 @@
         }
 
     }
-
-
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            dotNetRef = DotNetObjectReference.Create(this);
+            await js.InvokeVoidAsync("tinymceBlazor.init", "#tinymce-editor", dotNetRef);
+        }
+    }
+    public void Dispose()
+    {
+        dotNetRef?.Dispose();
+    }
 
     private Task HideAlert()
     {
@@ -898,7 +946,11 @@
         }
 
     }
-
+    [JSInvokable]
+    public void UpdateProdDescription(string content)
+    {
+        product.ProdDescription = content;
+    }
 
     private async Task LoadSpecification()
     {
