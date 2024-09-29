@@ -11,22 +11,27 @@ namespace Pms.Models.Entity.Settings
         public long ProductId { get; set; }
         public Guid? ProductKey { get; set; }
         [Required(ErrorMessage = "Product Category is required")]
-        public long? ProdCtgId { get; set; }
+        public long? ProdCtgId { get; set; } = null;
         public long? ProdSubCtgId { get; set; } = 0;
         [Required(ErrorMessage = "Unit type is required")]
         public long? UnitId { get; set; }=null;
         public decimal FinalPrice { get; set; }
         public decimal? PreviousPrice { get; set; }
-        public long CurrencyId { get; set; }
+        [Required(ErrorMessage = "Currency is required")]
+        public long? CurrencyId { get; set; } = null;
         public string TagWord { get; set; }
         [Required(ErrorMessage = "Product name is required")]
         [StringLength(100, ErrorMessage = "Product Name cannot exceed 100 characters")]
         public string ProdName { get; set; }
         public string ManufacturarName { get; set; }
         public string SerialNmbrOrUPC { get; set; }
+        [Required(ErrorMessage = "SKU is required")]
+        [StringLength(100, ErrorMessage = "SKU cannot exceed 100 characters")]
         public string Sku { get; set; }
         [Required(ErrorMessage = "Opening quantity is required")]
+        [Range(1, int.MaxValue, ErrorMessage = "Opening quantity must be greater than zero")]
         public int? OpeningQnty { get; set; } = null;
+         
         public int? AlertQnty { get; set; } = 0;
         [Required(ErrorMessage = "Buying price is required")]
         [Range(0.01, double.MaxValue, ErrorMessage = "Buying price must be greater than zero")]
@@ -47,7 +52,7 @@ namespace Pms.Models.Entity.Settings
         public string WarrentyPolicy { get; set; }
         public int? ColorId { get; set; }
         public int? SizeId { get; set; }
-        [Required(ErrorMessage = "Shipping Name is required")]
+ 
         public int? ShippingById { get; set; }=null;
         public int? ShippingDays { get; set; }
         public string ShippingDetails { get; set; }

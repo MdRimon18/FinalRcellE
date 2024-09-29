@@ -23,9 +23,7 @@
 
 <EditForm Model="@product" OnValidSubmit="SaveOrUpdate">
     <DataAnnotationsValidator />
-    
-         
-
+    <ValidationSummary />
    <div class="row g-0">
     <div class="col-lg-9 pe-lg-2">
         <div class="card mb-3">
@@ -57,9 +55,10 @@
                                 </div>
                                 <div class="col-sm-3 col-md-3 col-lg-3 col-12">
                                     <div class="form-group">
-                                    <label for="ProductCode" class="form-label fw-semi-bold">Product Code</label>
+                                    <label for="ProductCode" class="form-label fw-semi-bold">Product Code<span class="error-star">*</span></label>
                                     <InputText @bind-Value="product.ProductCode" type="text" class=" form-control form-control-sm form-rounded fw-semi-bold" placeholder="Product Code" />
-                                    </div>
+                                    <ValidationMessage class="text-left invalid-message-color" For="@(() => product.ProductCode)" />
+                                </div>
                                 </div>
                                 <div class="col-sm-3 col-md-3 col-lg-3 col-12">
                                     <div class="form-group">
@@ -69,8 +68,9 @@
                                 </div>
                                 <div class="col-sm-3 col-md-3 col-lg-3 col-12">
                                     <div class="form-group">
-                                        <label for="sku" class="form-label fw-semi-bold">SKU</label>
+                                    <label for="sku" class="form-label fw-semi-bold">SKU<span class="error-star">*</span></label>
                                         <InputText @bind-Value="product.Sku" type="text" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="Sku" />
+                                    <ValidationMessage class="text-left invalid-message-color" For="@(() => product.Sku)" />
                                     </div>
                                 </div>
                                 <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
@@ -300,7 +300,7 @@
                             </div>
                             <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
                                 <div class="form-group">
-                                    <label class="form-label fw-semi-bold">Shipping Name</label><span class="error-star">*</span>
+                                    <label class="form-label fw-semi-bold">Shipping Name</label> 
                                     <InputSelect @bind-Value="product.ShippingById" class="form-control form-control-sm form-rounded fw-semi-bold ">
                                         <option value=''>Select Shipping Name</option>
                                         @foreach (var item in shippingBy_list)
@@ -587,7 +587,7 @@
                                                  InputSize="width:13rem;"
                                                  OnItemSelected="OnItemSelected"/>
                                 </div>
-                            
+                                <ValidationMessage class="text-left invalid-message-color" For="@(() => product.ProdCtgId)" />
                         </div>
                         <div class="col-12">
                             <label class="form-label fw-semi-bold" for="product-subcategory">Select sub-category:</label>
@@ -644,6 +644,7 @@
                                     <option value=@item.CurrencyId>@item.CurrencyShortName</option>
                                 }
                             </InputSelect>
+                                <ValidationMessage class="text-left invalid-message-color" For="@(() => product.CurrencyId)" />
                         </div>
                     </div>
                 </div>
@@ -762,7 +763,7 @@
     // List<ProductSKU> sku_list = new List<ProductSKU>();
 
     [Inject]
-    WarehouseService _warehouseService { get; set; }
+    WarehouseService _warehouseService { get; set; } 
     List<Warehouse> warehouse_list = new List<Warehouse>();
 
     private ProductCategories SelectedProductCategorie { get; set; }
@@ -807,6 +808,7 @@
     {
         SelectedProductCategorie = selectedItem;
         product.ProdCtgId = selectedItem.ProdCtgId;
+        StateHasChanged();
     }
     protected override async Task OnInitializedAsync()
 
@@ -843,7 +845,7 @@
                 {
                     navigation.NavigateTo("/customer_info");
                 }
-                 
+
             }
             else
             {
@@ -857,12 +859,12 @@
     {
         if (firstRender)
         {
-            
+
         }
     }
     public void Dispose()
     {
-       // dotNetRef?.Dispose();
+        // dotNetRef?.Dispose();
     }
 
     private Task HideAlert()
@@ -873,7 +875,17 @@
 
     private async Task SaveOrUpdate()
     {
-        if (!string.IsNullOrEmpty(product.ProdName))
+        
+        if (!string.IsNullOrEmpty(product.ProdName) 
+          && !string.IsNullOrEmpty(product.ProductCode)
+          && !string.IsNullOrEmpty(product.Sku)
+          && product.ProdCtgId>0
+          && product.OpeningQnty>0
+          && product.BuyingPrice > 0
+          && product.SellingPrice > 0
+          && product.UnitId > 0
+          && product.CurrencyId > 0
+        )
         {
             try
             {
@@ -935,11 +947,7 @@
         }
 
     }
-    [JSInvokable]
-    public void UpdateContent(string content)
-    {
-        product.ProdDescription = content;
-    }
+    
 
     private async Task LoadSpecification()
     {
