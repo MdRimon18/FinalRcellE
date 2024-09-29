@@ -29,15 +29,15 @@
         }
         public static DateTime CurrentDateTime()
         {
-            DateTime dateTime= DateTime.Now;
+            DateTime loacalDatetime = DateTime.UtcNow;
             //here date time will be return according to Country 
             if("Bangladesh"== "Bangladesh")
             {
-                var timeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById("Bangladesh Standard Time");
-                dateTime = TimeZoneInfo.ConvertTime(DateTime.Now, timeZoneInfo);
+                var localZone = TimeZoneInfo.FindSystemTimeZoneById("Bangladesh Standard Time");
+                  loacalDatetime = TimeZoneInfo.ConvertTime(loacalDatetime, localZone);
             }
 
-            return dateTime;
+            return loacalDatetime;
         }
 
     }

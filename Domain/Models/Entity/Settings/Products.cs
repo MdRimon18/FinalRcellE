@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Pms.Helper;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 
@@ -41,7 +42,7 @@ namespace Pms.Models.Entity.Settings
         public int? SupplirLinkId { get; set; }
         public string ImportedForm { get; set; }
         public int? ImportStatusId { get; set; }
-        public DateTime? GivenEntryDate { get; set; }
+        public DateTime? GivenEntryDate { get; set; }= DateTimeHelper.CurrentDateTime();
         public int? WarrentYear { get; set; }
         public string WarrentyPolicy { get; set; }
         public int? ColorId { get; set; }
@@ -55,7 +56,7 @@ namespace Pms.Models.Entity.Settings
         public int? ProdStatusId { get; set; }
         public string Remarks { get; set; }
         public string ProdDescription { get; set; }
-        public DateTime? ReleaseDate { get; set; }
+        public DateTime? ReleaseDate { get; set; }= DateTimeHelper.CurrentDateTime();
         public long BranchId { get; set; }  
         public int StockQuantity { get; set; }
         public decimal? ItemWeight { get; set; }

@@ -682,18 +682,9 @@
 
 </script>
 <script>
-    window.tinymceBlazor = {
-        init: function (selector, dotNetHelper) {
-            console.log("Initializing TinyMCE on: ", selector); // Debugging line
-            tinymce.init({
-                selector: selector,
-                setup: function (editor) {
-                    editor.on('change', function () {
-                        console.log("TinyMCE content changed"); // Debugging line
-                        dotNetHelper.invokeMethodAsync('UpdateProdDescription', editor.getContent());
-                    });
-                }
-            });
+    window.jsInterop = {
+        getElementValueById: function (elementId) {
+            return document.getElementById(elementId).value;
         }
     };
 
@@ -810,7 +801,7 @@
     ProductImage productImage = new ProductImage();
     List<ProductImage> productImages = new List<ProductImage>();
 
-      private DotNetObjectReference<ProductEntry>? dotNetRef;
+    //  private DotNetObjectReference<ProductEntry>? dotNetRef;
 
     private void OnItemSelected(ProductCategories selectedItem)
     {
@@ -840,6 +831,7 @@
         warehouse_list = (await _warehouseService.Get(null, null, null, null, null, null, null, null,null, 1, 1000)).ToList();
         bodyParts=await  bodyPartService.GetBodyPartsAsync();
         await LoadProductImages();
+        imageData = defaultImage;
         if (IsEditMode)
         {
             if (key.HasValue)
@@ -849,12 +841,9 @@
 
                 if (product == null)
                 {
-                    //  Navigation.NavigateTo("/customer_info");
+                    navigation.NavigateTo("/customer_info");
                 }
-                else
-                {
-                    // imageData = customer.CustImgLink;
-                }
+                 
             }
             else
             {
@@ -868,13 +857,12 @@
     {
         if (firstRender)
         {
-            dotNetRef = DotNetObjectReference.Create(this);
-            await js.InvokeVoidAsync("tinymceBlazor.init", "#tinymce-editor", dotNetRef);
+            
         }
     }
     public void Dispose()
     {
-        dotNetRef?.Dispose();
+       // dotNetRef?.Dispose();
     }
 
     private Task HideAlert()
@@ -889,8 +877,7 @@
         {
             try
             {
-
-
+                
                 if (product.ProductId == 0)
                 {
                     product.EntryDateTime = DateTimeHelper.CurrentDateTime();
@@ -919,6 +906,8 @@
                 }
                 else
                 {
+                    var description = await js.InvokeAsync<string>("jsInterop.getElementValueById", "tinymce-editor");
+                    product.ProdDescription = description;
 
                     product.LastModifyDate = DateTimeHelper.CurrentDateTime();
                     product.LastModifyBy = UserInfo.UserId;
@@ -947,7 +936,7 @@
 
     }
     [JSInvokable]
-    public void UpdateProdDescription(string content)
+    public void UpdateContent(string content)
     {
         product.ProdDescription = content;
     }
