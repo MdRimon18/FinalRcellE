@@ -101,7 +101,7 @@
                                 <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
                                     <div class="form-group">
                                         <label for="cost" class="form-label fw-semi-bold">Selling Price</label><span class="error-star">*</span>
-                                        <InputNumber class="form-control form-control-sm form-rounded fw-semi-bold " @bind-Value="product.SellingPrice" placeholder="Selling Price" />
+                                    <InputNumber class="form-control form-control-sm form-rounded fw-semi-bold " @bind-Value="product.SellingPrice" @oninput="OnSellingPriceChanged" placeholder="Selling Price" />
                                         <ValidationMessage class="text-left invalid-message-color" For="@(() => product.SellingPrice)" />
                                     </div>
                                 </div>
@@ -110,8 +110,8 @@
 
                                 <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
                                     <div class="form-group">
-                                        <label for="vatPercent" class="form-label fw-semi-bold">VAT in %</label>
-                                        <InputNumber class="form-control form-control-sm form-rounded fw-semi-bold" @bind-Value="product.VatPercent" placeholder="VAT in %" />
+                                        <label for="vatPercent" class="form-label fw-semi-bold">VAT (%)</label>
+                                    <InputNumber class="form-control form-control-sm form-rounded fw-semi-bold" @bind-Value="product.VatPercent" @oninput="OnVatPercentChanged" placeholder="VAT in %" />
                                         <!-- <div class="text-left text-danger">
                                             Barcode is Required!
                                         </div> -->
@@ -121,7 +121,7 @@
                                 <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
                                     <div class="form-group">
                                         <label for="vatAmount" class="form-label fw-semi-bold">VAT Amount</label>
-                                        <InputNumber class="form-control form-control-sm form-rounded fw-semi-bold" @bind-Value="product.VatAmount" placeholder="VAT Amount" />
+                                    <InputNumber class="form-control form-control-sm form-rounded fw-semi-bold" @bind-Value="product.VatAmount" @oninput="OnVatAmountChanged" placeholder="VAT Amount" />
                                         <!-- <div class="text-left text-danger">
                                             Barcode is Required!
                                         </div> -->
@@ -130,8 +130,8 @@
 
                                 <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
                                     <div class="form-group">
-                                        <label for="discountPercent" class="form-label fw-semi-bold">Discount</label>
-                                        <InputNumber class="form-control form-control-sm form-rounded fw-semi-bold" @bind-Value="product.DiscountPercentg" placeholder="Discount" />
+                                        <label for="discountPercent" class="form-label fw-semi-bold">Discount(%)</label>
+                                    <InputNumber class="form-control form-control-sm form-rounded fw-semi-bold" @bind-Value="product.DiscountPercentg" @oninput="CalculateDiscountPercentage" placeholder="Discount" />
                                         <!-- <div class="text-left text-danger">
                                             Barcode is Required!
                                         </div> -->
@@ -141,7 +141,7 @@
                                 <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
                                     <div class="form-group">
                                         <label for="discountAmount" class="form-label fw-semi-bold">Discount Amount</label>
-                                        <InputNumber class="form-control form-control-sm form-rounded fw-semi-bold" @bind-Value="product.DiscountAmount" placeholder="Discount Amount" />
+                                    <InputNumber class="form-control form-control-sm form-rounded fw-semi-bold" @bind-Value="product.DiscountAmount" @oninput="OnDiscountAmountChanged" placeholder="Discount Amount" />
                                         <!-- <div class="text-left text-danger">
                                             Barcode is Required!
                                         </div> -->
@@ -875,7 +875,7 @@
 
     private async Task SaveOrUpdate()
     {
-        
+
         if (!string.IsNullOrEmpty(product.ProdName) 
           && !string.IsNullOrEmpty(product.ProductCode)
           && !string.IsNullOrEmpty(product.Sku)
@@ -889,7 +889,7 @@
         {
             try
             {
-                
+
                 if (product.ProductId == 0)
                 {
                     product.EntryDateTime = DateTimeHelper.CurrentDateTime();
@@ -947,7 +947,84 @@
         }
 
     }
-    
+
+
+    private void OnSellingPriceChanged(ChangeEventArgs e)
+    {
+        if (decimal.TryParse(e.Value.ToString(), out var sellingPrice))
+        {
+            product.SellingPrice = sellingPrice;
+            if (product.VatPercent > 0)
+            {
+                product.VatAmount = (product.SellingPrice * product.VatPercent) / 100;
+            }
+            if (product.DiscountPercentg > 0)
+            {
+                // Calculate Discount Amount based on Selling Price and Discount Percentage
+                product.DiscountAmount = (product.SellingPrice * product.DiscountPercentg) / 100;
+            }
+            CalculateFinalPrice();
+        }
+    }
+    private void CalculateFinalPrice()
+    {
+        product.FinalPrice = (product.SellingPrice + product.VatAmount) - product.DiscountAmount;
+
+    }
+    private void OnDiscountAmountChanged(ChangeEventArgs e)
+    {
+        if (decimal.TryParse(e.Value.ToString(), out var discountAmount))
+        {
+            product.DiscountAmount = discountAmount;
+
+            if (product.SellingPrice > 0)
+            {
+                // Calculate Discount Percentage based on Selling Price and Discount Amount
+                product.DiscountPercentg = (product.DiscountAmount / product.SellingPrice) * 100;
+            }
+            CalculateFinalPrice();
+        }
+    }
+
+    private void OnVatPercentChanged(ChangeEventArgs e)
+    {
+        if (decimal.TryParse(e.Value.ToString(), out var vatPercent))
+        {
+            product.VatPercent = vatPercent;
+            product.VatAmount = (product.SellingPrice * product.VatPercent) / 100;
+            CalculateFinalPrice();
+        }
+    }
+    private void OnVatAmountChanged(ChangeEventArgs e)
+    {
+        if (decimal.TryParse(e.Value.ToString(), out var vatAmount))
+        {
+            product.VatAmount = vatAmount;
+            if (product.VatAmount > 0)
+            {
+                product.VatPercent = (product.VatAmount / product.SellingPrice) * 100;
+                CalculateFinalPrice();
+            }
+        }
+    }
+    private void CalculateDiscountPercentage(ChangeEventArgs e)
+    {
+        if (decimal.TryParse(e.Value.ToString(), out var discountPercentage))
+        {
+            product.DiscountPercentg = discountPercentage;
+            if (product.DiscountPercentg > 0)
+            {
+                // Calculate Discount Amount based on Selling Price and Discount Percentage
+                product.DiscountAmount = (product.SellingPrice * product.DiscountPercentg) / 100;
+                CalculateFinalPrice();
+            }
+            else
+            {
+                // Reset Discount Amount if Discount Percentage is zero or negative
+                product.DiscountAmount = 0;
+            }
+        }
+    }
 
     private async Task LoadSpecification()
     {
