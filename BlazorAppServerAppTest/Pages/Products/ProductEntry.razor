@@ -23,7 +23,7 @@
 
 <EditForm Model="@product" OnValidSubmit="SaveOrUpdate">
     <DataAnnotationsValidator />
-    <ValidationSummary />
+  @*   <ValidationSummary /> *@
    <div class="row g-0">
     <div class="col-lg-9 pe-lg-2">
         <div class="card mb-3">
@@ -577,15 +577,17 @@
                         
 
 
-                        <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12">
-                            <label class="form-label fw-semi-bold" for="product-category">Select category:</label>
+                        <div class="col-12">
+                                <label class="form-label fw-semi-bold" for="product-category">Select category<span class="error-star">*</span></label>
                                 <div class="form-group">
-                                <SearchComponent T="ProductCategories"
+                               @*  <SearchComponent T="ProductCategories"
                                                  Items="productCategory_list"
                                                  DisplayProperty="obj => obj.ProdCtgName"
                                                  Placeholder="Search by Product Category"
                                                  InputSize="width:13rem;"
-                                                 OnItemSelected="OnItemSelected"/>
+                                                 OnItemSelected="OnItemSelected"/> *@
+
+                                    <ProductCategorySearcher Placeholder="Search for categories..." OnItemSelected="OnItemSelected" />
                                 </div>
                                 <ValidationMessage class="text-left invalid-message-color" For="@(() => product.ProdCtgId)" />
                         </div>
@@ -613,7 +615,7 @@
                         <div class="col-12 ">
                             <div class="form-group">
                                     <label class="form-label fw-semi-bold">Unit Type</label><span class="error-star">*</span>
-                                    <InputSelect @bind-Value="product.UnitId"  class="form-control form-control-sm form-rounded fw-semi-bold ">
+                                    <InputSelect @bind-Value="product.UnitId" class="form-select">
                                         <option value=''>Select Unit Type </option>
                                         @foreach(var item in unit_list)
                                            {
