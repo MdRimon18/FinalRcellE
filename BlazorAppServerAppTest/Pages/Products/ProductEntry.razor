@@ -427,15 +427,19 @@
 
                         </div>
                         <div class="tab-pane fade" id="tab_image" role="tabpanel" aria-labelledby="image_tab">
-                        <div class="card mb-3 mb-lg-0">
-                            <div class="card-header bg-body-tertiary">
-                                <h6 class="mb-0">Images</h6>
-                            </div>
+                       
                             <div class="card-body">
                                 @if (productImages.Count() > 0)
                                 {
+                                    <div class="row gx-2 flex-between-center mb-3">
+                                        <div class="col-sm-3">Images</div>
+                                        <div class="col-sm-3">Body Part</div>
+                                        <div class="col-sm-3">Position</div>
+                                        <div class="col-sm-2">Action</div>
+                                    </div>
                                     foreach (var img in productImages)
                                     {
+                                   
                                         <div class="row gx-2 flex-between-center mb-3">
                                             <div class="col-sm-3">
                                                 <div class="avatar avatar-4xl">
@@ -454,15 +458,21 @@
 
                                                 </div> *@
                                             </div>
-                                            <div class="col-sm-4">
+                                            <div class="col-sm-3">
                                                 <div class="d-flex flex-between-center">
                                                     <h6 class="mb-0 text-700">@img.BodyPartName</h6>
                                                      
                                                 </div>
                                             </div>
-                                            <div class="col-sm-4">
+                                            <div class="col-sm-3">
                                                 <div class="d-flex flex-between-center">
                                                     <h6 class="mb-0 text-700">@img.Position</h6>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <div class="d-flex flex-between-center">
+                                                  
+                                                    <button class="btn btn-falcon-default btn-sm" type="button" @onclick="()=>LoadImageEditModeData(img)"><span class="fas fa-external-link-alt" data-fa-transform="shrink-3"></span><span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1"></span></button>
                                                     <a class="btn btn-sm btn-link text-danger" @onclick="() => DeleteImagesItem(img.ProductMediaId)">
                                                         <span class="fs-10 fas fa-trash-alt"></span>
                                                     </a>
@@ -506,21 +516,19 @@
                                     <div class="col-sm-4">
                                         <div class="d-flex gap-2 flex-between-center">
                                             <InputNumber @bind-Value="productImage.Position" class="form-control form-control-sm form-label fw-semi-bold" id="Details" type="text" placeholder="Position" />
-                                            <button type="button" class="btn btn-outline-primary btn-sm" @onclick="SavesProductImage">Add</button>
+                                        <button type="button" class="btn btn-outline-primary btn-sm" @onclick="SavesProductImage">@(productImage.ProductMediaId>0?"Update":"Add")</button>
                                         </div>
                                     </div>
 
                                 </div>
 
                             </div>
-                        </div>
+                        
                         </div>
                         <div class="tab-pane fade" id="tab_product_specification" role="tabpanel" aria-labelledby="product_specification_tab">
 
-                            <div class="card mb-3 mb-lg-0">
-                                <div class="card-header bg-body-tertiary">
-                                    <h6 class="mb-0">Specifications</h6>
-                                </div>
+                           
+                                 
                                 <div class="card-body">
                                     @if (specification_list.Count > 0)
                                     {
@@ -560,7 +568,7 @@
                                     </div>
 
                                 </div>
-                            </div>
+                            
                         </div>                       
                          
                     </div>
@@ -1077,6 +1085,11 @@
         }
 
     }
+    private async Task LoadImageEditModeData(ProductImage pi)
+    {
+        productImage = pi;
+        imageData = pi.ImageUrl;
+    }
     private async Task Savespecification()
     {
         try
@@ -1159,12 +1172,13 @@
     {
         try
         {
+            if (selectedImageFile is not null)
+            {
+                productImage.ImageUrl = await fileUploadService.UploadFileAsync(selectedImageFile, "assets/ProductImages");
+            }
             if (productImage.ProductMediaId == 0)
             {
-                if (selectedImageFile is not null)
-                {
-                    productImage.ImageUrl = await fileUploadService.UploadFileAsync(selectedImageFile, "assets/ProductImages");
-                }
+
                 productImage.ProductId = 1;
                 productImage.ProductMediaId = await productMediaService.SaveOrUpdate(productImage);
                 if (productImage.ProductMediaId > 0)
@@ -1174,9 +1188,9 @@
                     await  toastService.ShowToast(MessageManager.SaveSuccess, ToastLevel.Success);
 
                 }
-                else if (productSpecifications.ProdSpcfctnId == -1)
+                else if (productImage.ProductMediaId == -1)
                 {
-
+                    productImage.ProductMediaId = 0;
                     showDangerAlert = true;
                     DangerMessage = $"{productSpecifications.SpecificationName} {MessageManager.Exist}";
                     await toastService.ShowToast(DangerMessage, ToastLevel.Error);
@@ -1185,6 +1199,19 @@
                 {
                     await toastService.ShowToast( MessageManager.SaveFaild, ToastLevel.Error);
 
+                }
+            }
+            else
+            {
+                productImage.ProductId =1;
+                productImage.ProductMediaId = await productMediaService.SaveOrUpdate(productImage);
+                if (productImage.ProductMediaId == 0)
+                {
+                    await toastService.ShowToast(MessageManager.UpdateFaild, ToastLevel.Error);
+                }
+                else
+                {
+                    await toastService.ShowToast(MessageManager.UpdateSuccess, ToastLevel.Success);
                 }
             }
 
