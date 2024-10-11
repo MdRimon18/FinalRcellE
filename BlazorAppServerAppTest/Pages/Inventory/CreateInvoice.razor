@@ -564,7 +564,8 @@
                         </div >
                        
                         <div class="col-lg-3 col-md-3 col-sm-6 col-9 animated-div" >
-                            <div class="form-group">
+                                <ProductSearcherByName Placeholder="Search for Name..." OnItemSelected="OnSelectProduct" />
+                          @*   <div class="form-group">
                                 <label for="chooseProduct" class="form-label fw-semi-bold">Choose Product</label><span class="error-star">*</span>
                                 <div style="width: 13.5rem;" class="search-box" data-list='{"valueNames":["title"]}'>
                                     <div class="position-relative" data-bs-toggle="search" data-bs-display="static">
@@ -602,7 +603,7 @@
                                     </div>
                                 </div >
                                 
-                            </div>
+                            </div> *@
                             <div class="input-group-append">
                                 <button class="btn btn-sm btn-light" type="button" id="plusButton" data-bs-toggle="offcanvas"
                                         data-bs-target="#offcanvasRight-1" aria-controls="offcanvasRight-1">
@@ -1014,7 +1015,7 @@
     PaymentTypesService paymentTypesService { get; set; }
     List<PaymentTypes> PaymentTypes_list = new List<PaymentTypes>();
 
-     [Inject]
+    [Inject]
     CustomerService _customerService { get; set; }
     List<Customers> Customers_list = new List<Customers>();
     //Customers customer=  new Customers();
@@ -1038,11 +1039,12 @@
         products = (await _productService.Get(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1000)).ToList();
         Customers_list=(await _customerService.Get(null, null,null, null, null, null,null, 1, 1000)).ToList();
     }
-   private void OnItemSelected(Customers customer)
+    private void OnItemSelected(Customers customer)
     {
-       invoice.CustomerID = customer.CustomerId;
-         CustomerEmail = customer.Email;
+        invoice.CustomerID = customer.CustomerId;
+        CustomerEmail = customer.Email;
     }
+    
     private async Task SaveOrUpdate()
     {
         try

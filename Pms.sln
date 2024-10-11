@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RcellEProgrssive", "RcellEProgrssive\RcellEProgrssive.csproj", "{B530A656-74F6-4DCB-B5C1-780A7B5095C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoginAppMVC", "LoginAppMVC\LoginAppMVC.csproj", "{B488D1D9-F84E-4FBC-9A55-0134F6C815D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoginAppMVC", "LoginAppMVC\LoginAppMVC.csproj", "{B488D1D9-F84E-4FBC-9A55-0134F6C815D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
