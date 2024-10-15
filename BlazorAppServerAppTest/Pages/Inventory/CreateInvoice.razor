@@ -1,6 +1,21 @@
 ﻿@page "/create_invoice"
 @using Pms.Models.Entity
- 
+<style>
+    
+
+    .zoom-card {
+        transition: transform 0.3s ease; /* Smooth transition for the zoom effect */
+    }
+
+        .zoom-card:hover {
+            transform: scale(1.05); /* Slight zoom-in effect */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Adding a shadow for a subtle effect */
+        }
+
+
+</style>
+
+
 <div class="offcanvas offcanvas-end" id="offcanvasRight" tabindex="-1" aria-labelledby="offcanvasRightLabel" style="width: 55%;">
     <div class="offcanvas-header">
        @*  <div class="card-header">
@@ -50,347 +65,47 @@
                              </div>
                          </div>
                             <div class="row g-0">
-                        <div class="col-md-4 ps-md-2">
-                            <div class="card mb-3">
-                                <div class="card-header">
-                                    <div class="row flex-between-end">
-                                        <div class="col-9 align-self-center">
-                                            <h5 class="mb-0" data-anchor="data-anchor">Laptop</h5>
-                                        </div>
-                                        <div class="col-2 ms-auto">
-                                            <div class="form-check mb-0">
-                                                <input class="form-check-input" type="checkbox" data-bulk-select='{"body":"bulk-select-body","actions":"bulk-select-actions","replacedElement":"bulk-select-replace-element"}' />
+
+
+                   @foreach (var item in products)
+                        {
+                            <div class="col-md-4 ps-md-2">
+                                <div class="card mb-3 zoom-card">
+                                    <div class="card-header">
+                                        <div class="row flex-between-end">
+                                            <div class="col-9 align-self-center">
+                                                <h5 class="mb-0" data-anchor="data-anchor">Laptop</h5>
+                                            </div>
+                                            <div class="col-2 ms-auto">
+                                                <div class="form-check mb-0">
+                                                    <input class="form-check-input" type="checkbox" data-bulk-select='{"body":"bulk-select-body","actions":"bulk-select-actions","replacedElement":"bulk-select-replace-element"}' />
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="card-body bg-body-tertiary">
-                                    <div class="tab-content">
-                                        <div class="tab-pane preview-tab-pane active" role="tabpanel" aria-labelledby="tab-dom-e2974953-80a9-41ad-8d3e-132f02b29646" id="dom-e2974953-80a9-41ad-8d3e-132f02b29646">
-                                            <div class="avatar avatar-4xl">
-                                                <img class="rounded-soft" src="assets/img/products/1.jpg" alt="" />
-
+                                    <div class="card-body bg-body-tertiary">
+                                        <div class="tab-content">
+                                            <div class="tab-pane preview-tab-pane active" role="tabpanel">
+                                                <div class="avatar avatar-4xl mb-3">
+                                                    <img class="rounded-soft" src="assets/img/products/1.jpg" alt="Product Image" />
+                                                </div>
+                                                <!-- Additional Product Information -->
+                                                <div class="product-info">
+                                                    <p class="mb-1"><strong>Category:</strong> @item.ProdCtgName</p>
+                                                    <p class="mb-1"><strong>Brand:</strong> BrandName</p>
+                                                    <p class="mb-1"><strong>Name:</strong> @item.ProdName</p>
+                                                    <p class="mb-1"><strong>Price:</strong> @item.SellingPrice</p>
+                                                    <p class="mb-1"><strong>SKU:</strong>@item.Sku</p>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="tab-pane code-tab-pane" role="tabpanel" aria-labelledby="tab-dom-ba85f65e-9df1-4934-9499-57a593ae7191" id="dom-ba85f65e-9df1-4934-9499-57a593ae7191">
-                                            <pre class="scrollbar rounded-1" style="max-height:420px">
-                                                <code class="language-html">&lt;div class=&quot;avatar avatar-4xl&quot;&gt;
-                                                     &lt;img class=&quot;rounded-soft&quot; src=&quot;assets/img/products/1.jpg&quot; alt=&quot;&quot; /&gt;
-                                                     &lt;/div&gt;
-                                                </code>
-                                            </pre>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-4 ps-md-2">
-                            <div class="card mb-3">
-                                <div class="card-header">
-                                    <div class="row flex-between-end">
-                                        <div class="col-9 align-self-center">
-                                            <h5 class="mb-0" data-anchor="data-anchor">Laptop</h5>
-                                        </div>
-                                        <div class="col-2 ms-auto">
-                                            <div class="form-check mb-0">
-                                                <input class="form-check-input" type="checkbox" data-bulk-select='{"body":"bulk-select-body","actions":"bulk-select-actions","replacedElement":"bulk-select-replace-element"}' />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-body bg-body-tertiary">
-                                    <div class="tab-content">
-                                        <div class="tab-pane preview-tab-pane active" role="tabpanel" aria-labelledby="tab-dom-e2974953-80a9-41ad-8d3e-132f02b29646" id="dom-e2974953-80a9-41ad-8d3e-132f02b29646">
-                                            <div class="avatar avatar-4xl">
-                                                <img class="rounded-soft" src="assets/img/products/1.jpg" alt="" />
-
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane code-tab-pane" role="tabpanel" aria-labelledby="tab-dom-ba85f65e-9df1-4934-9499-57a593ae7191" id="dom-ba85f65e-9df1-4934-9499-57a593ae7191">
-                                            <pre class="scrollbar rounded-1" style="max-height:420px">
-                                            <code class="language-html">&lt;div class=&quot;avatar avatar-4xl&quot;&gt;
-                                                     &lt;img class=&quot;rounded-soft&quot; src=&quot;assets/img/products/1.jpg&quot; alt=&quot;&quot; /&gt;
-                                                     &lt;/div&gt;
-                                                </code>
-                                            </pre>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 ps-md-2">
-                            <div class="card mb-3">
-                                <div class="card-header">
-                                    <div class="row flex-between-end">
-                                        <div class="col-9 align-self-center">
-                                            <h5 class="mb-0" data-anchor="data-anchor">Laptop</h5>
-                                        </div>
-                                        <div class="col-2 ms-auto">
-                                            <div class="form-check mb-0">
-                                                <input class="form-check-input" type="checkbox" data-bulk-select='{"body":"bulk-select-body","actions":"bulk-select-actions","replacedElement":"bulk-select-replace-element"}' />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-body bg-body-tertiary">
-                                    <div class="tab-content">
-                                        <div class="tab-pane preview-tab-pane active" role="tabpanel" aria-labelledby="tab-dom-e2974953-80a9-41ad-8d3e-132f02b29646" id="dom-e2974953-80a9-41ad-8d3e-132f02b29646">
-                                            <div class="avatar avatar-4xl">
-                                                <img class="rounded-soft" src="assets/img/products/1.jpg" alt="" />
-
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane code-tab-pane" role="tabpanel" aria-labelledby="tab-dom-ba85f65e-9df1-4934-9499-57a593ae7191" id="dom-ba85f65e-9df1-4934-9499-57a593ae7191">
-                                            <pre class="scrollbar rounded-1" style="max-height:420px">
-                                                <code class="language-html">&lt;div class=&quot;avatar avatar-4xl&quot;&gt;
-                                                     &lt;img class=&quot;rounded-soft&quot; src=&quot;assets/img/products/1.jpg&quot; alt=&quot;&quot; /&gt;
-                                                     &lt;/div&gt;
-                                                </code>
-                                            </pre>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 ps-md-2">
-                            <div class="card mb-3">
-                                <div class="card-header">
-                                    <div class="row flex-between-end">
-                                        <div class="col-9 align-self-center">
-                                            <h5 class="mb-0" data-anchor="data-anchor">Laptop</h5>
-                                        </div>
-                                        <div class="col-2 ms-auto">
-                                            <div class="form-check mb-0">
-                                                <input class="form-check-input" type="checkbox" data-bulk-select='{"body":"bulk-select-body","actions":"bulk-select-actions","replacedElement":"bulk-select-replace-element"}' />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-body bg-body-tertiary">
-                                    <div class="tab-content">
-                                        <div class="tab-pane preview-tab-pane active" role="tabpanel" aria-labelledby="tab-dom-e2974953-80a9-41ad-8d3e-132f02b29646" id="dom-e2974953-80a9-41ad-8d3e-132f02b29646">
-                                            <div class="avatar avatar-4xl">
-                                                <img class="rounded-soft" src="assets/img/products/1.jpg" alt="" />
-
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane code-tab-pane" role="tabpanel" aria-labelledby="tab-dom-ba85f65e-9df1-4934-9499-57a593ae7191" id="dom-ba85f65e-9df1-4934-9499-57a593ae7191">
-                                            <pre class="scrollbar rounded-1" style="max-height:420px">
-                                                <code class="language-html">&lt;div class=&quot;avatar avatar-4xl&quot;&gt;
-                                                     &lt;img class=&quot;rounded-soft&quot; src=&quot;assets/img/products/1.jpg&quot; alt=&quot;&quot; /&gt;
-                                                     &lt;/div&gt;
-                                                </code>
-                                            </pre>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 ps-md-2">
-                            <div class="card mb-3">
-                                <div class="card-header">
-                                    <div class="row flex-between-end">
-                                        <div class="col-9 align-self-center">
-                                            <h5 class="mb-0" data-anchor="data-anchor">Laptop</h5>
-                                        </div>
-                                        <div class="col-2 ms-auto">
-                                            <div class="form-check mb-0">
-                                                <input class="form-check-input" type="checkbox" data-bulk-select='{"body":"bulk-select-body","actions":"bulk-select-actions","replacedElement":"bulk-select-replace-element"}' />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-body bg-body-tertiary">
-                                    <div class="tab-content">
-                                        <div class="tab-pane preview-tab-pane active" role="tabpanel" aria-labelledby="tab-dom-e2974953-80a9-41ad-8d3e-132f02b29646" id="dom-e2974953-80a9-41ad-8d3e-132f02b29646">
-                                            <div class="avatar avatar-4xl">
-                                                <img class="rounded-soft" src="assets/img/products/1.jpg" alt="" />
-
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane code-tab-pane" role="tabpanel" aria-labelledby="tab-dom-ba85f65e-9df1-4934-9499-57a593ae7191" id="dom-ba85f65e-9df1-4934-9499-57a593ae7191">
-                                            <pre class="scrollbar rounded-1" style="max-height:420px">
-                                                <code class="language-html">&lt;div class=&quot;avatar avatar-4xl&quot;&gt;
-                                                     &lt;img class=&quot;rounded-soft&quot; src=&quot;assets/img/products/1.jpg&quot; alt=&quot;&quot; /&gt;
-                                                     &lt;/div&gt;
-                                                </code>
-                                            </pre>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 ps-md-2">
-                            <div class="card mb-3">
-                                <div class="card-header">
-                                    <div class="row flex-between-end">
-                                        <div class="col-9 align-self-center">
-                                            <h5 class="mb-0" data-anchor="data-anchor">Laptop</h5>
-                                        </div>
-                                        <div class="col-2 ms-auto">
-                                            <div class="form-check mb-0">
-                                                <input class="form-check-input" type="checkbox" data-bulk-select='{"body":"bulk-select-body","actions":"bulk-select-actions","replacedElement":"bulk-select-replace-element"}' />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-body bg-body-tertiary">
-                                    <div class="tab-content">
-                                        <div class="tab-pane preview-tab-pane active" role="tabpanel" aria-labelledby="tab-dom-e2974953-80a9-41ad-8d3e-132f02b29646" id="dom-e2974953-80a9-41ad-8d3e-132f02b29646">
-                                            <div class="avatar avatar-4xl">
-                                                <img class="rounded-soft" src="assets/img/products/1.jpg" alt="" />
-
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane code-tab-pane" role="tabpanel" aria-labelledby="tab-dom-ba85f65e-9df1-4934-9499-57a593ae7191" id="dom-ba85f65e-9df1-4934-9499-57a593ae7191">
-                                            <pre class="scrollbar rounded-1" style="max-height:420px">
-                                            <code class="language-html">&lt;div class=&quot;avatar avatar-4xl&quot;&gt;
-                                                     &lt;img class=&quot;rounded-soft&quot; src=&quot;assets/img/products/1.jpg&quot; alt=&quot;&quot; /&gt;
-                                                     &lt;/div&gt;
-                                                </code>
-                                            </pre>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 ps-md-2">
-                            <div class="card mb-3">
-                                <div class="card-header">
-                                    <div class="row flex-between-end">
-                                        <div class="col-9 align-self-center">
-                                            <h5 class="mb-0" data-anchor="data-anchor">Laptop</h5>
-                                        </div>
-                                        <div class="col-2 ms-auto">
-                                            <div class="form-check mb-0">
-                                                <input class="form-check-input" type="checkbox" data-bulk-select='{"body":"bulk-select-body","actions":"bulk-select-actions","replacedElement":"bulk-select-replace-element"}' />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-body bg-body-tertiary">
-                                    <div class="tab-content">
-                                        <div class="tab-pane preview-tab-pane active" role="tabpanel" aria-labelledby="tab-dom-e2974953-80a9-41ad-8d3e-132f02b29646" id="dom-e2974953-80a9-41ad-8d3e-132f02b29646">
-                                            <div class="avatar avatar-4xl">
-                                                <img class="rounded-soft" src="assets/img/products/1.jpg" alt="" />
-
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane code-tab-pane" role="tabpanel" aria-labelledby="tab-dom-ba85f65e-9df1-4934-9499-57a593ae7191" id="dom-ba85f65e-9df1-4934-9499-57a593ae7191">
-                                            <pre class="scrollbar rounded-1" style="max-height:420px">
-                                                <code class="language-html">&lt;div class=&quot;avatar avatar-4xl&quot;&gt;
-                                                     &lt;img class=&quot;rounded-soft&quot; src=&quot;assets/img/products/1.jpg&quot; alt=&quot;&quot; /&gt;
-                                                     &lt;/div&gt;
-                                                </code>
-                                            </pre>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 ps-md-2">
-                            <div class="card mb-3">
-                                <div class="card-header">
-                                    <div class="row flex-between-end">
-                                        <div class="col-9 align-self-center">
-                                            <h5 class="mb-0" data-anchor="data-anchor">Laptop</h5>
-                                        </div>
-                                        <div class="col-2 ms-auto">
-                                            <div class="form-check mb-0">
-                                                <input class="form-check-input" type="checkbox" data-bulk-select='{"body":"bulk-select-body","actions":"bulk-select-actions","replacedElement":"bulk-select-replace-element"}' />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-body bg-body-tertiary">
-                                    <div class="tab-content">
-                                        <div class="tab-pane preview-tab-pane active" role="tabpanel" aria-labelledby="tab-dom-e2974953-80a9-41ad-8d3e-132f02b29646" id="dom-e2974953-80a9-41ad-8d3e-132f02b29646">
-                                            <div class="avatar avatar-4xl">
-                                                <img class="rounded-soft" src="assets/img/products/1.jpg" alt="" />
-
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane code-tab-pane" role="tabpanel" aria-labelledby="tab-dom-ba85f65e-9df1-4934-9499-57a593ae7191" id="dom-ba85f65e-9df1-4934-9499-57a593ae7191">
-                                            <pre class="scrollbar rounded-1" style="max-height:420px">
-                                                <code class="language-html">&lt;div class=&quot;avatar avatar-4xl&quot;&gt;
-                                                     &lt;img class=&quot;rounded-soft&quot; src=&quot;assets/img/products/1.jpg&quot; alt=&quot;&quot; /&gt;
-                                                     &lt;/div&gt;
-                                                </code>
-                                            </pre>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 ps-md-2">
-                            <div class="card mb-3">
-                                <div class="card-header">
-                                    <div class="row flex-between-end">
-                                        <div class="col-9 align-self-center">
-                                            <h5 class="mb-0" data-anchor="data-anchor">Laptop</h5>
-                                        </div>
-                                        <div class="col-2 ms-auto">
-                                            <div class="form-check mb-0">
-                                                <input class="form-check-input" type="checkbox" data-bulk-select='{"body":"bulk-select-body","actions":"bulk-select-actions","replacedElement":"bulk-select-replace-element"}' />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-body bg-body-tertiary">
-                                    <div class="tab-content">
-                                        <div class="tab-pane preview-tab-pane active" role="tabpanel" aria-labelledby="tab-dom-e2974953-80a9-41ad-8d3e-132f02b29646" id="dom-e2974953-80a9-41ad-8d3e-132f02b29646">
-                                            <div class="avatar avatar-4xl">
-                                                <img class="rounded-soft" src="assets/img/products/1.jpg" alt="" />
-
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane code-tab-pane" role="tabpanel" aria-labelledby="tab-dom-ba85f65e-9df1-4934-9499-57a593ae7191" id="dom-ba85f65e-9df1-4934-9499-57a593ae7191">
-                                            <pre class="scrollbar rounded-1" style="max-height:420px">
-                                                <code class="language-html">&lt;div class=&quot;avatar avatar-4xl&quot;&gt;
-                                                     &lt;img class=&quot;rounded-soft&quot; src=&quot;assets/img/products/1.jpg&quot; alt=&quot;&quot; /&gt;
-                                                     &lt;/div&gt;
-                                                </code>
-                                            </pre>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 ps-md-2">
-                            <div class="card mb-3">
-                                <div class="card-header">
-                                    <div class="row flex-between-end">
-                                        <div class="col-9 align-self-center">
-                                            <h5 class="mb-0" data-anchor="data-anchor">Laptop</h5>
-                                        </div>
-                                        <div class="col-2 ms-auto">
-                                            <div class="form-check mb-0">
-                                                <input class="form-check-input" type="checkbox" data-bulk-select='{"body":"bulk-select-body","actions":"bulk-select-actions","replacedElement":"bulk-select-replace-element"}' />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-body bg-body-tertiary">
-                                    <div class="tab-content">
-                                        <div class="tab-pane preview-tab-pane active" role="tabpanel" aria-labelledby="tab-dom-e2974953-80a9-41ad-8d3e-132f02b29646" id="dom-e2974953-80a9-41ad-8d3e-132f02b29646">
-                                            <div class="avatar avatar-4xl">
-                                                <img class="rounded-soft" src="assets/img/products/1.jpg" alt="" />
-
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane code-tab-pane" role="tabpanel" aria-labelledby="tab-dom-ba85f65e-9df1-4934-9499-57a593ae7191" id="dom-ba85f65e-9df1-4934-9499-57a593ae7191">
-                                            <pre class="scrollbar rounded-1" style="max-height:420px">
-                                                <code class="language-html">&lt;div class=&quot;avatar avatar-4xl&quot;&gt;
-                                                     &lt;img class=&quot;rounded-soft&quot; src=&quot;assets/img/products/1.jpg&quot; alt=&quot;&quot; /&gt;
-                                                     &lt;/div&gt;
-                                                </code>
-                                            </pre>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                        }
+                          
+                         
+                        
                     </div>
                 </div>
             </div>
@@ -563,69 +278,22 @@
                             </div>
                         </div >
                        
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-9 animated-div" >
-                                <ProductSearcherByName Placeholder="Search for Name..." OnItemSelected="OnSelectProduct" />
-                          @*   <div class="form-group">
-                                <label for="chooseProduct" class="form-label fw-semi-bold">Choose Product</label><span class="error-star">*</span>
-                                <div style="width: 13.5rem;" class="search-box" data-list='{"valueNames":["title"]}'>
-                                    <div class="position-relative" data-bs-toggle="search" data-bs-display="static">
-                                        <input class="form-control form-control-sm form-rounded search-input fw-semi-bold" type="search" placeholder="Search..." aria-label="Search" />
-                                        <span class="fas fa-search search-box-icon"></span >
-                                    </div>
-                                    <div class="btn-close-falcon-container position-absolute end-0 top-50 translate-middle shadow-none" data-bs-dismiss="search">
-                                        <button class="btn btn-link btn-close-falcon p-0" aria-label="Close"></button>
-                                    </div>
-                                    <div class="dropdown-menu border font-base start-0 mt-2 py-0 overflow-hidden w-100">
-                                        <div class="scrollbar list py-3" style="max-height: 15rem;">
-
-                                            <h6 class="dropdown-header fw-medium text-uppercase px-x1 fs-11 pt-0 pb-2">Products</h6>
-                                           @foreach (var p in products)
-                                            {
-                                                  <a class="dropdown-item px-x1 py-2" @onclick="()=>OnSelectProduct(p)">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="avatar avatar-l status-online me-2">
-                                                        <img class="rounded-circle" src="assets/img/team/1.jpg" alt="" />
-
-                                                    </div>
-                                                    <div class="flex-1">
-                                                        <h6 class="mb-0 title">@p.ProdName</h6>
-                                                        <p class="fs-11 mb-0 d-flex">Technext Limited</p>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            }
-                                          
-                                           
-                                        </div>
-                                        <div class="text-center mt-n3">
-                                            <p class="fallback fw-semi-bold fs-8 d-none">No Result Found.</p>
-                                        </div>
-                                    </div>
-                                </div >
-                                
-                            </div> *@
-                            <div class="input-group-append">
-                                <button class="btn btn-sm btn-light" type="button" id="plusButton" data-bs-toggle="offcanvas"
-                                        data-bs-target="#offcanvasRight-1" aria-controls="offcanvasRight-1">
-                                    +
-                                </button>
-                            </div>
-                        </div >
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-9 animated-div" >
-                               @*  <ProductSearchBySkuNumber Placeholder="Search for Name..." OnItemSelected="OnSelectProduct" /> *@
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-9 animated-div" >
+                               @*  <ProductSearcherByName Placeholder="Search for Name..." OnItemSelected="OnSelectProduct" /> *@
                                 <div class="form-group">
-                                    <label for="chooseProduct" class="form-label fw-semi-bold">Search by SKU</label><span class="error-star">*</span>
+                                    <label for="chooseProduct" class="form-label fw-semi-bold">Search by Name/Sku/Code</label><span class="error-star">*</span>
                                     <div class="position-relative">
                                         <input class="form-control form-control-sm form-rounded search-input fw-semi-bold"
+                                         
                                                type="search"
-                                               placeholder="Search by SKU..."
-                                               aria-label="Search SKU"
+                                               placeholder="Search for Name/Sku/Code..."
+                                               aria-label="Search Product Name"
                                                @bind="SearchQuery"
                                                @onclick="OnInputClick"
                                                @oninput="OnSearchInput" />
                                     </div>
 
-                                    <div class="dropdown-menu border font-base start-0 mt-2 py-0 overflow-hidden w-100"
+                                    <div class="dropdown-menu border font-base start-0 mt-2 py-0 overflow-hidden w-50"
                                          style="display: @(ShowDropdown && FilteredItems.Any() ? "block" : "none");">
                                         <div class="scrollbar list py-3" style="max-height: 24rem; cursor: pointer;">
                                             @if (FilteredItems.Any())
@@ -637,10 +305,15 @@
                                                             <div class="avatar avatar-l status-online me-2">
                                                                 <img class="rounded-circle" src="assets/img/team/1.jpg" alt="" />
                                                             </div>
-                                                            <div class="flex-1">
-                                                                <h6 class="mb-0 title">@item.ProdName</h6>
-                                                                <p class="fs-11 mb-0 d-flex">@item.Sku</p>
+
+                                                            <div class="flex-1 d-flex align-items-center">
+                                                                <h6 class="mb-0 title me-3">@item.ProdName</h6>
+                                                                <p class="fs-11 fw-bold  mb-0 me-3" style="font-size: 1.25rem;">Sku: @item.Sku</p>
+                                                                <p class="fs-11 fw-bold mb-0 me-3" style="font-size: 1.25rem;">Code: @item.ProductCode</p>
+                                                                <p class="fs-11 fw-bold mb-0 me-3" style="font-size: 1.25rem;">Category: @item.ProdCtgName</p>
+                                                                <p class="fs-11 fw-bold mb-0">Brand: @item.BrandId</p>
                                                             </div>
+
                                                         </div>
                                                     </a>
                                                 }
@@ -652,7 +325,14 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div >
+                            <div class="input-group-append">
+                                <button class="btn btn-sm btn-light" type="button" id="plusButton" data-bs-toggle="offcanvas"
+                                        data-bs-target="#offcanvasRight-1" aria-controls="offcanvasRight-1">
+                                    +
+                                </button>
+                            </div>
+                        </div >
+                        
                    
                     </div >
                         
@@ -1226,8 +906,12 @@
         else
         {
             FilteredItems = products
-                .Where(item => item.Sku!=null&&item.Sku.Contains(SearchQuery, StringComparison.OrdinalIgnoreCase))
-                .ToList();
+     .Where(item => (item.Sku != null && item.Sku.Contains(SearchQuery, StringComparison.OrdinalIgnoreCase))
+                 || (item.ProdName != null && item.ProdName.Contains(SearchQuery, StringComparison.OrdinalIgnoreCase))
+                 || (item.ProductCode != null && item.ProductCode.Contains(SearchQuery, StringComparison.OrdinalIgnoreCase))
+     )
+      .ToList();
+
         }
 
         ShowDropdown = FilteredItems.Any();
