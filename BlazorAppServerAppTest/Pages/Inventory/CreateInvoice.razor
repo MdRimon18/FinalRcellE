@@ -50,7 +50,13 @@
                             <div class="col-auto pe-0">
 
                                 <div class="input-group input-search-width">
-                                    <input class="form-control form-control-sm shadow-none" type="search" placeholder="Search  by name" aria-label="search"/>
+                                  
+                                    <input class="form-control form-control-sm shadow-none" 
+                                     type="search" placeholder="Search  by name"
+                                           aria-label="search"
+                                           @bind="srchQuery"
+                                           @oninput="OnProductSearchInOffCanva" />
+
                                     <button type="button" class="btn btn-sm btn-outline-secondary border-300 hover-border-secondary" >
                                         <span class="fa fa-search fs-10"></span>
 
@@ -67,7 +73,7 @@
                             <div class="row g-0">
 
 
-                   @foreach (var item in products)
+                        @foreach (var item in FilteredItemsOffCanva)
                         {
                             <div class="col-md-4 ps-md-2">
                                 <div class="card mb-3 zoom-card">
@@ -77,8 +83,10 @@
                                                 <h5 class="mb-0" data-anchor="data-anchor">Laptop</h5>
                                             </div>
                                             <div class="col-2 ms-auto">
+                                              
                                                 <div class="form-check mb-0">
                                                     <input class="form-check-input" type="checkbox" data-bulk-select='{"body":"bulk-select-body","actions":"bulk-select-actions","replacedElement":"bulk-select-replace-element"}' />
+                                                    @* <span class="fas fa-cart-plus me-sm-2"></span><span class="d-none d-sm-inline-block">Add</span>  *@
                                                 </div>
                                             </div>
                                         </div>
@@ -716,7 +724,10 @@
     private string CustomerEmail; 
 
     private string SearchQuery { get; set; } = string.Empty;
+    private string srchQuery { get; set; } = string.Empty;
+    
     private List<Products> FilteredItems { get; set; } = new List<Products>();
+    private List<Products> FilteredItemsOffCanva { get; set; } = new List<Products>();
     //private List<Products> Items { get; set; } = new List<Products>();
     private bool ShowDropdown { get; set; } = false;
     private bool ShowCloseIcon { get; set; } = false;
@@ -731,8 +742,9 @@
         PaymentTypes_list = (await paymentTypesService.Get(null, null, null, null, 1, 1000)).ToList();
         products = (await _productService.Get(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1000)).ToList();
         Customers_list=(await _customerService.Get(null, null,null, null, null, null,null, 1, 1000)).ToList();
-       
+
         FilteredItems = products;
+        FilteredItemsOffCanva = products;
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -748,7 +760,7 @@
         invoice.CustomerID = customer.CustomerId;
         CustomerEmail = customer.Email;
     }
-    
+
     private async Task SaveOrUpdate()
     {
         try
@@ -791,14 +803,14 @@
                     DangerMessage = MessageManager.SaveFaild;
                 }
             }
-             
-             
+
+
         }
         catch (Exception ex)
         {
             errorMessage = ex.Message;
         }
-        
+
     }
     private async Task OnSelectProduct(Products product)
     {
@@ -873,14 +885,14 @@
         decimal.TryParse(e.Value?.ToString(), out var recieveAmount);
         invoice.RecieveAmount = recieveAmount;
         invoice.TotalPayable = invoice.TotalAmount + invoice.TotalVat - invoice.TotalDiscount - invoice.TotalAddiDiscount;
-      invoice.DueAmount=invoice.TotalPayable - invoice.RecieveAmount;
+        invoice.DueAmount=invoice.TotalPayable - invoice.RecieveAmount;
     }
     public string GenerateUniqueNumber()
- {
-    Random random = new Random();
-    int uniqueNumber = random.Next(1000, 10000); // Generates a number between 1000 and 9999
-    return $"#{uniqueNumber}";
- }
+    {
+        Random random = new Random();
+        int uniqueNumber = random.Next(1000, 10000); // Generates a number between 1000 and 9999
+        return $"#{uniqueNumber}";
+    }
 
 
     [JSInvokable]
@@ -915,6 +927,36 @@
         }
 
         ShowDropdown = FilteredItems.Any();
+    }
+    private void OnProductSearchInOffCanva(ChangeEventArgs e)
+    {
+        if (e.Value is string value)
+        {
+            srchQuery = value;
+            FilterProductInOffCanva(); // Call your filter method to update the items
+        }
+    }
+
+    private void FilterProductInOffCanva()
+    {
+         
+   
+        if (string.IsNullOrWhiteSpace(srchQuery))
+        {
+            FilteredItemsOffCanva = products;
+        }
+        else
+        {
+            FilteredItemsOffCanva = products
+     .Where(item => (item.Sku != null && item.Sku.Contains(srchQuery, StringComparison.OrdinalIgnoreCase))
+                 || (item.ProdName != null && item.ProdName.Contains(srchQuery, StringComparison.OrdinalIgnoreCase))
+                 || (item.ProductCode != null && item.ProductCode.Contains(srchQuery, StringComparison.OrdinalIgnoreCase))
+     )
+      .ToList();
+
+        }
+
+         
     }
 
     private async Task SelectItem(Products item)
