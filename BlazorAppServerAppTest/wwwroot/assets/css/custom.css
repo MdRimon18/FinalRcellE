@@ -73,3 +73,7 @@ button {
     font-weight: bold;
     font-size: small;
 }
+
+.offcanvas {
+    margin-top: 67px; /* Adjust this value according to your header height */
+}

@@ -31,11 +31,11 @@
     </div>
 </div>
 
-<div class="offcanvas offcanvas-end" id="offcanvasRight-1" tabindex="-1" aria-labelledby="offcanvasRightLabel" style="width: 55%;">
+<div class="offcanvas offcanvas-end" id="offcanvasRight-1" tabindex="-1" aria-labelledby="offcanvasRightLabel" style="width: 50%;">
     <div class="offcanvas-header">
         <div class="card-header">
-            <h5 class="mb-0" data-anchor="data-anchor">
-                <i class="fas fa-arrow-left"></i>
+            <h5 class="mb-0" >
+               @*  <i class="fas fa-arrow-left"></i> *@
                 Choose Product
             </h5>
         </div>
@@ -46,30 +46,24 @@
             <div class="modal-content border-0">
                 <div class="modal-body p-0">
                     <div class="d-lg-flex justify-content-between">
-                        <div class="row flex-between-center gy-2 px-x1 mb-2">
+                        <div class="row flex-between-center gy-2 px-1 mb-2">
                             <div class="col-auto pe-0">
-
-                                <div class="input-group input-search-width">
-                                  
-                                    <input class="form-control form-control-sm shadow-none" 
-                                     type="search" placeholder="Search  by name"
+                                <div class="input-group" style="max-width: 350px; width: 100%;">
+                                    <input class="form-control form-control-sm shadow-none"
+                                           type="search"
+                                           placeholder="Search by Name/SKU/Code"
                                            aria-label="search"
                                            @bind="srchQuery"
                                            @oninput="OnProductSearchInOffCanva" />
 
-                                    <button type="button" class="btn btn-sm btn-outline-secondary border-300 hover-border-secondary" >
+                                    <button type="button" class="btn btn-sm btn-outline-secondary border-300 hover-border-secondary">
                                         <span class="fa fa-search fs-10"></span>
-
                                     </button>
-                                 
                                 </div>
+                            </div>
+                        </div>
+                    </div>
 
-                            </div>
-                            <div class="col-auto">
-                                <button class="btn btn-falcon-default btn-sm ms-sm-1" type="button"><span class="fas fa-redo"></span></button>
-                            </div>
-                             </div>
-                         </div>
                             <div class="row g-0">
 
 
@@ -77,20 +71,9 @@
                         {
                             <div class="col-md-4 ps-md-2">
                                 <div class="card mb-3 zoom-card">
-                                    <div class="card-header">
-                                        <div class="row flex-between-end">
-                                            <div class="col-9 align-self-center">
-                                                <h5 class="mb-0" data-anchor="data-anchor">Laptop</h5>
-                                            </div>
-                                            <div class="col-2 ms-auto">
-                                              
-                                                <div class="form-check mb-0">
-                                                    <input class="form-check-input" type="checkbox" data-bulk-select='{"body":"bulk-select-body","actions":"bulk-select-actions","replacedElement":"bulk-select-replace-element"}' />
-                                                    @* <span class="fas fa-cart-plus me-sm-2"></span><span class="d-none d-sm-inline-block">Add</span>  *@
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @* <div class="card-header">
+                                        <h5 class="mb-0">Laptop</h5>
+                                    </div> *@
                                     <div class="card-body bg-body-tertiary">
                                         <div class="tab-content">
                                             <div class="tab-pane preview-tab-pane active" role="tabpanel">
@@ -103,13 +86,21 @@
                                                     <p class="mb-1"><strong>Brand:</strong> BrandName</p>
                                                     <p class="mb-1"><strong>Name:</strong> @item.ProdName</p>
                                                     <p class="mb-1"><strong>Price:</strong> @item.SellingPrice</p>
-                                                    <p class="mb-1"><strong>SKU:</strong>@item.Sku</p>
+                                                    <p class="mb-1"><strong>SKU:</strong> @item.Sku</p>
                                                 </div>
                                             </div>
+                                        </div>
+                                        <div class="d-flex justify-content-end mt-3">
+                                            <button class="btn btn-sm btn-falcon-primary" type="button" @onclick="() => OnSelectProduct(item)">
+                                                Add
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+
+
                         }
                           
                          
@@ -812,26 +803,38 @@
         }
 
     }
-    private async Task OnSelectProduct(Products product)
+    private void OnSelectProduct(Products product)
     {
-        itemsList.Add(new InvoiceItems
+        // Check if the product already exists in the list to avoid duplicates
+        var existingItem = itemsList.FirstOrDefault(item => item.ProductId == product.ProductId);
+        if (existingItem != null)
         {
+            // If the product exists, you might want to increase the quantity or update the item details
+            existingItem.Quantity += 1; // Increment the quantity, or handle this logic as required
+            existingItem.TotalPrice = existingItem.Quantity * existingItem.SellingPrice;
+        }
+        else
+        {
+            // Add new product to the list if it doesn't already exist
+            itemsList.Add(new InvoiceItems
+                {
+                    CategoryName = product.ProdCtgName,
+                    ProductName = product.ProdName,
+                    ProductId = product.ProductId,
+                    Quantity = 1, // Set default quantity to 1 for new products
+                    Unit = product.UnitName,
+                    SellingPrice = product.SellingPrice,
+                    VatPercentg = product.VatPercent,
+                    DiscountPercentg = product.DiscountPercentg,
+                    TotalPrice = product.SellingPrice // Initialize TotalPrice based on the SellingPrice
+                                                      // Add other properties as necessary
+                });
+        }
 
-            CategoryName=product.ProdCtgName,
-            ProductName=product.ProdName,
-            ProductId = product.ProductId,
-            Quantity = 0,
-            Unit=product.UnitName,
-            SellingPrice = product.SellingPrice,
-            VatPercentg=product.VatPercent,
-            DiscountPercentg=product.DiscountPercentg,
-            TotalPrice=0
-            // Add other properties as necessary
-        });
-
-        // Clear the current item after adding
+        // Clear the current item after adding or updating the product
         invoiceItem = new InvoiceItems();
     }
+
     private void DeleteItem(InvoiceItems item)
     {
         itemsList.Remove(item);
