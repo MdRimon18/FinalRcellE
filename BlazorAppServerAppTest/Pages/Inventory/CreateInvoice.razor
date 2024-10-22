@@ -1,19 +1,6 @@
 ﻿@page "/create_invoice"
 @using Pms.Models.Entity
-<style>
-    
-
-    .zoom-card {
-        transition: transform 0.3s ease; /* Smooth transition for the zoom effect */
-    }
-
-        .zoom-card:hover {
-            transform: scale(1.05); /* Slight zoom-in effect */
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Adding a shadow for a subtle effect */
-        }
-
-
-</style>
+ 
 
 
 <div class="offcanvas offcanvas-end" id="offcanvasRight" tabindex="-1" aria-labelledby="offcanvasRightLabel" style="width: 55%;">
@@ -170,26 +157,30 @@
                         </div>
 
                         <div class="col-lg-3 col-md-3 col-sm-9 col-9 animated-div">
-                            <div class="input-group">
+                                <div class="input-group">
                                 <label for="customerMobileNo" class="form-label fw-semi-bold">Customer Mobile No</label><span class="error-star">*</span>
 
                                 
                                     @*  <input  readonly name="customerMobileNo" type="text" class="form-control form-control-sm form-rounded "
                                        placeholder="customer mobile no" required aria-label="Input group example" id="inputField" aria-describedby="plusButton"> *@
-                                <div class="input-group">
+                                    <div class="position-relative">
+                                        <SearchComponent T="Customers"
+                                                         Items="Customers_list"
+                                                         DisplayProperty="obj => obj.MobileNo"
+                                                         Placeholder="Search Cust"
+                                                         InputSize="width:13rem;"
+                                                         OnItemSelected="OnItemSelected" />
 
-                                     <SearchComponent T="Customers"
-                                                 Items="Customers_list"
-                                                 DisplayProperty="obj => obj.MobileNo"
-                                                 Placeholder="Search Cust"
-                                                 InputSize="width:13rem;"
-                                                 OnItemSelected="OnItemSelected"/>
 
-                                    <div class="input-group-append">
-                                        <button class="btn btn-sm btn-light" type="button" id="plusButton" data-bs-toggle="offcanvas"
-                                        data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">+</button>
+                                        <button class="btn btn-sm btn-light position-absolute top-0 end-0 h-100" type="button" id="plusButton" data-bs-toggle="offcanvas"
+                                                data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                                            +
+                                        </button>
+
+
                                     </div>
-                                </div>
+
+                                    
                                     <ValidationMessage class="text-danger" For="@(() => invoice.InvoiceNumber)" />
                                     @* <input type="text" id="inputField" class="form-control" placeholder="Enter value" aria-label="Enter value" > *@
                                    
@@ -281,15 +272,21 @@
                                @*  <ProductSearcherByName Placeholder="Search for Name..." OnItemSelected="OnSelectProduct" /> *@
                                 <div class="form-group">
                                     <label for="chooseProduct" class="form-label fw-semi-bold">Search by Name/Sku/Code</label><span class="error-star">*</span>
-                                    <div class="position-relative">
+                                    <div class="position-relative input-group">
+                                        <!-- Search Input -->
                                         <input class="form-control form-control-sm form-rounded search-input fw-semi-bold"
-                                         
                                                type="search"
                                                placeholder="Search for Name/Sku/Code..."
                                                aria-label="Search Product Name"
                                                @bind="SearchQuery"
                                                @onclick="OnInputClick"
                                                @oninput="OnSearchInput" />
+
+                                        <!-- Button inside the input -->
+                                        <button class="btn btn-sm btn-light" type="button" id="plusButton" data-bs-toggle="offcanvas"
+                                                data-bs-target="#offcanvasRight-1" aria-controls="offcanvasRight-1">
+                                            +
+                                        </button>
                                     </div>
 
                                     <div class="dropdown-menu border font-base start-0 mt-2 py-0 overflow-hidden w-50"
@@ -324,12 +321,12 @@
                                         </div>
                                     </div>
                                 </div>
-                            <div class="input-group-append">
+                           @*  <div class="input-group-append">
                                 <button class="btn btn-sm btn-light" type="button" id="plusButton" data-bs-toggle="offcanvas"
                                         data-bs-target="#offcanvasRight-1" aria-controls="offcanvasRight-1">
                                     +
                                 </button>
-                            </div>
+                            </div> *@
                         </div >
                         
                    
