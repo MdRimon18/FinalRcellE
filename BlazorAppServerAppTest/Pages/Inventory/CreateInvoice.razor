@@ -1,19 +1,6 @@
 ﻿@page "/create_invoice"
 @using Pms.Models.Entity
-<style>
-    
-
-    .zoom-card {
-        transition: transform 0.3s ease; /* Smooth transition for the zoom effect */
-    }
-
-        .zoom-card:hover {
-            transform: scale(1.05); /* Slight zoom-in effect */
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Adding a shadow for a subtle effect */
-        }
-
-
-</style>
+ 
 
 
 <div class="offcanvas offcanvas-end" id="offcanvasRight" tabindex="-1" aria-labelledby="offcanvasRightLabel" style="width: 55%;">
@@ -138,7 +125,46 @@
     </div> *@
 </div>
 
- 
+<div class="offcanvas offcanvas-end" id="offcanvasRight-2" tabindex="-1" aria-labelledby="offcanvasRightLabel" style="width: 50%;">
+    <div class="offcanvas-header">
+        <div class="card-header">
+            <h5 class="mb-0">
+                @*  <i class="fas fa-arrow-left"></i> *@
+                Choose Product
+            </h5>
+        </div>
+        <button class="btn-close text-reset" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+         <Pms.Pages.Settings.ProductSerialNumbersCmnt/>
+    </div>
+    @* <div class="card-footer">
+    <div class="row">
+    <div class="pagination d-none"></div>
+    <div class="col-md-8">
+    <div class="row">
+    <div class="col-md-6">
+    <span class="d-none d-sm-inline-block me-2 fs-10">page 1 of 1, Total Record 9 </span>
+
+    </div>
+    <div class="col-md-2">
+
+    <PageSizeSelection SelectedPageSize="1" SelectedPageSizeChanged="HandlePageSizeChanged" />
+    </div>
+    </div>
+    </div>
+    <div class="col-md-4">
+    <div class="col-auto d-flex justify-content-end">
+
+    <PaginationV2 TotalPages="1" CurrentPage="5" OnPageChange="ChangePage" />
+
+    </div>
+    </div>
+
+    </div>
+
+    </div> *@
+</div>
     <div class="card mb-3">
     <div class="card-header">
         <h5 class="mb-0" data-anchor="data-anchor">
@@ -170,26 +196,30 @@
                         </div>
 
                         <div class="col-lg-3 col-md-3 col-sm-9 col-9 animated-div">
-                            <div class="input-group">
+                                <div class="input-group">
                                 <label for="customerMobileNo" class="form-label fw-semi-bold">Customer Mobile No</label><span class="error-star">*</span>
 
                                 
                                     @*  <input  readonly name="customerMobileNo" type="text" class="form-control form-control-sm form-rounded "
                                        placeholder="customer mobile no" required aria-label="Input group example" id="inputField" aria-describedby="plusButton"> *@
-                                <div class="input-group">
+                                    <div class="position-relative">
+                                        <SearchComponent T="Customers"
+                                                         Items="Customers_list"
+                                                         DisplayProperty="obj => obj.MobileNo"
+                                                         Placeholder="Search Cust"
+                                                         InputSize="width:13rem;"
+                                                         OnItemSelected="OnItemSelected" />
 
-                                     <SearchComponent T="Customers"
-                                                 Items="Customers_list"
-                                                 DisplayProperty="obj => obj.MobileNo"
-                                                 Placeholder="Search Cust"
-                                                 InputSize="width:13rem;"
-                                                 OnItemSelected="OnItemSelected"/>
 
-                                    <div class="input-group-append">
-                                        <button class="btn btn-sm btn-light" type="button" id="plusButton" data-bs-toggle="offcanvas"
-                                        data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">+</button>
+                                        <button class="btn btn-sm btn-light position-absolute top-0 end-0 h-100" type="button" id="plusButton" data-bs-toggle="offcanvas"
+                                                data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                                            +
+                                        </button>
+
+
                                     </div>
-                                </div>
+
+                                    
                                     <ValidationMessage class="text-danger" For="@(() => invoice.InvoiceNumber)" />
                                     @* <input type="text" id="inputField" class="form-control" placeholder="Enter value" aria-label="Enter value" > *@
                                    
@@ -281,15 +311,21 @@
                                @*  <ProductSearcherByName Placeholder="Search for Name..." OnItemSelected="OnSelectProduct" /> *@
                                 <div class="form-group">
                                     <label for="chooseProduct" class="form-label fw-semi-bold">Search by Name/Sku/Code</label><span class="error-star">*</span>
-                                    <div class="position-relative">
+                                    <div class="position-relative input-group">
+                                        <!-- Search Input -->
                                         <input class="form-control form-control-sm form-rounded search-input fw-semi-bold"
-                                         
                                                type="search"
                                                placeholder="Search for Name/Sku/Code..."
                                                aria-label="Search Product Name"
                                                @bind="SearchQuery"
                                                @onclick="OnInputClick"
                                                @oninput="OnSearchInput" />
+
+                                        <!-- Button inside the input -->
+                                        <button class="btn btn-sm btn-light" type="button" id="plusButton" data-bs-toggle="offcanvas"
+                                                data-bs-target="#offcanvasRight-1" aria-controls="offcanvasRight-1">
+                                            +
+                                        </button>
                                     </div>
 
                                     <div class="dropdown-menu border font-base start-0 mt-2 py-0 overflow-hidden w-50"
@@ -324,12 +360,12 @@
                                         </div>
                                     </div>
                                 </div>
-                            <div class="input-group-append">
+                           @*  <div class="input-group-append">
                                 <button class="btn btn-sm btn-light" type="button" id="plusButton" data-bs-toggle="offcanvas"
                                         data-bs-target="#offcanvasRight-1" aria-controls="offcanvasRight-1">
                                     +
                                 </button>
-                            </div>
+                            </div> *@
                         </div >
                         
                    
@@ -341,18 +377,19 @@
                             <table class="table table-sm mb-0 fs-10 table-view-tickets">
                                 <thead class="thdchild">
                                     <tr>
-                                        <th class="form-label fw-semi-bold">
+                                            <th class="form-label fw-bold">
                                            Image
                                         </th>
-                                        <th scope="col" class="form-label fw-semi-bold">Category</th>
-                                        <th scope="col" class="form-label fw-semi-bold">Name</th>
-                                        <th scope="col" class="form-label fw-semi-bold">Quantity<span class="error-star"><strong class="bigger-asterisk">*</strong></span></th>
-                                        <th scope="col" class="form-label fw-semi-bold">Unit</th>
-                                        <th scope="col" class="form-label fw-semi-bold">Rate</th>
-                                        <th scope="col" class="form-label fw-semi-bold">VAT(%)</th>
-                                        <th scope="col" class="form-label fw-semi-bold">Discount(%)</th>
-                                        <th scope="col" class="form-label fw-semi-bold">Amount</th>
-                                        <th scope="col" class="form-label fw-semi-bold">Action</th>
+                                            <th scope="col" class="form-label fw-bold">Category</th>
+
+                                            <th scope="col" class="form-label fw-bold">Name</th>
+                                            <th scope="col" class="form-label fw-bold">Quantity<span class="error-star"><strong class="bigger-asterisk">*</strong></span></th>
+                                            <th scope="col" class="form-label fw-bold">Unit</th>
+                                            <th scope="col" class="form-label fw-bold">Rate</th>
+                                            <th scope="col" class="form-label fw-bold">VAT(%)</th>
+                                            <th scope="col" class="form-label fw-bold">Discount(%)</th>
+                                            <th scope="col" class="form-label fw-bold">Amount</th>
+                                            <th scope="col" class="form-label fw-bold">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -477,15 +514,22 @@
                                                                             </tbody>
                                                                         </table>
                                                                      </div>
-                                                                    <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
-                                                                        <label for="chooseSerialNumber" class="form-label fw-semi-bold">Add @itm.ProductName Serial Number</label>
-                                                                        <SearchComponent T="Customers"
-                                                                                         Items="Customers_list"
-                                                                                         DisplayProperty="obj => obj.MobileNo"
-                                                                                         Placeholder="Search Serial"
-                                                                                         InputSize="width:13rem;"
-                                                                                         OnItemSelected="OnItemSelected" />
-                                                                    </div>
+                                                                        <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                                                                            <label for="chooseSerialNumber" class="form-label fw-semi-bold">Add @itm.ProductName Serial Number</label>
+                                                                            <div class="position-relative">
+                                                                                <SearchComponent T="ProductSerialNumbers"
+                                                                                                 Items="serialNumbers"
+                                                                                                 DisplayProperty="obj => obj.SerialNumber"
+                                                                                                 Placeholder="Search Serial"
+                                                                                                 InputSize="width:13rem;"
+                                                                                                 OnItemSelected="OnSerialNumberSelect" />
+                                                                                <button class="btn btn-sm btn-light position-absolute righ-0 top-0 end-0 h-100" type="button"  data-bs-toggle="offcanvas"
+                                                                                        data-bs-target="#offcanvasRight-2" aria-controls="offcanvasRight-2">
+                                                                                    +
+                                                                                </button>
+                                                                            </div>
+                                                                       
+                                                                         </div>
                                                              
                                                             
                                                             </div>
@@ -716,13 +760,16 @@
 
     private string SearchQuery { get; set; } = string.Empty;
     private string srchQuery { get; set; } = string.Empty;
-    
+
     private List<Products> FilteredItems { get; set; } = new List<Products>();
     private List<Products> FilteredItemsOffCanva { get; set; } = new List<Products>();
     //private List<Products> Items { get; set; } = new List<Products>();
     private bool ShowDropdown { get; set; } = false;
     private bool ShowCloseIcon { get; set; } = false;
 
+    private List<ProductSerialNumbers> serialNumbers = new List<ProductSerialNumbers>();
+    [Inject]
+    ProductSerialNumbersService _productSerialNumbersService { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
@@ -736,6 +783,8 @@
 
         FilteredItems = products;
         FilteredItemsOffCanva = products;
+        serialNumbers = (await _productSerialNumbersService.Get(null, null, null, null, null, null, null, null, null, null, null, 1, 5000)).ToList();
+
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -751,7 +800,10 @@
         invoice.CustomerID = customer.CustomerId;
         CustomerEmail = customer.Email;
     }
-
+    private void OnSerialNumberSelect(ProductSerialNumbers serial)
+    {
+       
+    }
     private async Task SaveOrUpdate()
     {
         try
