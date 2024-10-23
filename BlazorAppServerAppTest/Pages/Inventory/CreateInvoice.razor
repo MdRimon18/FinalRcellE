@@ -463,6 +463,7 @@
                                                                 <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8">
                                                                         <table class="table table-hover">
                                                                             <thead>
+                                                                                   
                                                                                 <tr>
                                                                                     <th class="fw-semi-bold" scope="col">Product Name</th>
                                                                                     <th scope="col">Serial No</th>
@@ -471,45 +472,31 @@
                                                                                 </tr>
                                                                             </thead>
                                                                             <tbody>
-                                                                                <tr class="hover-actions-trigger">
-                                                                                    <td class="align-middle text-nowrap">
-                                                                                        <div class="d-flex align-items-center">
-                                                                                            <div class="avatar avatar-xl">
-                                                                                                <img class="rounded-circle" src="../../assets/img/team/4.jpg" alt="" />
-                                                                                            </div>
-                                                                                            <div class="ms-2">Ricky Antony</div>
-                                                                                        </div>
-                                                                                    </td>
-                                                                                    <td class="align-middle">ricky@example.com</td>
-                                                                                    <td class="align-middle text-nowrap">#33GBE2345</td>
-                                                                                    <td class="w-auto">
-                                                                                        <div class="btn-group btn-group hover-actions end-0 me-4">
-                                                                                            <button class="btn btn-tertiary pe-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><span class="fas fa-edit"></span></button>
-                                                                                            <button class="btn btn-tertiary ps-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><span class="fas fa-trash-alt text-danger"></span></button>
-                                                                                        </div>
-                                                                                    </td>
+                                                                                    @foreach (var srl in SelectedSerialNumbers) //.Where(w=>w.ProductId==itm.ProductId)
+                                                                                    {
+                                                                                        <tr class="hover-actions-trigger">
+                                                                                            <td class="align-middle text-nowrap">
+                                                                                                <div class="d-flex align-items-center">
+                                                                                                    <div class="avatar avatar-xl">
+                                                                                                        <img class="rounded-circle" src="../../assets/img/team/4.jpg" alt="" />
+                                                                                                    </div>
+                                                                                                    <div class="ms-2">@srl.ProductId</div>
+                                                                                                </div>
+                                                                                            </td>
+                                                                                            <td class="align-middle">@srl.SerialNumber</td>
+                                                                                            <td class="align-middle text-nowrap">@srl.SupplierOrgName</td>
+                                                                                            <td class="w-auto">
+                                                                                                <div class="btn-group btn-group hover-actions end-0 me-4">
+                                                                                                    @* <button class="btn btn-tertiary pe-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><span class="fas fa-edit"></span></button> *@
+                                                                                                    <button @onclick="()=>OnDeleteSerialNumber(srl)" class="btn btn-tertiary ps-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><span class="fas fa-trash-alt text-danger"></span></button>
+                                                                                                </div>
+                                                                                            </td>
 
-                                                                                </tr>
+                                                                                        </tr>
+                                                                                    }
+                                                                                
 
-                                                                                <tr class="hover-actions-trigger">
-                                                                                    <td class="align-middle text-nowrap">
-                                                                                        <div class="d-flex align-items-center">
-                                                                                            <div class="avatar avatar-xl">
-                                                                                                <img class="rounded-circle" src="../../assets/img/team/4.jpg" alt="" />
-                                                                                            </div>
-                                                                                            <div class="ms-2">Ricky Antony</div>
-                                                                                        </div>
-                                                                                    </td>
-                                                                                    <td class="align-middle">ricky@example.com</td>
-                                                                                    <td class="align-middle text-nowrap">#33GBE2345</td>
-                                                                                    <td class="w-auto">
-                                                                                        <div class="btn-group btn-group hover-actions end-0 me-4">
-                                                                                            <button class="btn btn-tertiary pe-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><span class="fas fa-edit"></span></button>
-                                                                                            <button class="btn btn-tertiary ps-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><span class="fas fa-trash-alt text-danger"></span></button>
-                                                                                        </div>
-                                                                                    </td>
-
-                                                                                </tr>
+                                                                                 
 
                                                                             </tbody>
                                                                         </table>
@@ -768,6 +755,7 @@
     private bool ShowCloseIcon { get; set; } = false;
 
     private List<ProductSerialNumbers> serialNumbers = new List<ProductSerialNumbers>();
+    private List<ProductSerialNumbers> SelectedSerialNumbers = new List<ProductSerialNumbers>();
     [Inject]
     ProductSerialNumbersService _productSerialNumbersService { get; set; }
 
@@ -802,7 +790,11 @@
     }
     private void OnSerialNumberSelect(ProductSerialNumbers serial)
     {
-       
+        SelectedSerialNumbers.Add(serial);
+    }
+    private void OnDeleteSerialNumber(ProductSerialNumbers serial)
+    {
+        SelectedSerialNumbers.Remove(serial);
     }
     private async Task SaveOrUpdate()
     {
