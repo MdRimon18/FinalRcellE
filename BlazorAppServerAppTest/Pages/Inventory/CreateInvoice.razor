@@ -367,7 +367,18 @@
                                 </button>
                             </div> *@
                         </div >
-                        
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
+                                <div class="form-group">
+                                    <label for="remarks" class="form-label fw-semi-bold">Notes</label>
+                                    <InputTextArea type="text"
+                                                   @bind-Value="invoice.Notes"
+                                               class="form-control form-control-sm form-rounded fw-semi-bold"
+                                               placeholder="Notes"
+                                               cols="60"
+                                               rows="1" />
+
+                                </div>
+                            </div>
                    
                     </div >
                         
@@ -629,57 +640,64 @@
 
 <div class="modal fade" id="staticBackdrop" data-bs-keyboard="false" data-bs-backdrop="static" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg mt-6" role="document">
-        <div class="modal-content border-0">
+        <div class="modal-content border-0 shadow-lg">
             <div class="position-absolute top-0 end-0 mt-3 me-3 z-1">
                 <button class="btn-close btn btn-sm btn-circle d-flex flex-center transition-base" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body p-0">
                 <div class="card">
-                    <div class="card-header bg-body-tertiary">
-                        <h5 class="mb-0" data-anchor="data-anchor">Product details</h5>
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0 fw-bold" id="staticBackdropLabel">Product Details</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <!-- Left Column -->
+                            <div class="col-lg-4">
+                                <h4 class="text-primary mb-3">Item Information</h4>
+                                <p class="fs-7 text-muted">Vat Amount: <span class="fw-bold text-dark">10%</span></p>
+                                <p class="fs-7 text-muted">Discount Amount: <span class="fw-bold text-dark">$5.00</span></p>
+                                <p class="fs-7 text-muted">Date: <span class="fw-bold text-dark">24/10/2024</span></p>
+                                <p class="fs-7 text-muted">Warranty: <span class="fw-bold text-dark">2 years</span></p>
+                                <p class="fs-7 text-muted">Link to Supplier: <a href="#" class="fw-bold text-primary">View Supplier</a></p>
+                                <p class="fs-7 text-muted">Remarks: <span class="fw-bold text-dark">Some remarks</span></p>
+                                <p class="fs-7 text-muted">Descriptions: <span class="fw-bold text-dark">Product details here</span></p>
+                                <p class="fs-7 text-muted">Imported From: <span class="fw-bold text-dark">Country</span></p>
+                                <p class="fs-7 text-muted">Category: <span class="fw-bold text-dark">Electronics</span></p>
+                                 
+                            </div>
+                            <div class="col-lg-4">
+                                <h4 class="text-primary mb-3 mt-4">Pricing & Quantity</h4>
+                                <p class="fs-7 text-muted">Sub Category: <span class="fw-bold text-dark">Smartphone</span></p>
+                                <p class="fs-7 text-muted">Name/Model: <span class="fw-bold text-dark">Model X</span></p>
+                                <p class="fs-7 text-muted">Buying Price: <span class="fw-bold text-dark">$500.00</span></p>
+                                <p class="fs-7 text-muted">Selling Price: <span class="fw-bold text-dark">$700.00</span></p>
+                                <p class="fs-7 text-muted">Unit Type: <span class="fw-bold text-dark">Piece</span></p>
+                                <p class="fs-7 text-muted">Opening Quantity: <span class="fw-bold text-dark">50</span></p>
+                                <p class="fs-7 text-muted">Alert Quantity: <span class="fw-bold text-dark">5</span></p>
+                                <p class="fs-7 text-muted">Vat (in %): <span class="fw-bold text-dark">15%</span></p>
+                                <p class="fs-7 text-muted">Discount (%): <span class="fw-bold text-dark">10%</span></p>
+                            </div>
+                            <!-- Right Column with Image and Additional Info -->
+                            <div class="col-lg-4 d-flex flex-column align-items-center">
+                                <div class="mb-3 text-center">
+                                    <img class="rounded shadow mb-2" src="../../assets/img/gallery/2000.jpg" width="200" height="200" alt="Product Image" />
+                                </div>
+                                <div class="bg-light p-3 rounded w-100">
+                                    <h5 class="fw-bold text-dark">Additional Information</h5>
+                                    <p class="fs-7 text-muted">Stock Availability: <span class="fw-bold text-dark">In Stock</span></p>
+                                    <p class="fs-7 text-muted">SKU: <span class="fw-bold text-dark">#12345</span></p>
+                                    <p class="fs-7 text-muted">Supplier Rating: <span class="fw-bold text-dark">4.5/5</span></p>
+                                    <p class="fs-7 text-muted">Shipping Time: <span class="fw-bold text-dark">3-5 Days</span></p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     
-                            <div class="row">
-                        <div  class="col-lg-4">
-
-                            <div class="col">
-                                            <h3 class="text-primary mt-4 mt-sm-0">Item</h3>
-                                            <p class="fs-10 bold-text ">Vat Amount:</p>
-                                            <p class="fs-10 bold-text ">Discount Amount:</p>
-                                            <p class="fs-10 bold-text ">Date:</p>
-                                            <p class="fs-10 bold-text ">Warranty:</p>
-                                            <p class="fs-10 bold-text ">Link to Supplier:</p>
-                                            <p class="fs-10 bold-text ">Remarks:</p>
-                                            <p class="fs-10 bold-text ">Descriptions:</p>
-                                            <p class="fs-10 bold-text ">Imported From:</p>
-                                            <p class="fs-10 bold-text ">Category : </p>
-                                          
-                                        </div>
-                                        @* <div class="col-sm-auto"><img class="timeline-item-media rounded" src="../../assets/img/gallery/2000.jpg" width="188" height="250" alt="" /></div> *@
-                                   
-                                </div>
-                               <div class="col-lg-4">
-                            <p class="fs-10 bold-text ">Sub Category:</p>
-                            <p class="fs-10 bold-text ">Name/ Model:</p>
-                            <p class="fs-10 bold-text ">Buying Price:</p>
-                            <p class="fs-10 bold-text ">Selling Price:</p>
-                            <p class="fs-10 bold-text ">Unit Type:</p>
-                            <p class="fs-10 bold-text ">Opening Quantity:</p>
-                            <p class="fs-10 bold-text ">Alert Quantity:</p>
-                            <p class="fs-10 bold-text ">Vat (in %):</p>
-                            <p class="fs-10 bold-text ">Discount(%):</p>
-                        </div>
-                                <div class="col-md-4">
-                                    <div class=""><img class="" src="../../assets/img/gallery/2000.jpg" width="200" height="200" alt="" /></div>
-                                </div>
-                    </div>
-                            
-                       
                 </div>
             </div>
         </div>
     </div>
-</div >
+</div>
 
  
 <script>
@@ -877,6 +895,8 @@
 
         // Clear the current item after adding or updating the product
         invoiceItem = new InvoiceItems();
+
+        CalculateTotalInvoiceAmount();
     }
 
     private void DeleteItem(InvoiceItems item)
@@ -891,19 +911,19 @@
             item.TotalPrice = item.Quantity * item.SellingPrice;
 
             // If there are discounts or VAT, apply them as needed
-            if (item.DiscountPercentg > 0)
-            {
+           // if (item.DiscountPercentg > 0)
+          //  {
                 // Apply discount
                 //  var discountAmount = item.TotalPrice * (item.DiscountPercentg / 100);
                 //  item.TotalPrice -= discountAmount;
-            }
+          //  }
 
-            if (item.VatAmount > 0)
-            {
+           // if (item.VatAmount > 0)
+           // {
                 // Apply VAT
-                var vatAmount = item.TotalPrice * (item.VatAmount / 100);
+             //   var vatAmount = item.TotalPrice * (item.VatAmount / 100);
                 //   item.TotalPrice += vatAmount;
-            }
+           // }
 
             CalculateTotalInvoiceAmount();
         }
@@ -986,8 +1006,8 @@
 
     private void FilterProductInOffCanva()
     {
-         
-   
+
+
         if (string.IsNullOrWhiteSpace(srchQuery))
         {
             FilteredItemsOffCanva = products;
@@ -1003,7 +1023,7 @@
 
         }
 
-         
+
     }
 
     private async Task SelectItem(Products item)
@@ -1011,16 +1031,15 @@
         SearchQuery = item.Sku;
         ShowDropdown = false;
         ShowCloseIcon = true;
-
-        // Handle the selected product here, for example by adding it to your invoice list
-        await HandleSelectedProduct(item);
+        // if (item.StockQuantity > 0 && item.SellingPrice > 0)
+        // {
+        //     // Calculate the total price based on quantity and selling price
+        //     item.TotalPrice = item.StockQuantity * item.SellingPrice;
+        // }
+       // CalculateTotalInvoiceAmount();
     }
 
-    private Task HandleSelectedProduct(Products item)
-    {
-        // Your logic to handle the selected product in the invoice creation process
-        return Task.CompletedTask;
-    }
+     
 
     private void OnInputClick()
     {
