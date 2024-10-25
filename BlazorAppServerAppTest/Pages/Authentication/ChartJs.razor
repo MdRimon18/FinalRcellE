@@ -1,5 +1,5 @@
 ﻿@page "/chart_Js"
-     <div class="content">
+<div class="content" id="blazorDiv">
          
           <div class="card mb-3">
             <div class="bg-holder d-none d-lg-block bg-card" style="background-image:url(../../assets/img/icons/spot-illustrations/corner-4.png);">
@@ -324,7 +324,32 @@
             </div>
           </div>         
         </div>
-<script src="vendors/chart/chart.min.js"></script>
+
+<script>
+    // Wait for the DOM to be fully loaded before executing this script
+    document.addEventListener("DOMContentLoaded", function () {
+        console.log("DOM fully loaded and parsed. Ready to execute custom script.");
+
+        // Example of accessing a Blazor component or HTML element by its ID
+        let blazorComponent = document.getElementById('blazorDiv');
+        if (blazorComponent) {
+            console.log("Blazor component found:", blazorComponent);
+
+            // Dynamically load the external script
+            let script = document.createElement('script');
+            script.src = "vendors/chart/chart.min.js";
+            script.onload = function () {
+                console.log("Chart.js script loaded successfully.");
+                // Here you can initialize or interact with Chart.js
+                // Example: new Chart(blazorComponent, config);
+            };
+            document.head.appendChild(script);
+        } else {
+            console.error("Blazor component not found!");
+        }
+    });
+
+</script>
 @code {
 
 }
