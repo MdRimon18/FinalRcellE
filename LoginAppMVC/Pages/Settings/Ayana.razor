@@ -1,0 +1,456 @@
+﻿@page "/aya_na"
+@* @layout ChattingPageLayout; *@
+
+<head>
+    
+    <link href="assets/v2/css/custom.css" rel="stylesheet">
+ 
+</head>
+<div class="chat-list-box hub-list-box p-0">
+    <div class="qus-list-box">
+        <div class="left-col">
+            <div class="hub-left-box">
+                <div class="top-hub-box flex-column">
+                    <div class="top-hub-title">
+                        <h3>product List <span>(102)</span></h3>
+                    </div>
+                    <div class="filter-box p-0 w-100">
+                        <div class="input-group flex-nowrap" style="padding: 12px 20px;">
+                            <input type="text" id="myInput" class="form-control" placeholder="Search here" aria-label="Search here" aria-describedby="button-addon2">
+                            <button class="btn search-btn" type="button" id="button-addon2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search feather-sm"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="hub-product-list qus-list scrollable custom-scrollbar-css clearfix" id="myList" style="height:calc(100vh - 229px); padding: 8px 30px 20px 1rem;">
+                    <ul class="nav flex-column nav-pills" id="myTab" role="tablist" aria-orientation="vertical">
+                        <!-- Start Qus-list -->
+                        <li class="nav-item" role="presentation">
+                            <a @onclick="OnClickAddProductNdDtls" class="nav-link active" id="qus_1-tab" data-bs-toggle="pill" data-bs-target="#qus_1" role="tab" aria-controls="qus_1" aria-selected="true">
+                                <div class="qus-card-box">
+                                    <div class="product-card-img">
+                                        <img src="assets/img/product/img1.png" alt="img-1" class="img-fluid">
+                                    </div>
+                                    <div class="qus-card-body">
+                                        <h5>Lorem ipsum dolor sit amet, consectetur?</h5>
+                                        <h4>AED <span>6,277</span></h4>
+                                        <p>usce hendrerit lacinia dui, vitae ve dolor elementum at. cursus...</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <!-- End qus List -->
+                        <!-- Start Qus-list -->
+                        <li class="nav-item" role="presentation">
+                            <a href="#" class="nav-link" id="qus_2-tab" data-bs-toggle="pill" data-bs-target="#qus_2" role="tab" aria-controls="qus_2" aria-selected="false">
+                                <div class="qus-card-box">
+                                    <div class="product-card-img">
+                                        <img src="assets/img/product/img1.png" alt="img-1" class="img-fluid">
+                                    </div>
+                                    <div class="qus-card-body">
+                                        <h5>Lorem ipsum dolor sit amet, consectetur?</h5>
+                                        <h4>AED <span>6,277</span></h4>
+                                        <p>usce hendrerit lacinia dui, vitae ve dolor elementum at. cursus...</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <!-- End qus List -->
+
+
+                    </ul>
+                </div>
+                <!-- <ul id="myList">
+                    <li>First item</li>
+                    <li>Second item</li>
+                    <li>Third item</li>
+                    <li>Fourth</li>
+                  </ul> -->
+
+            </div>
+        </div>
+        @if (showDetailsPart)
+        {
+            <div class="right-col w-100">
+                <div class="hub-right-box qus-right-box">
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="qus_1" role="tabpanel" aria-labelledby="qus_1-tab">
+                            <div class="add-product-tab-box">
+                                <div class="inner-tab-title mb-0" style="padding: 25px 30px 0;">
+                                    <div class="qus-card-body">
+                                        <h5>Lorem ipsum dolor sit amet, consectetur?</h5>
+                                        <h4>AED <span>6,277</span></h4>
+                                    </div>
+                                    <div class="right-btns">
+                                        <a @onclick="OnClickAddProductNdDtls" class="btn details-btn py-2">Add Product</a>
+                                        <div class="qus-title w-auto">
+                                            <div class="qus-action-btn">
+                                                <a href="#" class="edit-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit" data-bs-original-title="Edit">
+                                                    <img src="assets/img/icon/qus-edit-icon.png" alt="qus-edit-icon" class="img-fluid light-icon">
+                                                    <img src="assets/img/icon/qus-edit-dark-icon.png" alt="qus-edit-icon" class="img-fluid dark-icon">
+                                                </a>
+                                                <a href="#" class="dlt-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" data-bs-original-title="Delete">
+                                                    <img src="assets/img/icon/qus-dlt-icon.png" alt="qus-edit-icon" class="img-fluid light-icon">
+                                                    <img src="assets/img/icon/qus-dlt-dark-icon.png" alt="qus-edit-icon" class="img-fluid dark-icon">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="inner-tab-content scrollable custom-scrollbar-css w-100">
+                                    <!-- Start marketing-file-list -->
+                                    <div class="qus-file-list">
+                                        <div class="qus-card-box">
+                                            <div class="qus-card-body w-100">
+                                                <div class="qus-discription">
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu sem at libero ultricies fringilla nec ultrices purus. Pellentesque hendrerit justo nec neque dignissim, in maximus urna faucibus. Phasellus bibendum quam tellus, at rutrum nibh sodales eu. Nam vitae porta velit. Praesent maximus ultrices pulvinar.</p>
+                                                    <p>In elit lectus, finibus in tincidunt sed, bibendum in nibh. Sed arcu sapien, egestas in lorem sed, dapibus congue urna. Praesent sed elementum orci. In condimentum, est ac convallis molestie, lectus nibh tristique quam, nec scelerisque libero urna in quam. Ut ultrices leo nec leo sollicitudin, in tincidunt neque tincidunt. Nam malesuada hendrerit velit in imperdiet. Etiam blandit felis nec vehicula commodo. Aliquam ultrices </p>
+                                                    <p>Euis ligula a scelerisque. Cras molestie arcu vel accumsan accumsan. Integer ullamcorper ac elit at ornare. Integer rutrum sapien velit, eget lobortis enim porttitor sed. Duis sit amet sagittis nisi, nec fringilla ante. Curabitur laoreet eleifend mauris non dignissim. Suspendisse convallis mi eu libero aliquet, vitae condimentum enim volutpat. Duis sit amet lectus sed eros convallis pharetra.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End marketing-file-list -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="qus_2" role="tabpanel" aria-labelledby="qus_2-tab">
+                            <div class="add-product-tab-box">
+                                <div class="inner-tab-title mb-0" style="padding: 25px 30px 0;">
+                                    <div class="qus-card-body">
+                                        <h5>Lorem ipsum dolor sit amet, consectetur?</h5>
+                                        <h4>AED <span>6,277</span></h4>
+                                    </div>
+                                    <div class="right-btns">
+                                        <a href="knowledge-hub-add-product.html" class="btn details-btn py-2">Add Product</a>
+                                        <div class="qus-title w-auto">
+                                            <div class="qus-action-btn">
+                                                <a href="#" class="edit-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit" data-bs-original-title="Edit">
+                                                    <img src="assets/img/icon/qus-edit-icon.png" alt="qus-edit-icon" class="img-fluid light-icon">
+                                                    <img src="assets/img/icon/qus-edit-dark-icon.png" alt="qus-edit-icon" class="img-fluid dark-icon">
+                                                </a>
+                                                <a href="#" class="dlt-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" data-bs-original-title="Delete">
+                                                    <img src="assets/img/icon/qus-dlt-icon.png" alt="qus-edit-icon" class="img-fluid light-icon">
+                                                    <img src="assets/img/icon/qus-dlt-dark-icon.png" alt="qus-edit-icon" class="img-fluid dark-icon">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="inner-tab-content scrollable custom-scrollbar-css w-100">
+                                    <!-- Start marketing-file-list -->
+                                    <div class="qus-file-list">
+                                        <div class="qus-card-box">
+                                            <div class="qus-card-body w-100">
+                                                <div class="qus-discription">
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu sem at libero ultricies fringilla nec ultrices purus. Pellentesque hendrerit justo nec neque dignissim, in maximus urna faucibus. Phasellus bibendum quam tellus, at rutrum nibh sodales eu. Nam vitae porta velit. Praesent maximus ultrices pulvinar.</p>
+                                                    <p>In elit lectus, finibus in tincidunt sed, bibendum in nibh. Sed arcu sapien, egestas in lorem sed, dapibus congue urna. Praesent sed elementum orci. In condimentum, est ac convallis molestie, lectus nibh tristique quam, nec scelerisque libero urna in quam. Ut ultrices leo nec leo sollicitudin, in tincidunt neque tincidunt. Nam malesuada hendrerit velit in imperdiet. Etiam blandit felis nec vehicula commodo. Aliquam ultrices </p>
+                                                    <p>Euis ligula a scelerisque. Cras molestie arcu vel accumsan accumsan. Integer ullamcorper ac elit at ornare. Integer rutrum sapien velit, eget lobortis enim porttitor sed. Duis sit amet sagittis nisi, nec fringilla ante. Curabitur laoreet eleifend mauris non dignissim. Suspendisse convallis mi eu libero aliquet, vitae condimentum enim volutpat. Duis sit amet lectus sed eros convallis pharetra.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End marketing-file-list -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="qus_3" role="tabpanel" aria-labelledby="qus_3-tab">
+                            <div class="add-product-tab-box">
+                                <div class="inner-tab-title mb-0" style="padding: 25px 30px 0;">
+                                    <div class="qus-card-body">
+                                        <h5>Lorem ipsum dolor sit amet, consectetur?</h5>
+                                        <h4>AED <span>6,277</span></h4>
+                                    </div>
+                                    <div class="right-btns">
+                                        <a href="knowledge-hub-add-product.html" class="btn details-btn py-2">Add Product</a>
+                                        <div class="qus-title w-auto">
+                                            <div class="qus-action-btn">
+                                                <a href="#" class="edit-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit" data-bs-original-title="Edit">
+                                                    <img src="assets/img/icon/qus-edit-icon.png" alt="qus-edit-icon" class="img-fluid light-icon">
+                                                    <img src="assets/img/icon/qus-edit-dark-icon.png" alt="qus-edit-icon" class="img-fluid dark-icon">
+                                                </a>
+                                                <a href="#" class="dlt-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" data-bs-original-title="Delete">
+                                                    <img src="assets/img/icon/qus-dlt-icon.png" alt="qus-edit-icon" class="img-fluid light-icon">
+                                                    <img src="assets/img/icon/qus-dlt-dark-icon.png" alt="qus-edit-icon" class="img-fluid dark-icon">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="inner-tab-content scrollable custom-scrollbar-css w-100">
+                                    <!-- Start marketing-file-list -->
+                                    <div class="qus-file-list">
+                                        <div class="qus-card-box">
+                                            <div class="qus-card-body w-100">
+                                                <div class="qus-discription">
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu sem at libero ultricies fringilla nec ultrices purus. Pellentesque hendrerit justo nec neque dignissim, in maximus urna faucibus. Phasellus bibendum quam tellus, at rutrum nibh sodales eu. Nam vitae porta velit. Praesent maximus ultrices pulvinar.</p>
+                                                    <p>In elit lectus, finibus in tincidunt sed, bibendum in nibh. Sed arcu sapien, egestas in lorem sed, dapibus congue urna. Praesent sed elementum orci. In condimentum, est ac convallis molestie, lectus nibh tristique quam, nec scelerisque libero urna in quam. Ut ultrices leo nec leo sollicitudin, in tincidunt neque tincidunt. Nam malesuada hendrerit velit in imperdiet. Etiam blandit felis nec vehicula commodo. Aliquam ultrices </p>
+                                                    <p>Euis ligula a scelerisque. Cras molestie arcu vel accumsan accumsan. Integer ullamcorper ac elit at ornare. Integer rutrum sapien velit, eget lobortis enim porttitor sed. Duis sit amet sagittis nisi, nec fringilla ante. Curabitur laoreet eleifend mauris non dignissim. Suspendisse convallis mi eu libero aliquet, vitae condimentum enim volutpat. Duis sit amet lectus sed eros convallis pharetra.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End marketing-file-list -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="qus_4" role="tabpanel" aria-labelledby="qus_4-tab">
+                            <div class="add-product-tab-box">
+                                <div class="inner-tab-title mb-0" style="padding: 25px 30px 0;">
+                                    <div class="qus-card-body">
+                                        <h5>Lorem ipsum dolor sit amet, consectetur?</h5>
+                                        <h4>AED <span>6,277</span></h4>
+                                    </div>
+                                    <div class="right-btns">
+                                        <a href="knowledge-hub-add-product.html" class="btn details-btn py-2">Add Product</a>
+                                        <div class="qus-title w-auto">
+                                            <div class="qus-action-btn">
+                                                <a href="#" class="edit-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit" data-bs-original-title="Edit">
+                                                    <img src="assets/img/icon/qus-edit-icon.png" alt="qus-edit-icon" class="img-fluid light-icon">
+                                                    <img src="assets/img/icon/qus-edit-dark-icon.png" alt="qus-edit-icon" class="img-fluid dark-icon">
+                                                </a>
+                                                <a href="#" class="dlt-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" data-bs-original-title="Delete">
+                                                    <img src="assets/img/icon/qus-dlt-icon.png" alt="qus-edit-icon" class="img-fluid light-icon">
+                                                    <img src="assets/img/icon/qus-dlt-dark-icon.png" alt="qus-edit-icon" class="img-fluid dark-icon">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="inner-tab-content scrollable custom-scrollbar-css w-100">
+                                    <!-- Start marketing-file-list -->
+                                    <div class="qus-file-list">
+                                        <div class="qus-card-box">
+                                            <div class="qus-card-body w-100">
+                                                <div class="qus-discription">
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu sem at libero ultricies fringilla nec ultrices purus. Pellentesque hendrerit justo nec neque dignissim, in maximus urna faucibus. Phasellus bibendum quam tellus, at rutrum nibh sodales eu. Nam vitae porta velit. Praesent maximus ultrices pulvinar.</p>
+                                                    <p>In elit lectus, finibus in tincidunt sed, bibendum in nibh. Sed arcu sapien, egestas in lorem sed, dapibus congue urna. Praesent sed elementum orci. In condimentum, est ac convallis molestie, lectus nibh tristique quam, nec scelerisque libero urna in quam. Ut ultrices leo nec leo sollicitudin, in tincidunt neque tincidunt. Nam malesuada hendrerit velit in imperdiet. Etiam blandit felis nec vehicula commodo. Aliquam ultrices </p>
+                                                    <p>Euis ligula a scelerisque. Cras molestie arcu vel accumsan accumsan. Integer ullamcorper ac elit at ornare. Integer rutrum sapien velit, eget lobortis enim porttitor sed. Duis sit amet sagittis nisi, nec fringilla ante. Curabitur laoreet eleifend mauris non dignissim. Suspendisse convallis mi eu libero aliquet, vitae condimentum enim volutpat. Duis sit amet lectus sed eros convallis pharetra.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End marketing-file-list -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="right-col w-100">
+                <div class="hub-right-box qus-right-box">
+                    <div class="add-product-tab-box">
+                        <div class="inner-tab-title mb-0" style="padding: 25px 30px 0;">
+                            <h5>Add product</h5>
+                            <div class="right-btns">
+                                <div class="box-tab deal-box-tab" style="max-width: 100%;">
+                                    <ul class="nav nav-pills justify-content-between mb-0" role="tablist" style="gap: 10px;">
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-bs-toggle="tab" href="#API_Linkup" role="tab">
+                                                API Linkup
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-bs-toggle="tab" href="#CSV_upload" role="tab">
+                                                CSV upload
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link active" data-bs-toggle="tab" href="#Manually_Upload" role="tab">
+                                                Manually Upload
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-content">
+                            <div class="tab-pane fade" id="API_Linkup" role="tabpanel" aria-labelledby="qus_1-tab">
+                                <div class="inner-tab-content scrollable custom-scrollbar-css w-100">
+                                    <div class="add-qus-box">
+                                        <form class="qus-form" action="" method="get">
+                                            <div class="form-group">
+                                                <label class="form-label" for="Add_API">API</label>
+                                                <input type="text" class="form-control" placeholder="Add API" name="Add_API ">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label" for="API_Key">API Key</label>
+                                                <input type="text" class="form-control" placeholder="Add API Key" name="API_Key">
+                                            </div>
+                                            <div class="form-group action-btns justify-content-start">
+                                                <button type="button" class="btn cancle-btn">cancel</button>
+                                                <button type="submit" class="btn add-btn">Save</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="CSV_upload" role="tabpanel" aria-labelledby="qus_1-tab">
+                                <div class="inner-tab-content scrollable custom-scrollbar-css w-100">
+                                    <div class="add-qus-box">
+                                        <form class="qus-form" action="" method="get" style="max-width: 452px;">
+                                            <div class="form-group card-dropzone">
+                                                <label class="form-label">Upload CSV File</label>
+                                                <div class="card-img dropzone border-0">
+                                                    <div class="img-preview position-relative">
+                                                        <div class="yes">
+                                                            <img id="ImgPreview" src="assets/img/icon/upload-file.png" alt="broken_image" class="preview1 upload-img mx-auto light-icon" />
+                                                            <img id="ImgPreview" src="assets/img/icon/upload-file_dark.png" alt="broken_image" class="preview1 upload-img mx-auto dark-icon" />
+                                                        </div>
+                                                        <input type="file" id="imag" title="Passport_pic" class="form-control input-img" />
+                                                    </div>
+                                                    <button type="button" id="removeImage1" class="close-btn btn-rmv1"><i class="bi bi-x-circle-fill"></i></button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade active show" id="Manually_Upload" role="tabpanel" aria-labelledby="qus_1-tab">
+                                <div class="inner-tab-content scrollable custom-scrollbar-css w-100">
+                                    <div class="add-qus-box">
+                                        <form class="qus-form row" action="" method="get" style="max-width: 100%;">
+                                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                                                <div class="left-form-box">
+                                                    <h4>description</h4>
+                                                    <div class="form-group">
+                                                        <label class="form-label" for="ProductName">Product Name</label>
+                                                        <input type="text" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="Enter Product Name" name="ProductName">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="form-label" for="ProductName">
+                                                            <div class="input-group justify-content-between align-items-center">
+                                                                <label class="form-label mb-0">product details </label>
+                                                                <div class="file-upload">
+                                                                    <input type="file" id="file" accept=".txt">
+                                                                    <span>Upload .txt file</span>
+                                                                </div>
+                                                            </div>
+                                                        </label>
+                                                        <textarea class="form-control" rows="4" placeholder="Write product details "></textarea>
+                                                    </div>
+                                                    <div class="row g-4 mb-4">
+                                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                                            <div class="form-group">
+                                                                <label class="form-label" for="quantity">quantity</label>
+                                                                <input type="text" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="Type quantity" name="quantity">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                                            <div class="form-group">
+                                                                <label class="form-label sku-label" for="SKU">SKU <span>(Optional)</span></label>
+                                                                <input type="text" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="Enter here" name="SKU">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="form-label" for="ProductURL">Product URL</label>
+                                                        <input type="text" class="form-control" placeholder="Add Product URL" name="ProductURL">
+                                                    </div>
+                                                    <div class="form-group price-group mb-4">
+                                                        <label class="form-label">Price</label>
+                                                        <div class="input-group flex-nowrap contact-input-group" style="max-width: 200px;">
+                                                            <button class="btn dropdown-toggle" style="max-width: fit-content;" type="button" data-bs-toggle="dropdown" aria-expanded="false">AED</button>
+                                                            <ul class="dropdown-menu">
+                                                                <li><button class="dropdown-item" type="button">AED</button></li>
+                                                                <li><button class="dropdown-item" type="button">BDT</button></li>
+                                                                <li><button class="dropdown-item" type="button">USD</button></li>
+                                                            </ul>
+                                                            <input type="text" class="form-control" placeholder="Enter Price" aria-label="Text input with dropdown button">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                                                <div class="right-form-box">
+                                                    <h4>Product Images</h4>
+                                                    <div class="form-group card-dropzone">
+                                                        <label class="form-label">Upload Images</label>
+                                                        <div class="card-img dropzone border-0">
+                                                            <div class="img-preview position-relative">
+                                                                <div class="yes">
+                                                                    <img id="ImgPreview" src="assets/img/icon/upload-file.png" alt="broken_image" class="preview1 upload-img mx-auto light-icon" />
+                                                                    <img id="ImgPreview" src="assets/img/icon/upload-file_dark.png" alt="broken_image" class="preview1 upload-img mx-auto dark-icon" />
+                                                                </div>
+                                                                <input type="file" id="imag" title="Passport_pic" class="form-control input-img" />
+                                                            </div>
+                                                            <button type="button" id="removeImage1" class="close-btn btn-rmv1"><i class="bi bi-x-circle-fill"></i></button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="form-label sku-label" for="ProductURL">Product Tag <span>(Press enter or comma after each tag)</span></label>
+                                                        <input type="text" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="Add Product URL" name="ProductURL">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group action-btns justify-content-start">
+                                                <button type="button" class="btn cancle-btn">cancel</button>
+                                                <button type="submit" class="btn add-btn">Save</button>
+                                                <button type="button" class="btn more-btn">Add More</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+
+<script src="assets/v2/libs/select2/dist/js/select2.full.min.js"></script>
+<script src="assets/v2/libs/select2/dist/js/select2.min.js"></script>
+<script src="assets/v2/extra-libs/prism/prism.js"></script>
+
+ <script>
+        $(document).ready(function(){
+          $("#myInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#myList li").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+          });
+        });
+    </script>
+<script>
+    function readURL(input, imgControlName) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $(imgControlName).attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#imag").change(function () {
+        // add your logic to decide which image control you'll use
+        var imgControlName = "#ImgPreview";
+        readURL(this, imgControlName);
+        $('.preview1').addClass('it');
+        $('.btn-rmv1').addClass('rmv');
+    });
+
+    $("#removeImage1").click(function (e) {
+        e.preventDefault();
+        $("#imag").val("");
+        $("#ImgPreview").attr("src", "assets/img/icon/upload-file.png");
+        $('.preview1').removeClass('it');
+        $('.btn-rmv1').removeClass('rmv');
+    });
+</script>
+
+@code {
+    public bool showDetailsPart { get; set; } = true;
+
+    private void OnClickAddProductNdDtls()
+    {
+        showDetailsPart = !showDetailsPart;
+    }
+
+}

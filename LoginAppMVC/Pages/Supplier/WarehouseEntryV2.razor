@@ -1,0 +1,270 @@
+﻿@page "/warehouse_entryV2/{key:guid?}"
+
+@using Pms.Models.Entity.Setting
+@inject IJSRuntime JS
+@inject NavigationManager Navigation
+
+<div class="card mb-3">
+    <div class="card-header">
+        <h5 class="mb-0" data-anchor="data-anchor">
+            <a class="btn btn-falcon-default btn-sm" @onclick="BackTo"><i class="fas fa-arrow-left"></i></a>
+            Create Promo Or Cuppon Code
+        </h5>
+    </div>
+    <EditForm Model="@warehouse" OnValidSubmit="SaveOrUpdate">
+        <DataAnnotationsValidator />
+
+        <SuccessAlert Message="@SuccessMessage" Show="@showSuccessAlert" />
+        <DangerAlert Message="@DangerMessage" Show="@showDangerAlert" OnClose="HideAlert" />
+        <div class="card-body bg-body-tertiary">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="col-sm-10">
+                        <div class="form-group">
+                            <label for="warehouse" class="form-label fw-semi-bold">Warehouse Name<span class="error-star">*</span></label>
+                            <InputText @bind-Value="warehouse.WarehouseName" type="text" class="form-control form-control-sm form-rounded" placeholder="Warehouse Name" />
+                            <ValidationMessage class="text-left invalid-message-color" For="@(() => warehouse.WarehouseName)" />
+                        </div>
+                    </div>
+                    <div class="col-sm-10">
+                        <div class="form-group">
+                            <label for="warehouse" class="form-label fw-semi-bold">Email <span class="error-star">*</span></label>
+                            <InputText @bind-Value="warehouse.Email" type="text" class="form-control form-control-sm form-rounded " placeholder="Email" />
+                            <ValidationMessage class="text-left invalid-message-color" For="@(() => warehouse.Email)" />
+                        </div>
+                    </div>
+                    <div class="col-sm-10">
+                        <div class="form-group">
+                            <label for="warehouse" class="form-label fw-semi-bold">Location</label>
+                            <InputSelect @bind-Value="warehouse.WarehouseId" class="form-control form-control-sm form-rounded fw-semi-bold " placeholder="Location">
+                                <option value=''> Select Location </option>
+                                @foreach (var item in Location_list)
+                                {
+                                    <option value=@item.LocationId>@item.LocationName</option>
+                                }
+                            </InputSelect>
+                            <ValidationMessage class="text-left " For="@(() =>warehouse.LocationId)" />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-10">
+                        <div class="form-group">
+                            <label for="warehouse" class="form-label fw-semi-bold"> Operating Hours</label>
+                            <InputText @bind-Value="warehouse.OperatingHours" type="Text" class="form-control form-control-sm form-rounded " placeholder="Operating Hours" />
+                            <ValidationMessage class="text-left invalid-message-color" For="@(() => warehouse.OperatingHours)" />
+                        </div>
+                    </div>
+       
+                </div>
+                <div class="col-md-6">
+                    <div div class="col-sm-10">
+                        <div class="form-group">
+                            <label for="warehouse" class="form-label fw-semi-bold"> Manager Name <span class="error-star">*</span></label>
+                            <InputText @bind-Value="warehouse.ManagerName" class="form-control form-control-sm form-rounded " placeholder="Manager Name" />
+                            <ValidationMessage class="text-left invalid-message-color" For="@(() => warehouse.ManagerName)" />
+                        </div>
+                    </div>
+                    <div div class="col-sm-10">
+                        <div class="form-group">
+                            <label for="warehouse" class="form-label fw-semi-bold">Phone Number <span class="error-star">*</span></label>
+                            <InputText @bind-Value="warehouse.PhoneNumber" class="form-control form-control-sm form-rounded " placeholder="Phone Number" />
+                            <ValidationMessage class="text-left invalid-message-color" For="@(() => warehouse.PhoneNumber)" />
+                        </div>
+                    </div>
+ 
+                    <div class="col-sm-10">
+                        <div class="form-group">
+                            <label for="warehouse" class="form-label fw-semi-bold">Capacity</label>
+                            <InputNumber @bind-Value="warehouse.Capacity" type="number" class="form-control form-control-sm form-rounded " placeholder="Email" />
+                            <ValidationMessage class="text-left invalid-message-color" For="@(() => warehouse.Capacity)" />
+                        </div>
+                    </div>
+                   
+                   @*  <div div class="col-sm-10">
+                        <div class="form-group">
+                            <label for="PromoOrCuppn" class="form-label fw-semi-bold"> Valid To <span class="error-star">*</span></label>
+                            <InputDate @bind-Value="promoOrCupponCode.ValidTo" class="form-control form-control-sm form-rounded " placeholder="Valid To" />
+                            <ValidationMessage class="text-left invalid-message-color" For="@(() => promoOrCupponCode.ValidTo)" />
+                        </div>
+                    </div> *@
+                </div>
+
+
+                <div>
+                    <button type="submit" class="btn btn-primary btn-sm mt-2">@SubmitButtonText</button>
+                    <button type="reset" class="btn btn-primary btn-sm mt-2">Refresh</button>
+
+                </div>
+            </div>
+        </div>
+    </EditForm>
+</div>
+<script>
+    window.resetFileInput = function (id) {
+        document.getElementById(id).value = '';
+    }
+</script>
+
+@code {
+
+    [Parameter]
+    public Guid? key { get; set; }
+    private bool IsEditMode => key.HasValue;
+    private string SubmitButtonText => IsEditMode ? "Update" : "Save";
+
+    [Inject]
+    WarehouseService _warehouseService { get; set; }
+    Warehouse warehouse = new Warehouse();//object or Model
+
+    [Inject]
+    LocationService locationService { get; set; }
+    List<Locations> Location_list = new List<Locations>();
+
+    
+    private IBrowserFile selectedImageFile;
+    private bool showSuccessAlert = false;
+    private bool showDangerAlert = false;
+
+    public string SuccessMessage { get; set; }
+    public string DangerMessage { get; set; }
+
+    private string errorMessage;
+    // private string defaultImage = "/assets/img/icons/profile_icon.jpg"; // Path to your default image
+    // private string? imageData;
+
+
+    protected override async void OnInitialized()
+    {
+        // imageData = defaultImage;
+        Location_list = (await locationService.Get(null,null, null, 1, 1000)).ToList();
+
+        if (IsEditMode)
+        {
+            if (key.HasValue)
+            {
+
+                warehouse = await _warehouseService.GetByKey(key.ToString());
+
+                if (warehouse == null)
+                {
+                    Navigation.NavigateTo("/UserInfo");
+                }
+                else
+                {
+                    //  imageData = user.UserImgLink;
+                    StateHasChanged();
+                }
+            }
+            else
+            {
+                warehouse = new Warehouse();
+
+            }
+
+        }
+    }
+    private async Task SaveOrUpdate()
+    {
+        try
+        {
+            if (selectedImageFile is not null)
+            {
+                // promoOrCupponCode.UserImgLink = await fileUploadService.UploadFileAsync(selectedImageFile, "assets/UserImage");
+            }
+
+            if (warehouse.WarehouseId == 0)
+            {
+                warehouse.EntryDateTime = DateTimeHelper.CurrentDateTime();
+                warehouse.EntryBy = UserInfo.UserId;
+
+
+                warehouse.WarehouseId = await _warehouseService.SaveOrUpdate(warehouse);
+                if (warehouse.WarehouseId > 0)
+                {
+                    showSuccessAlert = true;
+                    SuccessMessage = MessageManager.SaveSuccess;
+                    StateHasChanged(); // Notify Blazor to re-render the component
+                                       //Hide the alert after 1 seconds
+
+                    await Task.Delay(1000);
+                    showSuccessAlert = false;
+                }
+                else if (warehouse.WarehouseId == -1)
+                {
+                    showDangerAlert = true;
+                    DangerMessage = $"{warehouse.WarehouseName} {MessageManager.Exist}";
+                }
+                else
+                {
+                    showDangerAlert = true;
+                    DangerMessage = MessageManager.SaveFaild;
+                }
+            }
+            else
+            {
+
+                warehouse.LastModifyDate = DateTimeHelper.CurrentDateTime();
+                warehouse.LastModifyBy = UserInfo.UserId;
+                warehouse.WarehouseId = await _warehouseService.SaveOrUpdate(warehouse);
+                if (warehouse.WarehouseId > 0)
+                {
+                    showSuccessAlert = true;
+                    SuccessMessage = MessageManager.UpdateSuccess;
+                    StateHasChanged(); // Notify Blazor to re-render the component
+                                       //Hide the alert after 1 seconds
+
+                    await Task.Delay(1000);
+                    showSuccessAlert = false;
+                }
+                else
+                {
+                    showDangerAlert = true;
+                    DangerMessage = MessageManager.UpdateFaild;
+                }
+            }
+
+
+        }
+        catch (Exception ex)
+        {
+            errorMessage = ex.Message;
+        }
+    }
+
+
+    private Task HideAlert()
+    {
+        showDangerAlert = false;
+        return Task.CompletedTask;
+    }
+    // private async Task RemoveImage()
+    // {
+    //     imageData = defaultImage;
+    //     await JS.InvokeVoidAsync("resetFileInput", "fileInput");
+    // }
+
+
+
+    // private async Task HandleSelected(InputFileChangeEventArgs e)
+    // {
+    //     selectedImageFile = e.File;
+    //     var file = e.File;
+    //     if (file != null)
+    //     {
+    //         using (var stream = new MemoryStream())
+    //         {
+    //             await file.OpenReadStream().CopyToAsync(stream);
+    //             imageData = $"data:image/png;base64,{Convert.ToBase64String(stream.ToArray())}";
+    //         }
+    //     }
+    // }
+
+
+    private void BackTo()
+    {
+        Navigation.NavigateTo("/warehouse_info");
+    }
+
+
+}

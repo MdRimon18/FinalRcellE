@@ -1,0 +1,359 @@
+﻿@page "/companybrancentry/{key:guid?}"
+
+@inject IJSRuntime JS
+@inject NavigationManager Navigation
+<button class="btn btn-primary" id="liveToastBtn" type="button">Show live toast</button>
+ 
+<div class="position-fixed top-0 end-0" style="z-index: -5">
+    <div class="toast fade" id="liveToast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header bg-primary text-white">
+            <strong class="me-auto">Bootstrap</strong><small>11 mins ago</small>
+            <div data-bs-theme="dark">
+                <button class="btn-close" type="button" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+        <div class="toast-body">Hello, world! This is a toast message.</div>
+    </div>
+</div>
+<div class="card mb-3">
+    <div class="card-header">
+        <h5 class="mb-0" data-anchor="data-anchor">
+            <a class="btn btn-falcon-default btn-sm" @onclick="BackTo"><i class="fas fa-arrow-left"></i></a>
+            Company Branch Entry
+        </h5>
+       
+    </div>
+    <EditForm Model="@companyBranch" OnValidSubmit="SaveOrUpdate">
+        <DataAnnotationsValidator />
+
+        <SuccessAlert Message="@SuccessMessage" Show="@showSuccessAlert" />
+        <DangerAlert Message="@DangerMessage" Show="@showDangerAlert" OnClose="HideAlert" />
+        <div class="card-body bg-body-tertiary container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="col-sm-10 col-md-10 ">
+                        <div class="form-group">
+                            <label for="companyBranceEntry" class="form-label fw-semi-bold">Company Name<span class="error-star">*</span></label>
+                          
+                            <InputSelect @bind-Value="companyBranch.CompanyId" class="form-select form-rounded form-select-sm ">
+                                <option value="">Select company name</option>
+                                @foreach (var item in company_list)
+                                {
+                                    <option value="@item.CompanyId">@item.CompanyName</option>
+                                }
+                            </InputSelect>
+                            <ValidationMessage class="text-left invalid-message-color" For="@(() =>companyBranch.CompanyId)" />
+
+                        </div>
+                    </div>
+                    <div class="col-sm-10 col-md-10 ">
+                        <div class="form-group">
+                            <label for="companyBranceEntry" class="form-label fw-semi-bold">Mobile No<span class="error-star">*</span></label>
+                            <InputText type="text" @bind-Value="companyBranch.MobileNo" class="form-control form-control-sm form-rounded " placeholder="Enter Mobile No" />
+                            <ValidationMessage class="text-left invalid-message-color" For="@(() =>companyBranch.MobileNo)" />
+                        </div>
+                    </div>
+                    <div class="col-sm-10 col-md-10">
+                        <div class="form-group">
+                            <label for="companyBranceEntry" class="form-label fw-semi-bold">Email<span class="error-star">*</span></label>
+                            <InputText @bind-Value="companyBranch.Email" type="text" class="form-control form-control-sm form-rounded " placeholder="Write Email" />
+                           
+                        </div>
+                    </div>                  
+                     <div class="col-sm-10 col-md-10 ">
+                        <div class="form-group">
+                            <label for="companyBranceEntry" class="form-label fw-semi-bold">State Name<span class="error-star">*</span> </label>
+                            <InputText @bind-Value="companyBranch.StateName" type="text" class="form-control form-control-sm form-rounded " placeholder="Organaization Name" />
+                            <ValidationMessage class="text-left invalid-message-color" For="@(() =>companyBranch.StateName)" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="col-sm-10 col-md-10">
+                        <div class="card-header">
+                            <h5 class="mb-0">Upload Branch Image</h5>
+                        </div>
+                        <div class="image-uploader">
+                            <div class="image-preview">
+                                <img src="@imageData"
+                                     alt="Selected Image" style="width: 160px;height: 160px;" />
+                                @if (imageData != defaultImage)
+                                {
+                                    <button type="button" class="remove-button" @onclick="RemoveImage">X</button>
+                                }
+                            </div>
+
+                            <InputFile class="file-input form-control form-control-sm form-rounded mb-2" OnChange="HandleSelected" id="fileInput" />
+                        </div>
+                    </div>
+
+                    <div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">                  
+                  
+                    <div class="col-sm-10 col-md-10">
+                        <div class="form-group">
+                            <label for="companyBranceEntry" class="form-label fw-semi-bold">Address</label>
+
+                            <InputTextArea rows="2" @bind-Value="companyBranch.Address"
+                                           class="form-control form-control-sm form-rounded"
+                                           placeholder="Company Address" />
+
+                            <ValidationMessage class="text-left invalid-message-color" For="@(() =>companyBranch.Address)" />
+                        </div>
+                    </div>
+                    @* <div class="col-sm-10 col-md-10 mt-3">
+                        <div class="form-group">
+                            <label for="companyComponent" class="form-label fw-semi-bold">Is have Company Branch?</label>
+                            <InputCheckbox @bind-Value="company.IsHasBranch"/>
+                             
+
+                        </div>
+                    </div> *@
+                </div>
+                <div class="col-md-6">
+                  
+                   @*  <div class="col-sm-10 col-md-10 ">
+                        <div class="form-group">
+                            <label for="companyComponent" class="form-label fw-semi-bold"> Currency <span class="error-star">*</span></label>
+                            <InputSelect @bind-Value="company.CurrencyId" class="form-select form-rounded form-select-sm ">
+                                <option value="">Select Currency</option>
+                                @foreach (var item in currency_list)
+                                {
+                                    <option value="@item.CurrencyId">@item.CurrencyName</option>
+                                }
+                            </InputSelect>
+                            <ValidationMessage class="text-left invalid-message-color" For="@(() => company.CurrencyId)" />
+                        </div>
+                    </div> *@
+                    @* <div class="col-sm-10 col-md-10 ">
+                        <div class="form-group">
+                            <label for="companyComponent" class="form-label fw-semi-bold"> Select Biling Plan<span class="error-star">*</span></label>
+                            <InputSelect @bind-Value="company.BillingPlanId" class="form-select form-rounded form-select-sm ">
+                                <option value="">Select Billing Plan</option>
+                                @foreach (var item in biling_list)
+                                {
+                                    <option value="@item.BillingPlanId">@item.BillingPlanName</option>
+                                }
+                            </InputSelect>
+                            <ValidationMessage class="text-left invalid-message-color" For="@(() =>company.BillingPlanId)" />
+                        </div>
+                    </div> *@
+                    <div class="col-sm-10 col-md-10 ">
+                        <div class="form-group">
+                            <label for="companyBranceEntry" class="form-label fw-semi-bold">Branch Manager Name</label>
+
+                            <InputText rows="2" @bind-Value="companyBranch.BrnchManagerName"
+                                           class="form-control form-control-sm form-rounded"
+                                       placeholder="Brnch Manager Name" />
+                        </div>
+                    </div>
+                    <div class="col-sm-10 col-md-10">
+                        <div class="form-group">
+                            <label for="companyBranceEntry" class="form-label fw-semi-bold">Manager Mobile</label>
+                            <InputText @bind-Value="companyBranch.ManagerMobile" type="text" class="form-control form-control-sm form-rounded" placeholder="Manager Mobile" />
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+            
+            <button type="submit" class="btn btn-primary btn-sm mt-2">@SubmitButtonText</button>
+            <button type="reset" class="btn btn-primary btn-sm mt-2">Refresh</button>
+        </div>
+    </EditForm>
+</div>
+
+
+<script>
+    window.resetFileInput = function (id) {
+        document.getElementById(id).value = '';
+    }
+</script>
+@code {
+    [Parameter]
+    public Guid? key { get; set; }
+    private bool IsEditMode => key.HasValue;
+    private string SubmitButtonText => IsEditMode ? "Update" : "Create";
+
+
+    // [Inject]
+    // BillingPlanService billingPlanService { get; set; }
+    // List<BillingPlans> biling_list = new List<BillingPlans>();
+
+    // [Inject]
+    // CountryServiceV2 countryServiceV2 { get; set; }
+    // List<CountryV2> country_list = new List<CountryV2>();
+
+    // [Inject]
+    // CurrencyService currencyService { get; set; }
+    // List<Currency> currency_list = new List<Currency>();
+
+
+    // [Inject]
+    // BusinessTypesService businessTypesService { get; set; }
+    // List<BusinessType> businessTypes_list = new List<BusinessType>();
+
+    [Inject]
+    CompanyBranceService _companyBranceService { get; set; }
+    CompanyBranch companyBranch = new CompanyBranch();//object or Model
+
+    [Inject]
+    CompanyService _companyService { get; set; }
+    List<Company> company_list = new List<Company>();
+
+   
+    private bool showSuccessAlert = false;
+    private bool showDangerAlert = false;
+
+    public string SuccessMessage { get; set; }
+    public string DangerMessage { get; set; }
+
+    private string errorMessage;
+
+    private IBrowserFile selectedImageFile;
+
+
+    private string defaultImage = "/assets/img/icons/profile_icon.jpg"; // Path to your default image
+    private string? imageData;
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        imageData = defaultImage;
+
+        company_list = (await _companyService.Get(null, null, null, null, null, null, null, 1, 1000)).ToList();
+        // businessTypes_list = (await businessTypesService.Get(null, null, null, null, GlobalPageConfig.PageNumber, GlobalPageConfig.PageSize)).ToList();
+        // biling_list = (await billingPlanService.Get(null, null, null, null, GlobalPageConfig.PageNumber, GlobalPageConfig.PageSize)).ToList();
+        // country_list = (await countryServiceV2.Get(null, null, null, null, null, null, null, null, null, null, GlobalPageConfig.PageNumber, GlobalPageConfig.PageSize)).ToList();
+        // currency_list = (await currencyService.Get(null, null, null, null, null, null, null, null, GlobalPageConfig.PageNumber, GlobalPageConfig.PageSize)).ToList();
+        if (IsEditMode)
+        {
+            if (key.HasValue)
+            {
+
+                companyBranch = await _companyBranceService.GetByKey(key.ToString());
+
+                if (companyBranch == null)
+                {
+                    Navigation.NavigateTo("/companybranchInfo");
+                }
+                else
+                {
+                    imageData = companyBranch.BranchImgLink;
+                }
+            }
+            else
+            {
+                companyBranch = new CompanyBranch();
+            }
+
+        }
+    }
+
+    private async Task HandleSelected(InputFileChangeEventArgs e)
+    {
+        var file = e.File;
+        selectedImageFile = e.File;
+        if (file != null)
+        {
+            using (var stream = new MemoryStream())
+            {
+                await file.OpenReadStream().CopyToAsync(stream);
+                imageData = $"data:image/png;base64,{Convert.ToBase64String(stream.ToArray())}";
+            }
+        }
+    }
+
+    private async Task RemoveImage()
+    {
+        imageData = defaultImage;
+        await JS.InvokeVoidAsync("resetFileInput", "fileInput");
+    }
+
+
+    private Task HideAlert()
+    {
+        showDangerAlert = false;
+        return Task.CompletedTask;
+    }
+    private async Task SaveOrUpdate()
+    {
+        try
+        {
+            if (selectedImageFile is not null)
+            {
+                companyBranch.BranchImgLink = await fileUploadService.UploadFileAsync(selectedImageFile, "assets/CompanyBranchLogo");
+            }
+         
+            // companyBranch.OwnerOrUserId = UserInfo.UserId;
+
+            if (companyBranch.BranchId == 0)
+            {
+                companyBranch.EntryDateTime = DateTimeHelper.CurrentDateTime();
+                companyBranch.EntryBy = UserInfo.UserId;
+               
+                companyBranch.BranchId = await _companyBranceService.SaveOrUpdate(companyBranch);
+                if (companyBranch.BranchId > 0)
+                {
+                    showSuccessAlert = true;
+                    SuccessMessage = MessageManager.SaveSuccess;
+                    StateHasChanged(); // Notify Blazor to re-render the component
+                                       //Hide the alert after 1 seconds
+
+                    await Task.Delay(1000);
+                    showSuccessAlert = false;
+                }
+                else if (companyBranch.BranchId == -1)
+                {
+                    showDangerAlert = true;
+                    DangerMessage = $"{companyBranch.BranchName} {MessageManager.Exist}";
+                }
+                else
+                {
+                    showDangerAlert = true;
+                    DangerMessage = MessageManager.SaveFaild;
+                }
+            }
+            else
+            {
+
+                companyBranch.LastModifyDate = DateTimeHelper.CurrentDateTime();
+                companyBranch.LastModifyBy = UserInfo.UserId;
+               
+                companyBranch.BranchId = await _companyBranceService.SaveOrUpdate(companyBranch);
+                if (companyBranch.BranchId > 0)
+                {
+                    showSuccessAlert = true;
+                    SuccessMessage = MessageManager.UpdateSuccess;
+                    StateHasChanged(); // Notify Blazor to re-render the component
+                                       //Hide the alert after 1 seconds
+
+                    await Task.Delay(1000);
+                    showSuccessAlert = false;
+                }
+                else
+                {
+                    showDangerAlert = true;
+                    DangerMessage = MessageManager.UpdateFaild;
+                }
+            }
+
+
+        }
+        catch (Exception ex)
+        {
+            errorMessage = ex.Message;
+        }
+    }
+    private void BackTo()
+    {
+        Navigation.NavigateTo("/companybranchInfo");
+    }
+
+}

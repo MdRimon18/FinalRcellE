@@ -1,0 +1,324 @@
+﻿@page "/add_suppiler/{key:guid?}"
+@inject IJSRuntime JS
+@inject NavigationManager Navigation
+
+
+<div class="card mb-3">
+   <div class="card-header">
+      <h5 class="mb-0" data-anchor="data-anchor">
+            <a class="btn btn-falcon-default btn-sm" @onclick="BackTo"><i class="fas fa-arrow-left"></i></a>
+         Supplier Profile Entry
+      </h5>
+
+   </div>
+    <EditForm Model="@supplier" OnValidSubmit="SaveOrUpdate">
+    <DataAnnotationsValidator />
+    
+        <SuccessAlert Message="@SuccessMessage" Show="@showSuccessAlert" />
+        <DangerAlert Message="@DangerMessage" Show="@showDangerAlert" OnClose="HideAlert" />
+       <div class="card-body bg-body-tertiary container">
+         <div class="row">
+            <div class="col-md-6">
+                 <div class="col-sm-10 col-md-10 ">
+                    <div class="form-group">
+                            <label for="addSupplier" class="form-label  fw-semi-bold">Name<span class="error-star">*</span></label>
+                        <InputText type="text"  @bind-Value="supplier.SupplrName" class="form-control form-control-sm form-rounded " placeholder="Enter Name" />
+                        <ValidationMessage class="text-left invalid-message-color" For="@(() => supplier.SupplrName)"/>
+
+                    </div>
+                </div>
+                 <div class="col-sm-10 col-md-10 ">
+                    <div class="form-group">
+                        <label for="addSupplier" class="form-label  fw-semi-bold">Enter Mobile No<span class="error-star">*</span></label>
+                        <InputText  type="text" @bind-Value="supplier.MobileNo" class="form-control form-control-sm form-rounded " placeholder="Enter Mobile No"/>
+                          <ValidationMessage class="text-left invalid-message-color" For="@(() => supplier.MobileNo)" />
+                    </div>
+                </div>
+                 <div class="col-sm-10 col-md-10">
+                    <div class="form-group">
+                            <label for="addSupplier" class="form-label  fw-semi-bold">Email<span class="error-star">*</span></label>
+                         <InputText @bind-Value="supplier.Email" type="text" class="form-control form-control-sm form-rounded " placeholder="Write Email"  />
+                         <ValidationMessage class="text-left invalid-message-color" For="@(() => supplier.Email)" />
+                    </div>
+                </div>
+                 <div class="col-sm-10 col-md-10 ">
+                        <div class="form-group">
+                            <label for="addSupplier" class="form-label  fw-semi-bold">Organization Name<span class="error-star">*</span> </label>
+                            <InputText @bind-Value="supplier.SuppOrgnznName" type="text" class="form-control form-control-sm form-rounded " placeholder="Organaization Name" />
+                            <ValidationMessage class="text-left invalid-message-color" For="@(() =>supplier.SuppOrgnznName)" />
+                        </div>
+                    </div>
+            </div>
+            <div class="col-md-6">
+                <div class="col-sm-10 col-md-10">
+                    <div class="card-header">
+                        <h5 class="mb-0">Upload Image</h5>
+                    </div>
+                    <div class="image-uploader">
+                        <div class="image-preview">
+                            <img src="@imageData"
+                                 alt="Selected Image" style="width: 160px;height: 160px;" />
+                            @if (imageData != defaultImage)
+                            {
+                                <button type="button" class="remove-button" @onclick="RemoveImage">X</button>
+                            }
+                        </div>
+
+                        <InputFile class="file-input form-control form-control-sm form-rounded mb-2" OnChange="HandleSelected" id="fileInput" />
+                    </div>
+                </div>
+
+                <div>
+            </div>
+        </div>
+        </div>
+        <div class="row">
+                <div class="col-md-6">
+                    <div class="col-sm-10 col-md-10 ">
+                        <div class="form-group">
+                            <label for="addSupplier" class="form-label  fw-semi-bold">Select Business Type <span class="error-star">*</span></label>
+                            <InputSelect @bind-Value="supplier.BusinessTypeId" class="form-select form-rounded form-select-sm ">
+                                <option value="">Business Type</option>
+                                @foreach (var item in businessTypes_list)
+                                {
+                                    <option value="@item.BusinessTypeId">@item.BusinessTypeName</option>
+                                }
+                            </InputSelect>
+                            <ValidationMessage class="text-left invalid-message-color" For="@(() => supplier.BusinessTypeId)" />
+                        </div>
+                    </div>
+                    <div class="col-sm-10 col-md-10 ">
+                        <div class="form-group">
+                            <label for="addSupplier" class="form-label  fw-semi-bold"> Select Country <span class="error-star">*</span></label>
+                            <InputSelect @bind-Value="supplier.CountryId" class="form-select form-rounded form-select-sm ">
+                                <option value="">Select Country</option>
+                                 @foreach (var item in country_list)
+                                {
+                                  <option value="@item.CountryId">@item.CountryName</option>
+                                }
+                           </InputSelect>
+                            <ValidationMessage class="text-left invalid-message-color" For="@(() =>supplier.CountryId)" />
+                        </div>
+                    </div>
+                    <div class="col-sm-10 col-md-10 ">
+                        <div class="form-group">
+                            <label for="addSupplier" class="form-label  fw-semi-bold">State Name <span class="error-star">*</span></label>
+                            <InputText @bind-Value="supplier.StateName" type="text" class="form-control form-control-sm form-rounded " placeholder="Enter Your State Name" />
+                            <ValidationMessage class="text-left invalid-message-color" For="@(() => supplier.StateName)" />
+                        </div>
+                    </div>
+                    
+                   
+                </div>
+                <div class="col-md-6">
+                    <div class="col-sm-10 col-md-10 ">
+                        <div class="form-group">
+                            <label for="addSupplier" class="form-label  fw-semi-bold">Supplier Address One</label>
+
+                            <InputTextArea rows="2" @bind-Value="supplier.SupplrAddrssOne"
+                                           class="form-control form-control-sm form-rounded"
+                                           placeholder="Supplier Address One" />
+
+                        </div>
+                    </div>
+                    <div class="col-sm-10 col-md-10 ">
+                        <div class="form-group">
+                            <label for="addSupplier" class="form-label  fw-semi-bold">Supplier Address two</label>
+
+                            <InputTextArea rows="2" @bind-Value="supplier.SupplrAddrssTwo"
+                                           class="form-control form-control-sm form-rounded"
+                                           placeholder="Supplier Address Two" />
+                        </div>
+                    </div>
+                    <div class="col-sm-10 col-md-10">
+                        <div class="form-group">
+                            <label for="addSupplier" class="form-label  fw-semi-bold">Delivery Off Day</label>
+                            <InputText @bind-Value="supplier.DeliveryOffDay" type="text" class="form-control form-control-sm form-rounded" placeholder="Delivery off Day" />
+                        </div>
+                    </div>
+                  
+                   
+                </div>
+                 
+        </div>
+
+            <button type="submit" class="btn btn-primary btn-sm mt-2">@SubmitButtonText</button>
+         <button type="reset" class="btn btn-primary btn-sm mt-2">Refresh</button>
+   </div>
+    </EditForm>
+</div>
+
+
+ <script>
+    window.resetFileInput = function (id) {
+        document.getElementById(id).value = '';
+    }
+ </script>
+@code {
+    [Parameter]
+    public Guid? key { get; set; }
+    private bool IsEditMode => key.HasValue;
+    private string SubmitButtonText => IsEditMode ? "Update" : "Create";
+
+
+    [Inject]
+    CountryServiceV2 countryServiceV2 { get; set; }
+    List<CountryV2> country_list = new List<CountryV2>();
+
+
+    [Inject]
+    BusinessTypesService businessTypesService { get; set; }
+    List<BusinessType> businessTypes_list = new List<BusinessType>();
+
+    [Inject]
+    SupplierService supplierService { get; set; }
+    Suppliers supplier = new Suppliers();//object or Model 
+
+
+  
+
+    private bool showSuccessAlert = false;
+    private bool showDangerAlert = false;
+
+    public string SuccessMessage { get; set; }
+    public string DangerMessage { get; set; }
+
+    private string errorMessage;
+
+    private IBrowserFile selectedImageFile;
+
+   
+    private string defaultImage = "/assets/img/icons/profile_icon.jpg"; // Path to your default image
+    private string? imageData;
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        imageData = defaultImage;
+
+        country_list = (await countryServiceV2.Get(null, null, null, null, null, null, null, null, null, null, 1, 1000)).ToList();
+        businessTypes_list = (await businessTypesService.Get(null, null, null, null, 1, 1000)).ToList();
+
+        if (IsEditMode)
+        {
+            if (key.HasValue)
+            {
+
+                supplier = await supplierService.GetByKey(key.ToString());
+
+                if (supplier == null)
+                {
+                    Navigation.NavigateTo("/supplier_info");
+                }
+                else
+                {
+                    imageData = supplier.SupplrImgLink;
+                }
+            }
+            else
+            {
+                supplier = new Suppliers();
+            }
+
+        }
+    }
+
+    private async Task HandleSelected(InputFileChangeEventArgs e)
+    {
+        var file = e.File;
+        selectedImageFile = e.File;
+        if (file != null)
+        {
+            using (var stream = new MemoryStream())
+            {
+                await file.OpenReadStream().CopyToAsync(stream);
+                imageData = $"data:image/png;base64,{Convert.ToBase64String(stream.ToArray())}";
+            }
+        }
+    }
+
+    private async Task RemoveImage()
+    {
+        imageData = defaultImage;
+        await JS.InvokeVoidAsync("resetFileInput", "fileInput");
+    }
+        
+
+    private Task HideAlert()
+    {
+        showDangerAlert = false;
+        return Task.CompletedTask;
+    }
+    private async Task SaveOrUpdate()
+    {
+        try
+        {
+            if (selectedImageFile is not null)
+            {
+                supplier.SupplrImgLink = await fileUploadService.UploadFileAsync(selectedImageFile, "assets/SupplierImage");
+            }
+
+            if (supplier.SupplierId == 0)
+            {
+                supplier.EntryDateTime = DateTimeHelper.CurrentDateTime();
+                supplier.EntryBy = UserInfo.UserId;
+                supplier.BranchId = CompanyInfo.BranchId;
+
+                supplier.SupplierId = await supplierService.SaveOrUpdate(supplier);
+                if (supplier.SupplierId > 0)
+                {
+                    showSuccessAlert = true;
+                    SuccessMessage = MessageManager.SaveSuccess;
+                    StateHasChanged(); // Notify Blazor to re-render the component
+                                       //Hide the alert after 1 seconds
+
+                    await Task.Delay(1000);
+                    showSuccessAlert = false;
+                }
+                else if (supplier.SupplierId == -1)
+                {
+                    showDangerAlert = true;
+                    DangerMessage = $"{supplier.SupplrName} {MessageManager.Exist}";
+                }
+                else
+                {
+                    showDangerAlert = true;
+                    DangerMessage = MessageManager.SaveFaild;
+                }
+            }
+            else
+            {
+
+                supplier.LastModifyDate = DateTimeHelper.CurrentDateTime();
+                supplier.LastModifyBy = UserInfo.UserId;
+                supplier.SupplierId = await supplierService.SaveOrUpdate(supplier);
+                if (supplier.SupplierId > 0)
+                {
+                    showSuccessAlert = true;
+                    SuccessMessage = MessageManager.UpdateSuccess;
+                    StateHasChanged(); // Notify Blazor to re-render the component
+                                       //Hide the alert after 1 seconds
+
+                    await Task.Delay(1000);
+                    showSuccessAlert = false;
+                }
+                else
+                {
+                    showDangerAlert = true;
+                    DangerMessage = MessageManager.UpdateFaild;
+                }
+            }
+         
+            
+        }
+        catch (Exception ex)
+        {
+            errorMessage = ex.Message;
+        }
+    }
+    private void BackTo()
+    {
+        Navigation.NavigateTo("/supplier_info");
+    }
+
+}

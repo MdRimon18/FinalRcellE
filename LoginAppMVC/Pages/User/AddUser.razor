@@ -1,0 +1,252 @@
+﻿@page "/add_user/{key:guid?}"
+@inject IJSRuntime JS
+@inject NavigationManager Navigation
+
+ 
+
+<div class="card mb-3">
+    <div class="card-header">
+        <h5 class="mb-0" data-anchor="data-anchor">
+            <a class="btn btn-falcon-default btn-sm" @onclick="BackTo"><i class="fas fa-arrow-left"></i></a>
+            Create  Application User
+        </h5>
+    </div>
+    <EditForm Model="@user" OnValidSubmit="SaveOrUpdate">
+        <DataAnnotationsValidator />
+    
+            <SuccessAlert Message="@SuccessMessage" Show="@showSuccessAlert" />
+            <DangerAlert Message="@DangerMessage" Show="@showDangerAlert" OnClose="HideAlert" />
+      <div class="card-body bg-body-tertiary">
+         
+        <div class="row">
+            <div class="col-md-6">
+                <div class="col-sm-9 animated-div">
+                    <div class="form-group">
+                        <label for="addUser" class="form-label fw-semi-bold"> User Name<span class="error-star">*</span></label>
+                        <InputText @bind-Value="user.UserName" type="text" class="form-control form-control-sm form-rounded" placeholder="User Name"/>
+                            <ValidationMessage class="text-left invalid-message-color" For="@(() => user.UserName)" />
+                    </div>
+                </div>
+
+                <div class="col-sm-9 animated-div">
+                    <div class="form-group">
+                        <label for="addSupplier" class="form-label fw-semi-bold"> User Phone No <span class="error-star">*</span></label>
+                        <InputText  @bind-Value="user.UserPhoneNo" type="text" class="form-control form-control-sm form-rounded " placeholder=" User Phone No"  />
+                            <ValidationMessage class="text-left invalid-message-color" For="@(() => user.UserPhoneNo)" />
+                    </div>
+                </div>
+
+                <div class="col-sm-9 animated-div">
+                    <div class="form-group">
+                        <label for="addSupplier" class="form-label fw-semi-bold"> User Password <span class="error-star">*</span></label>
+                        <InputText  @bind-Value="user.UserPassword" type="password" class="form-control form-control-sm form-rounded " placeholder="User Password" />
+                            <ValidationMessage class="text-left invalid-message-color" For="@(() => user.UserPassword)" />
+                    </div>
+                </div>
+
+                <div class="col-sm-9 animated-div">
+                    <div class="form-group">
+                        <label for="addSupplier" class="form-label fw-semi-bold"> Designation</label>
+                        <InputText @bind-Value="user.UserDesignation" type="text" class="form-control form-control-sm form-rounded" placeholder="Write Designation" />
+                            <ValidationMessage class="text-left invalid-message-color" For="@(() => user.UserDesignation)" />
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <div class="col-sm-8 col-md-8">
+                    <div class="card-header">
+                        <h5 class="mb-0">Upload Image</h5>
+                    </div>
+                    <div class="image-uploader">
+                        <div class="image-preview">
+                            <img src="@imageData"
+                                 alt="Selected Image" style="width: 160px;height: 160px;" />
+                            @if (imageData != defaultImage)
+                            {
+                                <button type="button" class="remove-button" @onclick="RemoveImage">X</button>
+                            }
+                        </div>
+
+                        <InputFile class="file-input form-control form-control-sm form-rounded" OnChange="HandleSelected" id="fileInput" />
+                    </div>
+                </div>
+
+                <div>
+            </div>
+        </div>
+     
+        
+        <div>
+                    <button type="submit" class="btn btn-primary btn-sm mt-2">@SubmitButtonText</button>
+                    <button type="reset" class="btn btn-primary btn-sm mt-2">Refresh</button>
+                        
+        </div>
+        </div>
+</div>
+    </EditForm>
+</div>
+<script>
+    window.resetFileInput = function (id) {
+        document.getElementById(id).value = '';
+    }
+</script>
+
+@code {
+
+    [Parameter]
+    public Guid? key { get; set; }
+    private bool IsEditMode => key.HasValue;
+    private string SubmitButtonText => IsEditMode ? "Update" : "Register";
+
+    [Inject]
+    UserService _userService { get; set; }
+    User user = new User();//object or Model
+
+    
+    private IBrowserFile selectedImageFile;
+    private bool showSuccessAlert = false;
+    private bool showDangerAlert = false;
+
+    public string SuccessMessage { get; set; }
+    public string DangerMessage { get; set; }
+
+    private string errorMessage;
+    private string defaultImage = "/assets/img/icons/profile_icon.jpg"; // Path to your default image
+    private string? imageData;
+
+    protected override async void OnInitialized()
+    {
+        imageData = defaultImage;
+       
+      
+        if (IsEditMode)
+        {
+            if (key.HasValue)
+            {
+
+                user = await _userService.GetByKey(key.ToString());
+
+                if (user == null)
+                {
+                    Navigation.NavigateTo("/UserInfo");
+                }
+                else
+                {
+                    imageData = user.UserImgLink;
+                    StateHasChanged();
+                }
+            }
+            else
+            {
+                user = new User();
+              
+            }
+
+        }
+    }
+    private async Task SaveOrUpdate()
+    {
+        try
+        {
+            if (selectedImageFile is not null)
+            {
+                user.UserImgLink = await fileUploadService.UploadFileAsync(selectedImageFile, "assets/UserImage");
+            }
+
+            if (user.UserId == 0)
+            {
+                user.EntryDateTime = DateTimeHelper.CurrentDateTime();
+                user.EntryBy = UserInfo.UserId;
+
+
+                user.UserId = await _userService.SaveOrUpdate(user);
+                if (user.UserId > 0)
+                {
+                    showSuccessAlert = true;
+                    SuccessMessage = MessageManager.SaveSuccess;
+                    StateHasChanged(); // Notify Blazor to re-render the component
+                                       //Hide the alert after 1 seconds
+
+                    await Task.Delay(1000);
+                    showSuccessAlert = false;
+                }
+                else if (user.UserId == -1)
+                {
+                    showDangerAlert = true;
+                    DangerMessage = $"{user.UserName} {MessageManager.Exist}";
+                }
+                else
+                {
+                    showDangerAlert = true;
+                    DangerMessage = MessageManager.SaveFaild;
+                }
+            }
+            else
+            {
+
+                user.LastModifyDate = DateTimeHelper.CurrentDateTime();
+                user.LastModifyBy = UserInfo.UserId;
+                user.UserId = await _userService.SaveOrUpdate(user);
+                if (user.UserId > 0)
+                {
+                    showSuccessAlert = true;
+                    SuccessMessage = MessageManager.UpdateSuccess;
+                    StateHasChanged(); // Notify Blazor to re-render the component
+                                       //Hide the alert after 1 seconds
+
+                    await Task.Delay(1000);
+                    showSuccessAlert = false;
+                }
+                else
+                {
+                    showDangerAlert = true;
+                    DangerMessage = MessageManager.UpdateFaild;
+                }
+            }
+
+
+        }
+        catch (Exception ex)
+        {
+            errorMessage = ex.Message;
+        }
+    }
+
+
+    private Task HideAlert()
+    {
+        showDangerAlert = false;
+        return Task.CompletedTask;
+    }
+    private async Task RemoveImage()
+    {
+        imageData = defaultImage;
+        await JS.InvokeVoidAsync("resetFileInput", "fileInput");
+    }
+
+  
+
+    private async Task HandleSelected(InputFileChangeEventArgs e)
+    {
+        selectedImageFile = e.File;
+        var file = e.File;
+        if (file != null)
+        {
+            using (var stream = new MemoryStream())
+            {
+                await file.OpenReadStream().CopyToAsync(stream);
+                imageData = $"data:image/png;base64,{Convert.ToBase64String(stream.ToArray())}";
+            }
+        }
+    }
+
+   
+     private void BackTo()
+      {
+         Navigation.NavigateTo("/UserInfo");
+      }
+
+
+}

@@ -1,0 +1,68 @@
+﻿@inject IJSRuntime JSRuntime
+@implements IDisposable
+
+@if (!string.IsNullOrEmpty(toastMessage))
+{
+    <div aria-live="polite" aria-atomic="true" class="position-fixed top-1 end-0 p-3" style="z-index: 11">
+        <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header @toastClass">
+                <strong class="me-auto">@toastMessage</strong>
+                <button type="button" class="btn-close" @onclick="HideToast"></button>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    private string toastClass;
+    private string toastMessage;
+    private bool isVisible;
+    [Parameter]
+    public ToastService ToastService { get; set; }
+
+    protected override void OnInitialized()
+    {
+        if (ToastService != null)
+        {
+            ToastService.OnShow += ShowToast;
+            ToastService.OnHide += HideToast;
+        }
+    }
+
+    private async Task ShowToast(string message, ToastLevel level)
+    {
+        toastMessage = message;
+        toastClass = GetToastClass(level);
+        isVisible = true;
+        await InvokeAsync(StateHasChanged);
+
+        // Automatically hide after a delay
+        await Task.Delay(2000);
+        await HideToast();
+    }
+
+    private async Task HideToast()
+    {
+        isVisible = false;
+        toastMessage = string.Empty;
+        await InvokeAsync(StateHasChanged);
+    }
+
+    private string GetToastClass(ToastLevel level) => level switch
+    {
+        ToastLevel.Info => "bg-info",
+        ToastLevel.Success => "bg-success",
+        ToastLevel.Warning => "bg-warning",
+        ToastLevel.Error => "bg-danger",
+        _ => "bg-info"
+    };
+
+    public void Dispose()
+    {
+        if (ToastService != null)
+        {
+            ToastService.OnShow -= ShowToast;
+            ToastService.OnHide -= HideToast;
+        }
+    }
+}

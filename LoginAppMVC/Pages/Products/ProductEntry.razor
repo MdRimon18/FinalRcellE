@@ -1,0 +1,1320 @@
+﻿@page "/product_entry/{key:guid?}"
+ 
+
+ 
+@inject BodyPartService bodyPartService;
+@inject ProductMediaService  productMediaService; 
+@* <script>
+    alert(1)
+</script> *@
+
+
+
+<div class="card mb-3">
+    <div class="card-header">
+        <h5 class="mb-0" data-anchor="data-anchor">
+            <a href="product_info"><i class="fas fa-arrow-left"></i></a>
+            Product Entry
+        </h5>
+    </div>
+</div>
+
+
+
+<EditForm Model="@product" OnValidSubmit="SaveOrUpdate">
+    <DataAnnotationsValidator />
+  @*   <ValidationSummary /> *@
+   <div class="row g-0">
+    <div class="col-lg-9 pe-lg-2">
+        <div class="card mb-3">
+          @*   <div class="card-header ">
+                <h6 class="fw-semi-bold mb-0">Basic information</h6>
+                    
+            </div> *@
+                
+                    <div class="card-header ">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item"><a class="nav-link active" id="basic_info_tab" data-bs-toggle="tab" href="#tab_basic_info" role="tab" aria-controls="tab_basic_info" aria-selected="true">Basic</a></li>
+                        <li class="nav-item"><a class="nav-link" id="ecommerce_tab" data-bs-toggle="tab" href="#tab_ecommerce" role="tab" aria-controls="tab_ecommerce" aria-selected="false">Advanced</a></li>
+                        <li class="nav-item"><a class="nav-link" id="image_tab" data-bs-toggle="tab" href="#tab_image" role="tab" aria-controls="tab_image" aria-selected="false">Add Images</a></li>
+                        <li class="nav-item"><a class="nav-link" id="product_specification_tab" data-bs-toggle="tab" href="#tab_product_specification" role="tab" aria-controls="tab_product_specification" aria-selected="false">Product Specification</a></li>
+                   
+                       @*  <li class="nav-item"><a class="nav-link" id="Weight_tab" data-bs-toggle="tab" href="#tab_Weight" role="tab" aria-controls="tab_Weight" aria-selected="false">Weight</a></li> *@
+                    </ul>
+                    </div>
+                    <div class="tab-content border border-top-0 p-3 card-body bg-body-tertiary" id="myTabContent">
+                        <div class="tab-pane fade show active" id="tab_basic_info" role="tabpanel" aria-labelledby="basic_info_tab">
+                            <div class="row gx-2">
+
+                                <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
+                                    <div class="form-group">
+                                        <label for="ProdName" class="form-label fw-semi-bold fw-semi-bold">Name/Model</label> <span class="error-star">*</span>
+                                        <InputText @bind-Value="product.ProdName" type="text" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="Name/Model" />
+                                        <ValidationMessage class="text-left invalid-message-color" For="@(() => product.ProdName)" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-3 col-md-3 col-lg-3 col-12">
+                                    <div class="form-group">
+                                    <label for="ProductCode" class="form-label fw-semi-bold">Product Code<span class="error-star">*</span></label>
+                                    <InputText @bind-Value="product.ProductCode" type="text" class=" form-control form-control-sm form-rounded fw-semi-bold" placeholder="Product Code" />
+                                    <ValidationMessage class="text-left invalid-message-color" For="@(() => product.ProductCode)" />
+                                </div>
+                                </div>
+                                <div class="col-sm-3 col-md-3 col-lg-3 col-12">
+                                    <div class="form-group">
+                                        <label for="serialNumber" class="form-label fw-semi-bold">Serial Number/UPC</label>
+                                        <InputText @bind-Value="product.SerialNmbrOrUPC" type="text" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="Serial Number/UPC" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-3 col-md-3 col-lg-3 col-12">
+                                    <div class="form-group">
+                                    <label for="sku" class="form-label fw-semi-bold">SKU<span class="error-star">*</span></label>
+                                        <InputText @bind-Value="product.Sku" type="text" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="Sku" />
+                                    <ValidationMessage class="text-left invalid-message-color" For="@(() => product.Sku)" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
+                                    <div class="form-group">
+                                        <label for="quantity" class="form-label fw-semi-bold">Opening Quantity</label><span class="error-star">*</span>
+                                        <InputNumber class="form-control form-control-sm form-rounded fw-semi-bold" @bind-Value="product.OpeningQnty" placeholder="Opening Quantity" />
+                                        <ValidationMessage class="text-left invalid-message-color" For="@(() => product.OpeningQnty)" />
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
+                                    <div class="form-group">
+                                        <label for="alertQuantity" class="form-label fw-semi-bold">Alert Quantity</label>
+                                        <InputNumber class="form-control form-control-sm form-rounded fw-semi-bold" @bind-Value="product.AlertQnty" placeholder="Alert Quantity" />
+                                        <!-- <div class="text-left text-danger">
+                                            Alert Quantity is Required!
+                                        </div> -->
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
+                                    <div class="form-group">
+                                        <label for="productBuyingPrice" class="form-label fw-semi-bold">Buying Price</label><span class="error-star">*</span>
+                                        <InputNumber class="form-control form-control-sm form-rounded fw-semi-bold" @bind-Value="product.BuyingPrice" placeholder="Buying Price" />
+                                        <ValidationMessage class="text-left invalid-message-color " For="@(() =>product.BuyingPrice)" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
+                                    <div class="form-group">
+                                        <label for="cost" class="form-label fw-semi-bold">Selling Price</label><span class="error-star">*</span>
+                                    <InputNumber class="form-control form-control-sm form-rounded fw-semi-bold " @bind-Value="product.SellingPrice" @oninput="OnSellingPriceChanged" placeholder="Selling Price" />
+                                        <ValidationMessage class="text-left invalid-message-color" For="@(() => product.SellingPrice)" />
+                                    </div>
+                                </div>
+
+
+
+                                <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
+                                    <div class="form-group">
+                                        <label for="vatPercent" class="form-label fw-semi-bold">VAT (%)</label>
+                                    <InputNumber class="form-control form-control-sm form-rounded fw-semi-bold" @bind-Value="product.VatPercent" @oninput="OnVatPercentChanged" placeholder="VAT in %" />
+                                        <!-- <div class="text-left text-danger">
+                                            Barcode is Required!
+                                        </div> -->
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
+                                    <div class="form-group">
+                                        <label for="vatAmount" class="form-label fw-semi-bold">VAT Amount</label>
+                                    <InputNumber class="form-control form-control-sm form-rounded fw-semi-bold" @bind-Value="product.VatAmount" @oninput="OnVatAmountChanged" placeholder="VAT Amount" />
+                                        <!-- <div class="text-left text-danger">
+                                            Barcode is Required!
+                                        </div> -->
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
+                                    <div class="form-group">
+                                        <label for="discountPercent" class="form-label fw-semi-bold">Discount(%)</label>
+                                    <InputNumber class="form-control form-control-sm form-rounded fw-semi-bold" @bind-Value="product.DiscountPercentg" @oninput="CalculateDiscountPercentage" placeholder="Discount" />
+                                        <!-- <div class="text-left text-danger">
+                                            Barcode is Required!
+                                        </div> -->
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
+                                    <div class="form-group">
+                                        <label for="discountAmount" class="form-label fw-semi-bold">Discount Amount</label>
+                                    <InputNumber class="form-control form-control-sm form-rounded fw-semi-bold" @bind-Value="product.DiscountAmount" @oninput="OnDiscountAmountChanged" placeholder="Discount Amount" />
+                                        <!-- <div class="text-left text-danger">
+                                            Barcode is Required!
+                                        </div> -->
+                                    </div>
+                                </div>
+                                
+                               
+
+                                @* <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
+                                <div class="form-group">
+                                <label class="form-label fw-semi-bold">Date</label>
+                                <Input class="form-control form-control-sm form-rounded fw-semi-bold"
+                                type="date"
+                                name="GivenEntryDate"
+
+                                placeholder="Date" />
+                                <!-- <div class="text-left text-danger">
+                                Date is
+                                </div> -->
+                                </div>
+                                </div> *@
+                                 
+                            </div>
+                            <div class="row">
+                                <div class="d-grid gap-2 d-md-block mt-4">
+                                <button type="submit" @onclick="SaveOrUpdate" class="btn btn-outline-primary btn-sm">@SubmitButtonText</button>
+                                <button type="button" @onclick="OnRefresh" class="btn btn-outline-primary btn-sm">Refresh</button>
+                                <button class="btn btn-outline-danger btn-sm">Delete</button>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="tab-pane fade" id="tab_ecommerce" role="tabpanel" aria-labelledby="ecommerce_tab">
+
+                        <div class="row gx-2">
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-12">
+                                <div class="form-group">
+                                    <label for="manufacturarName" class="form-label fw-semi-bold">Manufacturar Name</label>
+                                    <InputText @bind-Value="product.ManufacturarName" type="text" class=" form-control form-control-sm form-rounded fw-semi-bold" placeholder="Manufacturar Name" />
+                                </div>
+                            </div>
+                        
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
+                                <div class="form-group">
+                                    <label for="barcode" class="form-label fw-semi-bold">Bar Code</label>
+                                    <InputText @bind-Value="product.BarCode" type="text" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="Bar Code" />
+                                    <!-- <div class="text-left text-danger">
+                                        Barcode is Required!
+                                    </div> -->
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
+                                <div class="form-group">
+                                    <label class="form-label fw-semi-bold">Link to Supplier</label>
+                                    <InputSelect @bind-Value="product.SupplirLinkId" class="form-control form-control-sm form-rounded fw-semi-bold">
+                                        <option value=''>Select Link to Supplier</option>
+
+                                        @foreach (var item in supplier_list)
+                                        {
+                                            <option value="@item.SupplierId">@item.SupplrName</option>
+                                        }
+                                        <!-- Options for suppliers -->
+                                    </InputSelect>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
+                                <div class="form-group">
+                                    <label for="importedForm" class="form-label fw-semi-bold">Imported From</label>
+                                    <InputText @bind-Value="product.ImportedForm" type="text" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="Imported From" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
+                                <label for="importedForm" class="form-label fw-semi-bold">Import Status</label>
+                                <InputSelect @bind-Value="product.ImportStatusId" class="form-control form-control-sm form-rounded fw-semi-bold">
+                                    <option value=''>Select Status</option>
+                                    @foreach (var item in importStatusSetting_list)
+                                    {
+                                        <option value=@item.StatusSettingId>@item.StatusSettingName</option>
+                                    }
+
+                                </InputSelect>
+                            </div>
+
+                            @* <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
+                            <div class="form-group">
+                            <label class="form-label fw-semi-bold">Date</label>
+                            <Input class="form-control form-control-sm form-rounded fw-semi-bold"
+                            type="date"
+                            name="GivenEntryDate"
+
+                            placeholder="Date" />
+                            <!-- <div class="text-left text-danger">
+                            Date is
+                            </div> -->
+                            </div>
+                            </div> *@
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
+                                <div class="form-group">
+                                    <label for="warrentYear" class="form-label fw-semi-bold">Warrenty Lenth/Year</label>
+                                    <InputNumber @bind-Value="product.WarrentYear" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="Warrent Year" />
+
+                                </div>
+                            </div>
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
+                                <div class="form-group">
+                                    <label for="warantyNgurenty" class="form-label fw-semi-bold">Warrenty Policy</label>
+                                    <InputTextArea type="text"
+                                                   class="form-control form-control-sm form-rounded fw-semi-bold"
+                                                   @bind-Value="product.WarrentyPolicy"
+                                                   placeholder="Warrenty or Guarantee"
+                                                   cols="50"
+                                                   rows="2" />
+
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
+                                <div class="form-group">
+                                    <label for="color" class="form-label fw-semi-bold">Color</label>
+
+                                    <InputSelect @bind-Value="product.ColorId" class="form-control form-control-sm form-rounded fw-semi-bold ">
+                                        <option value=''>Select Color Name</option>
+                                        @foreach (var item in color_list)
+                                        {
+                                            <option value=@item.ColorId>@item.ColorIdName</option>
+                                        }
+                                    </InputSelect>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
+                                <div class="form-group">
+                                    <label for="size" class="form-label fw-semi-bold">Size</label>
+                                    <InputSelect @bind-Value="product.SizeId" class="form-control form-control-sm form-rounded fw-semi-bold ">
+                                        <option value=''>Select Size</option>
+                                        @foreach (var item in productSize_list)
+                                        {
+                                            <option value=@item.ProductSizeId>@item.ProductSizeName</option>
+                                        }
+                                    </InputSelect>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">                               
+                                <div class="form-group">
+                                    <label for="ProductHieght" class="form-label fw-semi-bold">Hieght</label>
+                                    <InputText @bind-Value="product.ProductHieght" type="text" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="Hieght" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
+                                <div class="form-group">
+                                    <label for="ItemWeight" class="form-label fw-semi-bold">Weight </label>
+                                    <InputNumber @bind-Value="product.ItemWeight" type="number"class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="Weight" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
+                                <div class="form-group">
+                                    <label class="form-label fw-semi-bold">Shipping Name</label> 
+                                    <InputSelect @bind-Value="product.ShippingById" class="form-control form-control-sm form-rounded fw-semi-bold ">
+                                        <option value=''>Select Shipping Name</option>
+                                        @foreach (var item in shippingBy_list)
+                                        {
+                                            <option value=@item.ShippingById>@item.ShippingByName</option>
+                                        }
+                                    </InputSelect>
+                                    <ValidationMessage class="text-left invalid-message-color" For="@(() => product.ShippingById)" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
+                                <div class="form-group">
+                                    <label for="ShippingDays" class="form-label fw-semi-bold">Shipping Day</label>
+                                    <InputNumber @bind-Value="product.ShippingDays" type="number" class="form-control form-control-sm form-rounded fw-semi-bold" id="ShippingDays" placeholder="Shipping Day" />
+                                </div>
+                            </div>
+
+
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
+                                <div class="form-group">
+                                    <label for="ShippingDetails" class="form-label fw-semi-bold">Shipping Details</label>
+                                    <InputText @bind-Value="product.ShippingDetails" type="text" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="Shipping Details" cols="50" rows="2" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
+                                <div class="form-group">
+                                    <label for="originCountryId" class="form-label fw-semi-bold">Origin Country</label>
+                                    <InputSelect @bind-Value="product.OriginCountryId" class="form-control form-control-sm form-rounded fw-semi-bold">
+                                        <option value=''>Select Country Name</option>
+                                        @foreach (var item in country_list)
+                                        {
+                                            <option value=@item.CountryId>@item.CountryName</option>
+                                        }
+
+                                    </InputSelect>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
+                                <div class="form-group">
+                                    <label for="rating" class="form-label fw-semi-bold">Rating</label>
+                                    <InputNumber @bind-Value="product.Rating" type="number" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="rating" />
+
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
+                                <div class="form-group">
+                                    <label for="prodStatusId" class="form-label fw-semi-bold">Product Status</label>
+                                    <InputSelect @bind-Value="product.ProdStatusId" class="form-control form-control-sm form-rounded fw-semi-bold">
+                                        <option value=''>Select Product Status</option>
+                                        @foreach (var item in statusSetting_list)
+                                        {
+                                            <option value=@item.StatusSettingId>@item.StatusSettingName</option>
+                                        }
+
+                                    </InputSelect>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
+                                <div class="form-group">
+                                    <label for="remarks" class="form-label fw-semi-bold">Remarks</label>
+                                    <InputTextArea type="text"
+                                               @bind-Value="product.Remarks"
+                                               class="form-control form-control-sm form-rounded fw-semi-bold"
+                                               placeholder="Remarks"
+                                               cols="50"
+                                               rows="2" />
+
+                                </div>
+                            </div>
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
+                                <div class="form-group">
+
+                                    <label class="form-label fw-semi-bold" for="product-tags">Add a keyword:</label>
+                                    <InputText @bind-Value="product.TagWord" class="form-control js-choice" type="text" size="1" />
+
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
+                            <div class="card mb-3">
+                                <div class="card-header bg-body-tertiary">
+                                    <h6 class="mb-0">Details</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row gx-2">
+                                        <div class="col-12 mb-3">
+                                            <label class="form-label fw-semi-bold" for="product-description">Product description:</label>
+                                            <div class="create-product-description-textarea">
+                                            <InputTextArea id="tinymce-editor" class="tinymce d-none" data-tinymce="data-tinymce" @bind-Value="product.ProdDescription"></InputTextArea>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
+                                            <div class="form-group">
+                                                <label class="form-label fw-semi-bold">Date</label>
+                                                   <InputDate class="form-control form-control-sm form-rounded fw-semi-bold" @bind-Value="product.GivenEntryDate" placeholder="Date"/> 
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
+                                            <div class="form-group">
+                                                <label class="form-label fw-semi-bold">Release Date:</label>
+                                                 <InputDate class="form-control form-control-sm form-rounded fw-semi-bold"@bind-Value="product.ReleaseDate"placeholder="Date"/> 
+                                            </div>
+                                        </div>
+                                        @if(product.ProductId>0){
+                                        <div class="row">
+
+                                            <div class="d-grid gap-2 d-md-block mt-4">
+                                                <button type="submit" @onclick="SaveOrUpdate" class="btn btn-outline-primary btn-sm">@SubmitButtonText</button>
+                                                <button type="button" @onclick="OnRefresh" class="btn btn-outline-primary btn-sm">Refresh</button>
+                                                <button class="btn btn-outline-danger btn-sm">Delete</button>
+
+                                            </div>
+                                        
+                                       
+                                        </div>
+                                    }
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="tab-pane fade" id="tab_image" role="tabpanel" aria-labelledby="image_tab">
+                       
+                            <div class="card-body">
+                                @if (productImages.Count() > 0)
+                                {
+                                    <div class="row gx-2 flex-between-center mb-3">
+                                        <div class="col-sm-3">Images</div>
+                                        <div class="col-sm-3">Body Part</div>
+                                        <div class="col-sm-3">Position</div>
+                                        <div class="col-sm-2">Action</div>
+                                    </div>
+                                    foreach (var img in productImages)
+                                    {
+                                   
+                                        <div class="row gx-2 flex-between-center mb-3">
+                                            <div class="col-sm-3">
+                                                <div class="avatar avatar-4xl">
+                                                    @if (img.ImageUrl is not null)
+                                                    {
+                                                        <img class="rounded-circle" src="@img.ImageUrl" alt="" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <img src="/assets/commonimage/no-image.png" />
+                                                    }
+                                                </div>
+                                                @* <div class="avatar avatar-xl avatar-xl">
+                                                   
+
+
+                                                </div> *@
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <div class="d-flex flex-between-center">
+                                                    <h6 class="mb-0 text-700">@img.BodyPartName</h6>
+                                                     
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <div class="d-flex flex-between-center">
+                                                    <h6 class="mb-0 text-700">@img.Position</h6>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <div class="d-flex flex-between-center">
+                                                  
+                                                    <button class="btn btn-falcon-default btn-sm" type="button" @onclick="()=>LoadImageEditModeData(img)"><span class="fas fa-external-link-alt" data-fa-transform="shrink-3"></span><span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1"></span></button>
+                                                    <a class="btn btn-sm btn-link text-danger" @onclick="() => DeleteImagesItem(img.ProductMediaId)">
+                                                        <span class="fs-10 fas fa-trash-alt"></span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                                @*   else
+                                {
+
+                                }
+                                *@
+                                <div class="row gy-3 gx-2">
+                                    <div class="col-sm-4">
+                                        <InputFile class="file-input form-control form-control-sm form-rounded" OnChange="HandleSelected" id="fileInput" />
+                                        <div class="image-uploader">
+                                            <div class="image-preview">
+                                                <img src="@imageData"
+                                                     alt="Selected Image" style="width: 100px;height: 100px;" />
+                                                @if (imageData != defaultImage)
+                                                {
+                                                    <button type="button" class="remove-button" @onclick="RemoveImage">X</button>
+                                                }
+                                            </div>
+
+                                        
+                                        </div>
+                                    
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <InputSelect @bind-Value="productImage.BodyPartName" class="form-control form-control-sm form-rounded fw-semi-bold">
+                                            <option value=''>Select Body Part</option>
+                                            @foreach (var item in bodyParts)
+                                            {
+                                                <option value=@item.BodyPartName>@item.BodyPartName</option>
+                                            }
+
+                                        </InputSelect>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="d-flex gap-2 flex-between-center">
+                                            <InputNumber @bind-Value="productImage.Position" class="form-control form-control-sm form-label fw-semi-bold" id="Details" type="text" placeholder="Position" />
+                                        <button type="button" class="btn btn-outline-primary btn-sm" @onclick="SavesProductImage">@(productImage.ProductMediaId>0?"Update":"Add")</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        
+                        </div>
+                        <div class="tab-pane fade" id="tab_product_specification" role="tabpanel" aria-labelledby="product_specification_tab">
+
+                           
+                                 
+                                <div class="card-body">
+                                    @if (specification_list.Count > 0)
+                                    {
+                                        foreach (var spec in specification_list)
+                                        {
+                                            <div class="row gx-2 flex-between-center mb-3">
+                                                <div class="col-sm-3">
+                                                    <h6 class="mb-0 text-600">@spec.SpecificationName</h6>
+                                                </div>
+                                                <div class="col-sm-9">
+                                                    <div class="d-flex flex-between-center">
+                                                        <h6 class="mb-0 text-700">@spec.SpecificationDtls</h6>
+                                                        <a class="btn btn-sm btn-link text-danger" @onclick="() => DeleteItem(spec.ProdSpcfctnId)">
+                                                            <span class="fs-10 fas fa-trash-alt"></span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                    @*   else
+                                    {
+
+                                    }
+                                    *@
+                                    <div class="row gy-3 gx-2">
+                                        <div class="col-sm-3">
+                                            <InputText @bind-Value="productSpecifications.SpecificationName" class="form-control form-control-sm form-label fw-semi-bold" id="Name" type="text" placeholder="Specification Name" />
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <div class="d-flex gap-2 flex-between-center">
+                                                <InputText @bind-Value="productSpecifications.SpecificationDtls" class="form-control form-control-sm form-label fw-semi-bold" id="Details" type="text" placeholder="Specification Details" />
+                                            <button type="button" class="btn btn-outline-primary btn-sm" @onclick="Savespecification">Add</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            
+                        </div>                       
+                         
+                    </div>
+        </div>         
+  </div>                           
+   
+    <div class="col-lg-3 ps-lg-2">
+        <div class="sticky-sidebar">
+
+             
+            <div class="card">
+                <div class="card-body">
+                    <div class="row gx-2">
+                        
+
+
+                        <div class="col-12">
+                                <label class="form-label fw-semi-bold" for="product-category">Select category<span class="error-star">*</span></label>
+                                <div class="form-group">
+                               @*  <SearchComponent T="ProductCategories"
+                                                 Items="productCategory_list"
+                                                 DisplayProperty="obj => obj.ProdCtgName"
+                                                 Placeholder="Search by Product Category"
+                                                 InputSize="width:13rem;"
+                                                 OnItemSelected="OnItemSelected"/> *@
+
+                                    <ProductCategorySearcher Placeholder="Search for categories..." OnItemSelected="OnItemSelected" />
+                                </div>
+                                <ValidationMessage class="text-left invalid-message-color" For="@(() => product.ProdCtgId)" />
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label fw-semi-bold" for="product-subcategory">Select sub-category:</label>
+                                <InputSelect @bind-Value="product.ProdSubCtgId" class="form-select">
+                                    <option value=''> Select Product Sub Category </option>
+                                @foreach (var item in productSubCategory_list)
+                                {
+                                    <option value=@item.ProdSubCtgId>@item.ProdSubCtgName</option>
+                                }
+                              
+                            </InputSelect>
+                        </div>
+                            <div class="col-12">
+                                <label class="form-label fw-semi-bold" for="BrandName">Select Brand Name:</label>
+                                <InputSelect @bind-Value="product.BrandId" class="form-select">
+                                    <option value=''> Select Brand Name</option>
+                                    @foreach (var item in brand_list)
+                                    {
+                                        <option value=@item.BrandId>@item.BrandName</option>
+                                    }
+                                </InputSelect>
+                            </div>
+                        <div class="col-12 ">
+                            <div class="form-group">
+                                    <label class="form-label fw-semi-bold">Unit Type</label><span class="error-star">*</span>
+                                    <InputSelect @bind-Value="product.UnitId" class="form-select">
+                                        <option value=''>Select Unit Type </option>
+                                        @foreach(var item in unit_list)
+                                           {
+                                             <option value=@item.UnitId>@item.UnitName</option>
+                                           }
+                                </InputSelect>
+                                    <ValidationMessage class="text-left invalid-message-color" For="@(() => product.UnitId)" />
+                            </div>
+                        </div>
+                        <div class="col-12">
+
+                            <label class="form-label fw-semi-bold" for="final-price">Final price:<span data-bs-toggle="tooltip" data-bs-placement="top" title="Product final price"><span class="fas fa-question-circle text-primary fs-10 ms-1"></span></span></label>
+                                <InputNumber @bind-Value="product.FinalPrice" class="form-control"  disabled="disabled" type="number" />
+
+                        </div>
+                        <div class="col-12">
+
+                            <label class="form-label fw-semi-bold" for="final-price">Previous price:<span data-bs-toggle="tooltip" data-bs-placement="top" title="Product final price"><span class="fas fa-question-circle text-primary fs-10 ms-1"></span></span></label>
+                                <InputNumber @bind-Value="product.PreviousPrice" class="form-control"  type="number" />
+
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label fw-semi-bold" for="price-currency">Currency:</label>
+                                <InputSelect @bind-Value="product.CurrencyId" class="form-select">
+                                    <option value=''>Select Currency</option>
+                                    @foreach (var item in currency_list)
+                                {
+                                    <option value=@item.CurrencyId>@item.CurrencyShortName</option>
+                                }
+                            </InputSelect>
+                                <ValidationMessage class="text-left invalid-message-color" For="@(() => product.CurrencyId)" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+              
+            <div class="card mb-3">
+                <div class="card-header bg-body-tertiary">
+                        <h6 class="mb-0 fw-semi-bold">Stock status</h6>
+                </div>
+                <div class="card-body">
+                    <div class="form-check">
+                        <input class="form-check-input p-2" id="in-stock" type="radio" name="stock-status" />
+                        <label class="form-check-label fs-9 fw-normal text-700" for="in-stock">In stock (10 Pcs)</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input p-2" id="unavailable" type="radio" name="stock-status" />
+                        <label class="form-check-label fs-9 fw-normal text-700" for="unavailable">Unavailable</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input p-2" id="to-be-announced" type="radio" name="stock-status" />
+                        <label class="form-check-label fs-9 fw-normal text-700" for="to-be-announced">To be announced</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+</div>
+</EditForm>
+
+<script>
+    window.resetFileInput = function (id) {
+        document.getElementById(id).value = '';
+    }
+
+
+</script>
+<script>
+    window.jsInterop = {
+        getElementValueById: function (elementId) {
+            return document.getElementById(elementId).value;
+        }
+    };
+
+</script>
+ 
+<script src="vendors/tinymce/tinymce.min.js"></script>
+<script src="assets/js/flatpickr.js"></script>
+
+<script src="assets/js/theme.js"></script>
+
+@code {
+    [Parameter]
+    public Guid? key { get; set; }
+    private bool IsEditMode => key.HasValue;
+    private string SubmitButtonText => product.ProductId>0 ? "Update" : "Create";
+
+    [Inject]
+    UnitService unitService { get; set; }
+    List<Unit> unit_list = new List<Unit>();
+
+    [Inject]
+    SupplierService supplierService { get; set; }
+    List<Suppliers> supplier_list = new List<Suppliers>();
+
+
+    [Inject]
+    CurrencyService currencyService { get; set; }
+    List<Currency> currency_list = new List<Currency>();
+
+
+    [Inject]
+    ShippingByService shippingByService { get; set; }
+    List<ShippingBy> shippingBy_list = new List<ShippingBy>();
+
+    [Inject]
+    ColorService colorService { get; set; }
+    List<Colors> color_list = new List<Colors>();
+
+
+    [Inject]
+    CountryServiceV2 countryServiceV2 { get; set; }
+    List<CountryV2> country_list = new List<CountryV2>();
+
+    [Inject]
+    StatusSettingService _statusSettingService { get; set; }
+    List<StatusSetting> statusSetting_list = new List<StatusSetting>();
+    List<StatusSetting> importStatusSetting_list = new List<StatusSetting>();
+
+    [Inject]
+    ProductSubCategoryService _productSubCategoryService { get; set; }
+    List<ProductSubCategory> productSubCategory_list = new List<ProductSubCategory>();
+
+    [Inject]
+    BrandService _brandService { get; set; }
+    List<Brands> brand_list = new List<Brands>();
+
+    [Inject]
+    ProductCategoryService productCategoryService { get; set; }
+    List<ProductCategories> productCategory_list = new List<ProductCategories>();
+
+    [Inject]
+    ProductService _productService { get; set; }
+    Products product = new Products();
+
+    [Inject]
+    ProductSpecificationService _productSpecificationService { get; set; }
+    List<ProductSpecifications> specification_list = new List<ProductSpecifications>();
+
+    [Inject]
+    ProductSizeService _ProductSizeService { get; set; }
+    List<ProductSze> productSize_list = new List<ProductSze>();
+
+    // [Inject]  
+    // ProductSkuService _productSkuService { get; set; }
+    // List<ProductSKU> sku_list = new List<ProductSKU>();
+
+    [Inject]
+    WarehouseService _warehouseService { get; set; } 
+    List<Warehouse> warehouse_list = new List<Warehouse>();
+
+    private ProductCategories SelectedProductCategorie { get; set; }
+
+    ProductSpecifications productSpecifications = new ProductSpecifications();
+
+    // ProductSKU sku= new ProductSKU();
+    //  IEnumerable<BodyPart> bodyParts=new 
+
+
+    IEnumerable<BodyPart> bodyParts = new List<BodyPart>();
+
+    private string defaultImage = "/assets/img/icons/profile_icon.jpg"; // Path to your default image
+    private string? imageData;
+    private bool showSuccessAlert = false;
+    private bool showDangerAlert = false;
+
+    public string SuccessMessage { get; set; }
+    public string DangerMessage { get; set; }
+
+    private string errorMessage;
+
+    private bool isLoading = true;
+    private int PageSize { get; set; } = 5; // Number of items per page
+
+    int totalPages { get; set; }
+    int currentPage = 1; // Example current page
+
+    private int TotalRecord { get; set; }
+
+
+    public string? specificationNameSearch { get; set; }
+
+    private IBrowserFile selectedImageFile;
+
+    ProductImage productImage = new ProductImage();
+    List<ProductImage> productImages = new List<ProductImage>();
+
+    //  private DotNetObjectReference<ProductEntry>? dotNetRef;
+
+    private void OnItemSelected(ProductCategories selectedItem)
+    {
+        SelectedProductCategorie = selectedItem;
+        product.ProdCtgId = selectedItem.ProdCtgId;
+        StateHasChanged();
+    }
+    protected override async Task OnInitializedAsync()
+
+    {
+        //await LoadUnits();
+        await LoadSpecification();
+        // await LoadSku();
+
+
+        supplier_list = (await supplierService.Get(null, null, null, null, null, null, 1, 1000)).ToList();
+        unit_list = (await unitService.Get(null, null, null, null, 1, 1000)).ToList();
+        currency_list = (await currencyService.Get(null, null, null, null, null, null, null, null, 1, 1000)).ToList();
+        shippingBy_list = (await shippingByService.Get(null, null, null, null, 1, 1000)).ToList();
+        color_list = (await colorService.Get(null, null, null, null, 1, 1000)).ToList();
+        country_list = (await countryServiceV2.Get(null, null, null, null, null, null, null, null, null, null, 1, 1000)).ToList();
+        statusSetting_list = (await _statusSettingService.Get(null, null, null, null, "Product", null, 1, 1000)).ToList();
+        importStatusSetting_list = (await _statusSettingService.Get(null, null, null, null, null, null, 1, 1000)).ToList();
+        productSubCategory_list = (await _productSubCategoryService.Get(null, null, null, null, null, 1, 1000)).ToList();
+        brand_list = (await _brandService.Get( null, null, null, 1, 1000)).ToList();
+        productCategory_list = (await productCategoryService.Get(null, null, null, null, 1, 1000)).ToList();
+        productSize_list = (await _ProductSizeService.Get(null, null, null, null, 1, 1000)).ToList();
+        warehouse_list = (await _warehouseService.Get(null, null, null, null, null, null, null, null,null, 1, 1000)).ToList();
+        bodyParts=await  bodyPartService.GetBodyPartsAsync();
+        await LoadProductImages();
+        imageData = defaultImage;
+        if (IsEditMode)
+        {
+            if (key.HasValue)
+            {
+
+                product = await _productService.GetByKey(key.ToString());
+
+                if (product == null)
+                {
+                    navigation.NavigateTo("/customer_info");
+                }
+
+            }
+            else
+            {
+                product = new Products();
+            }
+
+        }
+
+    }
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+
+        }
+    }
+    public void Dispose()
+    {
+        // dotNetRef?.Dispose();
+    }
+
+    private Task HideAlert()
+    {
+        showDangerAlert = false;
+        return Task.CompletedTask;
+    }
+
+    private async Task SaveOrUpdate()
+    {
+
+        if (!string.IsNullOrEmpty(product.ProdName) 
+          && !string.IsNullOrEmpty(product.ProductCode)
+          && !string.IsNullOrEmpty(product.Sku)
+          && product.ProdCtgId>0
+          && product.OpeningQnty>0
+          && product.BuyingPrice > 0
+          && product.SellingPrice > 0
+          && product.UnitId > 0
+          && product.CurrencyId > 0
+        )
+        {
+            try
+            {
+
+                if (product.ProductId == 0)
+                {
+                    product.EntryDateTime = DateTimeHelper.CurrentDateTime();
+                    product.EntryBy = UserInfo.UserId;
+                    product.BranchId = CompanyInfo.BranchId;
+
+                    product.ProductId = await _productService.SaveOrUpdate(product);
+                    if (product.ProductId > 0)
+                    {
+
+                        await toastService.ShowToast(MessageManager.SaveSuccess, ToastLevel.Success);
+                    }
+                    else if (product.ProductId == -1)
+                    {
+                        product.ProductId = 0;
+                        DangerMessage = $"{product.ProdName} {MessageManager.Exist}";
+                        await toastService.ShowToast(DangerMessage, ToastLevel.Error);
+                    }
+                    else
+                    {
+                        product.ProductId = 0;
+
+                        await toastService.ShowToast(MessageManager.SaveFaild, ToastLevel.Error);
+
+                    }
+                }
+                else
+                {
+                    var description = await js.InvokeAsync<string>("jsInterop.getElementValueById", "tinymce-editor");
+                    product.ProdDescription = description;
+
+                    product.LastModifyDate = DateTimeHelper.CurrentDateTime();
+                    product.LastModifyBy = UserInfo.UserId;
+                    product.ProductId = await _productService.SaveOrUpdate(product);
+                    if (product.ProductId > 0)
+                    {
+                        await toastService.ShowToast(MessageManager.UpdateSuccess, ToastLevel.Success);
+
+
+                    }
+                    else
+                    {
+                        await toastService.ShowToast(MessageManager.UpdateFaild, ToastLevel.Error);
+
+
+                    }
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                errorMessage = ex.Message;
+            }
+        }
+
+    }
+
+
+    private void OnSellingPriceChanged(ChangeEventArgs e)
+    {
+        if (decimal.TryParse(e.Value.ToString(), out var sellingPrice))
+        {
+            product.SellingPrice = sellingPrice;
+            if (product.VatPercent > 0)
+            {
+                product.VatAmount = (product.SellingPrice * product.VatPercent) / 100;
+            }
+            if (product.DiscountPercentg > 0)
+            {
+                // Calculate Discount Amount based on Selling Price and Discount Percentage
+                product.DiscountAmount = (product.SellingPrice * product.DiscountPercentg) / 100;
+            }
+            CalculateFinalPrice();
+        }
+    }
+    private void CalculateFinalPrice()
+    {
+        product.FinalPrice = (product.SellingPrice + product.VatAmount) - product.DiscountAmount;
+
+    }
+    private void OnDiscountAmountChanged(ChangeEventArgs e)
+    {
+        if (decimal.TryParse(e.Value.ToString(), out var discountAmount))
+        {
+            product.DiscountAmount = discountAmount;
+
+            if (product.SellingPrice > 0)
+            {
+                // Calculate Discount Percentage based on Selling Price and Discount Amount
+                product.DiscountPercentg = (product.DiscountAmount / product.SellingPrice) * 100;
+            }
+            CalculateFinalPrice();
+        }
+    }
+
+    private void OnVatPercentChanged(ChangeEventArgs e)
+    {
+        if (decimal.TryParse(e.Value.ToString(), out var vatPercent))
+        {
+            product.VatPercent = vatPercent;
+            product.VatAmount = (product.SellingPrice * product.VatPercent) / 100;
+            CalculateFinalPrice();
+        }
+    }
+    private void OnVatAmountChanged(ChangeEventArgs e)
+    {
+        if (decimal.TryParse(e.Value.ToString(), out var vatAmount))
+        {
+            product.VatAmount = vatAmount;
+            if (product.VatAmount > 0)
+            {
+                product.VatPercent = (product.VatAmount / product.SellingPrice) * 100;
+                CalculateFinalPrice();
+            }
+        }
+    }
+    private void CalculateDiscountPercentage(ChangeEventArgs e)
+    {
+        if (decimal.TryParse(e.Value.ToString(), out var discountPercentage))
+        {
+            product.DiscountPercentg = discountPercentage;
+            if (product.DiscountPercentg > 0)
+            {
+                // Calculate Discount Amount based on Selling Price and Discount Percentage
+                product.DiscountAmount = (product.SellingPrice * product.DiscountPercentg) / 100;
+                CalculateFinalPrice();
+            }
+            else
+            {
+                // Reset Discount Amount if Discount Percentage is zero or negative
+                product.DiscountAmount = 0;
+            }
+        }
+    }
+
+    private async Task LoadSpecification()
+    {
+        try
+        {
+            if (specificationNameSearch == "") { specificationNameSearch = null; }
+
+            specification_list = (await _productSpecificationService.Get(null, null, null, specificationNameSearch, null, currentPage, PageSize)).ToList();
+
+            // if (specification_list.Count > 0)
+            // {
+            //     TotalRecord = specification_list[0].total_row;
+            //     //  totalPages = TotalRecord / PageSize;
+            //     totalPages = (int)Math.Ceiling((double)TotalRecord / PageSize);
+            // }
+            // else
+            // {
+            //     TotalRecord = 0;
+            //     totalPages = 0;
+            // }
+
+        }
+        catch (Exception ex)
+        {
+            errorMessage = ex.Message;
+        }
+        finally
+        {
+            isLoading = false;
+
+        }
+    }
+
+    private async Task LoadProductImages()
+    {
+        try
+        {
+
+
+            productImages =(List<ProductImage>)await productMediaService.Get(null, null, 1,null);
+
+
+
+        }
+        catch (Exception ex)
+        {
+            errorMessage = ex.Message;
+        }
+
+    }
+    private async Task LoadImageEditModeData(ProductImage pi)
+    {
+        productImage = pi;
+        imageData = pi.ImageUrl;
+    }
+    private async Task Savespecification()
+    {
+        try
+        {
+            if (productSpecifications.ProdSpcfctnId == 0)
+            {
+                productSpecifications.EntryDateTime = DateTimeHelper.CurrentDateTime();
+                productSpecifications.EntryBy = UserInfo.UserId;
+                productSpecifications.ProductId = 1;
+
+                productSpecifications.ProdSpcfctnId = await _productSpecificationService.SaveOrUpdate(productSpecifications);
+                if (productSpecifications.ProdSpcfctnId > 0)
+                {
+                    showSuccessAlert = true;
+                    SuccessMessage = MessageManager.SaveSuccess;
+                    await LoadSpecification(); // Reload orders after save/update
+                    await Task.Delay(1000);
+                    showSuccessAlert = false;
+                }
+                else if (productSpecifications.ProdSpcfctnId == -1)
+                {
+                    showDangerAlert = true;
+                    DangerMessage = $"{productSpecifications.SpecificationName} {MessageManager.Exist}";
+                }
+                else
+                {
+                    showDangerAlert = true;
+                    DangerMessage = MessageManager.SaveFaild;
+                }
+            }
+
+
+            productSpecifications = new Pms.Models.Entity.Settings.ProductSpecifications();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = ex.Message;
+        }
+    }
+    private async Task DeleteItem(long ProdSpcfctnId)
+    {
+
+        try
+        {
+            bool result = await _productSpecificationService.Delete(ProdSpcfctnId);
+            if (result)
+            {
+                await LoadSpecification();
+            }
+            else
+            {
+                errorMessage = $"Failed to delete item with ID {ProdSpcfctnId}.";
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = ex.Message;
+        }
+    }
+    private async Task HandleSelected(InputFileChangeEventArgs e)
+    {
+        var file = e.File;
+        selectedImageFile = e.File;
+        if (file != null)
+        {
+            using (var stream = new MemoryStream())
+            {
+                await file.OpenReadStream().CopyToAsync(stream);
+                imageData = $"data:image/png;base64,{Convert.ToBase64String(stream.ToArray())}";
+            }
+        }
+    }
+
+    private async Task RemoveImage()
+    {
+        imageData = defaultImage;
+        await js.InvokeVoidAsync("resetFileInput", "fileInput");
+    }
+    private async Task SavesProductImage()
+    {
+        try
+        {
+            if (selectedImageFile is not null)
+            {
+                productImage.ImageUrl = await fileUploadService.UploadFileAsync(selectedImageFile, "assets/ProductImages");
+            }
+            if (productImage.ProductMediaId == 0)
+            {
+
+                productImage.ProductId = 1;
+                productImage.ProductMediaId = await productMediaService.SaveOrUpdate(productImage);
+                if (productImage.ProductMediaId > 0)
+                {
+                    productImages.Add(productImage);
+                    productImage = new ProductImage();
+                    await  toastService.ShowToast(MessageManager.SaveSuccess, ToastLevel.Success);
+
+                }
+                else if (productImage.ProductMediaId == -1)
+                {
+                    productImage.ProductMediaId = 0;
+                    showDangerAlert = true;
+                    DangerMessage = $"{productSpecifications.SpecificationName} {MessageManager.Exist}";
+                    await toastService.ShowToast(DangerMessage, ToastLevel.Error);
+                }
+                else
+                {
+                    await toastService.ShowToast( MessageManager.SaveFaild, ToastLevel.Error);
+
+                }
+            }
+            else
+            {
+                productImage.ProductId =1;
+                productImage.ProductMediaId = await productMediaService.SaveOrUpdate(productImage);
+                if (productImage.ProductMediaId == 0)
+                {
+                    await toastService.ShowToast(MessageManager.UpdateFaild, ToastLevel.Error);
+                }
+                else
+                {
+                    await toastService.ShowToast(MessageManager.UpdateSuccess, ToastLevel.Success);
+                }
+            }
+
+
+            productSpecifications = new Pms.Models.Entity.Settings.ProductSpecifications();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = ex.Message;
+        }
+    }
+    private async Task DeleteImagesItem(long prodMediaId)
+    {
+
+        try
+        {
+            bool result = await productMediaService.DeleteImageItem(prodMediaId);
+            if (result)
+            {
+                productImages.RemoveAll(item => item.ProductMediaId == prodMediaId);
+            }
+            else
+            {
+                errorMessage = $"Failed to delete item with ID {prodMediaId}.";
+                await toastService.ShowToast(errorMessage, ToastLevel.Error);
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = ex.Message;
+        }
+    }
+    private async Task OnRefresh()
+    {
+        product = new Products();
+    }
+    // public string? SkuSearch { get; set; }   
+
+    // private async Task LoadSku()
+    // {     
+    //     try
+    //     {
+    //         sku_list = (await _productSkuService.Get(null, null, SkuSearch, null, null, currentPage, PageSize)).ToList();
+
+    //     }
+    //     catch (Exception ex)
+    //     {
+    //         errorMessage = ex.Message;
+    //     }
+    
+    // }
+
+    // private async Task SaveSku()
+    // {
+    //     try
+    //     {
+    //         if (sku.ProdSkuId == 0)
+    //         {
+    //             sku.EntryDateTime = DateTimeHelper.CurrentDateTime();
+    //             sku.EntryBy = UserInfo.UserId;
+    //             sku.ProductId = 1;
+
+    //             sku.ProdSkuId = await _productSkuService.SaveOrUpdate(sku);
+    //             if (sku.ProdSkuId > 0)
+    //             {
+                    
+    //                 await LoadSku(); // Reload orders after save/update
+    //                 // await Task.Delay(1000);
+                    
+    //             }
+             
+    //         }
+
+    //         sku = new Pms.Models.Entity.Settings.ProductSKU();
+    //     }
+    //     catch (Exception ex)
+    //     {
+    //         errorMessage = ex.Message;
+    //     }
+    // }
+
+    // private async Task DeleteSku(long ProdSkuId)
+    // {
+
+    //     try
+    //     {
+    //         bool result = await _productSkuService.Delete(ProdSkuId);
+    //         if (result)
+    //         {
+    //             await LoadSku();
+    //         }
+    //         else
+    //         {
+    //             errorMessage = $"Failed to delete item with ID {ProdSkuId}.";
+    //         }
+    //     }
+    //     catch (Exception ex)
+    //     {
+    //         errorMessage = ex.Message;
+    //     }
+       
+
+    // }
+   
+    
+}

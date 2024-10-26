@@ -1,0 +1,159 @@
+﻿@page "/accdaily_expense/{key:guid?}"
+@using Pms.Data.Repository.Accounts
+@using Pms.Models.Entity.Accounts
+@inject IJSRuntime JS
+@inject NavigationManager Navigation
+
+
+
+@* <div class="modal fade" id="staticBackdrop" data-bs-keyboard="false" data-bs-backdrop="static" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content border-0 rounded-3 shadow-lg">
+          *@ 
+          
+         
+ <div class="modal-body">
+   
+    <EditForm Model="@acDailyExp" OnValidSubmit="SaveOrUpdate">
+                    <DataAnnotationsValidator />
+                   
+                    <div class="card">
+                        <div class="modal-header border-0">
+                            <a class="btn btn-falcon-default btn-sm" @onclick="BackTo"><i class="fas fa-arrow-left"></i></a>
+                            <h5 class="modal-title" id="staticBackdropLabel">Create Daily Expanse </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="card-body">
+
+                            <div class="row">
+                               
+                                <div class="col-md-4 mb-2">
+                                    <div class="form-group">
+                                 <label for="AccHeadId" class="form-label">Account Type</label><span class="error-star">*</span>
+                                       <InputSelect @bind-Value="acDailyExp.AccHeadId" class="form-control form-control-sm form-rounded fw-semi-bold ">
+                                            <option value=''>Select Accounts Type </option>
+                                               @foreach (var item in acc_list)
+                                            {
+                                              <option value=@item.AccHeadId>@item.AccHeadName</option>
+                                            }
+                                       </InputSelect>
+                                       <ValidationMessage class="text-danger" For="@(() => acDailyExp.AccHeadId)" />
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="form-group">
+                                        <label for="Expense" class="form-label">Total Expense</label>
+                            <InputNumber id="Expense" class="form-control form-control-sm form-rounded" @bind-Value="acDailyExp.Expense" />
+                                    </div>
+                                </div>     
+                                <div class="col-md-4 mb-3">
+                                    <div class="form-group">
+                                        <label for="Date" class="form-label">Date</label>
+                                <InputDate class="form-control form-control-sm form-rounded" @bind-Value="acDailyExp.Date" />
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="form-group">
+                                       <label for="Remarks" class="form-label">Remarks</label><span class="error-star">*</span>
+                                       <InputText id="Remarks" class="form-control form-control-sm form-rounded" @bind-Value="acDailyExp.Remarks" />
+                                        <ValidationMessage class="text-danger" For="@(() => acDailyExp.Remarks)" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer border-0">
+                                <button type="submit" class="btn btn-primary btn-sm mt-2">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                   
+                </EditForm>
+            </div>
+<script>
+    window.resetFileInput = function (id) {
+        document.getElementById(id).value = '';
+    }
+</script>
+
+@code {
+    [Parameter]
+    public Guid? key { get; set; }
+    private bool IsEditMode => key.HasValue;
+    private string SubmitButtonText => IsEditMode ? "Update" : "Create";
+
+    private AccountsDailyExpanse acDailyExp = new AccountsDailyExpanse();
+
+    [Inject]
+    AccountsDailyExpanseService accountsDailyExpanseService { get; set; }
+
+    [Inject]
+    AccHeadService _accHeadService { get; set; }
+    List<AccHead> acc_list = new List<AccHead>();
+
+    private bool showSuccessAlert = false;
+    private bool showDangerAlert = false;
+
+    public string SuccessMessage { get; set; }
+    public string DangerMessage { get; set; }
+
+    private string errorMessage;
+
+    public int? AccTypeIdNameSearch { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        acc_list = (await _accHeadService.Get(null, null, null, null, 1, 1000)).ToList();
+    }
+
+    private async Task SaveOrUpdate()
+    {
+        try
+        {
+            if (acDailyExp.AccDailyExpanseId == 0)
+            {
+                acDailyExp.EntryDateTime = DateTimeHelper.CurrentDateTime();
+                acDailyExp.EntryBy = UserInfo.UserId;
+               
+                acDailyExp.AccDailyExpanseId = await accountsDailyExpanseService.SaveOrUpdate(acDailyExp);
+                if (acDailyExp.AccDailyExpanseId > 0)
+                {
+                    toastService.ShowToast(MessageManager.SaveSuccess, ToastLevel.Success);
+                }
+                else if (acDailyExp.AccDailyExpanseId == -1)
+                {
+                    toastService.ShowToast($"{acDailyExp.AccHeadId} " + MessageManager.Exist, ToastLevel.Warning);
+                }
+                else
+                {
+                    toastService.ShowToast(MessageManager.SaveFaild, ToastLevel.Error);
+
+                }
+            }
+            else
+            {
+                acDailyExp.LastModifyDate = DateTimeHelper.CurrentDateTime();
+                acDailyExp.LastModifyBy = UserInfo.UserId;
+                acDailyExp.AccDailyExpanseId = await accountsDailyExpanseService.SaveOrUpdate(acDailyExp);
+                if (acDailyExp.AccDailyExpanseId > 0)
+                {
+                    toastService.ShowToast(MessageManager.UpdateSuccess, ToastLevel.Success);
+                }
+                else
+                {
+                    toastService.ShowToast(MessageManager.UpdateFaild, ToastLevel.Success);
+                }
+            }
+            // Clear the form after save/update
+           /*  await LoadDailyExp(); */ // Reload orders after save/update
+            acDailyExp = new Pms.Models.Entity.Accounts.AccountsDailyExpanse();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = ex.Message;
+        }
+    }
+    private void BackTo()
+    {
+        Navigation.NavigateTo("/daily_expui");
+    }
+   
+}

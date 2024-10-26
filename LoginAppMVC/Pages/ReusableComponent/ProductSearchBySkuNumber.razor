@@ -1,0 +1,104 @@
+﻿ @using System.Linq.Expressions
+@typeparam TItem
+
+<div class="form-group">
+    <label class="form-label fw-semi-bold">@SearchLabel</label><span class="error-star">*</span>
+    <div class="position-relative">
+        <input class="form-control form-control-sm form-rounded search-input fw-semi-bold"
+               type="search"
+               placeholder=@Placeholder
+               aria-label="Search"
+               @bind="SearchQuery"
+               @onclick="OnInputClick"
+               @oninput="OnSearchInput" />
+    </div>
+
+    <div class="dropdown-menu border font-base start-0 mt-2 py-0 overflow-hidden w-100"
+         style="display: @(ShowDropdown && FilteredItems.Any() ? "block" : "none");">
+        <div class="scrollbar list py-3" style="max-height: 24rem; cursor: pointer;">
+            @if (FilteredItems.Any())
+            {
+                @foreach (var item in FilteredItems)
+                {
+                    <a class="dropdown-item fs-10 px-x1 py-1 hover-primary" @onclick="() => SelectItem(item)">
+                        <div class="d-flex align-items-center">
+                            <div class="avatar avatar-l status-online me-2">
+                                <img class="rounded-circle" src="assets/img/team/1.jpg" alt="" />
+                            </div>
+                            <div class="flex-1">
+                                <h6 class="mb-0 title">@ItemTemplate(item)</h6>
+                            </div>
+                        </div>
+                    </a>
+                }
+            }
+            else
+            {
+                <p class="fallback fw-bold fs-8">No Result Found.</p>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public string SearchLabel { get; set; } = "Search";
+    [Parameter] public string Placeholder { get; set; } = "Search...";
+    [Parameter] public List<TItem> Items { get; set; } = new List<TItem>();
+    [Parameter] public Expression<Func<TItem, bool>> SearchCriteria { get; set; }
+    [Parameter] public Func<TItem, RenderFragment> ItemTemplate { get; set; }
+    [Parameter] public EventCallback<TItem> OnItemSelected { get; set; }
+
+    private string SearchQuery { get; set; } = string.Empty;
+    private List<TItem> FilteredItems { get; set; } = new List<TItem>();
+    private bool ShowDropdown { get; set; } = false;
+
+    protected override void OnParametersSet()
+    {
+        FilteredItems = Items;
+    }
+
+    private void OnSearchInput(ChangeEventArgs e)
+    {
+        SearchQuery = e.Value?.ToString() ?? string.Empty;
+        FilterItems();
+    }
+
+    private void FilterItems()
+    {
+        if (Items == null || SearchCriteria == null || string.IsNullOrWhiteSpace(SearchQuery))
+        {
+            // If Items is null or SearchCriteria is not set, return an empty list or the full list.
+            FilteredItems = Items ?? new List<TItem>();
+        }
+        else
+        {
+            try
+            {
+                FilteredItems = Items
+                    .Where(item => item != null && SearchCriteria.Compile().Invoke(item))
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error during filtering: {ex.Message}");
+                FilteredItems = new List<TItem>(); // Return an empty list if any error occurs
+            }
+        }
+
+        ShowDropdown = FilteredItems.Any();
+    }
+
+
+    private void SelectItem(TItem item)
+    {
+        SearchQuery = item.ToString();
+        ShowDropdown = false;
+        OnItemSelected.InvokeAsync(item);
+    }
+
+    private void OnInputClick()
+    {
+        ShowDropdown = true;
+        StateHasChanged();
+    }
+}

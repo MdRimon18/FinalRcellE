@@ -1,0 +1,607 @@
+﻿
+@page "/sms_setting"
+
+
+
+<!-- Right Offcanvas-->
+@* <button class="btn btn-primary mb-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Right Offcanvas</button> *@
+<div class="offcanvas offcanvas-end" id="offcanvasRight" tabindex="-1" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+        @*   <h5 id="offcanvasRightLabel">Offcanvas right</h5> *@
+        <div class="card-header">
+            <h5 class="mb-0">Sms Setting</h5>
+
+
+        </div>
+        <button class="btn-close text-reset" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div class="col-lg-12 ps-lg-2 mb-3">
+            <div class="row g-0 h-100 align-items-stretch">
+                <div class="col-lg-12 mb-3">
+
+                    <div class="pb-0">
+                        <a class="mb-4 d-block d-flex align-items-center" href="#experience-form" data-bs-toggle="collapse" aria-expanded="true" aria-controls="experience-form"><span class="circle-dashed"><span class="fas fa-plus"></span></span><span class="ms-3">Add new Sms</span></a>
+
+                        <div class="collapse show" id="experience-form">
+                            <EditForm Model="@smsSettings" OnValidSubmit="SaveOrUpdate">
+                                <DataAnnotationsValidator />
+                                <div class="row">
+                                    <SuccessAlert Message="@SuccessMessage" Show="@showSuccessAlert" />
+                                    <DangerAlert Message="@DangerMessage" Show="@showDangerAlert" OnClose="HideAlert" />
+
+                                    <div class="col-3 mb-3 text-lg-end">
+
+                                        <label class="form-label fw-semi-bold" for="Title">
+                                            Title
+                                        </label>
+
+                                    </div>
+                                    <div class="col-9 col-sm-7 mb-3">
+
+                                        <InputText class="form-control form-control-sm form-rounded" id="Title" @bind-Value="@smsSettings.Title" />
+                                        <ValidationMessage class="text-danger" For="@(() => smsSettings.Title)" />
+                                    </div>
+                                    <div class="col-3 mb-3 text-lg-end">
+
+                                        <label class="form-label fw-semi-bold" for="SenderName">
+                                            Sender Name
+                                        </label>
+
+                                    </div>
+                                    <div class="col-9 col-sm-7 mb-3">
+
+                                        <InputText class="form-control form-control-sm form-rounded" id="SenderName" @bind-Value="@smsSettings.SenderName" />
+                                        <ValidationMessage class="text-danger" For="@(() => smsSettings.SenderName)" />
+                                    </div>
+                                    <div class="col-3 mb-3 text-lg-end">
+
+                                        <label class="form-label fw-semi-bold" for="SmsCode">
+                                            Sms Code
+                                        </label>
+
+                                    </div>
+                                    <div class="col-9 col-sm-7 mb-3">
+
+                                        <InputText class="form-control form-control-sm form-rounded" id="SmsCode" @bind-Value="@smsSettings.SmsCode" />
+                                        <ValidationMessage class="text-danger" For="@(() => smsSettings.SmsCode)" />
+                                    </div>
+                                    <div class="col-3 mb-3 text-lg-end">
+
+                                        <label class="form-label fw-semi-bold" for="ApiUrl">
+                                            Api Url
+                                        </label>
+
+                                    </div>
+                                    <div class="col-9 col-sm-7 mb-3">
+
+                                        <InputText class="form-control form-control-sm form-rounded" id="ApiUrl" @bind-Value="@smsSettings.ApiUrl" />
+                                        <ValidationMessage class="text-danger" For="@(() => smsSettings.ApiUrl)" />
+                                    </div>
+                                    <div class="col-3 mb-3 text-lg-end">
+
+                                        <label class="form-label fw-semi-bold" for="UserName">
+                                           User Name
+                                        </label>
+
+                                    </div>
+                                    <div class="col-9 col-sm-7 mb-3">
+
+                                        <InputText class="form-control form-control-sm form-rounded" id="UserName" @bind-Value="@smsSettings.UserName" />
+                                        <ValidationMessage class="text-danger" For="@(() => smsSettings.UserName)" />
+                                    </div>
+                                    <div class="col-3 mb-3 text-lg-end">
+
+                                        <label class="form-label fw-semi-bold" for="Password">
+                                            Password
+                                        </label>
+
+                                    </div>
+                                    <div class="col-9 col-sm-7 mb-3">
+
+                                        <InputText class="form-control form-control-sm form-rounded" id="Password" @bind-Value="@smsSettings.Password" />
+                                        <ValidationMessage class="text-danger" For="@(() => smsSettings.Password)" />
+                                    </div>
+                                    <div class="col-3 mb-3 text-lg-end">
+
+                                        <label class="form-label fw-semi-bold" for="PortNumber">
+                                            Port Number
+                                        </label>
+
+                                    </div>
+                                    <div class="col-9 col-sm-7 mb-3">
+
+                                        <InputText class="form-control form-control-sm form-rounded" id="PortNumber" @bind-Value="@smsSettings.PortNumber"/>
+                                        <ValidationMessage class="text-danger" For="@(() => smsSettings.PortNumber)" />
+                                    </div>
+                                    <div class="col-3 mb-3 text-lg-end">
+                                        <label class="form-label fw-semi-bold" for="IsDefault">Is Default</label>
+                                    </div>
+                                    <div class="col-9 col-sm-7 mb-3">
+                                        <InputCheckbox @bind-Value="smsSettings.IsDefault" class="form-check-input" />
+                                        <ValidationMessage For="@(() => smsSettings.IsDefault)" class="text-danger" />
+                                    </div>
+                                    <div class="col-3 mb-3 text-lg-end">
+
+                                        <label class="form-label fw-semi-bold" for="Remarks">
+                                            Remarks
+                                        </label>
+
+                                    </div>
+                                    <div class="col-9 col-sm-7 mb-3">
+
+                                        <InputText class="form-control form-control-sm form-rounded" id="Remarks" @bind-Value="@smsSettings.Remarks" />
+                                        <ValidationMessage class="text-danger" For="@(() => smsSettings.Remarks)" />
+                                    </div>
+                                    <div class="col-9 col-sm-7 offset-3">
+                                        @if (smsSettings.SmsSttngId > 0)
+                                        {
+                                            <button class="btn btn-primary" type="submit">Update</button>
+                                        }
+                                        else
+                                        {
+                                            <button class="btn btn-primary" type="submit">Save</button>
+                                        }
+
+                                    </div>
+                                </div>
+                            </EditForm>
+
+                            <div class="border-dashed-bottom my-4"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<div class="card" id="ticketsTable">
+    <div class="card-header border-bottom border-200 px-0">
+        <div class="d-lg-flex justify-content-between">
+            <div class="row flex-between-center gy-2 px-x1">
+
+
+                <div class="col-auto pe-0">
+                    <h5 class="mb-0">Sms Settings</h5>
+
+                </div>
+                @*  <div class="col-auto">
+
+                <h6 class="mb-0">
+                search
+                </h6>
+                </div> *@
+                <div class="col-auto pe-0">
+
+                    <div class="input-group input-search-width">
+                        <input class="form-control form-control-sm form-rounded shadow-none" type="search" placeholder="Searchby name" aria-label="search" @bind="SmsNameSearch"/>
+                        <button type="button" class="btn btn-sm btn-outline-secondary border-300 hover-border-secondary form-rounded" @onclick="()=>LoadSms()">
+                            <span class="fa fa-search fs-10"></span>
+                        </button>                  
+                    </div>
+
+                </div>
+                <div class="col-auto pe-0">
+                    <button class="btn btn-falcon-default btn-sm ms-sm-1" type="button" @onclick="()=>OnRefresh()"><span class="fas fa-redo"></span></button>
+                </div>
+
+            </div>
+            <div class="border-bottom border-200 my-3"></div>
+            <div class="d-flex align-items-center justify-content-between justify-content-lg-end px-x1">
+
+
+                <div class="d-flex align-items-center" id="table-ticket-replace-element">
+
+                    <div class="dropdown">
+                        <button class="btn btn-sm btn-falcon-default dropdown-toggle dropdown-caret-none" type="button" id="dashboard-layout" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block me-1 table-layout">Table View</span><span class="fas fa-chevron-down" data-fa-transform="shrink-3 down-1"></span></button>
+                        <div class="dropdown-menu dropdown-toggle-item dropdown-menu-end border py-2" aria-labelledby="dashboard-layout" role="tablist"><a class="dropdown-item active" id="tableView" data-bs-toggle="tab" href="#table-view" role="tab" aria-controls="table-view">Table View</a><a class="dropdown-item" id="cardView" data-bs-toggle="tab" href="#card-view" role="tab" aria-controls="card-view">Card View</a></div>
+                    </div>
+
+                    <a @onclick="()=>OnClickAddBtn()" class="btn btn-falcon-default btn-sm mx-2" href="#!" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                        <span class="fas fa-plus" data-fa-transform="shrink-3"></span>
+                        <span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1">New</span>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="tab-content" id="ticketViewContent">
+
+        @if (isLoading)
+        {
+            <p>Loading...</p>
+        }
+        else if (errorMessage != null)
+        {
+            <p>An error occurred: @errorMessage</p>
+        }
+        else
+        {
+            <div class="fade tab-pane active show" id="table-view" role="tabpanel" aria-labelledby="tableView" data-list='{"valueNames":["client","subject","status","priority","agent"],"page":6,"pagination":true}'>
+                <div class="card-body p-0">
+                    <div class="table-responsive scrollbar">
+                        <table class="table table-sm mb-0 fs-10 table-view-tickets">
+                            <thead class="bg-body-tertiary">
+                                <tr>
+                                    @* <th class="py-2 fs-9 pe-2" style="width: 28px;">
+                                <div class="form-check d-flex align-items-center">
+                                Action  <input class="form-check-input" id="checkbox-bulk-table-tickets-select" type="checkbox" data-bulk-select='{"body":"table-ticket-body","actions":"table-ticket-actions","replacedElement":"table-ticket-replace-element"}' />
+                                </div>
+                                </th> *@
+                                    <th class="text-800 sort align-middle ps-4" data-sort="client">Action</th>
+                                    <th class="text-800 sort align-middle ps-2" data-sort="client">Title</th>
+                                    <th class="text-800 sort align-middle ps-4" data-sort="client">Sender Name</th>
+                                    <th class="text-800 sort align-middle ps-2" data-sort="client">Sms Code</th>
+                                    <th class="text-800 sort align-middle ps-4" data-sort="client">Api Url</th>
+                                    <th class="text-800 sort align-middle ps-2" data-sort="client">User Name</th>
+                                    <th class="text-800 sort align-middle ps-4" data-sort="client">Password</th>
+                                    <th class="text-800 sort align-middle ps-2" data-sort="client">Port Number</th>
+                                    <th class="text-800 sort align-middle ps-4" data-sort="client">Is Default</th>
+                                    <th class="text-800 sort align-middle ps-2" data-sort="client">Remarks</th>
+
+                                </tr>
+                            </thead>
+                            <tbody class="list" id="table-ticket-body">
+                                @foreach (var item in smsSetting_list)
+                                {
+                                    <tr>
+                                        <td class="align-middle fs-9 py-3">
+                                            <div class="form-check mb-0">
+
+                                                <a @onclick="()=>EditLoadData(item)" class="btn btn-falcon-default btn-sm " data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><span class="fas fa-external-link-alt" data-fa-transform="shrink-3"></span><span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1"></span></a>
+                                                <a @onclick="()=>DeleteItem(item.SmsSttngId)" class="btn btn-falcon-default btn-sm ">
+                                                    <i class="fa fa-trash text-danger" aria-hidden="true"></i>
+                                                </a>
+
+                                            </div>
+
+                                        </td>
+
+                                        <td class="align-middle fs-9 py-3">
+                                            <div class="d-flex align-items-center gap-2 position-relative">
+
+                                                @item.Title
+
+
+                                            </div>
+                                        </td>
+                                        <td class="align-middle fs-9 py-3">
+                                            <div class="d-flex align-items-center gap-2 position-relative">
+
+                                                @item.SenderName
+
+
+                                            </div>
+                                        </td>
+                                        <td class="align-middle fs-9 py-3">
+                                            <div class="d-flex align-items-center gap-2 position-relative">
+
+                                                @item.SmsCode
+
+
+                                            </div>
+                                        </td>
+                                        <td class="align-middle fs-9 py-3">
+                                            <div class="d-flex align-items-center gap-2 position-relative">
+
+                                                @item.ApiUrl
+
+
+                                            </div>
+                                        </td>
+                                        <td class="align-middle fs-9 py-3">
+                                            <div class="d-flex align-items-center gap-2 position-relative">
+                                                @item.UserName
+                                            </div>
+                                        </td>
+                                        <td class="align-middle fs-9 py-3">
+                                            <div class="d-flex align-items-center gap-2 position-relative">
+                                                @item.Password
+                                            </div>
+                                        </td>
+                                        <td class="align-middle fs-9 py-3">
+                                            <div class="d-flex align-items-center gap-2 position-relative">
+                                                @item.PortNumber
+
+
+                                            </div>
+                                        </td>
+                                        <td class="align-middle fs-9 py-3">
+                                            <div class="d-flex align-items-center gap-2 position-relative">
+
+                                                @item.IsDefault
+
+
+                                            </div>
+                                        </td>
+                                        <td class="align-middle fs-9 py-3">
+                                            <div class="d-flex align-items-center gap-2 position-relative">
+
+                                                @item.Remarks
+
+
+                                            </div>
+                                        </td>
+
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        <div class="text-center d-none" id="tickets-table-fallback">
+                            <p class="fw-bold fs-8 mt-3">No ticket found</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="fade tab-pane" id="card-view" role="tabpanel" aria-labelledby="cardView" data-list='{"valueNames":["client","subject","status","priority","agent"],"page":4,"pagination":true}'>
+                <div class="card-body p-0">
+                    <div class="form-check d-none">
+                        <input class="form-check-input" id="checkbox-bulk-card-tickets-select" type="checkbox" data-bulk-select='{"body":"card-ticket-body","actions":"table-ticket-actions","replacedElement":"table-ticket-replace-element"}' />
+                    </div>
+                    <div class="list bg-body-tertiary p-x1 d-flex flex-column gap-3" id="card-ticket-body">
+                        @foreach (var item in smsSetting_list)
+                        {
+                            <div class="bg-white dark__bg-1100 d-md-flex d-xl-inline-block d-xxl-flex align-items-center p-x1 rounded-3 shadow-sm card-view-height">
+                                <div class="d-flex align-items-start align-items-sm-center">
+                                    <div class="form-check me-2 me-xxl-3 mb-0">
+
+                                        <a @onclick="()=>EditLoadData(item)" class="btn btn-falcon-default btn-sm" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><span class="fas fa-external-link-alt" data-fa-transform="shrink-3"></span><span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1"></span></a>
+                                        <a @onclick="()=>DeleteItem(item.SmsSttngId)" class="btn btn-falcon-default btn-sm ">
+                                            <i class="fa fa-trash text-danger" aria-hidden="true"></i>
+                                        </a>
+                                    </div><a class="d-none d-sm-block" href="app/support-desk/contact-details.html">
+
+                                    </a>
+                                    <div class="ms-1 ms-sm-3">
+                                        <p class="fw-semi-bold mb-3 mb-sm-2">  @item.Title</p>
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        }
+
+
+                    </div>
+                    <div class="text-center d-none" id="tickets-card-fallback">
+                        <p class="fw-bold fs-8 mt-3">No ticket found</p>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="card-footer">
+                <div class="row">
+                    <div class="pagination d-none"></div>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <span class="d-none d-sm-inline-block me-2 fs-10">page @currentPage of @totalPages, Total Record @TotalRecord </span>
+
+                            </div>
+                            <div class="col-md-2">
+
+                                <PageSizeSelection SelectedPageSize="@PageSize" SelectedPageSizeChanged="HandlePageSizeChanged" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="col-auto d-flex justify-content-end">
+
+                            <PaginationV2 TotalPages="totalPages" CurrentPage="currentPage" OnPageChange="ChangePage" />
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        }
+    </div>
+</div>
+
+@code {
+    private Pms.Models.Entity.Settings.SmsSettings smsSettings = new Pms.Models.Entity.Settings.SmsSettings();
+    [Inject]
+    protected IJSRuntime JSRuntime { get; set; }
+    [Inject]
+    SmsSettinsService smsSettinsService { get; set; }
+    List<Pms.Models.Entity.Settings.SmsSettings> smsSetting_list = new List<Pms.Models.Entity.Settings.SmsSettings>();
+
+    private bool showSuccessAlert = false;
+    private bool showDangerAlert = false;
+
+    public string SuccessMessage { get; set; }
+    public string DangerMessage { get; set; }
+
+    private string errorMessage;
+
+    private bool isLoading = true;
+
+    private int PageSize { get; set; } = 5;  // Number of items per page
+
+    int totalPages { get; set; }
+    int currentPage = 1; // Example current page
+
+    private int TotalRecord { get; set; }
+
+    public string? SmsNameSearch { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        await LoadSms();
+
+    }
+
+    private async Task LoadSms()
+    {
+        try
+        {
+            if (SmsNameSearch == "") { SmsNameSearch = null; }
+            smsSetting_list = (await smsSettinsService.Get(null, null,null, SmsNameSearch,null, null, currentPage, PageSize)).ToList();
+            if (smsSetting_list.Count > 0)
+            {
+                TotalRecord = smsSetting_list[0].total_row;
+                //  totalPages = TotalRecord / PageSize;
+                totalPages = (int)Math.Ceiling((double)TotalRecord / PageSize);
+            }
+            else
+            {
+                TotalRecord = 0;
+                totalPages = 0;
+            }
+
+        }
+        catch (Exception ex)
+        {
+            errorMessage = ex.Message;
+        }
+        finally
+        {
+            isLoading = false;
+            StateHasChanged(); // Ensure UI reflects changes
+        }
+    }
+
+    private async Task SaveOrUpdate()
+    {
+        try
+        {
+            if (smsSettings.SmsSttngId == 0)
+            {
+                smsSettings.EntryDateTime = DateTimeHelper.CurrentDateTime();
+                smsSettings.EntryBy = UserInfo.UserId;
+                
+
+                smsSettings.SmsSttngId = await smsSettinsService.SaveOrUpdate(smsSettings);
+                if (smsSettings.SmsSttngId > 0)
+                {
+                    showSuccessAlert = true;
+                    SuccessMessage = MessageManager.SaveSuccess;
+                    StateHasChanged(); // Notify Blazor to re-render the component
+                                       //Hide the alert after 1 seconds
+
+                    await Task.Delay(1000);
+                    showSuccessAlert = false;
+                }
+                else if (smsSettings.SmsSttngId == -1)
+                {
+                    showDangerAlert = true;
+                    DangerMessage = $"{smsSettings.SenderName} {MessageManager.Exist}";
+                }
+                else
+                {
+                    showDangerAlert = true;
+                    DangerMessage = MessageManager.SaveFaild;
+                }
+            }
+            else
+            {
+
+                smsSettings.LastModifyDate = DateTimeHelper.CurrentDateTime();
+                smsSettings.LastModifyBy = UserInfo.UserId;
+                smsSettings.SmsSttngId = await smsSettinsService.SaveOrUpdate(smsSettings);
+                if (smsSettings.SmsSttngId > 0)
+                {
+                    showSuccessAlert = true;
+                    SuccessMessage = MessageManager.UpdateSuccess;
+                    StateHasChanged(); // Notify Blazor to re-render the component
+                                       //Hide the alert after 1 seconds
+
+                    await Task.Delay(1000);
+                    showSuccessAlert = false;
+                }
+                else
+                {
+                    showDangerAlert = true;
+                    DangerMessage = MessageManager.UpdateFaild;
+                }
+            }
+            // Clear the form after save/update
+            await LoadSms(); // Reload orders after save/update
+            smsSettings = new Pms.Models.Entity.Settings.SmsSettings();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = ex.Message;
+        }
+    }
+
+
+
+
+    private async void EditLoadData(Pms.Models.Entity.Settings.SmsSettings bl)
+    {
+        smsSettings = bl;
+    }
+
+    private async Task DeleteItem(long SmsSttngId)
+    {
+        bool confirmed = await JSRuntime.InvokeAsync<bool>("showDeleteConfirmation");
+        if (confirmed)
+        {
+            try
+            {
+                bool result = await smsSettinsService.Delete(SmsSttngId);
+                if (result)
+                {
+                    await JSRuntime.InvokeVoidAsync("showSuccessMessage");
+                    await LoadSms();
+                }
+                else
+                {
+                    errorMessage = $"{MessageManager.DeleteFaild} {SmsSttngId}.";
+                }
+            }
+            catch (Exception ex)
+            {
+                errorMessage = ex.Message;
+            }
+        }
+        else
+        {
+
+        }
+    }
+
+
+
+    private Task HideAlert()
+    {
+        showDangerAlert = false;
+        return Task.CompletedTask;
+    }
+
+    private async void OnClickAddBtn()
+    {
+        smsSettings = new Pms.Models.Entity.Settings.SmsSettings();
+    }
+    private async void OnRefresh()
+    {
+        SmsNameSearch = null;
+        await LoadSms();
+    }
+    private async void ChangePage(int pageNumber)
+    {
+        currentPage = pageNumber;
+        await LoadSms();
+    }
+
+    void HandlePageSizeChanged(int newSize)
+    {
+        PageSize = newSize;
+        ChangePage(1);
+
+    }
+}

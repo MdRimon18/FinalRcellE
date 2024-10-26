@@ -1,5 +1,8 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using Domain.Extension;
+using Pms.Domain.DbContex;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,7 +10,8 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddServerSideBlazor();
 builder.Services.AddRazorPages();
-
+builder.Services.AddSingleton<DbConnection>();
+builder.Services.AddApplicationServices();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

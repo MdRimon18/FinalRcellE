@@ -9,5 +9,7 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml"; // Ensure this path is correct
 }
-<component type="typeof(App)" render-mode="Server" />
+
+<component type="typeof(App)" render-mode="ServerPrerendered" />
 <script src="_framework/blazor.server.js"></script>
+
