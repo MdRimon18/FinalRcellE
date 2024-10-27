@@ -7,15 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Pages\Products\WarehouseEntry.razor" />
-    <Content Remove="Pages\ReusableComponent\WarningAlert.razor" />
+    
+     
   </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Pages\Products\WarehouseEntry.razor" />
-    <None Include="Pages\ReusableComponent\WarningAlert.razor" />
-  </ItemGroup>
-
  
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.10" />
@@ -28,10 +22,12 @@
     <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
+  <!--<ItemGroup>
     <Content Update="Pages\Shared\EmptyLayout.razor">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
     </Content>
-  </ItemGroup>
+  </ItemGroup>-->
+
+  
 
 </Project>

@@ -1,4 +1,29 @@
-﻿@using LoginAppMVC.Pages
-<component type="typeof(App)" render-mode="ServerPrerendered" />
+﻿ 
+@using Domain.Models.ViewModel
+ @using LoginAppMVC.Pages
+@using LoginAppMVC.Pages.Inventory
+@using LoginAppMVC.Pages.Products
+@using LoginAppMVC.Pages.Shared
+@using Microsoft.AspNetCore.Routing
+@model RoutingHelper
+@{
+    ViewData["Title"] = "Blazor Page";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
 
-<script src="_framework/blazor.server.js"></script>
+<!-- Blazor server-side script (if needed, but typically included in the layout) -->
+<!-- <script src="_framework/blazor.server.js"></script> -->
+
+<!-- Define the Blazor Router -->
+ 
+
+<!-- Example component rendered directly -->
+@if (Model.RouteName == "create_invoice" && Model.IsShow == true)
+{
+    <component type="typeof(CreateInvoice)" render-mode="ServerPrerendered" />
+}
+@if (Model.RouteName == "product_entry" && Model.IsShow == true)
+{
+    <component type="typeof(ProductEntry)" render-mode="ServerPrerendered" />
+}
+

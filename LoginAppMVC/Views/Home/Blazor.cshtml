@@ -1,0 +1,13 @@
+﻿@using LoginAppMVC.Pages
+
+@{
+    ViewData["Title"] = "Blazor";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+ 
+<!-- Render Blazor components in MVC layout -->
+<component type="typeof(App)" render-mode="ServerPrerendered" />
+
+<!-- Blazor server-side script -->
+<script src="_framework/blazor.server.js"></script>

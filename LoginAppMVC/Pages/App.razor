@@ -1,6 +1,6 @@
 ﻿@using LoginAppMVC.Pages.Shared
  
- 
+ @* 
 <Router AppAssembly="@typeof(App).Assembly">
     <Found Context="routeData">
 
@@ -13,3 +13,21 @@
         </LayoutView>
     </NotFound>
 </Router> 
+ *@
+
+@* <Router AppAssembly="@typeof(App).Assembly">
+    <Found Context="routeData">
+        <LayoutView Layout="typeof(MainLayout)" RouteData="@routeData" />
+    </Found>
+    <NotFound>
+        <p>Sorry, there's nothing at this address.</p>
+    </NotFound>
+</Router> *@
+@* <Router AppAssembly="@typeof(MainMvcLaout).Assembly">
+    <Found Context="routeData">
+        <RouteView RouteData="@routeData" DefaultLayout="typeof(MainMvcLaout)" />
+    </Found>
+    <NotFound>
+        <h3>Sorry, there's nothing at this address.</h3>
+    </NotFound>
+</Router> *@

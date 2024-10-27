@@ -22,7 +22,7 @@
     <!-- ===============================================-->
     <!--    Favicons-->
     <!-- ===============================================-->
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicons/apple-touch-icon.png">
+@*     <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicons/favicon-16x16.png">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicons/favicon.ico">
@@ -30,14 +30,14 @@
     <meta name="msapplication-TileImage" content="assets/img/favicons/mstile-150x150.png">
     <meta name="theme-color" content="#ffffff">
     <script src="assets/js/config.js"></script>
-    <script src="vendors/simplebar/simplebar.min.js"></script>
+    <script src="vendors/simplebar/simplebar.min.js"></script> *@
 
 
     <!-- ===============================================-->
     <!--    Stylesheets-->
     <!-- ===============================================-->
 
-
+@* 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700%7cPoppins:300,400,500,600,700,800,900&amp;display=swap" rel="stylesheet">
     <link href="vendors/simplebar/simplebar.min.css" rel="stylesheet">
@@ -65,7 +65,7 @@
             linkRTL.setAttribute('disabled', true);
             userLinkRTL.setAttribute('disabled', true);
         }
-    </script>
+    </script> *@
 </head>
 
 <body>
@@ -82,7 +82,7 @@
     <a href="" class="reload">Reload</a>
     <a class="dismiss">🗙</a>
     </div> *@
-
+@* 
     <main class="main" id="top">
         <div class="container" data-layout="container">
             <script>
@@ -96,9 +96,9 @@
 
              <component type="typeof(App)" render-mode="ServerPrerendered" /> 
         </div>
-    </main>
+    </main> *@
 
-    <div class="offcanvas offcanvas-end settings-panel border-0" id="settings-offcanvas" tabindex="-1" aria-labelledby="settings-offcanvas">
+   @*  <div class="offcanvas offcanvas-end settings-panel border-0" id="settings-offcanvas" tabindex="-1" aria-labelledby="settings-offcanvas">
         <div class="offcanvas-header settings-panel-header bg-shape">
             <div class="z-1 py-1">
                 <div class="d-flex justify-content-between align-items-center mb-1">
@@ -219,14 +219,14 @@
                 </div>
             </div><small class="text-uppercase text-primary fw-bold bg-primary-subtle py-2 pe-2 ps-1 rounded-end">customize</small>
         </div>
-    </a>
+    </a> *@
 
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    @* <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <script>
         window.showDeleteConfirmation = function () {
-      //  function showDeleteConfirmation() {
+      
             return Swal.fire({
                 title: 'Are you sure?',
                 text: 'You won\'t be able to revert this!',
@@ -252,8 +252,7 @@
     </script>
 
 
-    <!--    JavaScripts-->
-    <!-- ===============================================-->
+ 
     <script src="vendors/popper/popper.min.js" defer></script>
     <script src="vendors/bootstrap/bootstrap.min.js" defer></script>
     <script src="vendors/anchorjs/anchor.min.js" defer></script>
@@ -277,15 +276,13 @@
     <script src="vendors/swiper/swiper-bundle.min.js" defer></script>
     <script src="vendors/rater-js/index.js" defer></script>
 
- @*    <script src="assets/js/theme.js" defer></script>
-    <script src="vendors/fullcalendar/main.min.js" defer></script>
-    <script src="vendors/dayjs/dayjs.min.js" defer></script> *@
+ 
 
     <script src="_framework/blazor.server.js" defer></script>
-    <!-- ===============================================-->
+ 
     
 
-  
+   *@
 
 </body>
 </html>

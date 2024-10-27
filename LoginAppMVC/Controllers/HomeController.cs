@@ -1,3 +1,4 @@
+using Domain.Models.ViewModel;
 using LoginAppMVC.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -13,11 +14,18 @@ namespace LoginAppMVC.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string route)
         {
+            RoutingHelper routingHelper = new RoutingHelper();
+            routingHelper.RouteName= route;
+            routingHelper.IsShow = true;
+            return View(routingHelper);
+        }
+        public IActionResult Blazor()
+        {
+            ViewData["Title"] = "Blazor Page";
             return View();
         }
-
         public IActionResult Privacy()
         {
             return View();

@@ -1,15 +1,25 @@
-﻿ @page "/_Host"
-@namespace YourNamespace.Pages
-@using LoginAppMVC.Pages
- 
+﻿@*  @page "/"
+@namespace LoginAppMVC.Pages
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-@* @{
-    Layout = "~/Areas/Admin/Views/Shared/Admin_Layout.cshtml"; // Use the MVC layout
-} *@
-@{
-    Layout = "~/Views/Shared/_Layout.cshtml"; // Ensure this path is correct
-}
 
-<component type="typeof(App)" render-mode="ServerPrerendered" />
-<script src="_framework/blazor.server.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Blazor Integration</title>
+    <link href="~/css/site.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <h1>Blazor Component in MVC Layout</h1>
+        
+        <app>
+            <component type="typeof(App)" render-mode="ServerPrerendered" />
+        </app>
+    </div>
 
+     
+    <script src="_framework/blazor.server.js"></script>
+</body>
+</html>
+ *@

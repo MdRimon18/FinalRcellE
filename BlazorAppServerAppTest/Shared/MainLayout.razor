@@ -1,10 +1,10 @@
 ﻿@inherits LayoutComponentBase
-
-
+@Body
+@* 
 @if (IsAuthenticateUser)
 {
     <SideNavBar />
-    <div class="content">
+    <div class="content"> 
         <NavHeader />
         <Toast ToastService="toastService" />
         @Body
@@ -38,5 +38,5 @@ else
     {
         
     }
-}
+} *@
  
