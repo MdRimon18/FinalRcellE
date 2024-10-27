@@ -107,7 +107,7 @@
                                         <!-- more inner pages-->
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="dashboard/analytics.html">
+                                        <a class="nav-link" href="/?route=create_invoice">
                                             <div class="d-flex align-items-center">
                                                 <span class="nav-link-text ps-1">Analytics</span>
                                             </div>
@@ -115,7 +115,7 @@
                                         <!-- more inner pages-->
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="dashboard/crm.html">
+                                        <a class="nav-link" href="/?route=product_entry">
                                             <div class="d-flex align-items-center">
                                                 <span class="nav-link-text ps-1">CRM</span>
                                             </div>
@@ -123,7 +123,7 @@
                                         <!-- more inner pages-->
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="dashboard/e-commerce.html">
+                                        <a class="nav-link" href="/?route=counter">
                                             <div class="d-flex align-items-center">
                                                 <span class="nav-link-text ps-1">E commerce</span>
                                             </div>
@@ -3457,6 +3457,46 @@
     <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
     <script src="vendors/list.js/list.min.js"></script>
     <script src="assets/js/theme.js"></script>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+        function loadComponent(routeName) {
+            $.ajax({
+                url: '/Home/LoadBlazorComponent', // The controller action that loads the partial view
+                type: 'GET',
+                data: { route: routeName },
+                success: function (result) {
+                    // Update the target element with the returned partial view content
+                    $('#blazorComponentContainer').html(result);
+
+                    // Check if Blazor is already loaded and then reinitialize Blazor
+                    if (window.Blazor) {
+                        window.Blazor.start(); // Start or reinitialize Blazor
+                    }
+
+                    // Change the URL in the browser without reloading the page
+                    window.history.pushState(
+                        { routeName: routeName }, // State object (optional, used for popstate event)
+                        '', // Title (optional, not used in most cases)
+                        '/' + routeName // The new URL path
+                    );
+                },
+                error: function (xhr, status, error) {
+                    console.error('Failed to load component:', error);
+                }
+            });
+        }
+
+        // Handle back/forward navigation in the browser (optional)
+        window.onpopstate = function (event) {
+            if (event.state && event.state.routeName) {
+                loadComponent(event.state.routeName);
+            }
+        };
+    </script>
+
     <script src="_framework/blazor.server.js"></script>
 </body>
 

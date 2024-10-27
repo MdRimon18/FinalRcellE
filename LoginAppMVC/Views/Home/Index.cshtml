@@ -11,19 +11,36 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<!-- Blazor server-side script (if needed, but typically included in the layout) -->
-<!-- <script src="_framework/blazor.server.js"></script> -->
 
-<!-- Define the Blazor Router -->
  
 
-<!-- Example component rendered directly -->
-@if (Model.RouteName == "create_invoice" && Model.IsShow == true)
+@* <!-- Example component rendered directly based on route name -->
+@if (Model.RouteName == "create_invoice" && Model.IsShow)
 {
     <component type="typeof(CreateInvoice)" render-mode="ServerPrerendered" />
 }
-@if (Model.RouteName == "product_entry" && Model.IsShow == true)
+else if (Model.RouteName == "product_entry" && Model.IsShow)
 {
-    <component type="typeof(ProductEntry)" render-mode="ServerPrerendered" />
+    <component type="typeof(ProductEntry)" render-mode="Server" />
 }
+else if (Model.RouteName == "counter" && Model.IsShow)
+{
+    <component type="typeof(HelloWorld)" render-mode="Server" />
+}
+else
+{
+    <h3>Invalid Route</h3>
+} *@
 
+
+
+
+<div id="blazorComponentContainer">
+    @await Html.PartialAsync("_BlazorPagePartial", Model)
+</div>
+<button onclick="loadComponent('create_invoice')">Load Create Invoice</button>
+<button onclick="loadComponent('product_entry')">Load Product Entry</button>
+<button onclick="loadComponent('counter')">Load Counter</button>
+<button onclick="loadComponent('billing_plan')">Load Counter</button>
+
+        

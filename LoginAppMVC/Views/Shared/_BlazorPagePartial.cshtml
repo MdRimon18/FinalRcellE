@@ -1,0 +1,27 @@
+﻿@using Domain.Models.ViewModel
+@using LoginAppMVC.Pages
+@using LoginAppMVC.Pages.Inventory
+@using LoginAppMVC.Pages.Products
+@using LoginAppMVC.Pages.Settings
+@using LoginAppMVC.Pages.Shared
+@model RoutingHelper
+
+<script src="_framework/blazor.server.js"></script>
+@if (Model.RouteName == "create_invoice" && Model.IsShow == true)
+{
+    <component type="typeof(CreateInvoice)" render-mode="ServerPrerendered" />
+}
+@if (Model.RouteName == "product_entry" && Model.IsShow == true)
+{
+    <component type="typeof(ProductEntry)" render-mode="ServerPrerendered" />
+}
+@if (Model.RouteName == "counter" && Model.IsShow == true)
+{
+    <component type="typeof(HelloWorld)" render-mode="ServerPrerendered" />
+}
+
+@if (Model.RouteName == "billing_plan" && Model.IsShow == true)
+{
+    <component type="typeof(BillingPlan)" render-mode="ServerPrerendered" />
+}
+

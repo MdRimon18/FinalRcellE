@@ -14,17 +14,30 @@ namespace LoginAppMVC.Controllers
             _logger = logger;
         }
 
+        [Route("{route?}")]
         public IActionResult Index(string route)
         {
             RoutingHelper routingHelper = new RoutingHelper();
             routingHelper.RouteName= route;
             routingHelper.IsShow = true;
             return View(routingHelper);
+
         }
         public IActionResult Blazor()
         {
             ViewData["Title"] = "Blazor Page";
             return View();
+        }
+        public IActionResult LoadBlazorComponent(string route)
+        {
+            RoutingHelper routingHelper = new RoutingHelper
+            {
+                RouteName = route,
+                IsShow = true
+            };
+
+            // Return the partial view with the model
+            return PartialView("_BlazorPagePartial", routingHelper);
         }
         public IActionResult Privacy()
         {

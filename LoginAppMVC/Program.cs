@@ -10,6 +10,8 @@ builder.Services.AddServerSideBlazor().AddCircuitOptions(options =>
     options.DisconnectedCircuitRetentionPeriod = TimeSpan.FromMinutes(3);
     options.JSInteropDefaultCallTimeout = TimeSpan.FromMinutes(1);
 });
+
+ 
 builder.Services.AddLogging(builder => builder
     .AddFilter("Microsoft", LogLevel.Information)
     .AddConsole());

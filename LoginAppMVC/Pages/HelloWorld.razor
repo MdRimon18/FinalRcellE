@@ -1,4 +1,4 @@
-﻿ @page "/counter"
+﻿@page "/counter"
 <h3>Counter Component</h3>
 <p>Current count: @count</p>
 <button @onclick="IncrementCount">Click me</button>
@@ -6,8 +6,16 @@
 @code {
     private int count = 0;
 
-    private void IncrementCount()
+    protected override void OnInitialized()
     {
+        Console.WriteLine("Counter Component Initialized");
+    }
+
+    private async Task IncrementCount()
+    {
+        // Simulate an asynchronous operation, e.g., a delay
+        await Task.Delay(100); // Delay for 100 milliseconds (optional)
+
         count++;
     }
 }
