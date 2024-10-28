@@ -39,6 +39,17 @@ namespace LoginAppMVC.Controllers
             // Return the partial view with the model
             return PartialView("_BlazorPagePartial", routingHelper);
         }
+        public IActionResult LoadMvcComponent(string route)
+        {
+            RoutingHelper routingHelper = new RoutingHelper
+            {
+                RouteName = route,
+                IsShow = true
+            };
+
+            // Return the partial view with the model
+            return PartialView("_MvcPagePartial");
+        }
         public IActionResult Privacy()
         {
             return View();

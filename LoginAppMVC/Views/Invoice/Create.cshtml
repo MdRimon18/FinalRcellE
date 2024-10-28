@@ -1,0 +1,7 @@
+﻿@using LoginAppMVC.Pages.Inventory
+@{
+    ViewData["Title"] = "Blazor Page";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<script src="_framework/blazor.server.js"></script>
+<component type="typeof(CreateInvoice)" render-mode="ServerPrerendered" />

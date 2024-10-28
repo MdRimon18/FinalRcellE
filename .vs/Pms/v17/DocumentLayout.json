@@ -3,16 +3,24 @@
   "WorkspaceRootPath": "G:\\Mohi_Work_place\\FinalRcellE\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B488D1D9-F84E-4FBC-9A55-0134F6C815D9}|LoginAppMVC\\LoginAppMVC.csproj|g:\\mohi_work_place\\finalrcelle\\loginappmvc\\pages\\helloworld.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B488D1D9-F84E-4FBC-9A55-0134F6C815D9}|LoginAppMVC\\LoginAppMVC.csproj|solutionrelative:loginappmvc\\pages\\helloworld.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{B488D1D9-F84E-4FBC-9A55-0134F6C815D9}|LoginAppMVC\\LoginAppMVC.csproj|g:\\mohi_work_place\\finalrcelle\\loginappmvc\\views\\chartjs\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B488D1D9-F84E-4FBC-9A55-0134F6C815D9}|LoginAppMVC\\LoginAppMVC.csproj|solutionrelative:loginappmvc\\views\\chartjs\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B488D1D9-F84E-4FBC-9A55-0134F6C815D9}|LoginAppMVC\\LoginAppMVC.csproj|g:\\mohi_work_place\\finalrcelle\\loginappmvc\\pages\\settings\\billingplan.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B488D1D9-F84E-4FBC-9A55-0134F6C815D9}|LoginAppMVC\\LoginAppMVC.csproj|solutionrelative:loginappmvc\\pages\\settings\\billingplan.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{B488D1D9-F84E-4FBC-9A55-0134F6C815D9}|LoginAppMVC\\LoginAppMVC.csproj|g:\\mohi_work_place\\finalrcelle\\loginappmvc\\views\\shared\\_mvcpagepartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B488D1D9-F84E-4FBC-9A55-0134F6C815D9}|LoginAppMVC\\LoginAppMVC.csproj|solutionrelative:loginappmvc\\views\\shared\\_mvcpagepartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B488D1D9-F84E-4FBC-9A55-0134F6C815D9}|LoginAppMVC\\LoginAppMVC.csproj|g:\\mohi_work_place\\finalrcelle\\loginappmvc\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B488D1D9-F84E-4FBC-9A55-0134F6C815D9}|LoginAppMVC\\LoginAppMVC.csproj|solutionrelative:loginappmvc\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B488D1D9-F84E-4FBC-9A55-0134F6C815D9}|LoginAppMVC\\LoginAppMVC.csproj|g:\\mohi_work_place\\finalrcelle\\loginappmvc\\views\\shared\\_adminlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{B488D1D9-F84E-4FBC-9A55-0134F6C815D9}|LoginAppMVC\\LoginAppMVC.csproj|solutionrelative:loginappmvc\\views\\shared\\_adminlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B488D1D9-F84E-4FBC-9A55-0134F6C815D9}|LoginAppMVC\\LoginAppMVC.csproj|g:\\mohi_work_place\\finalrcelle\\loginappmvc\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B488D1D9-F84E-4FBC-9A55-0134F6C815D9}|LoginAppMVC\\LoginAppMVC.csproj|solutionrelative:loginappmvc\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B488D1D9-F84E-4FBC-9A55-0134F6C815D9}|LoginAppMVC\\LoginAppMVC.csproj|g:\\mohi_work_place\\finalrcelle\\loginappmvc\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -23,8 +31,44 @@
       "RelativeMoniker": "D:0:0:{B488D1D9-F84E-4FBC-9A55-0134F6C815D9}|LoginAppMVC\\LoginAppMVC.csproj|solutionrelative:loginappmvc\\views\\shared\\_blazorpagepartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B488D1D9-F84E-4FBC-9A55-0134F6C815D9}|LoginAppMVC\\LoginAppMVC.csproj|g:\\mohi_work_place\\finalrcelle\\loginappmvc\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B488D1D9-F84E-4FBC-9A55-0134F6C815D9}|LoginAppMVC\\LoginAppMVC.csproj|solutionrelative:loginappmvc\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B488D1D9-F84E-4FBC-9A55-0134F6C815D9}|LoginAppMVC\\LoginAppMVC.csproj|g:\\mohi_work_place\\finalrcelle\\loginappmvc\\views\\invoice\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B488D1D9-F84E-4FBC-9A55-0134F6C815D9}|LoginAppMVC\\LoginAppMVC.csproj|solutionrelative:loginappmvc\\views\\invoice\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B488D1D9-F84E-4FBC-9A55-0134F6C815D9}|LoginAppMVC\\LoginAppMVC.csproj|g:\\mohi_work_place\\finalrcelle\\loginappmvc\\controllers\\invoicecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B488D1D9-F84E-4FBC-9A55-0134F6C815D9}|LoginAppMVC\\LoginAppMVC.csproj|solutionrelative:loginappmvc\\controllers\\invoicecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B488D1D9-F84E-4FBC-9A55-0134F6C815D9}|LoginAppMVC\\LoginAppMVC.csproj|g:\\mohi_work_place\\finalrcelle\\loginappmvc\\views\\home\\blazor.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B488D1D9-F84E-4FBC-9A55-0134F6C815D9}|LoginAppMVC\\LoginAppMVC.csproj|solutionrelative:loginappmvc\\views\\home\\blazor.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B488D1D9-F84E-4FBC-9A55-0134F6C815D9}|LoginAppMVC\\LoginAppMVC.csproj|g:\\mohi_work_place\\finalrcelle\\loginappmvc\\pages\\settings\\accdailyexpui.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B488D1D9-F84E-4FBC-9A55-0134F6C815D9}|LoginAppMVC\\LoginAppMVC.csproj|solutionrelative:loginappmvc\\pages\\settings\\accdailyexpui.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B488D1D9-F84E-4FBC-9A55-0134F6C815D9}|LoginAppMVC\\LoginAppMVC.csproj|g:\\mohi_work_place\\finalrcelle\\loginappmvc\\pages\\products\\productentry.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B488D1D9-F84E-4FBC-9A55-0134F6C815D9}|LoginAppMVC\\LoginAppMVC.csproj|solutionrelative:loginappmvc\\pages\\products\\productentry.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B488D1D9-F84E-4FBC-9A55-0134F6C815D9}|LoginAppMVC\\LoginAppMVC.csproj|g:\\mohi_work_place\\finalrcelle\\loginappmvc\\pages\\inventory\\createinvoice.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B488D1D9-F84E-4FBC-9A55-0134F6C815D9}|LoginAppMVC\\LoginAppMVC.csproj|solutionrelative:loginappmvc\\pages\\inventory\\createinvoice.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B488D1D9-F84E-4FBC-9A55-0134F6C815D9}|LoginAppMVC\\LoginAppMVC.csproj|g:\\mohi_work_place\\finalrcelle\\loginappmvc\\pages\\dashboard.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B488D1D9-F84E-4FBC-9A55-0134F6C815D9}|LoginAppMVC\\LoginAppMVC.csproj|solutionrelative:loginappmvc\\pages\\dashboard.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B488D1D9-F84E-4FBC-9A55-0134F6C815D9}|LoginAppMVC\\LoginAppMVC.csproj|g:\\mohi_work_place\\finalrcelle\\loginappmvc\\views\\shared\\_blazorpagepartial.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B488D1D9-F84E-4FBC-9A55-0134F6C815D9}|LoginAppMVC\\LoginAppMVC.csproj|solutionrelative:loginappmvc\\views\\shared\\_blazorpagepartial.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B488D1D9-F84E-4FBC-9A55-0134F6C815D9}|LoginAppMVC\\LoginAppMVC.csproj|g:\\mohi_work_place\\finalrcelle\\loginappmvc\\pages\\helloworld.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B488D1D9-F84E-4FBC-9A55-0134F6C815D9}|LoginAppMVC\\LoginAppMVC.csproj|solutionrelative:loginappmvc\\pages\\helloworld.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B488D1D9-F84E-4FBC-9A55-0134F6C815D9}|LoginAppMVC\\LoginAppMVC.csproj|g:\\mohi_work_place\\finalrcelle\\loginappmvc\\pages\\settings\\billingplan.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B488D1D9-F84E-4FBC-9A55-0134F6C815D9}|LoginAppMVC\\LoginAppMVC.csproj|solutionrelative:loginappmvc\\pages\\settings\\billingplan.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B488D1D9-F84E-4FBC-9A55-0134F6C815D9}|LoginAppMVC\\LoginAppMVC.csproj|g:\\mohi_work_place\\finalrcelle\\loginappmvc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -39,10 +83,6 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Dell\\AppData\\Local\\SourceServer\\669f2bdfc777d8593617be6bf78670901dfffb358d474cf0f43aec6a9ab91a5d\\src\\JSInterop\\Microsoft.JSInterop\\src\\Infrastructure\\DotNetDispatcher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B488D1D9-F84E-4FBC-9A55-0134F6C815D9}|LoginAppMVC\\LoginAppMVC.csproj|g:\\mohi_work_place\\finalrcelle\\loginappmvc\\views\\shared\\_blazorpagepartial.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B488D1D9-F84E-4FBC-9A55-0134F6C815D9}|LoginAppMVC\\LoginAppMVC.csproj|solutionrelative:loginappmvc\\views\\shared\\_blazorpagepartial.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -52,11 +92,141 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "_ValidationScriptsPartial.cshtml",
+              "DocumentMoniker": "G:\\Mohi_Work_place\\FinalRcellE\\LoginAppMVC\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "RelativeDocumentMoniker": "LoginAppMVC\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ToolTip": "G:\\Mohi_Work_place\\FinalRcellE\\LoginAppMVC\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "RelativeToolTip": "LoginAppMVC\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-28T17:48:31.339Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "_MvcPagePartial.cshtml",
+              "DocumentMoniker": "G:\\Mohi_Work_place\\FinalRcellE\\LoginAppMVC\\Views\\Shared\\_MvcPagePartial.cshtml",
+              "RelativeDocumentMoniker": "LoginAppMVC\\Views\\Shared\\_MvcPagePartial.cshtml",
+              "ToolTip": "G:\\Mohi_Work_place\\FinalRcellE\\LoginAppMVC\\Views\\Shared\\_MvcPagePartial.cshtml",
+              "RelativeToolTip": "LoginAppMVC\\Views\\Shared\\_MvcPagePartial.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-28T17:39:30.78Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "G:\\Mohi_Work_place\\FinalRcellE\\LoginAppMVC\\Views\\ChartJs\\Index.cshtml",
+              "RelativeDocumentMoniker": "LoginAppMVC\\Views\\ChartJs\\Index.cshtml",
+              "ToolTip": "G:\\Mohi_Work_place\\FinalRcellE\\LoginAppMVC\\Views\\ChartJs\\Index.cshtml",
+              "RelativeToolTip": "LoginAppMVC\\Views\\ChartJs\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAE4BAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-28T17:36:06.269Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "G:\\Mohi_Work_place\\FinalRcellE\\LoginAppMVC\\Views\\Invoice\\Create.cshtml",
+              "RelativeDocumentMoniker": "LoginAppMVC\\Views\\Invoice\\Create.cshtml",
+              "ToolTip": "G:\\Mohi_Work_place\\FinalRcellE\\LoginAppMVC\\Views\\Invoice\\Create.cshtml",
+              "RelativeToolTip": "LoginAppMVC\\Views\\Invoice\\Create.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-28T16:55:28.417Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "InvoiceController.cs",
+              "DocumentMoniker": "G:\\Mohi_Work_place\\FinalRcellE\\LoginAppMVC\\Controllers\\InvoiceController.cs",
+              "RelativeDocumentMoniker": "LoginAppMVC\\Controllers\\InvoiceController.cs",
+              "ToolTip": "G:\\Mohi_Work_place\\FinalRcellE\\LoginAppMVC\\Controllers\\InvoiceController.cs",
+              "RelativeToolTip": "LoginAppMVC\\Controllers\\InvoiceController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-28T16:52:27Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "AccDailyExpUi.razor",
+              "DocumentMoniker": "G:\\Mohi_Work_place\\FinalRcellE\\LoginAppMVC\\Pages\\Settings\\AccDailyExpUi.razor",
+              "RelativeDocumentMoniker": "LoginAppMVC\\Pages\\Settings\\AccDailyExpUi.razor",
+              "ToolTip": "G:\\Mohi_Work_place\\FinalRcellE\\LoginAppMVC\\Pages\\Settings\\AccDailyExpUi.razor",
+              "RelativeToolTip": "LoginAppMVC\\Pages\\Settings\\AccDailyExpUi.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-28T16:44:07.988Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ProductEntry.razor",
+              "DocumentMoniker": "G:\\Mohi_Work_place\\FinalRcellE\\LoginAppMVC\\Pages\\Products\\ProductEntry.razor",
+              "RelativeDocumentMoniker": "LoginAppMVC\\Pages\\Products\\ProductEntry.razor",
+              "ToolTip": "G:\\Mohi_Work_place\\FinalRcellE\\LoginAppMVC\\Pages\\Products\\ProductEntry.razor",
+              "RelativeToolTip": "LoginAppMVC\\Pages\\Products\\ProductEntry.razor",
+              "ViewState": "AQIAAHQDAAAAAAAAAAAiwHgDAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-28T16:40:19.15Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "CreateInvoice.razor",
+              "DocumentMoniker": "G:\\Mohi_Work_place\\FinalRcellE\\LoginAppMVC\\Pages\\Inventory\\CreateInvoice.razor",
+              "RelativeDocumentMoniker": "LoginAppMVC\\Pages\\Inventory\\CreateInvoice.razor",
+              "ToolTip": "G:\\Mohi_Work_place\\FinalRcellE\\LoginAppMVC\\Pages\\Inventory\\CreateInvoice.razor",
+              "RelativeToolTip": "LoginAppMVC\\Pages\\Inventory\\CreateInvoice.razor",
+              "ViewState": "AQIAAIcAAAAAAAAAAAAYwAoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-28T16:27:23.869Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Blazor.cshtml",
+              "DocumentMoniker": "G:\\Mohi_Work_place\\FinalRcellE\\LoginAppMVC\\Views\\Home\\Blazor.cshtml",
+              "RelativeDocumentMoniker": "LoginAppMVC\\Views\\Home\\Blazor.cshtml",
+              "ToolTip": "G:\\Mohi_Work_place\\FinalRcellE\\LoginAppMVC\\Views\\Home\\Blazor.cshtml",
+              "RelativeToolTip": "LoginAppMVC\\Views\\Home\\Blazor.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-28T16:08:29.783Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Dashboard.razor",
+              "DocumentMoniker": "G:\\Mohi_Work_place\\FinalRcellE\\LoginAppMVC\\Pages\\Dashboard.razor",
+              "RelativeDocumentMoniker": "LoginAppMVC\\Pages\\Dashboard.razor",
+              "ToolTip": "G:\\Mohi_Work_place\\FinalRcellE\\LoginAppMVC\\Pages\\Dashboard.razor",
+              "RelativeToolTip": "LoginAppMVC\\Pages\\Dashboard.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAMgCAAALAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-28T16:05:55.378Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
               "Title": "BillingPlan.razor",
               "DocumentMoniker": "G:\\Mohi_Work_place\\FinalRcellE\\LoginAppMVC\\Pages\\Settings\\BillingPlan.razor",
               "RelativeDocumentMoniker": "LoginAppMVC\\Pages\\Settings\\BillingPlan.razor",
@@ -64,12 +234,11 @@
               "RelativeToolTip": "LoginAppMVC\\Pages\\Settings\\BillingPlan.razor",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-27T18:23:48.69Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-27T18:23:48.69Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 17,
               "Title": "Program.cs",
               "DocumentMoniker": "G:\\Mohi_Work_place\\FinalRcellE\\LoginAppMVC\\Program.cs",
               "RelativeDocumentMoniker": "LoginAppMVC\\Program.cs",
@@ -77,25 +246,23 @@
               "RelativeToolTip": "LoginAppMVC\\Program.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-27T18:03:47.668Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-27T18:03:47.668Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "LoginAppMVC",
+              "DocumentIndex": 18,
+              "Title": "LoginAppMVC.csproj",
               "DocumentMoniker": "G:\\Mohi_Work_place\\FinalRcellE\\LoginAppMVC\\LoginAppMVC.csproj",
               "RelativeDocumentMoniker": "LoginAppMVC\\LoginAppMVC.csproj",
               "ToolTip": "G:\\Mohi_Work_place\\FinalRcellE\\LoginAppMVC\\LoginAppMVC.csproj",
               "RelativeToolTip": "LoginAppMVC\\LoginAppMVC.csproj",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAABWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-10-27T18:02:14.074Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-27T18:02:14.074Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 19,
               "Title": "ExecutionContext.cs",
               "DocumentMoniker": "C:\\Users\\Dell\\AppData\\Local\\SourceServer\\0ccb312c25c1295824a919eb30a467fe230dcdef304188988b24434d30dd5051\\src\\libraries\\System.Private.CoreLib\\src\\System\\Threading\\ExecutionContext.cs",
               "ToolTip": "C:\\Users\\Dell\\AppData\\Local\\SourceServer\\0ccb312c25c1295824a919eb30a467fe230dcdef304188988b24434d30dd5051\\src\\libraries\\System.Private.CoreLib\\src\\System\\Threading\\ExecutionContext.cs",
@@ -105,7 +272,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 20,
               "Title": "DotNetDispatcher.cs",
               "DocumentMoniker": "C:\\Users\\Dell\\AppData\\Local\\SourceServer\\669f2bdfc777d8593617be6bf78670901dfffb358d474cf0f43aec6a9ab91a5d\\src\\JSInterop\\Microsoft.JSInterop\\src\\Infrastructure\\DotNetDispatcher.cs",
               "ToolTip": "C:\\Users\\Dell\\AppData\\Local\\SourceServer\\669f2bdfc777d8593617be6bf78670901dfffb358d474cf0f43aec6a9ab91a5d\\src\\JSInterop\\Microsoft.JSInterop\\src\\Infrastructure\\DotNetDispatcher.cs",
@@ -115,7 +282,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 14,
               "Title": "_BlazorPagePartial.cshtml.cs",
               "DocumentMoniker": "G:\\Mohi_Work_place\\FinalRcellE\\LoginAppMVC\\Views\\Shared\\_BlazorPagePartial.cshtml.cs",
               "RelativeDocumentMoniker": "LoginAppMVC\\Views\\Shared\\_BlazorPagePartial.cshtml.cs",
@@ -123,69 +290,70 @@
               "RelativeToolTip": "LoginAppMVC\\Views\\Shared\\_BlazorPagePartial.cshtml.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-27T16:33:52.487Z"
+              "WhenOpened": "2024-10-27T16:33:52.487Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "_BlazorPagePartial.cshtml",
               "DocumentMoniker": "G:\\Mohi_Work_place\\FinalRcellE\\LoginAppMVC\\Views\\Shared\\_BlazorPagePartial.cshtml",
               "RelativeDocumentMoniker": "LoginAppMVC\\Views\\Shared\\_BlazorPagePartial.cshtml",
               "ToolTip": "G:\\Mohi_Work_place\\FinalRcellE\\LoginAppMVC\\Views\\Shared\\_BlazorPagePartial.cshtml",
               "RelativeToolTip": "LoginAppMVC\\Views\\Shared\\_BlazorPagePartial.cshtml",
-              "ViewState": "AQIAAAcAAAAAAAAAAAAAABYAAAAlAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-10-27T16:27:37.702Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 15,
               "Title": "HelloWorld.razor",
               "DocumentMoniker": "G:\\Mohi_Work_place\\FinalRcellE\\LoginAppMVC\\Pages\\HelloWorld.razor",
               "RelativeDocumentMoniker": "LoginAppMVC\\Pages\\HelloWorld.razor",
-              "ToolTip": "G:\\Mohi_Work_place\\FinalRcellE\\LoginAppMVC\\Pages\\HelloWorld.razor*",
-              "RelativeToolTip": "LoginAppMVC\\Pages\\HelloWorld.razor*",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAPAAAA",
+              "ToolTip": "G:\\Mohi_Work_place\\FinalRcellE\\LoginAppMVC\\Pages\\HelloWorld.razor",
+              "RelativeToolTip": "LoginAppMVC\\Pages\\HelloWorld.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-10-27T16:15:50.669Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "_AdminLayout.cshtml",
               "DocumentMoniker": "G:\\Mohi_Work_place\\FinalRcellE\\LoginAppMVC\\Views\\Shared\\_AdminLayout.cshtml",
               "RelativeDocumentMoniker": "LoginAppMVC\\Views\\Shared\\_AdminLayout.cshtml",
               "ToolTip": "G:\\Mohi_Work_place\\FinalRcellE\\LoginAppMVC\\Views\\Shared\\_AdminLayout.cshtml",
               "RelativeToolTip": "LoginAppMVC\\Views\\Shared\\_AdminLayout.cshtml",
-              "ViewState": "AQIAAIkNAAAAAAAAAAAmwJQNAAAVAAAA",
+              "ViewState": "AQIAAOYKAAAAAAAAAAAIwPAKAAAsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-10-27T16:09:29.382Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Index.cshtml",
               "DocumentMoniker": "G:\\Mohi_Work_place\\FinalRcellE\\LoginAppMVC\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "LoginAppMVC\\Views\\Home\\Index.cshtml",
               "ToolTip": "G:\\Mohi_Work_place\\FinalRcellE\\LoginAppMVC\\Views\\Home\\Index.cshtml",
               "RelativeToolTip": "LoginAppMVC\\Views\\Home\\Index.cshtml",
-              "ViewState": "AQIAAB4AAAAAAAAAAAAkwC0AAAAIAAAA",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAUwCwAAAAvAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-10-27T16:03:18.246Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "HomeController.cs",
               "DocumentMoniker": "G:\\Mohi_Work_place\\FinalRcellE\\LoginAppMVC\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "LoginAppMVC\\Controllers\\HomeController.cs",
               "ToolTip": "G:\\Mohi_Work_place\\FinalRcellE\\LoginAppMVC\\Controllers\\HomeController.cs",
               "RelativeToolTip": "LoginAppMVC\\Controllers\\HomeController.cs",
-              "ViewState": "AQIAABEAAAAAAAAAAAA+wB8AAAAIAAAA",
+              "ViewState": "AQIAAB8AAAAAAAAAAIAwwDIAAAAvAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-27T16:03:04.918Z",
               "EditorCaption": ""

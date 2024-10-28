@@ -4,7 +4,12 @@
 @using Pms.Models.Entity
 
  
+<style>
+    .hidden {
+        display: none;
+    }
 
+</style>
 
 <div class="offcanvas offcanvas-end" id="offcanvasRight" tabindex="-1" aria-labelledby="offcanvasRightLabel" style="width: 55%;">
     <div class="offcanvas-header">
@@ -702,45 +707,33 @@
     </div>
 </div>
 
- 
 <script>
-   @*  function setupClickOutside(dotnetHelper) {
-        document.addEventListener('click', function (event) {
-            const searchInput = document.querySelector('.form-select');
-            const dropdown = document.querySelector('.dropdown-menu');
-
-            if (searchInput && dropdown && !searchInput.contains(event.target) && !dropdown.contains(event.target)) {
-                dotnetHelper.invokeMethodAsync('HideDropdown');
-            }
-        });
-    }
- *@
-    window.setupClickOutside = function (dotnetHelper) {
-        // Add click event listener
+    window.setupClickOutside = function () {
+        // Define the click handler function
         const clickHandler = function (event) {
+            // Select the elements you want to check
             const searchInput = document.querySelector('.form-select');
             const dropdown = document.querySelector('.dropdown-menu');
 
+            // Check if the click happened outside the specified elements
             if (searchInput && dropdown && !searchInput.contains(event.target) && !dropdown.contains(event.target)) {
-                if (dotnetHelper) {
-                    dotnetHelper.invokeMethodAsync('HideDropdown')
-                        .catch(err => console.error("Error invoking method:", err));
-                }
+                // Hide the dropdown by adding a CSS class or modifying the style
+                dropdown.classList.add('hidden'); // Assuming you have a 'hidden' class defined in your CSS
             }
         };
 
-        // Attach the handler
+        // Attach the click handler to the document
         document.addEventListener('click', clickHandler);
 
-        // Return a cleanup function to remove the event listener when the component is disposed
+        // Return an object with a dispose method to clean up the event listener
         return {
             dispose: () => {
                 document.removeEventListener('click', clickHandler);
             }
         };
     };
-
 </script>
+
 
 @code {
     [Inject]
@@ -812,14 +805,14 @@
     {
         if (firstRender)
         {
-            dotNetRef = DotNetObjectReference.Create(this);
-            await js.InvokeVoidAsync("setupClickOutside", dotNetRef);
+            //dotNetRef = DotNetObjectReference.Create(this);
+           // await js.InvokeVoidAsync("setupClickOutside", dotNetRef);
         }
     }
 
     public void Dispose()
     {
-        dotNetRef?.Dispose();
+       // dotNetRef?.Dispose();
     }
     protected override async Task OnInitializedAsync()
     {

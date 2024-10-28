@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Pages\Dashboard.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.10" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.10" />
   </ItemGroup>
@@ -21,6 +25,18 @@
   <ItemGroup>
     <ProjectReference Include="..\BlazorAppServerAppTest\Pms.csproj" />
     <ProjectReference Include="..\Domain\Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\Dashboard.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Pages\Dashboard.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Pages\Dashboard.razor" />
   </ItemGroup>
 
   <!--<ItemGroup>
